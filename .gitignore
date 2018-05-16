@@ -11,6 +11,10 @@
 # Maven
 target/
 
+# NODE, NPM & AngularCLI
+node_modules/
+dist/
+
 # Binaries & Logs
 *.jar
 *.log
