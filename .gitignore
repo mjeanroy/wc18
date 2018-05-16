@@ -1,0 +1,16 @@
+##
+# Copyright (C) Mickael Jeanroy - All Rights Reserved.
+# Unauthorized copying of this file, via any medium is strictly prohibited.
+# Proprietary and confidential.
+##
+
+# IDE
+/.idea
+*.iml
+
+# Maven
+target/
+
+# Binaries & Logs
+*.jar
+*.log

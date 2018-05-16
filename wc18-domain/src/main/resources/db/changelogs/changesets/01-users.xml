@@ -1,0 +1,36 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="01-users.xml">
+
+  <changeSet id="create-table-users" author="mjeanroy" context="schema, test">
+    <createTable tableName="users">
+      <column name="id" type="BINARY(16)">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="version" type="int" defaultValueNumeric="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="creation_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="login" type="varchar(50)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+      <column name="password" type="varchar(100)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+    <modifySql dbms="mysql">
+      <append value="engine innodb"/>
+    </modifySql>
+  </changeSet>
+
+</databaseChangeLog>

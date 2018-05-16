@@ -1,0 +1,16 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <include file="changesets/01-users.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/02-teams.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/03-matchs.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
