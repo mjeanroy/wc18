@@ -23,6 +23,11 @@ public class MatchService {
 		this.matchDao = matchDao;
 	}
 
+	/**
+	 * Find all matches.
+	 *
+	 * @return All matches.
+	 */
 	@Transactional(readOnly = true)
 	public Iterable<Match> findAll() {
 		return matchDao.findAll();

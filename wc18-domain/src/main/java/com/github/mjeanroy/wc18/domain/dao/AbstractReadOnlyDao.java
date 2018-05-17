@@ -11,6 +11,7 @@ import org.springframework.core.ResolvableType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
 /**
  * Simple template structure for DAO Implementation.

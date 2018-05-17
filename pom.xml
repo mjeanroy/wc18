@@ -11,6 +11,7 @@
   <modules>
     <module>wc18-domain</module>
     <module>wc18-api</module>
+    <module>wc18-test</module>
   </modules>
 
   <properties>
@@ -35,6 +36,7 @@
     <dbunit.version>2.5.4</dbunit.version>
     <dbunit-plus.version>0.2.0</dbunit-plus.version>
     <hsqldb.version>2.4.0</hsqldb.version>
+    <commons-lang3.version>3.7</commons-lang3.version>
   </properties>
 
   <dependencies>

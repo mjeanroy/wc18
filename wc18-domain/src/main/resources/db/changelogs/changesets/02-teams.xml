@@ -21,7 +21,7 @@
       <column name="creation_date" type="DATETIME">
         <constraints nullable="false"/>
       </column>
-      <column name="flag" type="varchar(2)">
+      <column name="iso_code" type="varchar(2)">
         <constraints nullable="false" unique="true"/>
       </column>
       <column name="name" type="varchar(20)">
