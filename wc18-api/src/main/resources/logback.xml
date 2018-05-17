@@ -11,11 +11,19 @@
     </encoder>
   </appender>
 
-  <logger name="com.github.mjeanroy.wc18" level="OFF" additivity="false">
+  <logger name="com.github.mjeanroy.wc18" level="DEBUG" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <root level="OFF">
+  <logger name="org.hibernate" level="DEBUG" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <logger name="org.springframework" level="INFO" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <root level="INFO">
     <appender-ref ref="STDOUT" />
   </root>
 </configuration>

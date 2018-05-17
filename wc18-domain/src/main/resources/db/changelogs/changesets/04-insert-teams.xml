@@ -1,0 +1,280 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="01-users.xml">
+
+  <changeSet id="insert-teams-europe" author="mjeanroy" context="data">
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('15e1c238-888f-4199-8390-a8d520a70ce7', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="DE"/>
+      <column name="name" value="Allemagne"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('66740b5b-4714-41eb-921f-0e998b2e6753', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="UK"/>
+      <column name="name" value="Angleterre"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="BE"/>
+      <column name="name" value="Belgique"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('d816d66f-0ae9-4c93-a89f-652d4ec36ddd', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="HR"/>
+      <column name="name" value="Croatie"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('d42c4e1f-582f-4f5c-92ce-96efbe90508f', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="DK"/>
+      <column name="name" value="Danemark"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('47a0b90b-c658-4795-ac16-7d1d37750a24', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="PL"/>
+      <column name="name" value="Pologne"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="IS"/>
+      <column name="name" value="Islande"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('5820fadd-ae19-48d5-b4e5-811b08f58b87', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="FR"/>
+      <column name="name" value="France"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('a49bed83-afc8-46ee-8d63-768a6b8e52d8', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="ES"/>
+      <column name="name" value="Espagne"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('f129acf1-bc4a-4055-bf0e-8f79d935ab49', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="PT"/>
+      <column name="name" value="Portugal"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('5a48bda3-d485-4045-ae18-5daed5237de2', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="RU"/>
+      <column name="name" value="Russie"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('78f8cca7-4cc3-4132-9764-a67f0dc7916c', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="RS"/>
+      <column name="name" value="Serbie"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('82041393-3310-4ad1-8069-c39ff6b9502c', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="SE"/>
+      <column name="name" value="Suède"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('c4b57832-9c6c-48f6-9e49-cf0a8d1e0993', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="CH"/>
+      <column name="name" value="Suisse"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="insert-teams-africa" author="mjeanroy" context="data">
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('a2f04f41-008c-4948-a8ef-a560bd961e02', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="EG"/>
+      <column name="name" value="Egypte"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('b33cfd07-d616-4146-b4d0-93bedb29d318', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="MA"/>
+      <column name="name" value="Maroc"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('42dcee66-7b12-4a08-a298-06bbe8327655', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="NG"/>
+      <column name="name" value="Nigeria"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('f6808b60-8524-47df-b381-d1fb21d1c87b', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="SN"/>
+      <column name="name" value="Sénégal"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('93b3d3ca-c10d-44f9-b26f-45582549caf9', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="TN"/>
+      <column name="name" value="Tunisie"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="insert-teams-america-south" author="mjeanroy" context="data">
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('a0b348fd-46d8-4c4c-a327-6595c4f468dd', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="AR"/>
+      <column name="name" value="Argentine"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('e9c4e714-5b4b-4e2d-a896-9f043c295869', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="BR"/>
+      <column name="name" value="Brésil"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('7cb7480c-7076-4ac6-bd04-af10335108ef', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="CO"/>
+      <column name="name" value="Colombie"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('d21eecd1-32db-4a00-92df-5c66a2b5c1f7', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="UY"/>
+      <column name="name" value="Uruguay"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('024c6838-d48d-4a26-98fa-e08c35b33647', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="PE"/>
+      <column name="name" value="Pérou"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="insert-teams-asia" author="mjeanroy" context="data">
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('91764f86-313f-4b2b-83c5-5aa425bf5fa6', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="SA"/>
+      <column name="name" value="Arabie Saoudite"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('e2b8bae1-06ab-44d2-8595-7af3e2441718', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="AU"/>
+      <column name="name" value="Australie"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('f6e3252e-652b-4f91-985c-90f7b048c314', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="KR"/>
+      <column name="name" value="Corée du Sud"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('7cd7f5da-49e0-4373-ad65-1734e126ec5f', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="IR"/>
+      <column name="name" value="Iran"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('d1eacb9c-a0f4-43bf-827b-72d8a858cd75', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="JP"/>
+      <column name="name" value="Japon"/>
+    </insert>
+  </changeSet>
+
+  <changeSet id="insert-teams-amercia-north" author="mjeanroy" context="data">
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('bddfce69-a33a-49a9-9d61-c1df11cf67a8', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="CR"/>
+      <column name="name" value="Costa Rica"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('da4c2425-f8fc-439c-83ea-c707f2f4874a', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="MX"/>
+      <column name="name" value="Mexique"/>
+    </insert>
+
+    <insert tableName="teams">
+      <column name="id" valueComputed="UNHEX(REPLACE('b83e08df-2070-453b-856c-59ada3e7c23f', '-', ''))" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="iso_code" value="PA"/>
+      <column name="name" value="Panama"/>
+    </insert>
+
+  </changeSet>
+
+</databaseChangeLog>

@@ -20,5 +20,5 @@ import java.lang.annotation.RetentionPolicy;
 	JpaConfiguration.class,
 	Wc18DomainConfiguration.class
 })
-public @interface EnableWorldTravelersDomain {
+public @interface EnableWc18Domain {
 }

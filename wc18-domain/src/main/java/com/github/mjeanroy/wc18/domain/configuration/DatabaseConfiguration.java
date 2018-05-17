@@ -85,7 +85,7 @@ public class DatabaseConfiguration {
 		// This property represents a user-defined name for the connection pool and appears
 		// mainly in logging and JMX management consoles to identify pools and pool configurations.
 		// Default: auto-generated
-		config.setPoolName("WorldTravelersDataSource");
+		config.setPoolName("WC18DataSource");
 
 		// This property controls the maximum size that the pool is allowed to reach,
 		// including both idle and in-use connections.

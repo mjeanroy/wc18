@@ -19,10 +19,22 @@ import static com.github.mjeanroy.wc18.domain.tests.builders.BuilderUtils.writeF
 public class TeamBuilder {
 
 	/**
-	 * The match id.
+	 * The team id.
 	 * @see Team#id
 	 */
 	private UUID id;
+
+	/**
+	 * The team ISO code.
+	 * @see Team#isoCode
+	 */
+	private String isoCode;
+
+	/**
+	 * The team name.
+	 * @see Team#name
+	 */
+	private String name;
 
 	/**
 	 * Set {@link #id} with a random value.
@@ -35,6 +47,28 @@ public class TeamBuilder {
 	}
 
 	/**
+	 * Set {@link #isoCode}.
+	 *
+	 * @param isoCode New {@link #isoCode}
+	 * @return The current builder.
+	 */
+	public TeamBuilder withIsoCode(String isoCode) {
+		this.isoCode = isoCode;
+		return this;
+	}
+
+	/**
+	 * Set {@link #name}.
+	 *
+	 * @param name New {@link #name}
+	 * @return The current builder.
+	 */
+	public TeamBuilder withName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	/**
 	 * Build the final {@link Team} instance.
 	 *
 	 * @return The instance.
@@ -42,6 +76,8 @@ public class TeamBuilder {
 	public Team build() {
 		Team team = newInstance(Team.class);
 		writeField(team, "id", id);
+		writeField(team, "isoCode", isoCode);
+		writeField(team, "name", name);
 		return team;
 	}
 }

@@ -6,23 +6,53 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+/**
+ * The team DTO.
+ */
 public class TeamDto extends AbstractDto {
 
-	private String flag;
+	/**
+	 * Team ISO code.
+	 */
+	private String isoCode;
+
+	/**
+	 * Team Name.
+	 */
 	private String name;
 
-	public String getFlag() {
-		return flag;
+	/**
+	 * Get {@link #isoCode}
+	 *
+	 * @return {@link #isoCode}
+	 */
+	public String getIsoCode() {
+		return isoCode;
 	}
 
-	public void setFlag(String flag) {
-		this.flag = flag;
+	/**
+	 * Set {@link #isoCode}
+	 *
+	 * @param isoCode New {@link #isoCode}
+	 */
+	public void setIsoCode(String isoCode) {
+		this.isoCode = isoCode;
 	}
 
+	/**
+	 * Get {@link #name}
+	 *
+	 * @return {@link #name}
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Set {@link #name}
+	 *
+	 * @param name New {@link #name}
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

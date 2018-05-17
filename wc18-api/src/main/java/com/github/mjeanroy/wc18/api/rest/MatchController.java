@@ -11,11 +11,16 @@ import com.github.mjeanroy.wc18.api.mappers.MatchDtoMapper;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 
+/**
+ * The {@link MatchDto} Rest Controller.
+ */
 @RestController
+@RequestMapping("/api/matches")
 public class MatchController {
 
 	private final MatchService matchService;
@@ -30,6 +35,6 @@ public class MatchController {
 	@GetMapping
 	public Iterable<MatchDto> findAll() {
 		Iterable<Match> matches = matchService.findAll();
-		return matchDtoMapper.map(matches);
+		return matchDtoMapper.from(matches);
 	}
 }
