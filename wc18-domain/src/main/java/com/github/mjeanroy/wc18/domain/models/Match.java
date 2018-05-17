@@ -70,6 +70,15 @@ public class Match extends AbstractEntity {
 	}
 
 	/**
+	 * Check if match has been played and score is available.
+	 *
+	 * @return {@code true} if match has been played, {@code false} otherwise.
+	 */
+	public boolean isPlayed() {
+		return score != null;
+	}
+
+	/**
 	 * Get {@link #stage}
 	 *
 	 * @return {@link #stage}

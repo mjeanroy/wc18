@@ -18,6 +18,23 @@ import java.util.Date;
 @Table(name = "bets")
 public class Bet extends AbstractEntity {
 
+	public enum Result {
+		UNAVAILABLE(0),
+		LOOSE(0),
+		WIN(10),
+		PERFECT(15);
+
+		private final int point;
+
+		Result(int point) {
+			this.point = point;
+		}
+
+		int getPoint() {
+			return point;
+		}
+	}
+
 	/**
 	 * The user that have created this bet.
 	 */
@@ -61,6 +78,38 @@ public class Bet extends AbstractEntity {
 		this.user = user;
 		this.match = match;
 		this.score = score;
+	}
+
+	/**
+	 * Get the bet result.
+	 *
+	 * @return Bet result.
+	 */
+	public Result getResult() {
+		if (!match.isPlayed()) {
+			return Result.UNAVAILABLE;
+		}
+
+		if (score.equals(match.getScore())) {
+			return Result.PERFECT;
+		}
+
+		int diff1 = score.diff();
+		int diff2 = match.getScore().diff();
+		if (diff1 == diff2) {
+			return Result.WIN;
+		}
+
+		return Result.LOOSE;
+	}
+
+	/**
+	 * Get points won by given {@link #user}.
+	 *
+	 * @return Points.
+	 */
+	public int getPoint() {
+		return getResult().point;
 	}
 
 	/**
