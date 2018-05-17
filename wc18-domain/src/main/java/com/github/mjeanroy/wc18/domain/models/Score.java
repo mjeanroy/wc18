@@ -18,6 +18,14 @@ public class Score {
 	@Column(name = "score2")
 	private Integer score2;
 
+	private Score() {
+	}
+
+	public Score(int score1, int score2) {
+		this.score1 = score1;
+		this.score2 = score2;
+	}
+
 	public Integer getScore1() {
 		return score1;
 	}

@@ -6,7 +6,7 @@
 
 <dataset>
   <teams
-    id="uuid'15e1c238-888f-4199-8390-a8d520a70ce7'"
+    id="15e1c238-888f-4199-8390-a8d520a70ce7"
     version="0"
     creation_date="2015-05-15 00:00:00"
     iso_code="DE"
@@ -14,7 +14,7 @@
   />
 
   <teams
-      id="uuid'66740b5b-4714-41eb-921f-0e998b2e6753'"
+      id="66740b5b-4714-41eb-921f-0e998b2e6753"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="UK"
@@ -22,7 +22,7 @@
   />
 
   <teams
-      id="uuid'3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685'"
+      id="3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="BE"
@@ -30,7 +30,7 @@
   />
 
   <teams
-      id="uuid'd816d66f-0ae9-4c93-a89f-652d4ec36ddd'"
+      id="d816d66f-0ae9-4c93-a89f-652d4ec36ddd"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="HR"
@@ -38,7 +38,7 @@
   />
 
   <teams
-      id="uuid'd42c4e1f-582f-4f5c-92ce-96efbe90508f'"
+      id="d42c4e1f-582f-4f5c-92ce-96efbe90508f"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="DK"
@@ -46,7 +46,7 @@
   />
 
   <teams
-      id="uuid'47a0b90b-c658-4795-ac16-7d1d37750a24'"
+      id="47a0b90b-c658-4795-ac16-7d1d37750a24"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="PL"
@@ -54,7 +54,7 @@
   />
 
   <teams
-      id="uuid'13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c'"
+      id="13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="IS"
@@ -62,7 +62,7 @@
   />
 
   <teams
-      id="uuid'5820fadd-ae19-48d5-b4e5-811b08f58b87'"
+      id="5820fadd-ae19-48d5-b4e5-811b08f58b87"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="FR"
@@ -70,7 +70,7 @@
   />
 
   <teams
-      id="uuid'a49bed83-afc8-46ee-8d63-768a6b8e52d8'"
+      id="a49bed83-afc8-46ee-8d63-768a6b8e52d8"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="ES"
@@ -78,7 +78,7 @@
   />
 
   <teams
-      id="uuid'f129acf1-bc4a-4055-bf0e-8f79d935ab49'"
+      id="f129acf1-bc4a-4055-bf0e-8f79d935ab49"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="PT"
@@ -86,7 +86,7 @@
   />
 
   <teams
-      id="uuid'5a48bda3-d485-4045-ae18-5daed5237de2'"
+      id="5a48bda3-d485-4045-ae18-5daed5237de2"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="RU"
@@ -94,7 +94,7 @@
   />
 
   <teams
-      id="uuid'78f8cca7-4cc3-4132-9764-a67f0dc7916c'"
+      id="78f8cca7-4cc3-4132-9764-a67f0dc7916c"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="RS"
@@ -102,7 +102,7 @@
   />
 
   <teams
-      id="uuid'82041393-3310-4ad1-8069-c39ff6b9502c'"
+      id="82041393-3310-4ad1-8069-c39ff6b9502c"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="SE"
@@ -110,7 +110,7 @@
   />
 
   <teams
-      id="uuid'c4b57832-9c6c-48f6-9e49-cf0a8d1e0993'"
+      id="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"
       version="0"
       creation_date="2015-05-15 00:00:00"
       iso_code="CH"

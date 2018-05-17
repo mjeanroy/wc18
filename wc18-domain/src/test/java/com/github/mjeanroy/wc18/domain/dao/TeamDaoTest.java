@@ -4,7 +4,7 @@ import com.github.mjeanroy.wc18.domain.models.Team;
 
 import javax.inject.Inject;
 
-public class TeamDaoTest extends AbstractReadOnlyDaoTest<Team> {
+public class TeamDaoTest extends AbstractReadOnlyDaoTest<Team, TeamDao> {
 
 	@Inject
 	private TeamDao teamDao;
@@ -15,7 +15,7 @@ public class TeamDaoTest extends AbstractReadOnlyDaoTest<Team> {
 	}
 
 	@Override
-	AbstractReadOnlyDao<Team> getDao() {
+	TeamDao getDao() {
 		return teamDao;
 	}
 }

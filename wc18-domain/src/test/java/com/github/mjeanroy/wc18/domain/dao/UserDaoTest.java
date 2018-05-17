@@ -10,7 +10,7 @@ import com.github.mjeanroy.wc18.domain.models.User;
 
 import javax.inject.Inject;
 
-public class UserDaoTest extends AbstractReadOnlyDaoTest<User> {
+public class UserDaoTest extends AbstractReadOnlyDaoTest<User, UserDao> {
 
 	@Inject
 	private UserDao userRepository;

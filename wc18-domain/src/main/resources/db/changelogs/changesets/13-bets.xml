@@ -10,9 +10,9 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
     logicalFilePath="01-users.xml">
 
-  <changeSet id="create-table-matchs" author="mjeanroy" context="schema, test">
-    <createTable tableName="matchs">
-      <column name="id" type="BINARY(16)">
+  <changeSet id="create-table-bets" author="mjeanroy" context="schema, test">
+    <createTable tableName="bets">
+      <column name="id" type="varchar(36)">
         <constraints primaryKey="true" nullable="false"/>
       </column>
       <column name="version" type="int" defaultValueNumeric="0">
@@ -24,14 +24,18 @@
       <column name="date" type="DATETIME">
         <constraints nullable="false"/>
       </column>
-      <column name="team1_id" type="BINARY(16)">
+      <column name="match_id" type="VARCHAR(36)">
+        <constraints nullable="false" foreignKeyName="matches_match_id" references="matches(id)"/>
+      </column>
+      <column name="user_id" type="varchar(36)">
+        <constraints nullable="false" foreignKeyName="users_user_id" references="users(id)" />
+      </column>
+      <column name="score1" type="INT">
         <constraints nullable="false"/>
       </column>
-      <column name="team2_id" type="BINARY(16)">
+      <column name="score2" type="INT">
         <constraints nullable="false"/>
       </column>
-      <column name="score1" type="INT" />
-      <column name="score2" type="INT" />
     </createTable>
     <modifySql dbms="mysql">
       <append value="engine innodb"/>

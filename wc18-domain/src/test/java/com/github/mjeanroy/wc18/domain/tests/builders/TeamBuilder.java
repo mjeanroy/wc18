@@ -22,7 +22,7 @@ public class TeamBuilder {
 	 * The team id.
 	 * @see Team#id
 	 */
-	private UUID id;
+	private String id;
 
 	/**
 	 * The team ISO code.
@@ -42,7 +42,18 @@ public class TeamBuilder {
 	 * @return The current builder.
 	 */
 	public TeamBuilder withRandomId() {
-		this.id = UUID.randomUUID();
+		this.id = UUID.randomUUID().toString();
+		return this;
+	}
+
+	/**
+	 * Set {@link #id}.
+	 *
+	 * @param id New {@link #id}
+	 * @return The current builder.
+	 */
+	public TeamBuilder withId(String id) {
+		this.id = id;
 		return this;
 	}
 

@@ -8,7 +8,9 @@ package com.github.mjeanroy.wc18.api.mappers;
 
 import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.spring.mappers.objects.AbstractLazyObjectMapper;
+import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import org.springframework.stereotype.Component;
 
@@ -18,24 +20,24 @@ import javax.inject.Inject;
  * Mapper translating {@link Match} to {@link MatchDto}.
  */
 @Component
-public class MatchDtoMapper extends AbstractLazyObjectMapper<Match, MatchDto> {
+public class BetDtoMapper extends AbstractLazyObjectMapper<Bet, BetDto> {
 
-	private final TeamDtoMapper teamDtoMapper;
+	private final MatchDtoMapper matchDtoMapper;
 	private final ScoreDtoMapper scoreDtoMapper;
 
 	@Inject
-	public MatchDtoMapper(Mapper mapper, TeamDtoMapper teamDtoMapper, ScoreDtoMapper scoreDtoMapper) {
+	public BetDtoMapper(Mapper mapper, MatchDtoMapper matchDtoMapper, ScoreDtoMapper scoreDtoMapper) {
 		super(mapper);
-		this.teamDtoMapper = teamDtoMapper;
+		this.matchDtoMapper = matchDtoMapper;
 		this.scoreDtoMapper = scoreDtoMapper;
 	}
 
 	@Override
-	public MatchDto convert(Match source) {
-		MatchDto dto = new MatchDto();
+	public BetDto convert(Bet source) {
+		BetDto dto = new BetDto();
 		dto.setId(source.getId());
-		dto.setTeam1(teamDtoMapper.from(source.getTeam1()));
-		dto.setTeam2(teamDtoMapper.from(source.getTeam2()));
+		dto.setDate(source.getDate());
+		dto.setMatch(matchDtoMapper.from(source.getMatch()));
 		dto.setScore(scoreDtoMapper.from(source.getScore()));
 		return dto;
 	}

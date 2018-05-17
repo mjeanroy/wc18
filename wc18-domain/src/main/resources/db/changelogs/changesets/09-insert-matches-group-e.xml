@@ -1,0 +1,75 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="01-users.xml">
+
+  <changeSet id="insert-matches-group-e" author="mjeanroy" context="data">
+    <insert tableName="matches">
+      <column name="id" value="26627c0b-7a2d-451c-a449-b9ed177a2e5d" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-17 12:00:00"/>
+      <column name="team1_id" value="bddfce69-a33a-49a9-9d61-c1df11cf67a8"/>
+      <column name="team2_id" value="78f8cca7-4cc3-4132-9764-a67f0dc7916c"/>
+    </insert>
+
+    <insert tableName="matches">
+      <column name="id" value="b1a35f8c-3a19-467f-b364-4d4d940b0e95" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-17 18:00:00"/>
+      <column name="team1_id" value="e9c4e714-5b4b-4e2d-a896-9f043c295869"/>
+      <column name="team2_id" value="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"/>
+    </insert>
+
+    <insert tableName="matches">
+      <column name="id" value="b9b4ac41-5f60-4463-a0b3-4eed153877b6" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-22 12:00:00"/>
+      <column name="team1_id" value="e9c4e714-5b4b-4e2d-a896-9f043c295869"/>
+      <column name="team2_id" value="bddfce69-a33a-49a9-9d61-c1df11cf67a8"/>
+    </insert>
+
+    <insert tableName="matches">
+      <column name="id" value="2f0ee685-e33c-499d-8d80-700ebd7f6f2e" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-22 18:00:00"/>
+      <column name="team1_id" value="78f8cca7-4cc3-4132-9764-a67f0dc7916c"/>
+      <column name="team2_id" value="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"/>
+    </insert>
+
+    <insert tableName="matches">
+      <column name="id" value="342f7c4f-25d6-4ef7-9f5a-aaedcb027666" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-27 18:00:00"/>
+      <column name="team1_id" value="78f8cca7-4cc3-4132-9764-a67f0dc7916c"/>
+      <column name="team2_id" value="e9c4e714-5b4b-4e2d-a896-9f043c295869"/>
+    </insert>
+
+    <insert tableName="matches">
+      <column name="id" value="6d0e641f-1dc6-4e15-a647-d0da2ebd030a" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="stage" value="GROUP"/>
+      <column name="date" valueDate="2018-06-27 18:00:00"/>
+      <column name="team1_id" value="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"/>
+      <column name="team2_id" value="bddfce69-a33a-49a9-9d61-c1df11cf67a8"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

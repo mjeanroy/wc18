@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
 import com.github.mjeanroy.dbunit.integration.spring.DbUnitTestExecutionListener;
+import com.github.mjeanroy.dbunit.integration.spring.TransactionalDbUnitTestExecutionListener;
 import com.github.mjeanroy.wc18.domain.configuration.JpaConfiguration;
 import com.github.mjeanroy.wc18.domain.configuration.LiquibaseConfiguration;
 import org.junit.runner.RunWith;
@@ -23,6 +24,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 
@@ -34,8 +36,10 @@ import javax.sql.DataSource;
 @ContextConfiguration(classes = AbstractRepositoryTest.RepositoryTestConfiguration.class)
 @TestExecutionListeners({
 	DependencyInjectionTestExecutionListener.class,
-	DbUnitTestExecutionListener.class
+	TransactionalDbUnitTestExecutionListener.class
 })
+
+@Transactional
 abstract class AbstractRepositoryTest {
 
 	@Configuration

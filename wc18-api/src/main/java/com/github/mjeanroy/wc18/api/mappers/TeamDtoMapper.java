@@ -30,7 +30,7 @@ public class TeamDtoMapper extends AbstractLazyObjectMapper<Team, TeamDto> {
 	@Override
 	public TeamDto convert(Team source) {
 		TeamDto dto = new TeamDto();
-		dto.setId(source.id());
+		dto.setId(source.getId());
 		dto.setIsoCode(source.getIsoCode());
 		dto.setName(source.getName());
 		return dto;

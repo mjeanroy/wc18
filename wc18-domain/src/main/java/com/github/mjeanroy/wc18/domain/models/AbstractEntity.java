@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.domain.models;
 
 import com.google.common.base.MoreObjects;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -22,10 +23,10 @@ import java.util.UUID;
 public abstract class AbstractEntity {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "id", length = 36)
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	private UUID id;
+	private String id;
 
 	@Version
 	@Column(name = "version", nullable = false)
@@ -34,12 +35,17 @@ public abstract class AbstractEntity {
 	@Column(name = "creation_date", nullable = false)
 	private Date creationDate;
 
+	AbstractEntity() {
+		this.version = 0;
+		this.creationDate = new Date();
+	}
+
 	/**
 	 * Get {@link #id}
 	 *
 	 * @return {@link #id}
 	 */
-	public UUID getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -50,15 +56,6 @@ public abstract class AbstractEntity {
 	 */
 	private Date getCreationDate() {
 		return creationDate;
-	}
-
-	/**
-	 * Get {@link #id} as a {@link String} value.
-	 *
-	 * @return Id as a string.
-	 */
-	public String id() {
-		return id == null ? null : id.toString();
 	}
 
 	@Override

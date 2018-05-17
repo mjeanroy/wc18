@@ -10,7 +10,7 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 
 import javax.inject.Inject;
 
-public class MatchDaoTest extends AbstractReadOnlyDaoTest<Match> {
+public class MatchDaoTest extends AbstractReadOnlyDaoTest<Match, MatchDao> {
 
 	@Inject
 	private MatchDao matchDao;
@@ -21,7 +21,7 @@ public class MatchDaoTest extends AbstractReadOnlyDaoTest<Match> {
 	}
 
 	@Override
-	AbstractReadOnlyDao<Match> getDao() {
+	MatchDao getDao() {
 		return matchDao;
 	}
 }

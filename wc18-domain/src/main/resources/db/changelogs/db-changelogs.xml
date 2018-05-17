@@ -11,7 +11,16 @@
 
   <include file="changesets/01-users.xml" relativeToChangelogFile="true"/>
   <include file="changesets/02-teams.xml" relativeToChangelogFile="true"/>
-  <include file="changesets/03-matchs.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/03-matches.xml" relativeToChangelogFile="true"/>
   <include file="changesets/04-insert-teams.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/05-insert-matches-group-a.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/06-insert-matches-group-b.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/07-insert-matches-group-c.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/08-insert-matches-group-d.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/09-insert-matches-group-e.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/10-insert-matches-group-f.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/11-insert-matches-group-g.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/12-insert-matches-group-h.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/13-bets.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

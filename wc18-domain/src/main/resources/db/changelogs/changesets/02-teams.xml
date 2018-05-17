@@ -12,7 +12,7 @@
 
   <changeSet id="create-table-teams" author="mjeanroy" context="schema, test">
     <createTable tableName="teams">
-      <column name="id" type="BINARY(16)">
+      <column name="id" type="varchar(36)">
         <constraints primaryKey="true" nullable="false"/>
       </column>
       <column name="version" type="int" defaultValueNumeric="0">

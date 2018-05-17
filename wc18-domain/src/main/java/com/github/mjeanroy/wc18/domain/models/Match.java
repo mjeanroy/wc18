@@ -9,20 +9,41 @@ package com.github.mjeanroy.wc18.domain.models;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "matchs")
+@Table(name = "matches")
 public class Match extends AbstractEntity {
+
+	/**
+	 * The match type.
+	 */
+	public enum Stage {
+		GROUP,
+		ROUND_16,
+		QUARTER_FINAL,
+		SEMI_FINAL,
+		THIRD_PLACE_FINAL,
+		FINAL
+	}
 
 	/**
 	 * The match date, in UTC.
 	 */
 	@Column(name = "date", nullable = false)
 	private Date date;
+
+	/**
+	 * The match stage.
+	 */
+	@Column(name = "stage", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Stage stage;
 
 	/**
 	 * The first team.
@@ -46,6 +67,15 @@ public class Match extends AbstractEntity {
 
 	// Empty constructor, mandatory for hibernate.
 	private Match() {
+	}
+
+	/**
+	 * Get {@link #stage}
+	 *
+	 * @return {@link #stage}
+	 */
+	public Stage getStage() {
+		return stage;
 	}
 
 	/**
