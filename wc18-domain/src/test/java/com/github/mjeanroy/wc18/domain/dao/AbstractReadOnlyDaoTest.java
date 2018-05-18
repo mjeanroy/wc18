@@ -56,4 +56,15 @@ abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extends Abstr
 		Long count = (Long) entityManager.createQuery(query).getSingleResult();
 		return count == null ? 0 : count;
 	}
+
+	/**
+	 * Find one, or fail if it does not exist.
+	 *
+	 * @param entityClass The entity class to look for.
+	 * @param id The ID.
+	 * @return The single result.
+	 */
+	<X> X findOne(Class<X> entityClass, String id) {
+		return entityManager.find(entityClass, id);
+	}
 }

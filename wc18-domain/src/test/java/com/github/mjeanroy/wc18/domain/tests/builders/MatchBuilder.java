@@ -7,8 +7,13 @@
 package com.github.mjeanroy.wc18.domain.tests.builders;
 
 import com.github.mjeanroy.wc18.domain.models.Match;
+import com.github.mjeanroy.wc18.domain.models.Score;
 import com.github.mjeanroy.wc18.domain.models.Team;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.UUID;
 
@@ -49,6 +54,12 @@ public class MatchBuilder {
 	 * @see Match#team2
 	 */
 	private Team team2;
+
+	/**
+	 * The match score.
+	 * @see Match#score
+	 */
+	private Score score;
 
 	/**
 	 * Set {@link #id} with a random value.
@@ -116,6 +127,28 @@ public class MatchBuilder {
 	}
 
 	/**
+	 * Set {@link #score}
+	 *
+	 * @param score New {@link #score}
+	 * @return The current builder.
+	 */
+	public MatchBuilder withScore(Score score) {
+		this.score = score;
+		return this;
+	}
+
+	/**
+	 * Set {@link #score} with given values.
+	 *
+	 * @param score1 First score.
+	 * @param score2 Second score.
+	 * @return The current builder.
+	 */
+	public MatchBuilder withScore(int score1, int score2) {
+		return withScore(new ScoreBuilder().withScore(score1, score2).build());
+	}
+
+	/**
 	 * Build the final match instance.
 	 *
 	 * @return The match instance.
@@ -123,8 +156,11 @@ public class MatchBuilder {
 	public Match build() {
 		Match match = newInstance(Match.class);
 		writeField(match, "id", id);
+		writeField(match, "date", date);
+		writeField(match, "stage", stage);
 		writeField(match, "team1", team1);
 		writeField(match, "team2", team2);
+		writeField(match, "score", score);
 		return match;
 	}
 }

@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.BetDao;
+import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Score;
@@ -26,13 +27,32 @@ public class BetService {
 		this.betDao = betDao;
 	}
 
+	/**
+	 * Get all bets of given user.
+	 *
+	 * @param user The user.
+	 * @return List of bets.
+	 */
 	@Transactional(readOnly = true)
 	public Iterable<Bet> findByUser(User user) {
 		return betDao.findByUser(user);
 	}
 
+	/**
+	 * Save bet for given user.
+	 *
+	 * @param user The user.
+	 * @param match The match.
+	 * @param score1 First score.
+	 * @param score2 Second score.
+	 * @return The bet.
+	 */
 	@Transactional
 	public Bet save(User user, Match match, int score1, int score2) {
+		if (match.isLocked()) {
+			throw new MatchLockedException(match.getId());
+		}
+
 		Score score = new Score(score1, score2);
 		Bet bet = betDao.findOne(user, match).orElseGet(() ->
 			new Bet(user, match, score)

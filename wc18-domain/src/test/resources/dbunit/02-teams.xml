@@ -116,4 +116,148 @@
       iso_code="CH"
       name="Suisse"
   />
+
+  <teams
+    id="a2f04f41-008c-4948-a8ef-a560bd961e02"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="EG"
+    name="Egypte"
+  />
+
+  <teams
+    id="b33cfd07-d616-4146-b4d0-93bedb29d318"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="MA"
+    name="Maroc"
+  />
+
+  <teams
+    id="42dcee66-7b12-4a08-a298-06bbe8327655"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="NG"
+    name="Nigeria"
+  />
+
+  <teams
+    id="f6808b60-8524-47df-b381-d1fb21d1c87b"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="SN"
+    name="Sénégal"
+  />
+
+  <teams
+    id="93b3d3ca-c10d-44f9-b26f-45582549caf9"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="TN"
+    name="Tunisie"
+  />
+
+  <teams
+    id="a0b348fd-46d8-4c4c-a327-6595c4f468dd"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="AR"
+    name="Argentine"
+  />
+
+  <teams
+    id="e9c4e714-5b4b-4e2d-a896-9f043c295869"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="BR"
+    name="Brésil"
+  />
+
+  <teams
+    id="7cb7480c-7076-4ac6-bd04-af10335108ef"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="CO"
+    name="Colombie"
+  />
+
+  <teams
+    id="d21eecd1-32db-4a00-92df-5c66a2b5c1f7"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="UY"
+    name="Uruguay"
+  />
+
+  <teams
+    id="024c6838-d48d-4a26-98fa-e08c35b33647"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="PE"
+    name="Pérou"
+  />
+
+  <teams
+    id="91764f86-313f-4b2b-83c5-5aa425bf5fa6"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="SA"
+    name="Arabie Saoudite"
+  />
+
+  <teams
+    id="e2b8bae1-06ab-44d2-8595-7af3e2441718"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="AU"
+    name="Australie"
+  />
+
+  <teams
+    id="f6e3252e-652b-4f91-985c-90f7b048c314"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="KR"
+    name="Corée du Sud"
+  />
+
+  <teams
+    id="7cd7f5da-49e0-4373-ad65-1734e126ec5f"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="IR"
+    name="Iran"
+  />
+
+  <teams
+    id="d1eacb9c-a0f4-43bf-827b-72d8a858cd75"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="JP"
+    name="Japon"
+  />
+
+  <teams
+    id="bddfce69-a33a-49a9-9d61-c1df11cf67a8"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="CR"
+    name="Costa Rica"
+  />
+
+  <teams
+    id="da4c2425-f8fc-439c-83ea-c707f2f4874a"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="MX"
+    name="Mexique"
+  />
+
+  <teams
+    id="b83e08df-2070-453b-856c-59ada3e7c23f"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    iso_code="PA"
+    name="Panama"
+  />
 </dataset>

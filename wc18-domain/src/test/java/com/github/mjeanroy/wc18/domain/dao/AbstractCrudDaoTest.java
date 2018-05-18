@@ -9,9 +9,6 @@ package com.github.mjeanroy.wc18.domain.dao;
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -22,15 +19,12 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractCrudDao<T>> extends AbstractReadOnlyDaoTest<T, U> {
 
-	@PersistenceContext
-	private EntityManager entityManager;
-
 	@Test
 	public void create_entry() {
 		T newOne = createOne();
 		T result = getDao().save(newOne);
 		assertThat(result).isNotNull();
-		assertThat(result.getId()).isNotNull();
+		assertThat(result.getId()).isNotNull().isNotEmpty();
 	}
 
 	/**

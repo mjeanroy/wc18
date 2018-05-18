@@ -107,6 +107,17 @@ public class BetBuilder {
 	}
 
 	/**
+	 * Set {@link #score} with given values.
+	 *
+	 * @param score1 First score.
+	 * @param score2 Second score.
+	 * @return The current builder.
+	 */
+	public BetBuilder withScore(int score1, int score2) {
+		return withScore(new ScoreBuilder().withScore(score1, score2).build());
+	}
+
+	/**
 	 * Build final {@link Bet} instance.
 	 *
 	 * @return The instance.

@@ -18,20 +18,38 @@ import java.util.Date;
 @Table(name = "bets")
 public class Bet extends AbstractEntity {
 
+	/**
+	 * The bet result.
+	 */
 	public enum Result {
+		/**
+		 * The result is not available and can't be computed: it happens when match result
+		 * is not available yet.
+		 */
 		UNAVAILABLE(0),
+
+		/**
+		 * Happens when final result (i.e final winner) is different than the real result.
+		 */
 		LOOSE(0),
+
+		/**
+		 * Happens when final result is OK (same winner, or equality.
+		 */
 		WIN(10),
+
+		/**
+		 * Happens when bet score is exactly the same as the real result.
+		 */
 		PERFECT(15);
 
+		/**
+		 * Number of point for given result.
+		 */
 		private final int point;
 
 		Result(int point) {
 			this.point = point;
-		}
-
-		int getPoint() {
-			return point;
 		}
 	}
 
@@ -85,7 +103,7 @@ public class Bet extends AbstractEntity {
 	 *
 	 * @return Bet result.
 	 */
-	public Result getResult() {
+	private Result getResult() {
 		if (!match.isPlayed()) {
 			return Result.UNAVAILABLE;
 		}
@@ -94,9 +112,9 @@ public class Bet extends AbstractEntity {
 			return Result.PERFECT;
 		}
 
-		int diff1 = score.diff();
-		int diff2 = match.getScore().diff();
-		if (diff1 == diff2) {
+		int sign1 = Integer.signum(match.getScore().diff());
+		int sign2 = Integer.signum(score.diff());
+		if (sign1 == sign2) {
 			return Result.WIN;
 		}
 

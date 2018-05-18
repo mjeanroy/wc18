@@ -79,6 +79,15 @@ public class Match extends AbstractEntity {
 	}
 
 	/**
+	 * Check if match is locked, i.e if it is eligible to a bet.
+	 *
+	 * @return {@code true} if match is locked, {@code false} otherwise.
+	 */
+	public boolean isLocked() {
+		return isPlayed() || new Date().after(date);
+	}
+
+	/**
 	 * Get {@link #stage}
 	 *
 	 * @return {@link #stage}

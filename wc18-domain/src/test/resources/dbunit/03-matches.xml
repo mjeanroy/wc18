@@ -5,5 +5,483 @@
 -->
 
 <dataset>
+  <matches
+    id="def3918f-d885-45d5-93ae-f8782c17d7a7"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-14 15:00:00"
+    team1_id="5a48bda3-d485-4045-ae18-5daed5237de2"
+    team2_id="91764f86-313f-4b2b-83c5-5aa425bf5fa6"
+  />
 
+  <matches
+    id="8bad17c9-87ef-45e2-b367-1660bba6804f"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-15 12:00:00"
+    team1_id="a2f04f41-008c-4948-a8ef-a560bd961e02"
+    team2_id="d21eecd1-32db-4a00-92df-5c66a2b5c1f7"
+  />
+
+  <matches
+    id="41d2adbe-d6b6-4bdc-b758-b5685d14253a"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-19 17:00:00"
+    team1_id="5a48bda3-d485-4045-ae18-5daed5237de2"
+    team2_id="a2f04f41-008c-4948-a8ef-a560bd961e02"
+  />
+
+  <matches
+    id="ec10b3bc-daaa-46e6-94a1-e5ba1dc6ae0e"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-20 15:00:00"
+    team1_id="d21eecd1-32db-4a00-92df-5c66a2b5c1f7"
+    team2_id="91764f86-313f-4b2b-83c5-5aa425bf5fa6"
+  />
+
+  <matches
+    id="d1e82c38-6a4f-478c-a30e-6f605eff0474"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-25 14:00:00"
+    team1_id="d21eecd1-32db-4a00-92df-5c66a2b5c1f7"
+    team2_id="5a48bda3-d485-4045-ae18-5daed5237de2"
+  />
+
+  <matches
+    id="3bd4ad3b-7f65-4552-b1bd-4f73a71c2f6e"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-25 14:00:00"
+    team1_id="91764f86-313f-4b2b-83c5-5aa425bf5fa6"
+    team2_id="a2f04f41-008c-4948-a8ef-a560bd961e02"
+  />
+
+  <matches
+    id="c9003187-bd05-4530-9a6a-134bac615a2c"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-15 15:00:00"
+    team1_id="b33cfd07-d616-4146-b4d0-93bedb29d318"
+    team2_id="7cd7f5da-49e0-4373-ad65-1734e126ec5f"
+  />
+
+  <matches
+    id="7bbcdc32-04ca-4be2-8823-3f6f2a68ae53"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-15 18:00:00"
+    team1_id="f129acf1-bc4a-4055-bf0e-8f79d935ab49"
+    team2_id="a49bed83-afc8-46ee-8d63-768a6b8e52d8"
+  />
+
+  <matches
+    id="17532dcb-5c31-4e28-b62e-8bd6aece3b68"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-20 12:00:00"
+    team1_id="f129acf1-bc4a-4055-bf0e-8f79d935ab49"
+    team2_id="b33cfd07-d616-4146-b4d0-93bedb29d318"
+  />
+
+  <matches
+    id="e2edff53-8210-420c-979a-e6f6e7324293"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-20 18:00:00"
+    team1_id="7cd7f5da-49e0-4373-ad65-1734e126ec5f"
+    team2_id="a49bed83-afc8-46ee-8d63-768a6b8e52d8"
+  />
+
+  <matches
+    id="e06e5d55-ddd8-4747-93b3-3f0221c060f0"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-25 18:00:00"
+    team1_id="7cd7f5da-49e0-4373-ad65-1734e126ec5f"
+    team2_id="f129acf1-bc4a-4055-bf0e-8f79d935ab49"
+  />
+
+  <matches
+    id="813a7b9b-9258-4358-ac9d-d6a4055bfbb2"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-25 18:00:00"
+    team1_id="a49bed83-afc8-46ee-8d63-768a6b8e52d8"
+    team2_id="b33cfd07-d616-4146-b4d0-93bedb29d318"
+  />
+
+  <matches
+    id="4ff9c731-7eba-47bb-91fa-a0c04b2e394e"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-16 10:00:00"
+    team1_id="5820fadd-ae19-48d5-b4e5-811b08f58b87"
+    team2_id="e2b8bae1-06ab-44d2-8595-7af3e2441718"
+  />
+
+  <matches
+    id="3ef12b75-7859-48b9-9e6d-4fb86d9101f8"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-16 16:00:00"
+    team1_id="024c6838-d48d-4a26-98fa-e08c35b33647"
+    team2_id="d42c4e1f-582f-4f5c-92ce-96efbe90508f"
+  />
+
+  <matches
+    id="0b562641-4c99-4d2a-9410-df3ad564b57f"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-21 12:00:00"
+    team1_id="d42c4e1f-582f-4f5c-92ce-96efbe90508f"
+    team2_id="e2b8bae1-06ab-44d2-8595-7af3e2441718"
+  />
+
+  <matches
+    id="251643b1-5a15-4cac-8f84-6cf0153a2480"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-21 15:00:00"
+    team1_id="5820fadd-ae19-48d5-b4e5-811b08f58b87"
+    team2_id="024c6838-d48d-4a26-98fa-e08c35b33647"
+  />
+
+  <matches
+    id="6cb53eea-e1b0-4ffb-8f14-bb13a0e69e45"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-26 15:00:00"
+    team1_id="d42c4e1f-582f-4f5c-92ce-96efbe90508f"
+    team2_id="5820fadd-ae19-48d5-b4e5-811b08f58b87"
+  />
+
+  <matches
+    id="d065cdc9-a913-46a2-a4e0-5ed44abcbcf9"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-26 15:00:00"
+    team1_id="e2b8bae1-06ab-44d2-8595-7af3e2441718"
+    team2_id="024c6838-d48d-4a26-98fa-e08c35b33647"
+  />
+
+  <matches
+    id="be26713b-4bb3-4945-ad28-929b2120bd78"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-16 12:00:00"
+    team1_id="a0b348fd-46d8-4c4c-a327-6595c4f468dd"
+    team2_id="13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c"
+  />
+
+  <matches
+    id="d3083530-e109-499d-8431-3e81680e5b35"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-16 18:00:00"
+    team1_id="d816d66f-0ae9-4c93-a89f-652d4ec36ddd"
+    team2_id="42dcee66-7b12-4a08-a298-06bbe8327655"
+  />
+
+  <matches
+    id="87f3a07a-2252-4a50-a608-138f043ef7a8"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-21 18:00:00"
+    team1_id="a0b348fd-46d8-4c4c-a327-6595c4f468dd"
+    team2_id="d816d66f-0ae9-4c93-a89f-652d4ec36ddd"
+  />
+
+  <matches
+    id="7c9d0ff2-bb8a-4494-9f0b-4c1529f805be"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-22 15:00:00"
+    team1_id="42dcee66-7b12-4a08-a298-06bbe8327655"
+    team2_id="13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c"
+  />
+
+  <matches
+    id="e1fb4016-4525-42fc-a4a4-aefb792f968f"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-26 18:00:00"
+    team1_id="42dcee66-7b12-4a08-a298-06bbe8327655"
+    team2_id="a0b348fd-46d8-4c4c-a327-6595c4f468dd"
+  />
+
+  <matches
+    id="72eb5e01-9810-4ba0-91ac-440fa0a51c09"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-26 18:00:00"
+    team1_id="13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c"
+    team2_id="d816d66f-0ae9-4c93-a89f-652d4ec36ddd"
+  />
+
+  <matches
+    id="26627c0b-7a2d-451c-a449-b9ed177a2e5d"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-17 12:00:00"
+    team1_id="bddfce69-a33a-49a9-9d61-c1df11cf67a8"
+    team2_id="78f8cca7-4cc3-4132-9764-a67f0dc7916c"
+  />
+
+  <matches
+    id="b1a35f8c-3a19-467f-b364-4d4d940b0e95"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-17 18:00:00"
+    team1_id="e9c4e714-5b4b-4e2d-a896-9f043c295869"
+    team2_id="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"
+  />
+
+  <matches
+    id="b9b4ac41-5f60-4463-a0b3-4eed153877b6"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-22 12:00:00"
+    team1_id="e9c4e714-5b4b-4e2d-a896-9f043c295869"
+    team2_id="bddfce69-a33a-49a9-9d61-c1df11cf67a8"
+  />
+
+  <matches
+    id="2f0ee685-e33c-499d-8d80-700ebd7f6f2e"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-22 18:00:00"
+    team1_id="78f8cca7-4cc3-4132-9764-a67f0dc7916c"
+    team2_id="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"
+  />
+
+  <matches
+    id="342f7c4f-25d6-4ef7-9f5a-aaedcb027666"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-27 18:00:00"
+    team1_id="78f8cca7-4cc3-4132-9764-a67f0dc7916c"
+    team2_id="e9c4e714-5b4b-4e2d-a896-9f043c295869"
+  />
+
+  <matches
+    id="6d0e641f-1dc6-4e15-a647-d0da2ebd030a"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-27 18:00:00"
+    team1_id="c4b57832-9c6c-48f6-9e49-cf0a8d1e0993"
+    team2_id="bddfce69-a33a-49a9-9d61-c1df11cf67a8"
+  />
+
+  <matches
+    id="c26fd40b-5bb0-4c78-ba39-4340ce88dc10"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-17 15:00:00"
+    team1_id="15e1c238-888f-4199-8390-a8d520a70ce7"
+    team2_id="da4c2425-f8fc-439c-83ea-c707f2f4874a"
+  />
+
+  <matches
+    id="21340169-279b-4562-89f5-3aaa1ade0d1b"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-18 12:00:00"
+    team1_id="82041393-3310-4ad1-8069-c39ff6b9502c"
+    team2_id="f6e3252e-652b-4f91-985c-90f7b048c314"
+  />
+
+  <matches
+    id="9eb11319-a505-49d0-b864-63f57798de4b"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-23 15:00:00"
+    team1_id="f6e3252e-652b-4f91-985c-90f7b048c314"
+    team2_id="da4c2425-f8fc-439c-83ea-c707f2f4874a"
+  />
+
+  <matches
+    id="55b3b530-90ac-4bab-8df9-388d59a02f24"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-23 18:00:00"
+    team1_id="15e1c238-888f-4199-8390-a8d520a70ce7"
+    team2_id="82041393-3310-4ad1-8069-c39ff6b9502c"
+  />
+
+  <matches
+    id="ac5d9365-814b-4a61-97bc-2ba59bd1d9a0"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-27 15:00:00"
+    team1_id="f6e3252e-652b-4f91-985c-90f7b048c314"
+    team2_id="15e1c238-888f-4199-8390-a8d520a70ce7"
+  />
+
+  <matches
+    id="ecd1f58c-74af-4c3a-ab50-604bcb086954"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-27 15:00:00"
+    team1_id="da4c2425-f8fc-439c-83ea-c707f2f4874a"
+    team2_id="82041393-3310-4ad1-8069-c39ff6b9502c"
+  />
+
+  <matches
+    id="9f039e40-a9e8-4056-8024-483093440482"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-18 15:00:00"
+    team1_id="3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685"
+    team2_id="b83e08df-2070-453b-856c-59ada3e7c23f"
+  />
+
+  <matches
+    id="25039887-ff6b-4551-8939-65e0878932fa"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-18 18:00:00"
+    team1_id="93b3d3ca-c10d-44f9-b26f-45582549caf9"
+    team2_id="66740b5b-4714-41eb-921f-0e998b2e6753"
+  />
+
+  <matches
+    id="32bef032-45be-468c-823c-e3a30ab2e8b9"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-23 12:00:00"
+    team1_id="3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685"
+    team2_id="93b3d3ca-c10d-44f9-b26f-45582549caf9"
+  />
+
+  <matches
+    id="c0807bd9-63a6-4a3b-a83b-5481867fa2eb"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-24 12:00:00"
+    team1_id="66740b5b-4714-41eb-921f-0e998b2e6753"
+    team2_id="b83e08df-2070-453b-856c-59ada3e7c23f"
+  />
+
+  <matches
+    id="f3f0ddcd-1b70-4971-97d3-d915c15913f4"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-28 18:00:00"
+    team1_id="66740b5b-4714-41eb-921f-0e998b2e6753"
+    team2_id="3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685"
+  />
+
+  <matches
+    id="db8d2109-02a5-4fb2-b494-f3e57ae7c208"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-28 18:00:00"
+    team1_id="b83e08df-2070-453b-856c-59ada3e7c23f"
+    team2_id="93b3d3ca-c10d-44f9-b26f-45582549caf9"
+  />
+
+  <matches
+    id="f55ffca2-a7a3-46a1-a7b1-3b1f7504ca88"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-19 12:00:00"
+    team1_id="7cb7480c-7076-4ac6-bd04-af10335108ef"
+    team2_id="d1eacb9c-a0f4-43bf-827b-72d8a858cd75"
+  />
+
+  <matches
+    id="ab4edf95-c00c-4d1c-914b-81c0664b771b"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-19 15:00:00"
+    team1_id="47a0b90b-c658-4795-ac16-7d1d37750a24"
+    team2_id="f6808b60-8524-47df-b381-d1fb21d1c87b"
+  />
+
+  <matches
+    id="6d854e61-b670-4b5e-aece-f9ee14b25ca1"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-24 15:00:00"
+    team1_id="d1eacb9c-a0f4-43bf-827b-72d8a858cd75"
+    team2_id="f6808b60-8524-47df-b381-d1fb21d1c87b"
+  />
+
+  <matches
+    id="9941dfbb-d1b2-4017-a561-f360e6b00a02"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-24 18:00:00"
+    team1_id="47a0b90b-c658-4795-ac16-7d1d37750a24"
+    team2_id="7cb7480c-7076-4ac6-bd04-af10335108ef"
+  />
+
+  <matches
+    id="2def6846-c36a-4b2c-87dd-3fc2e2f18bc1"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-28 14:00:00"
+    team1_id="d1eacb9c-a0f4-43bf-827b-72d8a858cd75"
+    team2_id="47a0b90b-c658-4795-ac16-7d1d37750a24"
+  />
+
+  <matches
+    id="7c2ae500-e5ae-4574-ad5e-1b4ef770c8d8"
+    version="0"
+    creation_date="2015-05-15 00:00:00"
+    stage="GROUP"
+    date="2018-06-28 14:00:00"
+    team1_id="f6808b60-8524-47df-b381-d1fb21d1c87b"
+    team2_id="7cb7480c-7076-4ac6-bd04-af10335108ef"
+  />
 </dataset>
