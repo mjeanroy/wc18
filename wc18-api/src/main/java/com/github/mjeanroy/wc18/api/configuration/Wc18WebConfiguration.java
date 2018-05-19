@@ -17,13 +17,14 @@ import java.util.TimeZone;
 
 @Configuration
 @Import({
-	SpringMvcConfiguration.class,
-	Wc18ApiConfiguration.class
+	Wc18ApiConfiguration.class,
+	SpringMvcConfiguration.class
 })
 @PropertySource({
-		"classpath:database.properties",
-		"classpath:liquibase.properties",
-		"classpath:hibernate.properties"
+	"classpath:database.properties",
+	"classpath:liquibase.properties",
+	"classpath:hibernate.properties",
+	"classpath:security.properties"
 })
 public class Wc18WebConfiguration {
 

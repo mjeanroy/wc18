@@ -18,6 +18,11 @@
       <artifactId>wc18-domain</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.mjeanroy</groupId>
+      <artifactId>wc18-security</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
