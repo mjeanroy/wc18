@@ -6,39 +6,37 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
+import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
-import org.junit.Before;
-import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchDtoMapperTest extends AbstractDtoMapper {
+public class MatchDtoMapperTest extends AbstractDtoMapper<Match, MatchDto, MatchDtoMapper> {
 
-	private MatchDtoMapper mapper;
-
-	@Before
-	public void setUp() {
-		ScoreDtoMapper scoreDtoMapper = new ScoreDtoMapper(getMapper());
-		TeamDtoMapper teamDtoMapper = new TeamDtoMapper(getMapper());
-		mapper = new MatchDtoMapper(getMapper(), teamDtoMapper, scoreDtoMapper);
+	@Override
+	MatchDtoMapper create(Mapper mapper) {
+		ScoreDtoMapper scoreDtoMapper = new ScoreDtoMapper(mapper);
+		TeamDtoMapper teamDtoMapper = new TeamDtoMapper(mapper);
+		return new MatchDtoMapper(mapper, teamDtoMapper, scoreDtoMapper);
 	}
 
-	@Test
-	public void it_should_map_match() {
-		Match match = new MatchBuilder()
+	@Override
+	Match createInput() {
+		return new MatchBuilder()
 			.withRandomId()
 			.withTeam1(new TeamBuilder().withRandomId().build())
 			.withTeam2(new TeamBuilder().withRandomId().build())
 			.build();
+	}
 
-		MatchDto dto = mapper.from(match);
-
-		assertThat(dto.getId()).isEqualTo(match.getId().toString());
-		assertThat(dto.getTeam1().getId()).isEqualTo(match.getTeam1().getId().toString());
-		assertThat(dto.getTeam2().getId()).isEqualTo(match.getTeam2().getId().toString());
-		assertThat(dto.getScore()).isNull();
+	@Override
+	void verifyOutput(Match input, MatchDto output) {
+		assertThat(output.getId()).isEqualTo(input.getId());
+		assertThat(output.getTeam1().getId()).isEqualTo(input.getTeam1().getId());
+		assertThat(output.getTeam2().getId()).isEqualTo(input.getTeam2().getId());
+		assertThat(output.getScore()).isNull();
 	}
 }

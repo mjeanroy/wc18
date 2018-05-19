@@ -7,7 +7,7 @@ import com.github.mjeanroy.wc18.security.models.Principal;
  * Simple implementation of {@link Principal} using {@link User}
  * under the hood.
  */
-class PrincipalImpl implements Principal {
+public class PrincipalImpl implements Principal {
 
 	/**
 	 * The user.
@@ -19,7 +19,7 @@ class PrincipalImpl implements Principal {
 	 *
 	 * @param user The user.
 	 */
-	PrincipalImpl(User user) {
+	public PrincipalImpl(User user) {
 		this.user = user;
 	}
 

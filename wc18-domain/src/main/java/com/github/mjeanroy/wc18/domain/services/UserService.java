@@ -18,10 +18,12 @@ import java.util.Optional;
 public class UserService {
 
 	private final UserDao userDao;
+	private final PasswordService passwordService;
 
 	@Inject
-	public UserService(UserDao userDao) {
+	public UserService(PasswordService passwordService, UserDao userDao) {
 		this.userDao = userDao;
+		this.passwordService = passwordService;
 	}
 
 	/**
@@ -33,5 +35,33 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public Optional<User> findByLogin(String login) {
 		return userDao.findByLogin(login);
+	}
+
+	/**
+	 * Find user by login/password.
+	 *
+	 * @param login The login.
+	 * @param password The password (in plain text).
+	 * @return The user, if it exists.
+	 */
+	@Transactional(readOnly = true)
+	public Optional<User> findByLoginAndPassword(String login, String password) {
+		Optional<User> optUser = userDao.findByLogin(login);
+		String hashPassword = optUser.map(User::getPassword).orElse("random");
+		boolean match = passwordService.match(password, hashPassword);
+		return optUser.isPresent() && match ? optUser : Optional.empty();
+	}
+
+	/**
+	 * Update user password.
+	 *
+	 * @param user The user.
+	 * @param newPassword The new password.
+	 */
+	@Transactional
+	public void updatePassword(User user, String newPassword) {
+		String hashPassword = passwordService.encode(newPassword);
+		user.updatePassword(hashPassword);
+		userDao.save(user);
 	}
 }

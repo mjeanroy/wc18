@@ -6,33 +6,31 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
+import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.ScoreDto;
 import com.github.mjeanroy.wc18.domain.models.Score;
 import com.github.mjeanroy.wc18.domain.tests.builders.ScoreBuilder;
-import org.junit.Before;
-import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ScoreDtoMapperTest extends AbstractDtoMapper {
+public class ScoreDtoMapperTest extends AbstractDtoMapper<Score, ScoreDto, ScoreDtoMapper> {
 
-	private ScoreDtoMapper scoreDtoMapper;
-
-	@Before
-	public void setUp() {
-		scoreDtoMapper = new ScoreDtoMapper(getMapper());
+	@Override
+	ScoreDtoMapper create(Mapper mapper) {
+		return new ScoreDtoMapper(mapper);
 	}
 
-	@Test
-	public void it_should_map_score_dto_to_score() {
-		Score score = new ScoreBuilder()
+	@Override
+	Score createInput() {
+		return new ScoreBuilder()
 			.withScore(1, 0)
 			.build();
+	}
 
-		ScoreDto dto = scoreDtoMapper.from(score);
-
-		assertThat(dto).isNotNull();
-		assertThat(dto.getScore1()).isEqualTo(score.getScore1());
-		assertThat(dto.getScore2()).isEqualTo(score.getScore2());
+	@Override
+	void verifyOutput(Score input, ScoreDto output) {
+		assertThat(output).isNotNull();
+		assertThat(output.getScore1()).isEqualTo(input.getScore1());
+		assertThat(output.getScore2()).isEqualTo(input.getScore2());
 	}
 }

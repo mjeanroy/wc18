@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserDao extends AbstractReadOnlyDao<User> {
+public class UserDao extends AbstractCrudDao<User> {
 
 	/**
 	 * Find user by its login.

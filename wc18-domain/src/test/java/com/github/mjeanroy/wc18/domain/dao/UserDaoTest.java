@@ -7,13 +7,18 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
+import org.junit.Test;
 
 import javax.inject.Inject;
+import java.util.Optional;
 
-public class UserDaoTest extends AbstractReadOnlyDaoTest<User, UserDao> {
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 
 	@Inject
-	private UserDao userRepository;
+	private UserDao userDao;
 
 	@Override
 	Class<User> getEntityClass() {
@@ -22,6 +27,29 @@ public class UserDaoTest extends AbstractReadOnlyDaoTest<User, UserDao> {
 
 	@Override
 	UserDao getDao() {
-		return userRepository;
+		return userDao;
+	}
+
+	@Override
+	User createOne() {
+		return new UserBuilder()
+			.withLogin("johndoe")
+			.withPassword("foobar")
+			.build();
+	}
+
+	@Test
+	public void it_should_find_user_by_login() {
+		Optional<User> optUser = userDao.findByLogin("mickael");
+		assertThat(optUser).isPresent();
+
+		User user = optUser.get();
+		assertThat(user.getId()).isEqualTo("e31195bd-1d4e-4915-a3dc-ce901f57903f");
+	}
+
+	@Test
+	public void it_should_not_find_user_with_unknown_login() {
+		Optional<User> optUser = userDao.findByLogin("fake-login");
+		assertThat(optUser).isNotPresent();
 	}
 }
