@@ -1,0 +1,13 @@
+<mat-card>
+  <form>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Login" name="login" [(ngModel)]="login" required/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Mot de passe" name="password" [(ngModel)]="password" autocomplete="off" required/>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" (click)="submit()" color="primary">Login</button>
+  </form>
+</mat-card>
