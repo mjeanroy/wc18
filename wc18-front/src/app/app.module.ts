@@ -6,10 +6,11 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+
 import {
   MatButtonModule,
   MatCardModule,
@@ -24,21 +25,25 @@ import { appRoutes } from './routing/app-routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
-import { MatchesComponent } from './components/matches/matches.component';
+import { BetsComponent } from './components/bets/bets.component';
+import { BetComponent } from './components/bets/bet.component';
 
 import { AuthStorage } from './auth/auth.storage';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
-import { LoginService } from './services/login.service';
 import { SnackbarService } from './services/snackbar.service';
+import { LoginService } from './services/login.service';
+import { MatchesService } from './services/matches.service';
+import { BetsService } from './services/bets.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavBarComponent,
-    MatchesComponent,
+    BetsComponent,
+    BetComponent,
   ],
 
   imports: [
@@ -63,11 +68,18 @@ import { SnackbarService } from './services/snackbar.service';
     // Auth
     AuthStorage,
     AuthService,
-    AuthInterceptor,
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
 
     // App
-    LoginService,
     SnackbarService,
+    LoginService,
+    MatchesService,
+    BetsService,
   ],
 
   bootstrap: [

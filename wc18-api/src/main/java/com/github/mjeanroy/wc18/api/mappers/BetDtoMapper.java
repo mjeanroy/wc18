@@ -22,12 +22,14 @@ import javax.inject.Inject;
 @Component
 public class BetDtoMapper extends AbstractLazyObjectMapper<Bet, BetDto> {
 
+	private final UserDtoMapper userDtoMapper;
 	private final MatchDtoMapper matchDtoMapper;
 	private final ScoreDtoMapper scoreDtoMapper;
 
 	@Inject
-	public BetDtoMapper(Mapper mapper, MatchDtoMapper matchDtoMapper, ScoreDtoMapper scoreDtoMapper) {
+	public BetDtoMapper(Mapper mapper, UserDtoMapper userDtoMapper, MatchDtoMapper matchDtoMapper, ScoreDtoMapper scoreDtoMapper) {
 		super(mapper);
+		this.userDtoMapper = userDtoMapper;
 		this.matchDtoMapper = matchDtoMapper;
 		this.scoreDtoMapper = scoreDtoMapper;
 	}
@@ -37,6 +39,7 @@ public class BetDtoMapper extends AbstractLazyObjectMapper<Bet, BetDto> {
 		BetDto dto = new BetDto();
 		dto.setId(source.getId());
 		dto.setDate(source.getDate());
+		dto.setUser(userDtoMapper.from(source.getUser()));
 		dto.setMatch(matchDtoMapper.from(source.getMatch()));
 		dto.setScore(scoreDtoMapper.from(source.getScore()));
 		return dto;

@@ -8,15 +8,12 @@ package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
 import org.springframework.core.GenericTypeResolver;
-import org.springframework.core.ResolvableType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 /**
  * Simple template structure for DAO Implementation.
@@ -53,7 +50,7 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	 * @param id The primary key.
 	 * @return The entity.
 	 */
-	public Optional<T> findOne(UUID id) {
+	public Optional<T> findOne(String id) {
 		try {
 			return Optional.of(entityManager.find(entityClass, id));
 		} catch(NoResultException ex) {

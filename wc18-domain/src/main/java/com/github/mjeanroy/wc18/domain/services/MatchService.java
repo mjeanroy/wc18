@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class MatchService {
@@ -27,7 +26,7 @@ public class MatchService {
 
 	@Transactional(readOnly = true)
 	public Optional<Match> findOne(String id) {
-		return matchDao.findOne(UUID.fromString(id));
+		return matchDao.findOne(id);
 	}
 
 	/**

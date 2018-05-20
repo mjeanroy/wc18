@@ -20,6 +20,8 @@ export class LoginService {
   private readonly _authService: AuthService;
   private readonly _headerName: string;
 
+  private _principal: Principal;
+
   constructor(http: HttpClient, authService: AuthService) {
     this._http = http;
     this._authService = authService;
@@ -45,6 +47,10 @@ export class LoginService {
     return this._authService.isLogged();
   }
 
+  me() {
+    return this._principal.user;
+  }
+
   private _login(response: HttpResponse<User>): Principal {
     debugger;
     const token: string = response.headers.get(this._headerName);
@@ -53,7 +59,8 @@ export class LoginService {
   }
 
   private _onLogged(principal: Principal) {
-    this._authService.login(principal.token);
+    this._principal = principal;
+    this._authService.login(this._principal.token);
   }
 
   private _logout() {

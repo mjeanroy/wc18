@@ -24,7 +24,7 @@ import javax.inject.Inject;
  * The {@link MatchDto} Rest Controller.
  */
 @RestController
-@RequestMapping("/api/bets")
+@RequestMapping("/api/me/bets")
 public class BetController {
 
 	private final BetApiService betApiService;

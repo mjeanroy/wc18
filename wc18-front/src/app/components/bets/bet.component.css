@@ -1,0 +1,45 @@
+/**
+ * Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential.
+ */
+
+mat-spinner {
+  display: inline;
+}
+
+.mat-success {
+  background-color: #258023;
+  color: #fff;
+}
+
+.bet-team-name {
+  display: inline-block;
+  width: 150px;
+}
+
+.bet-team-name1 {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.bet-team-name2 {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.bet-separator {
+  padding-right: 10px;
+}
+
+.bet-score {
+  width: 50px;
+}
+
+.bet-score1 input {
+  text-align: right;
+}
+
+.bet-score2 input {
+  text-align: left;
+}

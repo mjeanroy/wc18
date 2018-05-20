@@ -15,7 +15,7 @@
     <appender-ref ref="STDOUT" />
   </logger>
 
-  <logger name="org.hibernate" level="DEBUG" additivity="false">
+  <logger name="org.hibernate" level="INFO" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
 
