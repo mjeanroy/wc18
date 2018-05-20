@@ -47,9 +47,16 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public Optional<User> findByLoginAndPassword(String login, String password) {
 		Optional<User> optUser = userDao.findByLogin(login);
-		String hashPassword = optUser.map(User::getPassword).orElse("random");
+		if (!optUser.isPresent()) {
+			// In theory, we should try a "random" match here to avoid timing attack.
+			// This is a simple app, avoid that.
+			return Optional.empty();
+		}
+
+		User user = optUser.get();
+		String hashPassword = user.getPassword();
 		boolean match = passwordService.match(password, hashPassword);
-		return optUser.isPresent() && match ? optUser : Optional.empty();
+		return match ? optUser : Optional.empty();
 	}
 
 	/**

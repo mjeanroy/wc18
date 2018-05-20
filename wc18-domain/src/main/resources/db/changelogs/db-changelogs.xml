@@ -22,5 +22,6 @@
   <include file="changesets/11-insert-matches-group-g.xml" relativeToChangelogFile="true"/>
   <include file="changesets/12-insert-matches-group-h.xml" relativeToChangelogFile="true"/>
   <include file="changesets/13-bets.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/14-insert-users.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

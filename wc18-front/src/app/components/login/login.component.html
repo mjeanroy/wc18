@@ -8,6 +8,7 @@
       <input matInput type="password" placeholder="Mot de passe" name="password" [(ngModel)]="password" autocomplete="off" required/>
     </mat-form-field>
 
-    <button mat-raised-button type="submit" (click)="submit()" color="primary">Login</button>
+    <button mat-raised-button type="submit" (click)="submit()" *ngIf="!loading" color="primary">Login</button>
+    <mat-spinner *ngIf="loading" [diameter]="25"></mat-spinner>
   </form>
 </mat-card>

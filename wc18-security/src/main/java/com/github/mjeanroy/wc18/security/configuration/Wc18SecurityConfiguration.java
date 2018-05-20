@@ -28,8 +28,26 @@ public class Wc18SecurityConfiguration {
 	 */
 	private static final Logger log = LoggerFactory.getLogger(Wc18SecurityConfiguration.class);
 
+	/**
+	 * The header name to use to read/write token value.
+	 */
+	private final String headerName;
+
+	/**
+	 * The internal secret key.
+	 */
+	private final String secret;
+
+	public Wc18SecurityConfiguration(
+			@Value("${security.headerName:X-Auth-Token}") String headerName,
+			@Value("${security.secret}") String secret) {
+
+		this.headerName = headerName;
+		this.secret = secret;
+	}
+
 	@Bean
-	public TokenEncoder jwtTokenEncoder(@Value("security.secret") String secret) {
+	public TokenEncoder jwtTokenEncoder() {
 		log.info("Creating JWT Token Encoder");
 		return new JwtTokenEncoder(secret);
 	}
@@ -41,7 +59,7 @@ public class Wc18SecurityConfiguration {
 	}
 
 	@Bean
-	public TokenParser tokenParser(@Value("security.headerName") String headerName, TokenEncoder tokenEncoder) {
+	public TokenParser tokenParser(TokenEncoder tokenEncoder) {
 		log.info("Creating security token parser with header name: {}", headerName);
 		return new AuthHeaderTokenParser(headerName, tokenEncoder);
 	}

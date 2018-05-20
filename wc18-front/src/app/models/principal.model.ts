@@ -4,6 +4,9 @@
  * Proprietary and confidential.
  */
 
-.spacer {
-  flex: 1 1 auto;
+import { User } from './user.model';
+
+export interface Principal {
+  token: string;
+  user: User;
 }

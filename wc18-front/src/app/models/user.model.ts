@@ -4,6 +4,7 @@
  * Proprietary and confidential.
  */
 
-.spacer {
-  flex: 1 1 auto;
+export interface User {
+  id: string;
+  login: string;
 }

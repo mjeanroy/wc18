@@ -20,9 +20,9 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 public class UserServiceTest extends AbstractServiceTest {
@@ -94,7 +94,7 @@ public class UserServiceTest extends AbstractServiceTest {
 
 		assertThat(optResult).isNotPresent();
 		verify(userDao).findByLogin(login);
-		verify(passwordService).match(eq(plainText), anyString());
+		verifyZeroInteractions(passwordService);
 	}
 
 	@Test

@@ -1,0 +1,39 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="01-users.xml">
+
+  <changeSet id="insert-first-users" author="mjeanroy" context="data">
+    <insert tableName="users">
+      <column name="id" value="e214d2f9-449f-4c04-84a7-2b6adcdc4e36" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="login" value="mickael"/>
+      <column name="password" value="$2a$10$qf7gRWx9E5k35GDwBwY/CuPyqTGxe9pYV0fy9UL2n4VtSKhRxYs6q"/>
+    </insert>
+
+    <insert tableName="users">
+      <column name="id" value="b0dc4374-3120-4b00-aa88-91c5e25ad9f8" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="login" value="fred"/>
+      <column name="password" value="$2a$10$6CN/Cm0VNy8uwKahVcQyR.y2kdtv8jJp8kip/vUptaRF2d9zapoEC"/>
+    </insert>
+
+    <insert tableName="users">
+      <column name="id" value="cda08cde-78f5-4170-9427-ef7f17bffe46" />
+      <column name="version" valueNumeric="0"/>
+      <column name="creation_date" valueComputed="NOW()"/>
+      <column name="login" value="jeremy"/>
+      <column name="password" value="$2a$10$GcSpXfgXUctymcaFl8eZeeCFT.ViCTC71lw.ktMwgwWdPd8cZrbNm"/>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

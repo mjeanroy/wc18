@@ -1,3 +1,5 @@
 <mat-toolbar color="primary">
-  Coupe du monde 2018
+  <span>Coupe du monde 2018</span>
+  <span class="spacer"></span>
+  <button mat-button [disableRipple]="true" (click)="logout()" *ngIf="isLogged()">[Logout]</button>
 </mat-toolbar>
