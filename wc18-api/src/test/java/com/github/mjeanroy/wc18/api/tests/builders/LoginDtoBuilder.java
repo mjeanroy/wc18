@@ -1,7 +1,16 @@
+/**
+ * Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential.
+ */
+
 package com.github.mjeanroy.wc18.api.tests.builders;
 
 import com.github.mjeanroy.wc18.api.dto.LoginDto;
 
+/**
+ * Builder for {@link LoginDto} instances.
+ */
 public class LoginDtoBuilder {
 
 	/**
@@ -38,6 +47,11 @@ public class LoginDtoBuilder {
 		return this;
 	}
 
+	/**
+	 * Build final {@link LoginDto} instance.
+	 *
+	 * @return The final instance.
+	 */
 	public LoginDto build() {
 		LoginDto dto = new LoginDto();
 		dto.setLogin(login);

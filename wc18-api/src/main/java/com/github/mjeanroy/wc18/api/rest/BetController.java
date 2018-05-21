@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 /**
  * The {@link MatchDto} Rest Controller.
@@ -42,13 +43,13 @@ public class BetController {
 
 	@PostMapping
 	@Security
-	public BetDto create(Principal principal, @RequestBody BetDto bet) {
+	public BetDto create(Principal principal, @RequestBody @Valid BetDto bet) {
 		return betApiService.save(principal, bet);
 	}
 
 	@PutMapping("/{id}")
 	@Security
-	public BetDto update(Principal principal, @RequestBody BetDto bet) {
+	public BetDto update(Principal principal, @RequestBody @Valid BetDto bet) {
 		return betApiService.save(principal, bet);
 	}
 }

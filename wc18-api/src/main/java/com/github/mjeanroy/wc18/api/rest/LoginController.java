@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -31,7 +32,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public UserDto login(@RequestBody LoginDto login, HttpServletResponse response) {
+	public UserDto login(@RequestBody @Valid LoginDto login, HttpServletResponse response) {
 		return loginApiService.login(login, response);
 	}
 

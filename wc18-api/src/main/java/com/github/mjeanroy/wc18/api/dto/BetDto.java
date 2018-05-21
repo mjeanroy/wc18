@@ -6,13 +6,22 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class BetDto extends AbstractDto {
 
 	/**
+	 * The bet id.
+	 */
+	private String id;
+
+	/**
 	 * The match.
 	 */
+	@NotNull
+	@Valid
 	private MatchDto match;
 
 	/**
@@ -23,12 +32,32 @@ public class BetDto extends AbstractDto {
 	/**
 	 * The score.
 	 */
+	@NotNull
+	@Valid
 	private ScoreDto score;
 
 	/**
 	 * The date.
 	 */
 	private Date date;
+
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Set {@link #id}
+	 *
+	 * @param id New {@link #id}
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * Get {@link #match}

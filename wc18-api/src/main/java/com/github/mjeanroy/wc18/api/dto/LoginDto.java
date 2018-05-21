@@ -6,16 +6,20 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class LoginDto {
 
 	/**
 	 * The login.
 	 */
+	@NotBlank
 	private String login;
 
 	/**
 	 * The password.
 	 */
+	@NotBlank
 	private String password;
 
 	/**

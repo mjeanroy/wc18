@@ -6,7 +6,9 @@
 
 package com.github.mjeanroy.wc18.api.security;
 
+import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.services.UserService;
+import com.github.mjeanroy.wc18.security.models.DefaultPrincipal;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import com.github.mjeanroy.wc18.security.service.PrincipalService;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,8 @@ public class PrincipalServiceImpl implements PrincipalService {
 	 */
 	@Override
 	public Optional<Principal> findByLogin(String login) {
-		return userService.findByLogin(login).map(PrincipalImpl::new);
+		return userService.findByLogin(login)
+			.map(User::getLogin)
+			.map(DefaultPrincipal::new);
 	}
 }

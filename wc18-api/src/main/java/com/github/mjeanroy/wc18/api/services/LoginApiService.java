@@ -10,7 +10,7 @@ import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.exceptions.CredentialsNotFoundException;
 import com.github.mjeanroy.wc18.api.dto.LoginDto;
 import com.github.mjeanroy.wc18.api.mappers.UserDtoMapper;
-import com.github.mjeanroy.wc18.api.security.PrincipalImpl;
+import com.github.mjeanroy.wc18.security.models.DefaultPrincipal;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
@@ -45,8 +45,8 @@ public class LoginApiService {
 			CredentialsNotFoundException::new
 		);
 
-		// Process authentication.
-		securityService.authenticate(response, new PrincipalImpl(user));
+		// Process authentication for the HTTP request.
+		securityService.authenticate(response, new DefaultPrincipal(user.getLogin()));
 
 		return userDtoMapper.from(user);
 	}

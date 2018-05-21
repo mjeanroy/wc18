@@ -12,6 +12,11 @@ package com.github.mjeanroy.wc18.api.dto;
 public class TeamDto extends AbstractDto {
 
 	/**
+	 * The team identifier.
+	 */
+	private String id;
+
+	/**
 	 * Team ISO code.
 	 */
 	private String isoCode;
@@ -20,6 +25,24 @@ public class TeamDto extends AbstractDto {
 	 * Team Name.
 	 */
 	private String name;
+
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Set {@link #id}
+	 *
+	 * @param id {@link #id}
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * Get {@link #isoCode}

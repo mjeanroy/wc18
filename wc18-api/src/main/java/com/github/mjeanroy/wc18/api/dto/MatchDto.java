@@ -6,7 +6,15 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class MatchDto extends AbstractDto {
+
+	/**
+	 * The match id.
+	 */
+	@NotBlank
+	private String id;
 
 	/**
 	 * The first team.
@@ -22,6 +30,24 @@ public class MatchDto extends AbstractDto {
 	 * The score, may be {@code null} until match has been played.
 	 */
 	private ScoreDto score;
+
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * Set {@link #id}
+	 *
+	 * @param id New {@link #id}
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	/**
 	 * Get {@link #team1}

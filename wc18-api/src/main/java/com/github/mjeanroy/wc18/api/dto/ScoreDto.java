@@ -6,16 +6,26 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class ScoreDto {
 
 	/**
 	 * The score of team 1.
 	 */
+	@NotNull
+	@Min(0)
+	@Max(15)
 	private Integer score1;
 
 	/**
 	 * The score of team 2.
 	 */
+	@NotNull
+	@Min(0)
+	@Max(15)
 	private Integer score2;
 
 	/**
