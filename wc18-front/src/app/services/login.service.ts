@@ -10,8 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { User } from '../models/user.model';
-import { Principal } from '../models/principal.model';
+import { User, Principal } from '../models';
 import { UsersService } from './users.service';
 
 @Injectable({

@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Bet } from '../models/bet.model';
+import { Bet } from '../models';
 
 @Injectable({
   providedIn: 'root'

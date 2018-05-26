@@ -3,10 +3,11 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * Proprietary and confidential.
  */
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/internal/Observable";
-import {Match} from "../models/match.model";
-import {HttpClient} from "@angular/common/http";
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { Match } from '../models';
 
 @Injectable({
   providedIn: 'root'

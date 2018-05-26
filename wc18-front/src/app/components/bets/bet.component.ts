@@ -5,16 +5,16 @@
  */
 
 import {Component, Input, OnInit} from '@angular/core';
-import { Bet } from '../../models/bet.model';
-import {BetsService} from "../../services/bets.service";
-import {SnackbarService} from "../../services/snackbar.service";
+import { Bet } from '../../models';
+import { BetsService } from '../../services/bets.service';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-bet',
   templateUrl: './bet.component.html',
   styleUrls: [
     './bet.component.css',
-  ]
+  ],
 })
 export class BetComponent implements OnInit {
   @Input("bet") bet: Bet;

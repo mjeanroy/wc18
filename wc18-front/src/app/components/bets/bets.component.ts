@@ -6,12 +6,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
-import { User } from '../../models/user.model';
 import { MatchesService } from '../../services/matches.service';
 import { BetsService } from '../../services/bets.service';
-import { Bet } from '../../models/bet.model';
-import { Match } from '../../models/match.model';
-import {LoginService} from "../../services/login.service";
+import { Bet, Match, User } from '../../models';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-bets',
