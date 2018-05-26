@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BetsApiService } from './bets.api.service';
+import { LoginApiService } from './login.api.service';
 import { MatchesApiService } from './matches.api.service';
 import { UsersApiService } from './users.api.service';
 
@@ -21,6 +22,7 @@ import { UsersApiService } from './users.api.service';
     MatchesApiService,
     BetsApiService,
     UsersApiService,
+    LoginApiService,
   ],
 })
 export class ApiModule {

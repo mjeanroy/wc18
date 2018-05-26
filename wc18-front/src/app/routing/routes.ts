@@ -5,29 +5,30 @@
  */
 
 import { Routes } from '@angular/router';
-import { LoginComponent } from '../components/login/login.component';
-import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { BetsCardComponent } from '../components/bets/bets-card.component';
+import { LoginComponent } from '../components/login';
+import { DashboardComponent } from '../components/dashboard';
+import { BetsCardComponent } from '../components/bets';
+import { BETS, HOME, LOGIN } from './paths';
 
-export const appRoutes: Routes = [
+export const routes: Routes = [
   {
-    path: 'login',
+    path: LOGIN,
     component: LoginComponent,
   },
 
   {
-    path: 'home',
+    path: HOME,
     component: DashboardComponent,
   },
 
   {
-    path: 'bets',
+    path: BETS,
     component: BetsCardComponent,
   },
 
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: `/${LOGIN}`,
     pathMatch: 'full',
   },
 ];

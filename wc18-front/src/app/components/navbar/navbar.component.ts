@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: [
     './navbar.component.css',
-  ]
+  ],
 })
 export class NavBarComponent {
   private readonly _loginService: LoginService;
@@ -24,15 +24,24 @@ export class NavBarComponent {
     this._router = router;
   }
 
+  /**
+   * Check if there is an authenticated user.
+   *
+   * @returns {boolean} `true` if an authenticated user exists, `false` otherwise.
+   */
   isLogged() {
     return this._loginService.isLogged();
   }
 
+  /**
+   * Trigger logout.
+   *
+   * @returns {void}
+   */
   logout() {
-    this._loginService.logout()
-      .subscribe(
-        () => this._onLoggedOut(),
-      );
+    this._loginService.logout().subscribe(
+      () => this._onLoggedOut(),
+    );
   }
 
   private _onLoggedOut() {

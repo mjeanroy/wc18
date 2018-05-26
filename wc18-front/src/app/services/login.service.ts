@@ -5,31 +5,31 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
-import { map, shareReplay, tap } from 'rxjs/operators';
-import { AuthService } from '../auth/auth.service';
+import { shareReplay, tap } from 'rxjs/operators';
+import { LoginApiService, UsersApiService } from '../api';
+import { AuthService } from '../auth';
+import { Logger } from '../log';
 import { User, Principal } from '../models';
-import { UsersApiService } from '../api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
 
-  private readonly _http: HttpClient;
+  private readonly _logger: Logger;
+  private readonly _loginApiService: LoginApiService;
   private readonly _usersApiService: UsersApiService;
   private readonly _authService: AuthService;
-  private readonly _headerName: string;
 
   private _principal: Observable<User>;
 
-  constructor(http: HttpClient, authService: AuthService, usersApiService: UsersApiService) {
-    this._http = http;
+  constructor(logger: Logger, loginApiService: LoginApiService, authService: AuthService, usersApiService: UsersApiService) {
+    this._logger = logger;
+    this._loginApiService = loginApiService;
     this._authService = authService;
     this._usersApiService = usersApiService;
-    this._headerName = 'X-Auth-Token';
   }
 
   /**
@@ -40,11 +40,10 @@ export class LoginService {
    * @returns {Observable<Principal>} The login response.
    */
   login(login: string, password: string): Observable<Principal> {
-    return this._http.post<User>('/api/login', {login, password}, {observe: 'response'})
-      .pipe(
-        map((response) => this._login(response)),
-        tap(principal => this._onLogged(principal))
-      );
+    this._logger.debug('Processing login');
+    return this._loginApiService.login(login, password).pipe(
+      tap(principal => this._onLogged(principal))
+    );
   }
 
   /**
@@ -53,10 +52,10 @@ export class LoginService {
    * @returns {Observable<any>} The logout response.
    */
   logout() {
-    return this._http.post('/api/logout', null)
-      .pipe(
-        tap(() => this._logout()),
-      );
+    this._logger.debug('Processing logout');
+    return this._loginApiService.logout().pipe(
+      tap(() => this._logout()),
+    );
   }
 
   /**
@@ -75,19 +74,11 @@ export class LoginService {
    */
   me() {
     if (this.isLogged() && !this._principal) {
+      this._logger.debug('Trying to get authenticated user but it is not available yet, querying from API');
       this._principal = this._usersApiService.me().pipe(shareReplay());
     }
 
     return this._principal;
-  }
-
-  private _login(response: HttpResponse<User>): Principal {
-    const token: string = response.headers.get(this._headerName);
-    const user: User = response.body;
-    return {
-      token,
-      user,
-    };
   }
 
   private _onLogged(principal: Principal) {
