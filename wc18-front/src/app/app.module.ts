@@ -6,7 +6,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -22,7 +21,10 @@ import {
   MatToolbarModule,
 } from '@angular/material';
 
+import { LogModule } from './log';
 import { ApiModule } from './api';
+import { AuthModule } from './auth/auth.module';
+
 import { BetsCardComponent } from './components/bets/bets-card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -32,10 +34,6 @@ import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/navbar/navbar.component';
 import { BetsComponent } from './components/bets/bets.component';
 import { BetComponent } from './components/bets/bet.component';
-
-import { AuthStorage } from './auth/auth.storage';
-import { AuthService } from './auth/auth.service';
-import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { SnackbarService } from './services/snackbar.service';
 import { LoginService } from './services/login.service';
@@ -56,7 +54,6 @@ import { LoginService } from './services/login.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
     RouterModule.forRoot(appRoutes),
 
     // @angular/material
@@ -70,20 +67,12 @@ import { LoginService } from './services/login.service';
     MatToolbarModule,
 
     // app
+    LogModule,
     ApiModule,
+    AuthModule,
   ],
 
   providers: [
-    // Auth
-    AuthStorage,
-    AuthService,
-
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-
     // App
     SnackbarService,
     LoginService,
