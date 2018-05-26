@@ -7,7 +7,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Bet } from '../../models';
 import { BetsApiService } from '../../api';
-import { SnackbarService } from '../../services/snackbar.service';
+import { SnackbarService } from '../../services';
 
 @Component({
   selector: 'app-bet',

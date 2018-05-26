@@ -5,7 +5,7 @@
  */
 
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { LoginService } from '../../services';
 import { Router } from '@angular/router';
 
 @Component({

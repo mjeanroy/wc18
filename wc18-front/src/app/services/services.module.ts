@@ -10,6 +10,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { ApiModule } from '../api';
 import { AuthModule } from '../auth/auth.module';
 import { LogModule } from '../log';
+import { BetsService } from './bets.service';
 import { LoginService } from './login.service';
 import { SnackbarService } from './snackbar.service';
 
@@ -25,6 +26,7 @@ import { SnackbarService } from './snackbar.service';
   providers: [
     LoginService,
     SnackbarService,
+    BetsService,
   ],
 })
 export class ServicesModule {

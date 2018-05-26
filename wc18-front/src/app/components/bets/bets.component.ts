@@ -5,10 +5,8 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs/internal/observable/forkJoin';
-import { BetsApiService, MatchesApiService } from '../../api';
-import { Bet, Match, User } from '../../models';
-import { LoginService } from '../../services/login.service';
+import { Bet } from '../../models';
+import { BetsService } from '../../services';
 
 @Component({
   selector: 'app-bets',
@@ -19,42 +17,17 @@ import { LoginService } from '../../services/login.service';
 })
 export class BetsComponent implements OnInit {
 
-  private _loginService: LoginService;
-  private _matchesApiService: MatchesApiService;
-  private _betsApiService: BetsApiService;
+  private readonly _betsService: BetsService;
 
   bets: Bet[];
 
-  constructor(loginService: LoginService, matchesApiService: MatchesApiService, betsApiService: BetsApiService) {
-    this._loginService = loginService;
-    this._matchesApiService = matchesApiService;
-    this._betsApiService = betsApiService;
+  constructor(betsService: BetsService) {
+    this._betsService = betsService;
   }
 
   ngOnInit() {
-    forkJoin(this._matchesApiService.findAll(), this._betsApiService.findAll(), this._loginService.me()).subscribe(
-      (results) => this._createBets(results[0], results[1], results[2])
+    this._betsService.getBets().subscribe((bets) =>
+      this.bets = bets
     );
-  }
-
-  private _createBets(matches: Match[], bets: Bet[], me: User) {
-    // Index bets by match id.
-    const map = new Map<string, Bet>(bets.map((bet: Bet): [string, Bet] =>
-      [bet.match.id, bet]
-    ));
-
-    this.bets = matches.map((match: Match): Bet => (
-      map.get(match.id) || ({
-        match,
-
-        id: null,
-        date: new Date(),
-        user: me,
-        score: {
-          score1: 0,
-          score2: 0,
-        },
-      })
-    ));
   }
 }

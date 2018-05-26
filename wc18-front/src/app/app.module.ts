@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
-import { GuardsModule } from './guards/guards.module';
 
 import { LoginModule } from './components/login';
 import { NavbarModule } from './components/navbar/navbar.module';

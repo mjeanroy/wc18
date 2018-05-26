@@ -7,15 +7,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatProgressSpinnerModule,
-} from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+
 import { ApiModule } from '../../api';
-import { ServicesModule } from '../../services/services.module';
+import { ServicesModule } from '../../services';
+
 import { BetComponent } from './bet.component';
 import { BetsCardComponent } from './bets-card.component';
 import { BetsComponent } from './bets.component';

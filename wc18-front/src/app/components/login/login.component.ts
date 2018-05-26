@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logger } from '../../log';
 import { HOME } from '../../routing/paths';
-import { LoginService } from '../../services/login.service';
-import { SnackbarService } from '../../services/snackbar.service';
+import { LoginService, SnackbarService } from '../../services';
 
 @Component({
   selector: 'app-login',
