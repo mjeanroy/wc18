@@ -7,6 +7,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logger } from '../../log';
+import { HOME } from '../../routing/paths';
 import { LoginService } from '../../services/login.service';
 import { SnackbarService } from '../../services/snackbar.service';
 
@@ -70,7 +71,7 @@ export class LoginComponent implements OnInit {
 
   private _onLogged() {
     this._logger.debug('Login succeed, redirect to HOME');
-    this._router.navigate(['home']);
+    this._router.navigate([HOME]);
     this._onLoggedDone();
   }
 
