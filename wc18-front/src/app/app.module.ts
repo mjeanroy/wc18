@@ -21,6 +21,8 @@ import {
   MatSnackBarModule,
   MatToolbarModule,
 } from '@angular/material';
+
+import { ApiModule } from './api';
 import { BetsCardComponent } from './components/bets/bets-card.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -37,8 +39,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { SnackbarService } from './services/snackbar.service';
 import { LoginService } from './services/login.service';
-import { MatchesService } from './services/matches.service';
-import { BetsService } from './services/bets.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +68,9 @@ import { BetsService } from './services/bets.service';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     MatToolbarModule,
+
+    // app
+    ApiModule,
   ],
 
   providers: [
@@ -84,8 +87,6 @@ import { BetsService } from './services/bets.service';
     // App
     SnackbarService,
     LoginService,
-    MatchesService,
-    BetsService,
   ],
 
   bootstrap: [

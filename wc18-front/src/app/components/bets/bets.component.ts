@@ -6,8 +6,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
-import { MatchesService } from '../../services/matches.service';
-import { BetsService } from '../../services/bets.service';
+import { BetsApiService, MatchesApiService } from '../../api';
 import { Bet, Match, User } from '../../models';
 import { LoginService } from '../../services/login.service';
 
@@ -21,19 +20,19 @@ import { LoginService } from '../../services/login.service';
 export class BetsComponent implements OnInit {
 
   private _loginService: LoginService;
-  private _matchesService: MatchesService;
-  private _betsService: BetsService;
+  private _matchesApiService: MatchesApiService;
+  private _betsApiService: BetsApiService;
 
   bets: Bet[];
 
-  constructor(loginService: LoginService, matchesService: MatchesService, betsService: BetsService) {
+  constructor(loginService: LoginService, matchesApiService: MatchesApiService, betsApiService: BetsApiService) {
     this._loginService = loginService;
-    this._matchesService = matchesService;
-    this._betsService = betsService;
+    this._matchesApiService = matchesApiService;
+    this._betsApiService = betsApiService;
   }
 
   ngOnInit() {
-    forkJoin(this._matchesService.findAll(), this._betsService.findAll(), this._loginService.me()).subscribe(
+    forkJoin(this._matchesApiService.findAll(), this._betsApiService.findAll(), this._loginService.me()).subscribe(
       (results) => this._createBets(results[0], results[1], results[2])
     );
   }

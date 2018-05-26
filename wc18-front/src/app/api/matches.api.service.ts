@@ -5,14 +5,14 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Bet } from '../models';
+import { Observable } from 'rxjs/internal/Observable';
+import { Match } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BetsService {
+export class MatchesApiService {
 
   private _http: HttpClient;
 
@@ -20,11 +20,12 @@ export class BetsService {
     this._http = http;
   }
 
-  findAll(): Observable<Bet[]> {
-    return this._http.get<Bet[]>('/api/me/bets');
-  }
-
-  saveOrUpdate(bet: Bet): Observable<Bet> {
-    return this._http.post<Bet>('/api/me/bets', bet);
+  /**
+   * Find all matches.
+   *
+   * @returns {Observable<Match[]>} The asynchronous response.
+   */
+  findAll(): Observable<Match[]> {
+    return this._http.get<Match[]>('/api/matches');
   }
 }

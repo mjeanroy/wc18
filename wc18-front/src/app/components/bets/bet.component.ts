@@ -6,7 +6,7 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import { Bet } from '../../models';
-import { BetsService } from '../../services/bets.service';
+import { BetsApiService } from '../../api';
 import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
@@ -20,13 +20,13 @@ export class BetComponent implements OnInit {
   @Input("bet") bet: Bet;
 
   private _snackbarService: SnackbarService;
-  private _betsService: BetsService;
+  private _betsApiService: BetsApiService;
 
   saving: boolean;
   btnColor: string;
 
-  constructor(betsService: BetsService, snackbarService: SnackbarService) {
-    this._betsService = betsService;
+  constructor(betsApiService: BetsApiService, snackbarService: SnackbarService) {
+    this._betsApiService = betsApiService;
     this._snackbarService = snackbarService;
   }
 
@@ -37,7 +37,7 @@ export class BetComponent implements OnInit {
 
   save() {
     this.saving = true;
-    this._betsService.saveOrUpdate(this.bet).subscribe(
+    this._betsApiService.saveOrUpdate(this.bet).subscribe(
       (bet) => this._onSaved(bet),
       () => this._onSavedError(),
     );

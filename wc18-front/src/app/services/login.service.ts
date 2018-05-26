@@ -11,7 +11,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 import { User, Principal } from '../models';
-import { UsersService } from './users.service';
+import { UsersApiService } from '../api';
 
 @Injectable({
   providedIn: 'root',
@@ -19,16 +19,16 @@ import { UsersService } from './users.service';
 export class LoginService {
 
   private readonly _http: HttpClient;
-  private readonly _usersService: UsersService;
+  private readonly _usersApiService: UsersApiService;
   private readonly _authService: AuthService;
   private readonly _headerName: string;
 
   private _principal: Observable<User>;
 
-  constructor(http: HttpClient, authService: AuthService, userService: UsersService) {
+  constructor(http: HttpClient, authService: AuthService, usersApiService: UsersApiService) {
     this._http = http;
     this._authService = authService;
-    this._usersService = userService;
+    this._usersApiService = usersApiService;
     this._headerName = 'X-Auth-Token';
   }
 
@@ -75,7 +75,7 @@ export class LoginService {
    */
   me() {
     if (this.isLogged() && !this._principal) {
-      this._principal = this._usersService.me().pipe(shareReplay());
+      this._principal = this._usersApiService.me().pipe(shareReplay());
     }
 
     return this._principal;

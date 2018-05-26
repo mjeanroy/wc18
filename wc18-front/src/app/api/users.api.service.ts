@@ -5,14 +5,14 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Match } from '../models';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MatchesService {
+export class UsersApiService {
 
   private _http: HttpClient;
 
@@ -20,7 +20,12 @@ export class MatchesService {
     this._http = http;
   }
 
-  findAll(): Observable<Match[]> {
-    return this._http.get<Match[]>('/api/matches');
+  /**
+   * Get current authenticated user.
+   *
+   * @returns {Observable<User>} The authenticated response.
+   */
+  me(): Observable<User> {
+    return this._http.get<User>('/api/me');
   }
 }
