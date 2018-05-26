@@ -6,6 +6,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
+import { User } from '../../models/user.model';
 import { MatchesService } from '../../services/matches.service';
 import { BetsService } from '../../services/bets.service';
 import { Bet } from '../../models/bet.model';
@@ -34,12 +35,12 @@ export class BetsComponent implements OnInit {
   }
 
   ngOnInit() {
-    forkJoin(this._matchesService.findAll(), this._betsService.findAll()).subscribe(
-      (results) => this._createBets(results[0], results[1])
+    forkJoin(this._matchesService.findAll(), this._betsService.findAll(), this._loginService.me()).subscribe(
+      (results) => this._createBets(results[0], results[1], results[2])
     );
   }
 
-  private _createBets(matches: Match[], bets: Bet[]) {
+  private _createBets(matches: Match[], bets: Bet[], me: User) {
     // Index bets by match id.
     const map = new Map<string, Bet>(bets.map((bet: Bet): [string, Bet] =>
       [bet.match.id, bet]
@@ -51,7 +52,7 @@ export class BetsComponent implements OnInit {
 
         id: null,
         date: new Date(),
-        user: this._loginService.me(),
+        user: me,
         score: {
           score1: 0,
           score2: 0,

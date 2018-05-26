@@ -1,0 +1,38 @@
+/**
+ * Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential.
+ */
+
+app-dashboard {
+  display: block;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+
+  padding: 0;
+  overflow: auto;
+}
+
+.dashboard-card mat-card-header {
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+.dashboard-card mat-card-header mat-card-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}

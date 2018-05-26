@@ -14,12 +14,15 @@ import { RouterModule } from '@angular/router';
 import {
   MatButtonModule,
   MatCardModule,
+  MatGridListModule,
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatToolbarModule,
 } from '@angular/material';
+import { BetsCardComponent } from './components/bets/bets-card.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { appRoutes } from './routing/app-routes';
 import { AppComponent } from './app.component';
@@ -42,6 +45,8 @@ import { BetsService } from './services/bets.service';
     AppComponent,
     LoginComponent,
     NavBarComponent,
+    DashboardComponent,
+    BetsCardComponent,
     BetsComponent,
     BetComponent,
   ],
@@ -57,6 +62,7 @@ import { BetsService } from './services/bets.service';
     // @angular/material
     MatButtonModule,
     MatCardModule,
+    MatGridListModule,
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
