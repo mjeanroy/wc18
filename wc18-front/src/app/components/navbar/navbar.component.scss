@@ -10,6 +10,14 @@ mat-icon {
   vertical-align: -6px;
 }
 
+.navbar-brand {
+  mat-icon {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .user-menu {
   cursor: pointer;
 

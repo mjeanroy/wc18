@@ -6,9 +6,7 @@
 
 package com.github.mjeanroy.wc18.domain.services;
 
-import com.github.mjeanroy.wc18.domain.dao.MatchDao;
 import com.github.mjeanroy.wc18.domain.dao.TeamDao;
-import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +30,6 @@ public class TeamService {
 	 */
 	@Transactional(readOnly = true)
 	public Iterable<Team> findAll() {
-		return teamDao.findAll();
+		return teamDao.findAllOrderByName();
 	}
 }

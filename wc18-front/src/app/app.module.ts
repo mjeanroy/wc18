@@ -5,8 +5,10 @@
  */
 
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatIconModule, MatIconRegistry } from '@angular/material';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,6 +34,8 @@ registerLocaleData(localeFr, 'fr');
     // @angular
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatIconModule,
     RouterModule.forRoot(routes),
 
     // @bootstrap
@@ -53,4 +57,7 @@ registerLocaleData(localeFr, 'fr');
   ],
 })
 export class AppModule {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon('wc2018', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/wc2018.svg'));
+  }
 }

@@ -7,9 +7,7 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.TeamDao;
-import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Team;
-import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -47,11 +45,13 @@ public class TeamServiceTest extends AbstractServiceTest {
 
 	private void initMatchDao(Collection<Team> teams) {
 		when(teamDao.findAll()).thenReturn(teams);
+		when(teamDao.findAllOrderByName()).thenReturn(teams);
 	}
 
 	private Team createRandomTeam() {
 		return new TeamBuilder()
 			.withRandomId()
+			.withName("team")
 			.build();
 	}
 }
