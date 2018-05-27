@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.api.dto;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 public class MatchDto extends AbstractDto {
 
@@ -15,6 +16,11 @@ public class MatchDto extends AbstractDto {
 	 */
 	@NotBlank
 	private String id;
+
+	/**
+	 * The match date.
+	 */
+	private Date date;
 
 	/**
 	 * The first team.
@@ -47,6 +53,24 @@ public class MatchDto extends AbstractDto {
 	 */
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * Get {@link #date}
+	 *
+	 * @return {@link #date}
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * Set {@link #date}
+	 *
+	 * @param date New {@link #date}
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/**

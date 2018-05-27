@@ -4,7 +4,7 @@
  * Proprietary and confidential.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Bet } from '../../models';
 import { BetsService } from '../../services';
 
@@ -15,19 +15,13 @@ import { BetsService } from '../../services';
     './bets.component.css',
   ]
 })
-export class BetsComponent implements OnInit {
+export class BetsComponent {
 
   private readonly _betsService: BetsService;
 
-  bets: Bet[];
+  @Input("bets") bets: Bet[];
 
   constructor(betsService: BetsService) {
     this._betsService = betsService;
-  }
-
-  ngOnInit() {
-    this._betsService.getBets().subscribe((bets) =>
-      this.bets = bets
-    );
   }
 }

@@ -4,13 +4,13 @@
  * Proprietary and confidential.
  */
 
-import { Team } from './team.model';
-import { Score } from './score.model';
+.days-navigation {
+  margin-bottom: 20px;
+}
 
-export interface Match {
-  id: string;
-  date: string;
-  team1: Team;
-  team2: Team;
-  score: Score;
+.day-label {
+  display: inline-block;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-weight: 500;
 }

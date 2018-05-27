@@ -4,7 +4,9 @@
  * Proprietary and confidential.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Bet } from '../../models';
+import { BetsService } from '../../services';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,5 +15,19 @@ import { Component } from '@angular/core';
     './dashboard.component.css',
   ],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+
+  private readonly _betsService: BetsService;
+
+  bets: Bet[];
+
+  constructor(betsService: BetsService) {
+    this._betsService = betsService;
+  }
+
+  ngOnInit() {
+    this._betsService.getBets().subscribe((bets) =>
+      this.bets = bets
+    );
+  }
 }

@@ -33,13 +33,9 @@ mat-spinner {
 }
 
 .bet-score {
-  width: 50px;
+  width: 30px;
 }
 
-.bet-score1 input {
-  text-align: right;
-}
-
-.bet-score2 input {
-  text-align: left;
+.bet-score input {
+  text-align: center;
 }

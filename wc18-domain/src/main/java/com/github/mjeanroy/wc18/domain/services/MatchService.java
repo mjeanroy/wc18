@@ -36,6 +36,6 @@ public class MatchService {
 	 */
 	@Transactional(readOnly = true)
 	public Iterable<Match> findAll() {
-		return matchDao.findAll();
+		return matchDao.findAllOrderByDate();
 	}
 }

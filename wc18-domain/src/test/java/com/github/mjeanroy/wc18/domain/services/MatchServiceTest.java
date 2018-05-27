@@ -15,6 +15,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -46,13 +47,15 @@ public class MatchServiceTest extends AbstractServiceTest {
 
 	private void initMatchDao(Collection<Match> matches) {
 		when(matchDao.findAll()).thenReturn(matches);
+		when(matchDao.findAllOrderByDate()).thenReturn(matches);
 	}
 
 	private Match createRandomMatch() {
 		return new MatchBuilder()
 			.withRandomId()
-			.withTeam1(new TeamBuilder().withRandomId().build())
-			.withTeam2(new TeamBuilder().withRandomId().build())
+			.withDate(new Date())
+			.withTeam1(new TeamBuilder().withRandomId().withName("team1").build())
+			.withTeam2(new TeamBuilder().withRandomId().withName("team2").build())
 			.build();
 	}
 }

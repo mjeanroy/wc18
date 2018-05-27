@@ -4,8 +4,10 @@
  * Proprietary and confidential.
  */
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
@@ -17,6 +19,8 @@ import { DashboardModule } from './components/dashboard';
 
 import { routes } from './routing/routes';
 import { AppComponent } from './app.component';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { AppComponent } from './app.component';
   ],
 
   providers: [
+    { provide: LOCALE_ID, useValue: 'fr' },
   ],
 
   bootstrap: [

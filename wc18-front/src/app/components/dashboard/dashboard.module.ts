@@ -6,24 +6,31 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule } from '@angular/material';
+import { ServicesModule } from '../../services';
 import { BetsModule } from '../bets';
+import { BetDaysComponent } from './bet-days.component';
 import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    MatButtonModule,
     MatCardModule,
     MatGridListModule,
+    MatIconModule,
+    ServicesModule,
     BetsModule,
   ],
 
   declarations: [
     DashboardComponent,
+    BetDaysComponent,
   ],
 
   exports: [
     DashboardComponent,
+    BetDaysComponent,
   ],
 })
 export class DashboardModule {

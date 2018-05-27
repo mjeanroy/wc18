@@ -34,6 +34,7 @@ public class MatchDtoMapper extends AbstractLazyObjectMapper<Match, MatchDto> {
 	public MatchDto convert(Match source) {
 		MatchDto dto = new MatchDto();
 		dto.setId(source.getId());
+		dto.setDate(source.getDate());
 		dto.setTeam1(teamDtoMapper.from(source.getTeam1()));
 		dto.setTeam2(teamDtoMapper.from(source.getTeam2()));
 		dto.setScore(scoreDtoMapper.from(source.getScore()));

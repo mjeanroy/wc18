@@ -4,7 +4,9 @@
  * Proprietary and confidential.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Bet } from '../../models';
+import { BetsService } from '../../services';
 
 @Component({
   selector: 'app-bets-card',
@@ -13,5 +15,19 @@ import { Component } from '@angular/core';
     './bets-card.component.css',
   ],
 })
-export class BetsCardComponent {
+export class BetsCardComponent implements OnInit {
+
+  private readonly _betsService: BetsService;
+
+  bets: Bet[];
+
+  constructor(betsService: BetsService) {
+    this._betsService = betsService;
+  }
+
+  ngOnInit() {
+    this._betsService.getBets().subscribe((bets) =>
+      this.bets = bets
+    );
+  }
 }
