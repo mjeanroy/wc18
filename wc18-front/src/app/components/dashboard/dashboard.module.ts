@@ -6,7 +6,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ServicesModule } from '../../services';
 import { BetsModule } from '../bets';
 import { BetDaysComponent } from './bet-days.component';
@@ -16,8 +16,6 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     MatButtonModule,
-    MatCardModule,
-    MatGridListModule,
     MatIconModule,
     ServicesModule,
     BetsModule,

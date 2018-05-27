@@ -4,7 +4,7 @@
  * Proprietary and confidential.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services';
 import { Router } from '@angular/router';
 
@@ -15,13 +15,28 @@ import { Router } from '@angular/router';
     './navbar.component.scss',
   ],
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
   private readonly _loginService: LoginService;
   private readonly _router: Router;
+
+  collapsed: boolean;
 
   constructor(loginService: LoginService, router: Router) {
     this._loginService = loginService;
     this._router = router;
+  }
+
+  ngOnInit() {
+    this.collapsed = true;
+  }
+
+  /**
+   * Collapse navbar.
+   *
+   * @returns {void}
+   */
+  collapse() {
+    this.collapsed = !this.collapsed;
   }
 
   /**

@@ -2,10 +2,10 @@
   <a class="navbar-brand" routerLink="/">
     <span>Coupe du monde 2018</span>
   </a>
-  <button type="button" class="navbar-toggler">
+  <button type="button" class="navbar-toggler" (click)="collapse()">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div id="navbar" class="navbar-collapse">
+  <div id="navbar" class="navbar-collapse" [class.collapse]="collapsed">
     <ng-container *ngIf="isLogged()">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">

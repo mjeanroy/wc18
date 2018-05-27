@@ -10,7 +10,12 @@ app-dashboard {
 
 .card {
   width: 90%;
-  height: 100%;
+
+  $card-height: 430px;
+
+  height: $card-height;
+  min-height: $card-height;
+  max-height: $card-height;
 
   .card-title {
     margin: 0;

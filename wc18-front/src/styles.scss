@@ -9,9 +9,11 @@
 
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/transitions";
 @import "../node_modules/bootstrap/scss/navbar";
 @import "../node_modules/bootstrap/scss/dropdown";
 @import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/grid";
 
 // @angular/material
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
@@ -26,4 +28,19 @@ body {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.bg-primary {
+  // The `!important` is important to override bootstrap.
+  background-color: #3f51b5 !important;
+}
+
+.card {
+  .card-title {
+    mat-icon {
+      display: inline-block;
+      vertical-align: -3px;
+      margin-right: 8px;
+    }
+  }
 }
