@@ -12,7 +12,7 @@ import { Bet } from '../../models';
   selector: 'bet-days',
   templateUrl: './bet-days.component.html',
   styleUrls: [
-    './bet-days.component.css',
+    './bet-days.component.scss',
   ],
 })
 export class BetDaysComponent implements OnChanges {
@@ -76,7 +76,6 @@ export class BetDaysComponent implements OnChanges {
   }
 
   private _update() {
-    debugger;
     const byDays = groupBy(this.bets, (bet) => dateToDay(bet.match.date));
     const days = keys(byDays).sort((d1, d2) => d1.localeCompare(d2));
 

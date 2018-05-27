@@ -1,0 +1,24 @@
+/**
+ * Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential.
+ */
+
+app-dashboard {
+  display: block;
+}
+
+.card {
+  width: 90%;
+  height: 100%;
+
+  .card-title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .card-body {
+    overflow-y: scroll;
+    overflow-x: auto;
+  }
+}

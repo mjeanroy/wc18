@@ -1,31 +1,25 @@
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile>
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            <span>Prochaines journées</span>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Prochaines journées</h5>
+        </div>
+        <div class="card-body">
           <bet-days [bets]="bets"></bet-days>
-        </mat-card-content>
-      </mat-card>
+        </div>
+      </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            <span>Mes Pronostics</span>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            <app-bets [bets]="bets"></app-bets>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Mes Pronostics</h5>
+        </div>
+        <div class="card-body">
+          <app-bets [bets]="bets"></app-bets>
+        </div>
+      </div>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

@@ -4,6 +4,16 @@
  * Proprietary and confidential.
  */
 
-.spacer {
-  flex: 1 1 auto;
+mat-icon {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: -6px;
+}
+
+.user-menu {
+  cursor: pointer;
+
+  .nav-link {
+    color: #fff;
+  }
 }

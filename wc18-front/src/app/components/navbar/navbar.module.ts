@@ -6,15 +6,18 @@
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatToolbarModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ServicesModule } from '../../services';
 import { NavBarComponent } from './navbar.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
+    RouterModule.forChild([]),
+    MatIconModule,
+    NgbDropdownModule,
     ServicesModule,
   ],
 

@@ -11,6 +11,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginModule } from './components/login';
 import { NavbarModule } from './components/navbar/navbar.module';
@@ -32,6 +33,9 @@ registerLocaleData(localeFr, 'fr');
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+
+    // @bootstrap
+    NgbDropdownModule.forRoot(),
 
     // app components
     LoginModule,

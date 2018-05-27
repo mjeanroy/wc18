@@ -12,7 +12,7 @@ import { BetsService } from '../../services';
   selector: 'app-bets-card',
   templateUrl: './bets-card.component.html',
   styleUrls: [
-    './bets-card.component.css',
+    './bets-card.component.scss',
   ],
 })
 export class BetsCardComponent implements OnInit {

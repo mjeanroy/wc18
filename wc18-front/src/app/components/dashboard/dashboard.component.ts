@@ -12,7 +12,7 @@ import { BetsService } from '../../services';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [
-    './dashboard.component.css',
+    './dashboard.component.scss',
   ],
 })
 export class DashboardComponent implements OnInit {

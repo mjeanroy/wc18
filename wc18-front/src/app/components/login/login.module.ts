@@ -19,7 +19,7 @@ import { LoginComponent } from './login.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
 
   exports: [

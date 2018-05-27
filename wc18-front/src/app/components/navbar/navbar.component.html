@@ -1,5 +1,44 @@
-<mat-toolbar color="primary">
-  <span>Coupe du monde 2018</span>
-  <span class="spacer"></span>
-  <button mat-button [disableRipple]="true" (click)="logout()" *ngIf="isLogged()">[Logout]</button>
-</mat-toolbar>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    <span>Coupe du monde 2018</span>
+  </a>
+  <button type="button" class="navbar-toggler">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbar" class="navbar-collapse">
+    <ng-container *ngIf="isLogged()">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/home">
+            <mat-icon>poll</mat-icon>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/bets">
+            <mat-icon>games</mat-icon>
+            <span>Pronostics</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav user-menu">
+        <li class="nav-item mr-2" ngbDropdown placement="bottom-right">
+          <a class="nav-link" ngbDropdownToggle id="userDropDown">
+            <mat-icon>person</mat-icon>
+            <span>Profil</span>
+          </a>
+          <div ngbDropdownMenu>
+            <a class="dropdown-item" (click)="logout()" href="#">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Logout</span>
+            </a>
+            <a class="dropdown-item">
+              <mat-icon>lock</mat-icon>
+              <span>Changer de mot de passe</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</nav>
