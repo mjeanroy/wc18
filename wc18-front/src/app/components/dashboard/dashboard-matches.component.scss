@@ -1,0 +1,43 @@
+/**
+ * Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ * Unauthorized copying of this file, via any medium is strictly prohibited.
+ * Proprietary and confidential.
+ */
+
+dashboard-matches {
+  display: block;
+  width: 100%;
+}
+
+.match-teams {
+  text-align: center;
+
+  .match-team-name {
+    display: inline-block;
+    width: 200px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+.match-hour {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.match-flags {
+  text-align: center;
+
+  mat-icon {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+app-bet {
+  display: block;
+  text-align: center;
+}

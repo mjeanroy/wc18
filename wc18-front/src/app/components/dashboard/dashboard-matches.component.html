@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-header bg-primary text-white d-flex justify-content-between">
+    <h5 class="card-title">
+      <mat-icon>calendar_today</mat-icon>
+      <span>Matches</span>
+    </h5>
+
+    <div class="matches-navigation">
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasPrevious()" (click)="previous()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasNext()" (click)="next()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="match-hour">
+      <span>{{ current?.match.date | date:'mediumDate' }}</span>
+      <span> - </span>
+      <span>{{ current?.match.date | date:'shortTime' }}</span>
+    </div>
+
+    <div class="match-teams">
+      <h5 class="match-team-name">{{ current?.match.team1.name | uppercase }}</h5>
+      <h5 class="match-team-name">{{ current?.match.team2.name | uppercase }}</h5>
+    </div>
+
+    <div class="match-flags">
+      <mat-icon [svgIcon]="'countries:' + current?.match.team1.isoCode"></mat-icon>
+      <mat-icon [svgIcon]="'countries:' + current?.match.team2.isoCode"></mat-icon>
+    </div>
+
+    <app-bet [bet]="current"></app-bet>
+  </div>
+</div>

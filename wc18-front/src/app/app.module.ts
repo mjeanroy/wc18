@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ApiModule, TeamsApiService } from './api';
+import { forEach } from './common';
 
 import { LoginModule } from './components/login';
 import { NavbarModule } from './components/navbar/navbar.module';
@@ -42,6 +44,7 @@ registerLocaleData(localeFr, 'fr');
     NgbDropdownModule.forRoot(),
 
     // app components
+    ApiModule,
     LoginModule,
     NavbarModule,
     BetsModule,
@@ -59,5 +62,6 @@ registerLocaleData(localeFr, 'fr');
 export class AppModule {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon('wc2018', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/wc2018.svg'));
+    iconRegistry.addSvgIconSetInNamespace('countries', sanitizer.bypassSecurityTrustResourceUrl('assets/svg/countries.svg'));
   }
 }

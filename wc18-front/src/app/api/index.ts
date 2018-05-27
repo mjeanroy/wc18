@@ -4,6 +4,7 @@
  * Proprietary and confidential.
  */
 
+export { TeamsApiService } from './teams.api.service';
 export { MatchesApiService } from './matches.api.service';
 export { BetsApiService } from './bets.api.service';
 export { UsersApiService } from './users.api.service';

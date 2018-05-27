@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header bg-primary text-white d-flex justify-content-between">
+    <h5 class="card-title">
+      <mat-icon>calendar_today</mat-icon>
+      <span>Calendrier</span>
+    </h5>
+
+    <div class="days-navigation">
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasPrevious()" (click)="previousDay()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <span class="day-label">{{ current?.date | date }}</span>
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasNext()" (click)="nextDay()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div>
+      <app-bets [bets]="current?.bets"></app-bets>
+    </div>
+  </div>
+</div>

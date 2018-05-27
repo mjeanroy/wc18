@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BetsApiService } from './bets.api.service';
 import { LoginApiService } from './login.api.service';
 import { MatchesApiService } from './matches.api.service';
+import { TeamsApiService } from './teams.api.service';
 import { UsersApiService } from './users.api.service';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UsersApiService } from './users.api.service';
   ],
 
   providers: [
+    TeamsApiService,
     MatchesApiService,
     BetsApiService,
     UsersApiService,

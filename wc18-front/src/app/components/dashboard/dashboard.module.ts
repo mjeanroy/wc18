@@ -9,8 +9,10 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { ServicesModule } from '../../services';
 import { BetsModule } from '../bets';
-import { BetDaysComponent } from './bet-days.component';
+import { DashboardBetsComponent } from './dashboard-bets.component';
+import { DashboardMatchesComponent } from './dashboard-matches.component';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardCalendarComponent } from './dashboard-calendar.component';
 
 @NgModule({
   imports: [
@@ -23,12 +25,13 @@ import { DashboardComponent } from './dashboard.component';
 
   declarations: [
     DashboardComponent,
-    BetDaysComponent,
+    DashboardCalendarComponent,
+    DashboardBetsComponent,
+    DashboardMatchesComponent,
   ],
 
   exports: [
     DashboardComponent,
-    BetDaysComponent,
   ],
 })
 export class DashboardModule {

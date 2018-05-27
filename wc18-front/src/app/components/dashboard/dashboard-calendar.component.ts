@@ -9,13 +9,14 @@ import { dateToDay, groupBy, keys, reduce } from '../../common';
 import { Bet } from '../../models';
 
 @Component({
-  selector: 'bet-days',
-  templateUrl: './bet-days.component.html',
+  selector: 'dashboard-calendar',
+  templateUrl: './dashboard-calendar.component.html',
   styleUrls: [
-    './bet-days.component.scss',
+    './dashboard-card.scss',
+    './dashboard-calendar.component.scss',
   ],
 })
-export class BetDaysComponent implements OnChanges {
+export class DashboardCalendarComponent implements OnChanges {
 
   @Input() bets: Bet[];
 

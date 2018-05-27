@@ -1,31 +1,17 @@
 <div>
   <div class="row">
     <div class="col">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h5 class="card-title">
-            <mat-icon>calendar_today</mat-icon>
-            <span>Calendrier</span>
-          </h5>
-        </div>
-        <div class="card-body">
-          <bet-days [bets]="bets"></bet-days>
-        </div>
-      </div>
+      <dashboard-matches [bets]="bets"></dashboard-matches>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <dashboard-calendar [bets]="bets"></dashboard-calendar>
     </div>
 
     <div class="col">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          <h5 class="card-title">
-            <mat-icon>gamepad</mat-icon>
-            <span>Mes Pronostics</span>
-          </h5>
-        </div>
-        <div class="card-body">
-          <app-bets [bets]="bets"></app-bets>
-        </div>
-      </div>
+      <dashboard-bets [bets]="bets"></dashboard-bets>
     </div>
   </div>
 </div>
