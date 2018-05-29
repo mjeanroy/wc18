@@ -21,6 +21,7 @@
 body {
   margin: 0;
   padding-bottom: 10px;
+  background-color: #f2f2f2;
 }
 
 .container-fluid {
@@ -42,5 +43,9 @@ body {
       vertical-align: -3px;
       margin-right: 8px;
     }
+  }
+
+  .card-body {
+    background-color: #f9f9f9;
   }
 }
