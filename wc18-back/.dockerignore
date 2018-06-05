@@ -1,0 +1,11 @@
+# The docker ignore list
+# These files will not be copied into docker image
+
+target/
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+README.md
+LICENSE
