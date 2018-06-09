@@ -11,11 +11,16 @@ import com.github.mjeanroy.wc18.domain.configuration.EnableWc18Domain;
 import com.github.mjeanroy.wc18.security.configuration.EnableWc18Security;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan("com.github.mjeanroy.wc18.api")
 @EnableMapper
 @EnableWc18Domain
 @EnableWc18Security
+@Import({
+		BeanValidationConfiguration.class,
+		JacksonConfiguration.class
+})
 public class Wc18ApiConfiguration {
 }

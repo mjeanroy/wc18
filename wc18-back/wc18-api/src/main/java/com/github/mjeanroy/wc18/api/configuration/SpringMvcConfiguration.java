@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -23,10 +22,6 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@Import({
-	BeanValidationConfiguration.class,
-	JacksonConfiguration.class
-})
 public class SpringMvcConfiguration implements WebMvcConfigurer {
 
 	/**

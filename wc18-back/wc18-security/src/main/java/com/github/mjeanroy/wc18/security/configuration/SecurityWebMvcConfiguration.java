@@ -19,18 +19,18 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Configuration
-public class Wc18SecurityMvcConfiguration extends WebMvcConfigurerAdapter {
+public class SecurityWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	/**
 	 * Class logger.
 	 */
-	private static final Logger log = LoggerFactory.getLogger(Wc18SecurityMvcConfiguration.class);
+	private static final Logger log = LoggerFactory.getLogger(SecurityWebMvcConfiguration.class);
 
 	private final SecurityInterceptor securityInterceptor;
 	private final PrincipalArgumentResolver principalArgumentResolver;
 
 	@Inject
-	public Wc18SecurityMvcConfiguration(
+	public SecurityWebMvcConfiguration(
 			SecurityInterceptor securityInterceptor,
 			PrincipalArgumentResolver principalArgumentResolver) {
 

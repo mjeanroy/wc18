@@ -15,8 +15,9 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Import({
-	Wc18SecurityConfiguration.class,
-	Wc18SecurityMvcConfiguration.class
+		SecurityPropertiesConfiguration.class,
+		SecurityConfiguration.class,
+		SecurityWebMvcConfiguration.class
 })
 public @interface EnableWc18Security {
 }

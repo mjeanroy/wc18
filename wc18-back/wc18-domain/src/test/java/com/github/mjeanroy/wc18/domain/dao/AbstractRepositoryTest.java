@@ -7,16 +7,16 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
-import com.github.mjeanroy.dbunit.integration.spring.DbUnitTestExecutionListener;
 import com.github.mjeanroy.dbunit.integration.spring.TransactionalDbUnitTestExecutionListener;
-import com.github.mjeanroy.wc18.domain.configuration.JpaConfiguration;
-import com.github.mjeanroy.wc18.domain.configuration.LiquibaseConfiguration;
+import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaConfiguration;
+import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaProperties;
+import com.github.mjeanroy.wc18.domain.configuration.liquibase.LiquibaseConfiguration;
+import com.github.mjeanroy.wc18.domain.configuration.liquibase.LiquibaseProperties;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -44,7 +44,6 @@ abstract class AbstractRepositoryTest {
 
 	@Configuration
 	@ComponentScan("com.github.mjeanroy.wc18.domain.dao")
-	@PropertySource("classpath:liquibase-test.properties")
 	@Import({
 		JpaConfiguration.class,
 		LiquibaseConfiguration.class
@@ -52,10 +51,21 @@ abstract class AbstractRepositoryTest {
 	static class RepositoryTestConfiguration {
 		@Bean
 		public DataSource datasource() {
-			// Note that we can't use H2 database because of an incompatibility in UUID column type
-			// between Hibernate & H2
-			// See: https://hibernate.atlassian.net/browse/HHH-9835
 			return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
+		}
+
+		@Bean
+		public JpaProperties jpaProperties() {
+			return new JpaProperties("validate");
+		}
+
+		@Bean
+		public LiquibaseProperties liquibaseProperties() {
+			boolean dropFirst = false;
+			boolean shouldRun = true;
+			String contexts = "schema";
+			String changeLog = "/db/changelogs/db-changelogs.xml";
+			return new LiquibaseProperties(changeLog, shouldRun, dropFirst, contexts);
 		}
 
 		@Bean

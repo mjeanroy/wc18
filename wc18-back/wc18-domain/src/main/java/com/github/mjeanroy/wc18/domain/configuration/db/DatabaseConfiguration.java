@@ -4,17 +4,14 @@
  * Proprietary and confidential.
  */
 
-package com.github.mjeanroy.wc18.domain.configuration;
+package com.github.mjeanroy.wc18.domain.configuration.db;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.inject.Inject;
 
 /**
  * Configure database connection and its datasource.
@@ -27,53 +24,17 @@ public class DatabaseConfiguration {
 	 */
 	private static final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
-	/**
-	 * Database JDBC driver.
-	 */
-	private final String driver;
-
-	/**
-	 * Database connection URL.
-	 */
-	private final String url;
-
-	/**
-	 * Database connection username.
-	 */
-	private final String user;
-
-	/**
-	 * Database connection password.
-	 */
-	private final String password;
-
-	@Inject
-	public DatabaseConfiguration(
-			@Value("${database.driverClassName}") String driver,
-			@Value("${database.url}") String url,
-			@Value("${database.user}") String user,
-			@Value("${database.password}") String password) {
-
-		this.driver = driver;
-		this.url = url;
-		this.user = user;
-		this.password = password;
-	}
-
 	@Bean(destroyMethod = "close")
-	public HikariDataSource dataSource() {
-		log.info("Configuration dataSource");
-		log.debug("- Driver: {}", driver);
-		log.debug("- URL: {}", url);
-		log.debug("- User: {}", user);
+	public HikariDataSource dataSource(DatabaseProperties databaseProperties) {
+		log.info("Configuration dataSource with properties: {}", databaseProperties);
 
 		HikariConfig config = new HikariConfig();
 
 		// Connection configuration
-		config.setUsername(user);
-		config.setPassword(password);
-		config.setJdbcUrl(url);
-		config.setDriverClassName(driver);
+		config.setUsername(databaseProperties.getUser());
+		config.setPassword(databaseProperties.getPassword());
+		config.setJdbcUrl(databaseProperties.getUrl());
+		config.setDriverClassName(databaseProperties.getDriverClassName());
 
 		// This property sets a SQL statement that will be executed after every new connection
 		// creation before adding it to the pool.

@@ -16,40 +16,30 @@ import com.github.mjeanroy.wc18.security.service.PrincipalService;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Wc18SecurityConfiguration {
+public class SecurityConfiguration {
 
 	/**
-	 * Class logger.
+	 * Class Logger.
 	 */
-	private static final Logger log = LoggerFactory.getLogger(Wc18SecurityConfiguration.class);
+	private static final Logger log = LoggerFactory.getLogger(SecurityConfiguration.class);
 
 	/**
-	 * The header name to use to read/write token value.
+	 * The security properties.
 	 */
-	private final String headerName;
+	private final SecurityProperties securityProperties;
 
-	/**
-	 * The internal secret key.
-	 */
-	private final String secret;
-
-	public Wc18SecurityConfiguration(
-			@Value("${security.headerName:X-Auth-Token}") String headerName,
-			@Value("${security.secret}") String secret) {
-
-		this.headerName = headerName;
-		this.secret = secret;
+	public SecurityConfiguration(SecurityProperties securityProperties) {
+		this.securityProperties = securityProperties;
 	}
 
 	@Bean
 	public TokenEncoder jwtTokenEncoder() {
 		log.info("Creating JWT Token Encoder");
-		return new JwtTokenEncoder(secret);
+		return new JwtTokenEncoder(securityProperties.getSecret());
 	}
 
 	@Bean
@@ -60,6 +50,7 @@ public class Wc18SecurityConfiguration {
 
 	@Bean
 	public TokenParser tokenParser(TokenEncoder tokenEncoder) {
+		String headerName = securityProperties.getHeaderName();
 		log.info("Creating security token parser with header name: {}", headerName);
 		return new AuthHeaderTokenParser(headerName, tokenEncoder);
 	}

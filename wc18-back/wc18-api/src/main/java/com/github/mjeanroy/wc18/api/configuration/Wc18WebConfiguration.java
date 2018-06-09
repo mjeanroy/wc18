@@ -10,21 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @Configuration
 @Import({
-	Wc18ApiConfiguration.class,
-	SpringMvcConfiguration.class
-})
-@PropertySource({
-	"classpath:database.properties",
-	"classpath:liquibase.properties",
-	"classpath:hibernate.properties",
-	"classpath:security.properties"
+		LocalPropertiesConfiguration.class,
+		Wc18ApiConfiguration.class,
+		SpringMvcConfiguration.class
 })
 public class Wc18WebConfiguration {
 

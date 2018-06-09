@@ -29,6 +29,7 @@ public class JacksonConfiguration {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+		objectMapper.enable(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS);
 		objectMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
 		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		return objectMapper;
