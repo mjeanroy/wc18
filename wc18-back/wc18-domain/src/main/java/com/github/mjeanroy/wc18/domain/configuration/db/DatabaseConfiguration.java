@@ -118,6 +118,10 @@ public class DatabaseConfiguration {
 		// Default: false
 		config.setRegisterMbeans(false);
 
+		// This property set the timeout before which the datasource initialization will fail.
+		// Default: 0.
+		config.setInitializationFailTimeout(30 * 1000);
+
 		return new HikariDataSource(config);
 	}
 }
