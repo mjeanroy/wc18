@@ -8,7 +8,7 @@ version: '3'
 services:
   backend:
     container_name: wc18-backend
-    build: ./wc18-back
+    build: ../../wc18-back
     ports:
       - 8080:8080
     depends_on:
@@ -17,7 +17,7 @@ services:
         - ~/.wc18/conf/env
   frontend:
     container_name: wc18-frontend
-    build: ./wc18-front
+    build: ../../wc18-front
     ports:
       - 80:80
     depends_on:
@@ -27,10 +27,7 @@ services:
       container_name: wc18-db
       ports:
         - 3306:3306
-      environment:
-        MYSQL_DATABASE: "wc18"
-        MYSQL_USER: "mjeanroy"
-        MYSQL_PASSWORD: "foobar"
-        MYSQL_ROOT_PASSWORD: "pRK6agWtWe8YVF964zZD"
+      env_file:
+        -  ~/.wc18/mysql/env
       volumes:
         - ~/.wc18/data/mysql:/var/lib/mysql
