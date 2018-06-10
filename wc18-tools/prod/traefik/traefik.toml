@@ -1,0 +1,47 @@
+##
+# Copyright (C) Mickael Jeanroy - All Rights Reserved.
+# Unauthorized copying of this file, via any medium is strictly prohibited.
+# Proprietary and confidential.
+##
+
+debug = true
+
+logLevel = "DEBUG"
+defaultEntryPoints = ["https","http"]
+
+# Enable HTTPS and redirect HTTP to HTTPS
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+# Connection to docker host system (docker.sock)
+# Using `exposedbydefault=fale` will hide all docker containers that don't have explicitly
+# set label to "enable"
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "wc18.mjeanroy.io"
+watch = true
+exposedbydefault = false
+
+# WEB interface of Traefik
+# it will show web page with overview of frontend and backend configurations
+[web]
+address = ":8080"
+#  [web.auth.basic]
+#  users = ["admin:$apr1$HDxkojPf$kAhc2sb2FtE2Hk7F3Np/h/"]
+
+# Let's encrypt configuration
+[acme]
+email = "mickael.jeanroy@gmail.com"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"

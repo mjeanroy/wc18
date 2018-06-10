@@ -1,0 +1,58 @@
+##
+# Copyright (C) Mickael Jeanroy - All Rights Reserved.
+# Unauthorized copying of this file, via any medium is strictly prohibited.
+# Proprietary and confidential.
+##
+
+version: '3'
+services:
+  backend:
+    container_name: wc18-backend
+    restart: always
+    build: ../../../wc18-back
+    image: wc18/backend
+    depends_on:
+      - db
+    env_file:
+        - ~/.wc18/conf/env
+    networks:
+      - wc18_network
+    labels:
+      - "traefik.backend=wc18backend"
+      - "traefik.port=8080"
+      - "traefik.docker.network=wc18_network"
+      - "traefik.frontend.rule=PathPrefix:/api"
+      - "traefik.enable=true"
+
+  frontend:
+    container_name: wc18-frontend
+    restart: always
+    build: ../../../wc18-front
+    image: wc18/frontend
+    depends_on:
+      - backend
+    networks:
+      - wc18_network
+    labels:
+      - "traefik.backend=wc18frontend"
+      - "traefik.port=80"
+      - "traefik.docker.network=wc18_network"
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.enable=true"
+
+  db:
+    image: mysql:5.5
+    container_name: wc18-db
+    restart: always
+    env_file:
+      - ~/.wc18/mysql/env
+    volumes:
+      - ~/.wc18/data/mysql:/var/lib/mysql
+    networks:
+      - wc18_network
+    labels:
+      - "traefik.enable=false"
+
+networks:
+  wc18_network:
+    external: true

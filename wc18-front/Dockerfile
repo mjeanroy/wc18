@@ -25,6 +25,6 @@ RUN npm run dist
 FROM nginx:alpine
 LABEL author="Mickael Jeanroy"
 RUN apk update && apk upgrade
-COPY --from=wc18-front-built /app/wc18/dist /usr/share/nginx/html
+COPY --from=wc18-front-built /app/wc18/dist/wc18-front /usr/share/nginx/html
 EXPOSE 80 443
 CMD [ "nginx", "-g", "daemon off;" ]
