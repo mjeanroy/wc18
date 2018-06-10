@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Date;
 
 @Service
 public class BetService {
@@ -34,8 +35,14 @@ public class BetService {
 	 * @return List of bets.
 	 */
 	@Transactional(readOnly = true)
-	public Iterable<Bet> findByUser(User user) {
-		return betDao.findByUser(user);
+	public Iterable<Bet> findByUser(User user, Boolean locked) {
+		if (locked == null) {
+			return betDao.findByUser(user);
+		} else if (locked) {
+			return betDao.findByUserAndMatchDateLessThan(user, new Date());
+		} else {
+			return betDao.findByUserAndMatchDateGreaterThanOrEqual(user, new Date());
+		}
 	}
 
 	/**

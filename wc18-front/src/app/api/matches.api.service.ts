@@ -25,7 +25,11 @@ export class MatchesApiService {
    *
    * @returns {Observable<Match[]>} The asynchronous response.
    */
-  findAll(): Observable<Match[]> {
-    return this._http.get<Match[]>('/api/matches');
+  findAll(locked: boolean): Observable<Match[]> {
+    return this._http.get<Match[]>('/api/matches', {
+      params: {
+        locked: locked.toString(),
+      },
+    });
   }
 }

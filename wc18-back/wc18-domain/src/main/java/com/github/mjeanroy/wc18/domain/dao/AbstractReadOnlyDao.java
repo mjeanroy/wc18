@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -61,6 +62,20 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	@SuppressWarnings("unchecked")
 	Iterable<T> findAll(Query query) {
 		return (Iterable<T>) query.getResultList();
+	}
+
+	Iterable<T> findAll(String jpql, Map<String, Object> parameters) {
+		Query query = getEntityManager().createQuery(jpql);
+		for (Map.Entry<String, Object> entry : parameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+
+		return findAll(query);
+	}
+
+	Iterable<T> findAll(String jpql) {
+		Query query = getEntityManager().createQuery(jpql);
+		return findAll(query);
 	}
 
 	@SuppressWarnings("unchecked")

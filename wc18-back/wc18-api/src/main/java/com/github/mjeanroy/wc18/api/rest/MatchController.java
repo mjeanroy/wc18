@@ -12,6 +12,7 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
@@ -33,8 +34,10 @@ public class MatchController {
 	}
 
 	@GetMapping
-	public Iterable<MatchDto> findAll() {
-		Iterable<Match> matches = matchService.findAll();
+	public Iterable<MatchDto> findAll(
+			@RequestParam(name = "locked", required = false) Boolean locked) {
+
+		Iterable<Match> matches = matchService.findAll(locked);
 		return matchDtoMapper.from(matches);
 	}
 }

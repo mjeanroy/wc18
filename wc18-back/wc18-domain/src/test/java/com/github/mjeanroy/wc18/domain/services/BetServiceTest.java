@@ -17,6 +17,7 @@ import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -31,6 +32,7 @@ import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
@@ -66,16 +68,43 @@ public class BetServiceTest extends AbstractServiceTest {
 	@Test
 	public void it_should_get_all_bets_of_given_user() {
 		User user = new UserBuilder().withRandomId().build();
-
-		Bet bet1 = createBet(user, new MatchBuilder().withRandomId().build(), 1, 0);
-		Bet bet2 = createBet(user, new MatchBuilder().withRandomId().build(), 0, 0);
-		List<Bet> bets = asList(bet1, bet2);
+		List<Bet> bets = createFixtures(user);
 		when(betDao.findByUser(user)).thenReturn(bets);
 
-		Iterable<Bet> results = betService.findByUser(user);
+		Iterable<Bet> results = betService.findByUser(user, null);
 
 		assertThat(results).isSameAs(bets);
 		verify(betDao).findByUser(user);
+	}
+
+	@Test
+	public void it_should_get_all_non_locked_bets_of_given_user() {
+		User user = new UserBuilder().withRandomId().build();
+		List<Bet> bets = createFixtures(user);
+		when(betDao.findByUserAndMatchDateGreaterThanOrEqual(eq(user), any(Date.class))).thenReturn(bets);
+
+		Iterable<Bet> results = betService.findByUser(user, false);
+
+		assertThat(results).isSameAs(bets);
+
+		ArgumentCaptor<Date> argCaptor = ArgumentCaptor.forClass(Date.class);
+		verify(betDao).findByUserAndMatchDateGreaterThanOrEqual(eq(user), argCaptor.capture());
+		assertThat(argCaptor.getValue()).isCloseTo(new Date(), 1000);
+	}
+
+	@Test
+	public void it_should_get_all_locked_bets_of_given_user() {
+		User user = new UserBuilder().withRandomId().build();
+		List<Bet> bets = createFixtures(user);
+		when(betDao.findByUserAndMatchDateLessThan(eq(user), any(Date.class))).thenReturn(bets);
+
+		Iterable<Bet> results = betService.findByUser(user, true);
+
+		assertThat(results).isSameAs(bets);
+
+		ArgumentCaptor<Date> argCaptor = ArgumentCaptor.forClass(Date.class);
+		verify(betDao).findByUserAndMatchDateLessThan(eq(user), argCaptor.capture());
+		assertThat(argCaptor.getValue()).isCloseTo(new Date(), 1000);
 	}
 
 	@Test
@@ -142,6 +171,12 @@ public class BetServiceTest extends AbstractServiceTest {
 			.hasMessage("Match '" + match.getId() + "' is locked for bet");
 
 		verifyZeroInteractions(betDao);
+	}
+
+	private List<Bet> createFixtures(User user) {
+		Bet bet1 = createBet(user, new MatchBuilder().withRandomId().build(), 1, 0);
+		Bet bet2 = createBet(user, new MatchBuilder().withRandomId().build(), 0, 0);
+		return asList(bet1, bet2);
 	}
 
 	private Bet createBet(User user, Match match, int score1, int score2) {

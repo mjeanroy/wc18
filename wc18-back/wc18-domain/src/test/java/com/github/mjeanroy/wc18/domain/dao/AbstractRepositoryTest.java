@@ -34,12 +34,11 @@ import javax.sql.DataSource;
 @DbUnitDataSet("/dbunit")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AbstractRepositoryTest.RepositoryTestConfiguration.class)
+@Transactional
 @TestExecutionListeners({
 	DependencyInjectionTestExecutionListener.class,
 	TransactionalDbUnitTestExecutionListener.class
 })
-
-@Transactional
 abstract class AbstractRepositoryTest {
 
 	@Configuration

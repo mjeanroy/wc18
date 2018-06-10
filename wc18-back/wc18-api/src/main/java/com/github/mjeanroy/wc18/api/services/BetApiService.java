@@ -43,9 +43,9 @@ public class BetApiService {
 	 * @param principal The principal.
 	 * @return All bets, may be empty.
 	 */
-	public Iterable<BetDto> findAll(Principal principal) {
+	public Iterable<BetDto> findAll(Principal principal, Boolean locked) {
 		User user = getUserOrFail(principal);
-		Iterable<Bet> bets = betService.findByUser(user);
+		Iterable<Bet> bets = betService.findByUser(user, locked);
 		return betDtoMapper.from(bets);
 	}
 

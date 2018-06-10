@@ -26,6 +26,13 @@ public class User extends AbstractEntity {
 	@Column(name = "password", nullable = false)
 	private String password;
 
+	/**
+	 * User leagues.
+	 */
+	// @ManyToMany
+	// @JoinTable(name = "user_leagues")
+	// private Set<League> leagues;
+
 	// Default constructor, mandatory for Hibernate.
 	private User() {
 	}

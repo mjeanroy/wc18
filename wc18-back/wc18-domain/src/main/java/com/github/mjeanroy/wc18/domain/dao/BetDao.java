@@ -11,7 +11,11 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Optional;
+
+import static java.util.Collections.singletonMap;
 
 @Repository
 public class BetDao extends AbstractCrudDao<Bet> {
@@ -26,12 +30,60 @@ public class BetDao extends AbstractCrudDao<Bet> {
 		String query =
 			"SELECT x " +
 			"FROM Bet x " +
-			"WHERE x.user = :user " +
-			"ORDER BY x.match.date";
+			"INNER JOIN FETCH x.match m " +
+			"INNER JOIN FETCH x.user u " +
+			"WHERE u = :user " +
+			"ORDER BY m.date";
 
-		return findAll(getEntityManager()
-			.createQuery(query)
-			.setParameter("user", user));
+		return findAll(query, singletonMap(
+				"user", user
+		));
+	}
+
+	/**
+	 * Find all bet of given user.
+	 *
+	 * @param user The user.
+	 * @param date The match date.
+	 * @return All bets.
+	 */
+	public Iterable<Bet> findByUserAndMatchDateLessThan(User user, Date date) {
+		String query =
+				"SELECT x " +
+						"FROM Bet x " +
+						"INNER JOIN FETCH x.match m " +
+						"INNER JOIN FETCH x.user u " +
+						"WHERE u = :user " +
+						"AND m.date < :date " +
+						"ORDER BY m.date ASC";
+
+		return findAll(query, new HashMap<String, Object>() {{
+				put("user", user);
+				put("date", date);
+		}});
+	}
+
+	/**
+	 * Find all bet of given user.
+	 *
+	 * @param user The user.
+	 * @param date The match date.
+	 * @return All bets.
+	 */
+	public Iterable<Bet> findByUserAndMatchDateGreaterThanOrEqual(User user, Date date) {
+		String query =
+				"SELECT x " +
+						"FROM Bet x " +
+						"INNER JOIN FETCH x.match m " +
+						"INNER JOIN FETCH x.user u " +
+						"WHERE u = :user " +
+						"AND m.date >= :date " +
+						"ORDER BY m.date ASC";
+
+		return findAll(query, new HashMap<String, Object>() {{
+			put("user", user);
+			put("date", date);
+		}});
 	}
 
 	/**

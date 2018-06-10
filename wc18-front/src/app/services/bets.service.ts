@@ -33,9 +33,11 @@ export class BetsService {
    * @returns {Observable<Bet[]>} The bet response.
    */
   getBets(): Observable<Bet[]> {
+    const locked = false;
+
     const observables = [
-      this._matchesApiService.findAll(),
-      this._betsApiService.findAll(),
+      this._matchesApiService.findAll(locked),
+      this._betsApiService.findAll(locked),
       this._loginService.me(),
     ];
 

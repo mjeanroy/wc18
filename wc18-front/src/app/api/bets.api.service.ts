@@ -23,10 +23,15 @@ export class BetsApiService {
   /**
    * Get all bets of current authenticated user.
    *
+   * @param {boolean} locked Flag to look for locked or non-locked matches only.
    * @returns {Observable<Bet[]>} The asynchronous response.
    */
-  findAll(): Observable<Bet[]> {
-    return this._http.get<Bet[]>('/api/me/bets');
+  findAll(locked: boolean): Observable<Bet[]> {
+    return this._http.get<Bet[]>('/api/me/bets', {
+      params: {
+        locked: locked.toString(),
+      },
+    });
   }
 
   /**

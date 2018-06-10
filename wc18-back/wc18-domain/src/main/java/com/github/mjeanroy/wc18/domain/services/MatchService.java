@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -35,7 +36,13 @@ public class MatchService {
 	 * @return All matches.
 	 */
 	@Transactional(readOnly = true)
-	public Iterable<Match> findAll() {
-		return matchDao.findAllOrderByDate();
+	public Iterable<Match> findAll(Boolean locked) {
+		if (locked == null) {
+			return matchDao.findAllOrderByDate();
+		} else if (locked) {
+			return matchDao.findByDateLessThanOrderByDate(new Date());
+		} else {
+			return matchDao.findByDateGreaterThanOrEqualOrderByDate(new Date());
+		}
 	}
 }

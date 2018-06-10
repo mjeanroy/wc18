@@ -6,17 +6,12 @@
 
 package com.github.mjeanroy.wc18.domain.services;
 
-import org.junit.Before;
-
-import static org.mockito.MockitoAnnotations.initMocks;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * Abstract template for service test suite.
  */
+@RunWith(MockitoJUnitRunner.Silent.class)
 public abstract class AbstractServiceTest {
-
-	@Before
-	public void initMockito() {
-		initMocks(this);
-	}
 }

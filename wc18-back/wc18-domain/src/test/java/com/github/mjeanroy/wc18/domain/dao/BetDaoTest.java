@@ -8,22 +8,21 @@ package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
-import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
-import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.ScoreBuilder;
-import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
-import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
+import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 
@@ -55,12 +54,50 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	@Test
 	public void it_should_find_bet_of_given_user() {
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
-		Iterable<Bet> bets = betDao.findByUser(user);
+		List<Bet> bets = toList(betDao.findByUser(user));
+		assertBetsOfGivenUser(bets, user);
+	}
+
+	@Test
+	public void it_should_find_bet_of_given_user_with_match_date_less_than() {
+		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
+		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
+
+		List<Bet> bets = toList(betDao.findByUserAndMatchDateLessThan(user, date));
 
 		assertThat(bets)
-			.isNotEmpty()
-			.extracting(Bet::getUser)
-			.containsOnly(user);
+				.isNotEmpty()
+				.are(new Condition<Bet>() {
+					@Override
+					public boolean matches(Bet value) {
+						return value.getMatch().getDate().getTime() < date.getTime();
+					}
+				});
+
+		assertBetsOfGivenUser(bets, user);
+	}
+
+	@Test
+	public void it_should_find_bet_of_given_user_with_match_date_greater_than() {
+		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
+		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
+
+		List<Bet> bets = toList(betDao.findByUserAndMatchDateGreaterThanOrEqual(user, date));
+
+		assertThat(bets)
+				.isNotEmpty()
+				.are(new Condition<Bet>() {
+					@Override
+					public boolean matches(Bet value) {
+						return value.getMatch().getDate().getTime() >= date.getTime();
+					}
+				});
+
+		assertBetsOfGivenUser(bets, user);
+	}
+
+	private void assertBetsOfGivenUser(List<Bet> bets, User user) {
+		assertThat(bets).extracting(Bet::getUser).containsOnly(user);
 	}
 
 	@Test
