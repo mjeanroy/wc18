@@ -9,7 +9,7 @@ docker run -d \
   -v ${PWD}/acme.json:/acme.json \
   -p 80:80 \
   -p 443:443 \
-  -l traefik.frontend.rule=Host:traefik.wc18.mr-robot.sh \
+  -l traefik.frontend.rule=Host:traefik.mr-robot.sh \
   -l traefik.port=8080 \
   --network wc18_network \
   --name traefik \

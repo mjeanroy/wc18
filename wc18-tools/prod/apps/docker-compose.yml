@@ -21,6 +21,7 @@ services:
       - "traefik.backend=wc18backend"
       - "traefik.port=8080"
       - "traefik.docker.network=wc18_network"
+      - "traefik.frontend.rule=Host:wc18.mr-robot.sh"
       - "traefik.frontend.rule=PathPrefix:/api"
       - "traefik.enable=true"
 
@@ -37,6 +38,7 @@ services:
       - "traefik.backend=wc18frontend"
       - "traefik.port=80"
       - "traefik.docker.network=wc18_network"
+      - "traefik.frontend.rule=Host:wc18.mr-robot.sh"
       - "traefik.frontend.rule=PathPrefix:/"
       - "traefik.enable=true"
 
