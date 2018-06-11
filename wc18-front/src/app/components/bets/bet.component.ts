@@ -4,7 +4,7 @@
  * Proprietary and confidential.
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, DoCheck, Input, OnChanges, OnInit} from '@angular/core';
 import { Bet } from '../../models';
 import { BetsApiService } from '../../api';
 import { SnackbarService } from '../../services';
@@ -16,7 +16,7 @@ import { SnackbarService } from '../../services';
     './bet.component.css',
   ],
 })
-export class BetComponent implements OnInit {
+export class BetComponent implements OnInit, DoCheck {
   @Input("bet") bet: Bet;
 
   private _snackbarService: SnackbarService;
@@ -35,6 +35,10 @@ export class BetComponent implements OnInit {
     this._updateBtnColor();
   }
 
+  ngDoCheck() {
+    this._updateBtnColor();
+  }
+
   save() {
     this.saving = true;
     this._betsApiService.saveOrUpdate(this.bet).subscribe(
@@ -44,7 +48,9 @@ export class BetComponent implements OnInit {
   }
 
   private _updateBtnColor() {
-    this.btnColor = this.bet.id ? 'success' : 'primary';
+    if (this.bet) {
+      this.btnColor = this.bet.id ? 'success' : 'primary';
+    }
   }
 
   private _onSaved(bet: Bet) {

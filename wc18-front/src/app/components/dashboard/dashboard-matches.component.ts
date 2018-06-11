@@ -38,17 +38,28 @@ export class DashboardMatchesComponent implements OnChanges {
   }
 
   hasNext() {
+    if (!this.bets) {
+      return false;
+    }
+
     return this.idx < (this.bets.length - 1);
   }
 
   hasPrevious() {
+    if (!this.bets) {
+      return false;
+    }
+
     return this.idx > 0;
   }
 
   private _goAt(idx) {
-    this.idx = idx;
-    this.current = this.bets[idx];
+    if (this.bets) {
+      this.idx = idx;
+      this.current = this.bets[idx];
+    }
   }
+
   private _onBetsUpdated() {
     if (this.bets) {
       this._update();

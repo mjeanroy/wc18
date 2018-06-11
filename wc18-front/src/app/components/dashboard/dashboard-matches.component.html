@@ -14,7 +14,8 @@
       </button>
     </div>
   </div>
-  <div class="card-body">
+
+  <div class="card-body" *ngIf="bets">
     <div class="match-hour">
       <span>{{ current?.match.date | date:'mediumDate' }}</span>
       <span> - </span>
@@ -32,5 +33,9 @@
     </div>
 
     <app-bet [bet]="current"></app-bet>
+  </div>
+
+  <div class="card-body" *ngIf="!bets">
+    <mat-spinner [diameter]="25" style="margin: auto"></mat-spinner>
   </div>
 </div>

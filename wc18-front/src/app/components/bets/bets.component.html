@@ -1,5 +1,10 @@
 <div>
-  <div *ngFor="let bet of bets">
-    <app-bet [bet]="bet"></app-bet>
+  <div *ngIf="bets">
+    <div *ngFor="let bet of bets">
+      <app-bet [bet]="bet"></app-bet>
+    </div>
+  </div>
+  <div *ngIf="!bets">
+    <mat-spinner [diameter]="25" style="margin: auto"></mat-spinner>
   </div>
 </div>

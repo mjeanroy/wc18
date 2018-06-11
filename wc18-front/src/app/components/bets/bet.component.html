@@ -1,17 +1,19 @@
 <div>
-  <span class="bet-team-name bet-team-name1">{{ bet.match.team1.name }}</span>
-  <mat-form-field class="bet-score bet-score1">
-    <input matInput type="number" name="score1" title="Score 1" [(ngModel)]="bet.score.score1" min="0" required>
-  </mat-form-field>
-  <span class="bet-separator"> - </span>
-  <mat-form-field class="bet-score bet-score2">
-    <input matInput type="number" name="score2" title="Score 1" [(ngModel)]="bet.score.score2" min="0" required>
-  </mat-form-field>
-  <span class="bet-team-name  bet-team-name2">{{ bet.match.team2.name }}</span>
-  <span class="bet-action">
-    <button mat-mini-fab type="submit" (click)="save()" *ngIf="!saving" [color]="btnColor">
-      <mat-icon>check</mat-icon>
-    </button>
-    <mat-spinner *ngIf="saving" [diameter]="25"></mat-spinner>
-  </span>
+  <div *ngIf="bet">
+    <span class="bet-team-name bet-team-name1">{{ bet.match.team1.name }}</span>
+    <mat-form-field class="bet-score bet-score1">
+      <input matInput type="number" name="score1" title="Score 1" [(ngModel)]="bet.score.score1" min="0" required>
+    </mat-form-field>
+    <span class="bet-separator"> - </span>
+    <mat-form-field class="bet-score bet-score2">
+      <input matInput type="number" name="score2" title="Score 1" [(ngModel)]="bet.score.score2" min="0" required>
+    </mat-form-field>
+    <span class="bet-team-name  bet-team-name2">{{ bet.match.team2.name }}</span>
+    <span class="bet-action">
+      <button mat-mini-fab type="submit" (click)="save()" *ngIf="!saving" [color]="btnColor">
+        <mat-icon>check</mat-icon>
+      </button>
+      <mat-spinner *ngIf="saving" [diameter]="25"></mat-spinner>
+    </span>
+  </div>
 </div>
