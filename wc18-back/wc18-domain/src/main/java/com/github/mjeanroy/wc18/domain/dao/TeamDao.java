@@ -23,6 +23,6 @@ public class TeamDao extends AbstractReadOnlyDao<Team> {
 				"FROM Team t " +
 				"ORDER BY t.name";
 
-		return findAll(getEntityManager().createQuery(jpql));
+		return findAll(jpql);
 	}
 }

@@ -4,7 +4,7 @@
  * Proprietary and confidential.
  */
 
-package com.github.mjeanroy.wc18.domain.configuration;
+package com.github.mjeanroy.wc18.commons;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,15 +12,15 @@ import org.slf4j.LoggerFactory;
 /**
  * Static Environment Utilities.
  */
-public final class EnvironmentUtils {
+public final class Environments {
 
 	/**
 	 * Class Logger.
 	 */
-	private static final Logger log = LoggerFactory.getLogger(EnvironmentUtils.class);
+	private static final Logger log = LoggerFactory.getLogger(Environments.class);
 
 	// Ensure non instantiation.
-	private EnvironmentUtils() {
+	private Environments() {
 	}
 
 	/**
@@ -34,7 +34,7 @@ public final class EnvironmentUtils {
 		log.debug("Get '{}' environment variable", name);
 
 		String value = System.getenv(name);
-		if (value == null) {
+		if (MoreStrings.isEmpty(value)) {
 			log.debug("Environment variable '{}' not set, use default value", name);
 			return defaultValue;
 		}

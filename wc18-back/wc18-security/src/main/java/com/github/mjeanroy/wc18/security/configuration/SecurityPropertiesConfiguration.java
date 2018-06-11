@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.google.common.base.MoreObjects.firstNonNull;
+import static com.github.mjeanroy.wc18.commons.Environments.getEnvOrDefault;
 
 @Configuration
 public class SecurityPropertiesConfiguration {
@@ -28,8 +28,8 @@ public class SecurityPropertiesConfiguration {
 			@Value("${security.secret}") String secret) {
 
 		log.info("Creating securityProperties instance");
-		String securityHeaderName = firstNonNull(System.getenv("SECURITY_HEADER_NAME"), headerName);
-		String securitySecret = firstNonNull(System.getenv("SECURITY_SECRET"), secret);
+		String securityHeaderName = getEnvOrDefault("SECURITY_HEADER_NAME", headerName);
+		String securitySecret = getEnvOrDefault("SECURITY_SECRET", secret);
 		return new SecurityProperties(securityHeaderName, securitySecret);
 	}
 }

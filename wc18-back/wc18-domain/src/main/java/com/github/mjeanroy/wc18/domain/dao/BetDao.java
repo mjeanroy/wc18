@@ -15,7 +15,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Optional;
 
-import static java.util.Collections.singletonMap;
+import static com.github.mjeanroy.wc18.commons.MoreCollections.newHashMap;
+import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 
 @Repository
 public class BetDao extends AbstractCrudDao<Bet> {
@@ -29,14 +30,14 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	public Iterable<Bet> findByUser(User user) {
 		String query =
 			"SELECT x " +
-			"FROM Bet x " +
-			"INNER JOIN FETCH x.match m " +
-			"INNER JOIN FETCH x.user u " +
-			"WHERE u = :user " +
-			"ORDER BY m.date";
+					"FROM Bet x " +
+					"INNER JOIN FETCH x.match m " +
+					"INNER JOIN FETCH x.user u " +
+					"WHERE u = :user " +
+					"ORDER BY m.date";
 
-		return findAll(query, singletonMap(
-				"user", user
+		return findAll(query, newHashMap(
+				tuple("user", user)
 		));
 	}
 
@@ -80,10 +81,10 @@ public class BetDao extends AbstractCrudDao<Bet> {
 						"AND m.date >= :date " +
 						"ORDER BY m.date ASC";
 
-		return findAll(query, new HashMap<String, Object>() {{
-			put("user", user);
-			put("date", date);
-		}});
+		return findAll(query, newHashMap(
+			tuple("user", user),
+			tuple("date", date)
+		));
 	}
 
 	/**
@@ -96,13 +97,13 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	public Optional<Bet> findOne(User user, Match match) {
 		String query =
 			"SELECT x " +
-				"FROM Bet x " +
-				"WHERE x.user = :user " +
-				"AND x.match = :match";
+					"FROM Bet x " +
+					"WHERE x.user = :user " +
+					"AND x.match = :match";
 
-		return findOne(getEntityManager()
-			.createQuery(query)
-			.setParameter("user", user)
-			.setParameter("match", match));
+		return findOne(query, newHashMap(
+				tuple("user", user),
+				tuple("match", match)
+		));
 	}
 }

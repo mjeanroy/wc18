@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.github.mjeanroy.wc18.domain.configuration.EnvironmentUtils.getEnvOrDefault;
+import static com.github.mjeanroy.wc18.commons.Environments.getEnvOrDefault;
 
 @Configuration
 public class LiquibasePropertiesConfiguration {
@@ -31,8 +31,8 @@ public class LiquibasePropertiesConfiguration {
 
 		log.info("Creating liquibaseProperties instance");
 		String liquibaseChangelog = getEnvOrDefault("LIQUIBASE_CHANGELOG", changeLog);
-		Boolean liquibaseShouldRun = Boolean.valueOf(getEnvOrDefault("LIQUIBASE_SHOULD_RUN", Boolean.toString(shouldRun)));
-		Boolean liquibaseDropFirst = Boolean.valueOf(getEnvOrDefault("LIQUIBASE_DROP_FIRST", Boolean.toString(dropFirst)));
+		boolean liquibaseShouldRun = Boolean.valueOf(getEnvOrDefault("LIQUIBASE_SHOULD_RUN", Boolean.toString(shouldRun)));
+		boolean liquibaseDropFirst = Boolean.valueOf(getEnvOrDefault("LIQUIBASE_DROP_FIRST", Boolean.toString(dropFirst)));
 		String liquibaseContexts = getEnvOrDefault("LIQUIBASE_CONTEXTS", contexts);
 		return new LiquibaseProperties(liquibaseChangelog, liquibaseShouldRun, liquibaseDropFirst, liquibaseContexts);
 	}

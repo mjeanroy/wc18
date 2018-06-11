@@ -13,13 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.inject.Inject;
 import java.util.List;
 
 @Configuration
-public class SecurityWebMvcConfiguration extends WebMvcConfigurerAdapter {
+public class SecurityWebMvcConfiguration implements WebMvcConfigurer {
 
 	/**
 	 * Class logger.

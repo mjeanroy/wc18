@@ -11,7 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 
-import static java.util.Collections.singletonMap;
+import static com.github.mjeanroy.wc18.commons.MoreCollections.newHashMap;
+import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 
 @Repository
 public class MatchDao extends AbstractReadOnlyDao<Match> {
@@ -36,8 +37,8 @@ public class MatchDao extends AbstractReadOnlyDao<Match> {
 				"WHERE m.date < :date " +
 				"ORDER BY m.date ASC, m.team1.name ASC";
 
-		return findAll(jpql, singletonMap(
-				"date", date
+		return findAll(jpql, newHashMap(
+				tuple("date", date)
 		));
 	}
 
@@ -50,8 +51,8 @@ public class MatchDao extends AbstractReadOnlyDao<Match> {
 						"WHERE m.date >= :date " +
 						"ORDER BY m.date ASC, m.team1.name ASC";
 
-		return findAll(jpql, singletonMap(
-				"date", date
+		return findAll(jpql, newHashMap(
+				tuple("date", date)
 		));
 	}
 }

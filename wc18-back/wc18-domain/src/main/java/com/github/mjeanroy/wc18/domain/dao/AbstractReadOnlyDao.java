@@ -42,7 +42,7 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	 * @return All Entities.
 	 */
 	public Iterable<T> findAll() {
-		return findAll(entityManager.createQuery("SELECT x FROM " + entityClass.getSimpleName() + " x"));
+		return findAll("SELECT x FROM " + entityClass.getSimpleName() + " x");
 	}
 
 	/**
@@ -59,11 +59,13 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	Iterable<T> findAll(Query query) {
-		return (Iterable<T>) query.getResultList();
-	}
-
+	/**
+	 * Find values in database.
+	 *
+	 * @param jpql The JPQL query.
+	 * @param parameters Query parameters.
+	 * @return The result value.
+	 */
 	Iterable<T> findAll(String jpql, Map<String, Object> parameters) {
 		Query query = getEntityManager().createQuery(jpql);
 		for (Map.Entry<String, Object> entry : parameters.entrySet()) {
@@ -73,18 +75,32 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 		return findAll(query);
 	}
 
+	/**
+	 * Find values in database.
+	 *
+	 * @param jpql The JPQL query.
+	 * @return The result value.
+	 */
 	Iterable<T> findAll(String jpql) {
 		Query query = getEntityManager().createQuery(jpql);
 		return findAll(query);
 	}
 
-	@SuppressWarnings("unchecked")
-	Optional<T> findOne(Query query) {
-		try {
-			return Optional.of((T) query.getSingleResult());
-		} catch (NoResultException ex) {
-			return Optional.empty();
+	/**
+	 * Find single value in database and returns empty optional without any
+	 * results.
+	 *
+	 * @param jpql The JPQL query.
+	 * @param parameters The query parameters.
+	 * @return The result value.
+	 */
+	Optional<T> findOne(String jpql, Map<String, Object> parameters) {
+		Query query = getEntityManager().createQuery(jpql);
+		for (Map.Entry<String, Object> entry : parameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
 		}
+
+		return findOne(query);
 	}
 
 	/**
@@ -94,5 +110,26 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	 */
 	EntityManager getEntityManager() {
 		return entityManager;
+	}
+
+	/**
+	 * Find value in database, and return empty optional
+	 * without any results.
+	 *
+	 * @param query The JPA query.
+	 * @return The result value.
+	 */
+	@SuppressWarnings("unchecked")
+	private Optional<T> findOne(Query query) {
+		try {
+			return Optional.of((T) query.getSingleResult());
+		} catch (NoResultException ex) {
+			return Optional.empty();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private Iterable<T> findAll(Query query) {
+		return (Iterable<T>) query.getResultList();
 	}
 }

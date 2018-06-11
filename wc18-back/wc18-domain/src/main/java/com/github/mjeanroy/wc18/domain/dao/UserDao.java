@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+import static com.github.mjeanroy.wc18.commons.MoreCollections.newHashMap;
+import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
+
 @Repository
 public class UserDao extends AbstractCrudDao<User> {
 
@@ -26,8 +29,8 @@ public class UserDao extends AbstractCrudDao<User> {
 				"FROM User x " +
 				"WHERE x.login = :login";
 
-		return findOne(getEntityManager()
-			.createQuery(query)
-			.setParameter("login", login));
+		return findOne(query, newHashMap(
+				tuple("login", login)
+		));
 	}
 }
