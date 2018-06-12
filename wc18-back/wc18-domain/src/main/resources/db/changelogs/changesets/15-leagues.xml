@@ -1,0 +1,51 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="15-leagues.xml">
+
+  <changeSet id="create-table-leagues" author="mjeanroy" context="schema, test">
+    <createTable tableName="leagues">
+      <column name="id" type="varchar(36)">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="version" type="int" defaultValueNumeric="0">
+        <constraints nullable="false"/>
+      </column>
+      <column name="creation_date" type="DATETIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="name" type="varchar(50)">
+        <constraints nullable="false" unique="true"/>
+      </column>
+    </createTable>
+    <modifySql dbms="mysql">
+      <append value="engine innodb"/>
+    </modifySql>
+  </changeSet>
+
+  <changeSet id="create-table-user-leagues" author="mjeanroy" context="schema, test">
+    <createTable tableName="user_leagues">
+      <column name="user_id" type="varchar(36)">
+        <constraints nullable="false" foreignKeyName="user_leagues_user_id" references="users(id)"/>
+      </column>
+      <column name="league_id" type="varchar(36)">
+        <constraints nullable="false" foreignKeyName="user_leagues_league_id" references="leagues(id)"/>
+      </column>
+    </createTable>
+    <modifySql dbms="mysql">
+      <append value="engine innodb"/>
+    </modifySql>
+  </changeSet>
+
+  <changeSet id="add-user-leagues-primary-key" author="mjeanroy" context="schema, test">
+    <addPrimaryKey tableName="user_leagues" columnNames="user_id, league_id" constraintName="pk_user_leagues"/>
+  </changeSet>
+
+</databaseChangeLog>

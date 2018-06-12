@@ -68,6 +68,7 @@ public class Match extends AbstractEntity {
 
 	// Empty constructor, mandatory for hibernate.
 	private Match() {
+		super();
 	}
 
 	/**
@@ -79,6 +80,8 @@ public class Match extends AbstractEntity {
 	 * @param team2 The second team.
 	 */
 	public Match(Date date, Stage stage, Team team1, Team team2) {
+		this();
+
 		setDate(date);
 		setStage(stage);
 		setTeam1(team1);

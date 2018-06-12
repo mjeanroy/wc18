@@ -26,7 +26,6 @@ public class BetDto extends AbstractDto {
 	 * The match.
 	 */
 	@NotNull
-	@Valid
 	private MatchDto match;
 
 	/**

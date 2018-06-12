@@ -9,7 +9,6 @@ package com.github.mjeanroy.wc18.api.dto;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -18,7 +17,6 @@ public class MatchDto extends AbstractDto {
 	/**
 	 * The match id.
 	 */
-	@NotBlank
 	private String id;
 
 	/**

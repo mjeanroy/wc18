@@ -8,7 +8,11 @@ package com.github.mjeanroy.wc18.domain.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -29,9 +33,11 @@ public class User extends AbstractEntity {
 	/**
 	 * User leagues.
 	 */
-	// @ManyToMany
-	// @JoinTable(name = "user_leagues")
-	// private Set<League> leagues;
+	@ManyToMany
+	@JoinTable(name = "user_leagues",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "league_id"))
+	private Set<League> leagues;
 
 	// Default constructor, mandatory for Hibernate.
 	private User() {
