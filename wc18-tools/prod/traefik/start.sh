@@ -3,6 +3,12 @@
 echo "[debug] Starting traefik reverse proxy"
 echo "[debug] Using PWD: ${PWD}"
 
+echo "[debug] Creating acme.json file"
+rm -rf ${PWD}/acme.json
+touch ${PWD}/acme.json
+chmod 600 ${PWD}/acme.json
+
+echo "[debug] Starting docker traefik image"
 docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ${PWD}/traefik.toml:/traefik.toml \
