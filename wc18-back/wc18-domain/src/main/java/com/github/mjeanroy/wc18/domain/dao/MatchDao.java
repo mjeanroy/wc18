@@ -15,7 +15,7 @@ import static com.github.mjeanroy.wc18.commons.MoreCollections.newHashMap;
 import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 
 @Repository
-public class MatchDao extends AbstractReadOnlyDao<Match> {
+public class MatchDao extends AbstractCrudDao<Match> {
 
 	public Iterable<Match> findAllOrderByDate() {
 		String jpql =

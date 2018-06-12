@@ -7,6 +7,9 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.Match;
+import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Team;
+import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -20,7 +23,7 @@ import java.util.List;
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchDaoTest extends AbstractReadOnlyDaoTest<Match, MatchDao> {
+public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 
 	@Inject
 	private MatchDao matchDao;
@@ -33,6 +36,18 @@ public class MatchDaoTest extends AbstractReadOnlyDaoTest<Match, MatchDao> {
 	@Override
 	MatchDao getDao() {
 		return matchDao;
+	}
+
+	@Override
+	Match createOne() {
+		Team team1 = findOne(Team.class, "5820fadd-ae19-48d5-b4e5-811b08f58b87");
+		Team team2 = findOne(Team.class, "e9c4e714-5b4b-4e2d-a896-9f043c295869");
+		return new MatchBuilder()
+				.withDate(new Date())
+				.withStage(Stage.FINAL)
+				.withTeam1(team1)
+				.withTeam2(team2)
+				.build();
 	}
 
 	@Test

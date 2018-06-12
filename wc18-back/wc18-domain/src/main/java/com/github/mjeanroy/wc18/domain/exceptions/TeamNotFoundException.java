@@ -4,14 +4,14 @@
  * Proprietary and confidential.
  */
 
-package com.github.mjeanroy.wc18.api.exceptions;
+package com.github.mjeanroy.wc18.domain.exceptions;
 
 import com.github.mjeanroy.wc18.domain.exceptions.AbstractException;
 
-public class MatchNotFoundException extends AbstractException {
+public class TeamNotFoundException extends AbstractException {
 
 	/**
-	 * The match identifier.
+	 * The team identifier.
 	 */
 	private final String id;
 
@@ -20,8 +20,8 @@ public class MatchNotFoundException extends AbstractException {
 	 *
 	 * @param id The missing identifier.
 	 */
-	public MatchNotFoundException(String id) {
-		super(String.format("Cannot find match '%s'", id));
+	public TeamNotFoundException(String id) {
+		super(String.format("Cannot find team '%s'", id));
 		this.id = id;
 	}
 

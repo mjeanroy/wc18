@@ -27,17 +27,8 @@ public class SecurityConfiguration {
 	 */
 	private static final Logger log = LoggerFactory.getLogger(SecurityConfiguration.class);
 
-	/**
-	 * The security properties.
-	 */
-	private final SecurityProperties securityProperties;
-
-	public SecurityConfiguration(SecurityProperties securityProperties) {
-		this.securityProperties = securityProperties;
-	}
-
 	@Bean
-	public TokenEncoder jwtTokenEncoder() {
+	public TokenEncoder jwtTokenEncoder(SecurityProperties securityProperties) {
 		log.info("Creating JWT Token Encoder");
 		return new JwtTokenEncoder(securityProperties.getSecret());
 	}
@@ -49,7 +40,7 @@ public class SecurityConfiguration {
 	}
 
 	@Bean
-	public TokenParser tokenParser(TokenEncoder tokenEncoder) {
+	public TokenParser tokenParser(SecurityProperties securityProperties, TokenEncoder tokenEncoder) {
 		String headerName = securityProperties.getHeaderName();
 		log.info("Creating security token parser with header name: {}", headerName);
 		return new AuthHeaderTokenParser(headerName, tokenEncoder);

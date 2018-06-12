@@ -7,10 +7,6 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
-import org.springframework.core.ResolvableType;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Simple template structure for DAO Implementation.
@@ -28,5 +24,13 @@ public abstract class AbstractCrudDao<T extends AbstractEntity> extends Abstract
 	public T save(T entity) {
 		getEntityManager().persist(entity);
 		return entity;
+	}
+
+	/**
+	 * Remove entity.
+	 * @param entity Entity to remove.
+	 */
+	public void delete(T entity) {
+		getEntityManager().remove(entity);
 	}
 }

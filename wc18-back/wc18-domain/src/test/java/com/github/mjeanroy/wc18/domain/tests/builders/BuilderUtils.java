@@ -6,14 +6,14 @@
 
 package com.github.mjeanroy.wc18.domain.tests.builders;
 
-import org.apache.commons.lang3.reflect.FieldUtils;
+import com.github.mjeanroy.wc18.domain.tests.commons.ReflectionTestUtils;
 
 import java.lang.reflect.Constructor;
 
 /**
  * Static Reflection Utilities, to use in unit tests only.
  */
-final class BuilderUtils {
+public final class BuilderUtils {
 
 	// Ensure non instantiation.
 	private BuilderUtils() {
@@ -56,10 +56,6 @@ final class BuilderUtils {
 	 * @param value The field value.
 	 */
 	static void writeField(Object target, String fieldName, Object value) {
-		try {
-			FieldUtils.writeField(target, fieldName, value, true);
-		} catch (Exception ex) {
-			throw new AssertionError(ex);
-		}
+		ReflectionTestUtils.writeField(target, fieldName, value);
 	}
 }

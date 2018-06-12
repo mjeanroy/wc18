@@ -6,7 +6,11 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class MatchDto extends AbstractDto {
@@ -20,21 +24,33 @@ public class MatchDto extends AbstractDto {
 	/**
 	 * The match date.
 	 */
+	@NotNull
 	private Date date;
+
+	/**
+	 * The match stage.
+	 */
+	@NotNull
+	private Stage stage;
 
 	/**
 	 * The first team.
 	 */
+	@NotNull
+	@Valid
 	private TeamDto team1;
 
 	/**
 	 * The second team.
 	 */
+	@NotNull
+	@Valid
 	private TeamDto team2;
 
 	/**
 	 * The score, may be {@code null} until match has been played.
 	 */
+	@Valid
 	private ScoreDto score;
 
 	/**
@@ -125,5 +141,23 @@ public class MatchDto extends AbstractDto {
 	 */
 	public void setScore(ScoreDto score) {
 		this.score = score;
+	}
+
+	/**
+	 * Get {@link #stage}
+	 *
+	 * @return {@link #stage}
+	 */
+	public Stage getStage() {
+		return stage;
+	}
+
+	/**
+	 * Set {@link #stage}.
+	 *
+	 * @param stage New {@link #stage}
+	 */
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 }

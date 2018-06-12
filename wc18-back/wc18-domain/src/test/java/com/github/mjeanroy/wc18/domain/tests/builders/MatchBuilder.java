@@ -10,10 +10,6 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Score;
 import com.github.mjeanroy.wc18.domain.models.Team;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.UUID;
 
@@ -77,7 +73,7 @@ public class MatchBuilder {
 	 * @param id New {@link #id}
 	 * @return The current builder.
 	 */
-	public MatchBuilder withd(String id) {
+	public MatchBuilder withId(String id) {
 		this.id = id;
 		return this;
 	}

@@ -18,16 +18,16 @@ public class BetDto extends AbstractDto {
 	private String id;
 
 	/**
+	 * The date.
+	 */
+	private Date date;
+
+	/**
 	 * The match.
 	 */
 	@NotNull
 	@Valid
 	private MatchDto match;
-
-	/**
-	 * The user.
-	 */
-	private UserDto user;
 
 	/**
 	 * The score.
@@ -37,9 +37,9 @@ public class BetDto extends AbstractDto {
 	private ScoreDto score;
 
 	/**
-	 * The date.
+	 * The user.
 	 */
-	private Date date;
+	private UserDto user;
 
 	/**
 	 * Get {@link #id}
