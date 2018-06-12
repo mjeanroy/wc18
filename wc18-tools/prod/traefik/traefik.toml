@@ -26,7 +26,7 @@ defaultEntryPoints = ["https","http"]
 # set label to "enable"
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-domain = "wc18.mr-robot.sh"
+domain = "mr-robot.sh"
 watch = true
 exposedbydefault = false
 

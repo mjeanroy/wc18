@@ -13,4 +13,4 @@ docker run -d \
   -l traefik.port=8080 \
   --network wc18_network \
   --name traefik \
-  traefik:1.6.3-alpine --docker
+  traefik:1.5.4 --docker
