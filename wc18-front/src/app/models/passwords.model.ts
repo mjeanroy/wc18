@@ -4,8 +4,7 @@
  * Proprietary and confidential.
  */
 
-export const LOGIN = 'login';
-export const HOME = 'home';
-export const BETS = 'bets';
-export const PASSWORD = 'passwords';
-export const ADMIN = 'admin';
+export interface Passwords {
+  oldPassword: string;
+  newPassword: string;
+}

@@ -25,6 +25,7 @@ import { routes } from './routing/routes';
 import { AppComponent } from './app.component';
 import { AdminModule } from './components/admin/admin.module';
 import {UserFormComponent} from "./components/admin/users/user-form.component";
+import { PasswordFormModule } from './components/password/password-form.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -47,6 +48,7 @@ registerLocaleData(localeFr, 'fr');
     // app components
     ApiModule,
     LoginModule,
+    PasswordFormModule,
     NavbarModule,
     BetsModule,
     DashboardModule,

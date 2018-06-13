@@ -5,7 +5,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models';
+import { Login, User } from '../../../models';
 import { UsersApiService } from '../../../api';
 import {MatDialog} from "@angular/material";
 import {UserFormComponent} from "./user-form.component";
@@ -32,13 +32,18 @@ export class UsersComponent implements OnInit {
   }
 
   openNewUserDialog() {
-    let dialogRef = this._dialog.open(UserFormComponent, {
-      height: '400px',
+    const dialogRef = this._dialog.open(UserFormComponent, {
       width: '600px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe((user: Login) => (
+      this._createUser(user)
+    ));
+  }
+
+  private _createUser(account: Login) {
+    this._usersApiService.create(account).subscribe((user) => (
+      this.users.push(user)
+    ));
   }
 }

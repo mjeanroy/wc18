@@ -11,3 +11,4 @@ export { Match } from './match.model';
 export { Bet } from './bet.model';
 export { Principal } from './principal.model';
 export { Login } from './login.model';
+export { Passwords } from './passwords.model';

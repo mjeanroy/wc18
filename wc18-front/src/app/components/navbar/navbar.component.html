@@ -29,11 +29,11 @@
             <span>Profil</span>
           </a>
           <div ngbDropdownMenu>
-            <a class="dropdown-item" (click)="logout()" href="#">
+            <a class="dropdown-item" (click)="logout()">
               <mat-icon>exit_to_app</mat-icon>
               <span>Logout</span>
             </a>
-            <a class="dropdown-item">
+            <a class="dropdown-item" routerLink="/passwords">
               <mat-icon>lock</mat-icon>
               <span>Changer de mot de passe</span>
             </a>

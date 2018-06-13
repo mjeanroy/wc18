@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models';
+import { Login, Passwords, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,31 @@ export class UsersApiService {
     return this._http.get<User>('/api/me');
   }
 
+  /**
+   * Update user passwords.
+   *
+   * @param {Passwords} passwords The password form.
+   * @returns {Observable<any>} The response.
+   */
+  updatePassword(passwords: Passwords): Observable<any> {
+    return this._http.post('/api/me/password', passwords);
+  }
+
+  /**
+   * Get all users.
+   *
+   * @returns {Observable<User[]>} The users response.
+   */
   findAll(): Observable<User[]> {
     return this._http.get<User[]>("/api/users");
+  }
+
+  /**
+   * Create new user.
+   *
+   * @returns {Observable<User>} The new user response.
+   */
+  create(account: Login): Observable<User> {
+    return this._http.post<User>("/api/users", account);
   }
 }

@@ -8,6 +8,8 @@ package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
 
+import javax.persistence.EntityManager;
+
 /**
  * Simple template structure for DAO Implementation.
  *
@@ -22,7 +24,14 @@ public abstract class AbstractCrudDao<T extends AbstractEntity> extends Abstract
 	 * @return Persisted entity.
 	 */
 	public T save(T entity) {
-		getEntityManager().persist(entity);
+		EntityManager entityManager = getEntityManager();
+
+		if (entityManager.contains(entity)) {
+			entityManager.persist(entity);
+		} else {
+			entity = entityManager.merge(entity);
+		}
+
 		return entity;
 	}
 

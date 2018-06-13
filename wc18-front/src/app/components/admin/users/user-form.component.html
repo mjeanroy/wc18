@@ -1,14 +1,17 @@
 <h1 mat-dialog-title>Nouvel Utilisateur</h1>
 <div mat-dialog-actions>
-  <form>
+  <form #userForm="ngForm">
     <mat-form-field>
-      <input matInput placeholder="Login" required [(ngModel)]="user.login">
+      <input matInput placeholder="Login" required [(ngModel)]="user.login" name="login">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Password" required [(ngModel)]="user.password">
+      <input matInput placeholder="Password" required [(ngModel)]="user.password" name="password">
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="addUser()">Ajouter</button>
+    <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="validate()" [disabled]="userForm.form.invalid">Ajouter</button>
+      <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+    </div>
   </form>
 </div>
