@@ -29,6 +29,9 @@ services:
     restart: always
     build: ../../../wc18-front
     image: wc18/frontend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - backend
     networks:
