@@ -56,7 +56,7 @@ public class LoginApiServiceTest extends AbstractApiServiceTest {
 	@Test
 	public void it_should_fail_with_bad_credentials() {
 		String login = "mickael";
-		String password = "azerty123";
+		String password = "qwerty123";
 		HttpServletResponse response = new HttpServletResponseBuilder().build();
 		LoginDto dto = new LoginDtoBuilder().withLogin(login).withPassword(password).build();
 
