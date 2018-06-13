@@ -21,6 +21,12 @@ public class PrincipalBuilder {
 	private String login;
 
 	/**
+	 * The principal role.
+	 * @see Principal#getRole()
+	 */
+	private String role;
+
+	/**
 	 * Set {@link #login}
 	 *
 	 * @param login New {@link #login}
@@ -32,11 +38,22 @@ public class PrincipalBuilder {
 	}
 
 	/**
+	 * Set {@link #role}
+	 *
+	 * @param role New {@link #role}
+	 * @return The builder.
+	 */
+	public PrincipalBuilder withRole(String role) {
+		this.role = role;
+		return this;
+	}
+
+	/**
 	 * Build final {@link Principal} instance.
 	 *
 	 * @return The final instance.
 	 */
 	public Principal build() {
-		return new DefaultPrincipal(login);
+		return new DefaultPrincipal(login, role);
 	}
 }

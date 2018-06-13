@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import org.junit.Test;
 
@@ -33,9 +34,10 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	@Override
 	User createOne() {
 		return new UserBuilder()
-			.withLogin("johndoe")
-			.withPassword("foobar")
-			.build();
+				.withLogin("johndoe")
+				.withPassword("foobar")
+				.withRole(Role.USER)
+				.build();
 	}
 
 	@Test

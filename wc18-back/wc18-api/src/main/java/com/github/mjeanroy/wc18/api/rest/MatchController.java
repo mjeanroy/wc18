@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.api.rest;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.api.services.MatchApiService;
+import com.github.mjeanroy.wc18.security.Security;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,17 +45,20 @@ public class MatchController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@Security(role = "ADMIN")
 	public MatchDto create(@RequestBody @Valid MatchDto match) {
 		return matchApiService.create(match);
 	}
 
 	@PutMapping("/{id}")
+	@Security(role = "ADMIN")
 	public MatchDto update(@PathVariable("id") String id, @RequestBody @Valid MatchDto match) {
 		return matchApiService.update(id, match);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Security(role = "ADMIN")
 	public void remove(@PathVariable("id") String id) {
 		matchApiService.remove(id);
 	}

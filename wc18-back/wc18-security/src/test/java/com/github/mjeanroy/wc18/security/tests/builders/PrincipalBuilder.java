@@ -23,6 +23,12 @@ public class PrincipalBuilder {
 	private String login;
 
 	/**
+	 * The principal role.
+	 * @see Principal#getRole()
+	 */
+	private String role;
+
+	/**
 	 * Set {@link #login}
 	 *
 	 * @param login New {@link #login}
@@ -34,6 +40,17 @@ public class PrincipalBuilder {
 	}
 
 	/**
+	 * Set {@link #role}
+	 *
+	 * @param role New {@link #role}
+	 * @return The current builder.
+	 */
+	public PrincipalBuilder withRole(String role) {
+		this.role = role;
+		return this;
+	}
+
+	/**
 	 * Build final {@link Principal} instance.
 	 *
 	 * @return The final instance.
@@ -41,6 +58,7 @@ public class PrincipalBuilder {
 	public Principal build() {
 		Principal principal = mock(Principal.class);
 		when(principal.getLogin()).thenReturn(login);
+		when(principal.getRole()).thenReturn(role);
 		return principal;
 	}
 }

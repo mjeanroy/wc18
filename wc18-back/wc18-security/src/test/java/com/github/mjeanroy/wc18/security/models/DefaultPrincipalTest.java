@@ -16,8 +16,10 @@ public class DefaultPrincipalTest {
 	@Test
 	public void it_should_create_principal_from_user() {
 		String login = "john";
-		Principal principal = new DefaultPrincipal(login);
+		String role = "ADMIN";
+		Principal principal = new DefaultPrincipal(login, role);
 		assertThat(principal.getLogin()).isEqualTo(login);
+		assertThat(principal.getRole()).isEqualTo(role);
 	}
 
 	@Test
@@ -27,10 +29,11 @@ public class DefaultPrincipalTest {
 
 	@Test
 	public void it_should_implement_to_string() {
-		Principal principal = new DefaultPrincipal("johndoe");
+		Principal principal = new DefaultPrincipal("johndoe", "ADMIN");
 		assertThat(principal.toString()).isEqualTo(
 			"DefaultPrincipal{" +
-				"login=johndoe" +
+				"login=johndoe, " +
+				"role=ADMIN" +
 			"}"
 		);
 	}

@@ -13,4 +13,11 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Security {
+
+	/**
+	 * The required role, may be empty if role does not have any consideration.
+	 *
+	 * @return The role.
+	 */
+	String role() default "";
 }

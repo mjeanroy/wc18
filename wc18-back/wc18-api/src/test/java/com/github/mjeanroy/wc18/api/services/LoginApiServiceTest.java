@@ -14,6 +14,7 @@ import com.github.mjeanroy.wc18.api.mappers.UserDtoMapper;
 import com.github.mjeanroy.wc18.api.tests.builders.HttpServletResponseBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.LoginDtoBuilder;
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.security.models.Principal;
@@ -52,10 +53,11 @@ public class LoginApiServiceTest {
 	public void it_should_log_user() {
 		String login = "mickael";
 		String password = "azerty123";
+		Role role = Role.USER;
 		HttpServletResponse response = new HttpServletResponseBuilder().build();
 		LoginDto dto = new LoginDtoBuilder().withLogin(login).withPassword(password).build();
 
-		createUser(login, password);
+		createUser(login, password, role);
 
 		UserDto result = loginApiService.login(dto, response);
 
@@ -93,12 +95,13 @@ public class LoginApiServiceTest {
 		verify(securityService).logout(response);
 	}
 
-	private void createUser(String login, String password) {
+	private void createUser(String login, String password, Role role) {
 		User user = new UserBuilder()
-			.withRandomId()
-			.withLogin(login)
-			.withPassword(password)
-			.build();
+				.withRandomId()
+				.withLogin(login)
+				.withPassword(password)
+				.withRole(role)
+				.build();
 
 		when(userService.findByLoginAndPassword(login, password)).thenReturn(Optional.of(user));
 	}

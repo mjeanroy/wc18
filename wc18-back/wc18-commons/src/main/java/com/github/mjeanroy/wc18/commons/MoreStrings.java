@@ -24,4 +24,14 @@ public final class MoreStrings {
 	public static boolean isEmpty(String value) {
 		return value == null || value.isEmpty();
 	}
+
+	/**
+	 * Check if a string is not {@code null} and not empty.
+	 *
+	 * @param value The input value.
+	 * @return {@code true} if {@code value} is not {@code null} and not empty, {@code false} otherwise.
+	 */
+	public static boolean isNotEmpty(String value) {
+		return !isEmpty(value);
+	}
 }

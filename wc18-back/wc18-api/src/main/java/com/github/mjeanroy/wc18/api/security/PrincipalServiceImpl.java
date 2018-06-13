@@ -6,7 +6,6 @@
 
 package com.github.mjeanroy.wc18.api.security;
 
-import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.security.models.DefaultPrincipal;
 import com.github.mjeanroy.wc18.security.models.Principal;
@@ -34,8 +33,6 @@ public class PrincipalServiceImpl implements PrincipalService {
 	 */
 	@Override
 	public Optional<Principal> findByLogin(String login) {
-		return userService.findByLogin(login)
-			.map(User::getLogin)
-			.map(DefaultPrincipal::new);
+		return userService.findByLogin(login).map(u -> new DefaultPrincipal(u.getLogin(), u.getRole().name()));
 	}
 }

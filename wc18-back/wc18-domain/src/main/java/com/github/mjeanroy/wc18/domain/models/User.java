@@ -8,6 +8,8 @@ package com.github.mjeanroy.wc18.domain.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,6 +19,10 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User extends AbstractEntity {
+
+	public enum Role {
+		USER, ADMIN
+	}
 
 	/**
 	 * The user login.
@@ -29,6 +35,13 @@ public class User extends AbstractEntity {
 	 */
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	/**
+	 * The user role.
+	 */
+	@Column(name = "role", nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	/**
 	 * User leagues.
@@ -68,5 +81,14 @@ public class User extends AbstractEntity {
 	 */
 	public String getPassword() {
 		return password;
+	}
+
+	/**
+	 * Get {@link #role}
+	 *
+	 * @return {@link #role}
+	 */
+	public Role getRole() {
+		return role;
 	}
 }

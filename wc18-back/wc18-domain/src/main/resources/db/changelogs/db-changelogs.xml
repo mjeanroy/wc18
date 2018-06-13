@@ -24,5 +24,6 @@
   <include file="changesets/13-bets.xml" relativeToChangelogFile="true"/>
   <include file="changesets/14-insert-users.xml" relativeToChangelogFile="true"/>
   <include file="changesets/15-leagues.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/16-add-user-role.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

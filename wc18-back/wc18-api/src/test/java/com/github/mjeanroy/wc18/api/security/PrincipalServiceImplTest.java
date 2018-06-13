@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.api.security;
 
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.security.models.Principal;
@@ -34,7 +35,8 @@ public class PrincipalServiceImplTest {
 	@Test
 	public void it_should_find_principal() {
 		String login = "johndoe";
-		createUser(login);
+		Role role = Role.USER;
+		createUser(login, role);
 
 		Optional<Principal> principal = principalServiceImpl.findByLogin(login);
 
@@ -50,11 +52,12 @@ public class PrincipalServiceImplTest {
 		assertThat(principal).isNotPresent();
 	}
 
-	private void createUser(String login) {
+	private void createUser(String login, Role role) {
 		User user = new UserBuilder()
-			.withRandomId()
-			.withLogin(login)
-			.build();
+				.withRandomId()
+				.withLogin(login)
+				.withRole(role)
+				.build();
 
 		when(userService.findByLogin(login)).thenReturn(Optional.of(user));
 	}

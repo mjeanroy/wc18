@@ -6,6 +6,7 @@
 
 package com.github.mjeanroy.wc18.security.mvc;
 
+import com.github.mjeanroy.wc18.commons.MoreStrings;
 import com.github.mjeanroy.wc18.security.Security;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -45,14 +47,24 @@ public class SecurityInterceptor implements HandlerInterceptor {
 			return true;
 		}
 
-		if (shouldAuthenticate(handler)) {
-			Optional<Principal> user = securityService.getPrincipal(request);
-			boolean isAuthenticated = user.isPresent();
-			if (!isAuthenticated) {
+		Security annotation = getAnnotation(handler);
+
+		if (annotation != null) {
+			Optional<Principal> optPrincipal = securityService.getPrincipal(request);
+
+			if (!optPrincipal.isPresent()) {
 				response.setStatus(HttpStatus.UNAUTHORIZED.value());
+				return false;
 			}
 
-			return isAuthenticated;
+			Principal principal = optPrincipal.get();
+			String requiredRole = annotation.role();
+			if (MoreStrings.isNotEmpty(requiredRole) && !Objects.equals(requiredRole, principal.getRole())) {
+				response.setStatus(HttpStatus.FORBIDDEN.value());
+				return false;
+			}
+
+			return true;
 		}
 
 		return true;
@@ -68,12 +80,21 @@ public class SecurityInterceptor implements HandlerInterceptor {
 		// Nothing to do.
 	}
 
-	private boolean shouldAuthenticate(Object handler) {
+	private Security getAnnotation(Object handler) {
 		if (!(handler instanceof HandlerMethod)) {
-			return false;
+			return null;
 		}
 
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
-		return handlerMethod.hasMethodAnnotation(Security.class) || handlerMethod.getBean().getClass().isAnnotationPresent(Security.class);
+		if (handlerMethod.hasMethodAnnotation(Security.class)) {
+			return handlerMethod.getMethodAnnotation(Security.class);
+		}
+
+		Class<?> beanClass = handlerMethod.getBean().getClass();
+		if (beanClass.isAnnotationPresent(Security.class)) {
+			return beanClass.getAnnotation(Security.class);
+		}
+
+		return null;
 	}
 }

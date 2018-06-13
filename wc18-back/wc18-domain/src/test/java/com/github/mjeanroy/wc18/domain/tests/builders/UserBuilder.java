@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.domain.tests.builders;
 
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.models.User.Role;
 
 import java.util.UUID;
 
@@ -35,6 +36,12 @@ public class UserBuilder {
 	 * @see User#password
 	 */
 	private String password;
+
+	/**
+	 * The user role.
+	 * @see User#role
+	 */
+	private Role role;
 
 	/**
 	 * Set {@link #id} with a random value.
@@ -69,6 +76,17 @@ public class UserBuilder {
 	}
 
 	/**
+	 * Set {@link #role}.
+	 *
+	 * @param role New {@link #role}
+	 * @return The current builder.
+	 */
+	public UserBuilder withRole(Role role) {
+		this.role = role;
+		return this;
+	}
+
+	/**
 	 * Build the final {@link User} instance.
 	 *
 	 * @return The instance.
@@ -78,6 +96,7 @@ public class UserBuilder {
 		writeField(user, "id", id);
 		writeField(user, "login", login);
 		writeField(user, "password", password);
+		writeField(user, "role", role);
 		return user;
 	}
 }

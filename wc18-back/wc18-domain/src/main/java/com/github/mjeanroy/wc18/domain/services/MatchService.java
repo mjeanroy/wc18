@@ -7,7 +7,6 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.MatchDao;
-import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
@@ -92,10 +91,6 @@ public class MatchService {
 	@Transactional
 	public void remove(String id) {
 		Match match = findOneOrFail(id);
-		if (match.isPlayed()) {
-			throw new MatchLockedException(id);
-		}
-
 		matchDao.delete(match);
 	}
 

@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.api.rest;
 
 import com.github.mjeanroy.wc18.api.dto.LeagueDto;
 import com.github.mjeanroy.wc18.api.services.LeagueApiService;
+import com.github.mjeanroy.wc18.security.Security;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,12 +43,14 @@ public class LeagueController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@Security(role = "ADMIN")
 	public LeagueDto create(@RequestBody @Valid LeagueDto leagueDto) {
 		return leagueApiService.create(leagueDto);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Security(role = "ADMIN")
 	public void create(@PathVariable("id") String id) {
 		leagueApiService.remove(id);
 	}

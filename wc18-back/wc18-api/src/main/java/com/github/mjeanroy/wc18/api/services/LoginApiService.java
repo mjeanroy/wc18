@@ -46,7 +46,7 @@ public class LoginApiService {
 		);
 
 		// Process authentication for the HTTP request.
-		securityService.authenticate(response, new DefaultPrincipal(user.getLogin()));
+		securityService.authenticate(response, new DefaultPrincipal(user.getLogin(), user.getRole().name()));
 
 		return userDtoMapper.from(user);
 	}

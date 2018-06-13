@@ -1,0 +1,27 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+    logicalFilePath="15-leagues.xml">
+
+  <changeSet id="add-user-role" author="mjeanroy" context="schema, test">
+    <addColumn tableName="users">
+      <column name="role" type="varchar(15)" defaultValue="USER">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+
+  <changeSet id="update-mjeanroy-role-to-admin" author="mjeanroy" context="data">
+    <update tableName="users">
+      <column name="role" value="ADMIN" />
+      <where>login = 'mickael"</where>
+    </update>
+  </changeSet>
+</databaseChangeLog>
