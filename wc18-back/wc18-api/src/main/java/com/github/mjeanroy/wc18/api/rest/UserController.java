@@ -1,13 +1,8 @@
-/**
- * Copyright (C) Mickael Jeanroy - All Rights Reserved.
- * Unauthorized copying of this file, via any medium is strictly prohibited.
- * Proprietary and confidential.
- */
-
 package com.github.mjeanroy.wc18.api.rest;
 
-import com.github.mjeanroy.wc18.api.dto.LeagueDto;
-import com.github.mjeanroy.wc18.api.services.LeagueApiService;
+import com.github.mjeanroy.wc18.api.dto.LoginDto;
+import com.github.mjeanroy.wc18.api.dto.UserDto;
+import com.github.mjeanroy.wc18.api.services.UserApiService;
 import com.github.mjeanroy.wc18.security.Security;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,35 +17,32 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-/**
- * The {@link LeagueDto} Rest Controller.
- */
 @RestController
-@RequestMapping("/api/leagues")
+@RequestMapping("/api/users")
 @Security(role = "ADMIN")
-public class LeagueController {
+public class UserController {
 
-	private final LeagueApiService leagueApiService;
+	private final UserApiService userApiService;
 
 	@Inject
-	public LeagueController(LeagueApiService leagueApiService) {
-		this.leagueApiService = leagueApiService;
+	public UserController(UserApiService userApiService) {
+		this.userApiService = userApiService;
 	}
 
 	@GetMapping
-	public Iterable<LeagueDto> findAll() {
-		return leagueApiService.findAll();
+	public Iterable<UserDto> findAll() {
+		return userApiService.findAll();
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public LeagueDto create(@RequestBody @Valid LeagueDto leagueDto) {
-		return leagueApiService.create(leagueDto);
+	public UserDto create(@RequestBody @Valid LoginDto userDto) {
+		return userApiService.create(userDto);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void create(@PathVariable("id") String id) {
-		leagueApiService.remove(id);
+	public void remove(@PathVariable("id") String id) {
+		userApiService.remove(id);
 	}
 }

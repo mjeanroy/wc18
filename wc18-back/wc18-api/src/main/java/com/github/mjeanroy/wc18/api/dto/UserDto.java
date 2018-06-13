@@ -6,6 +6,8 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import com.github.mjeanroy.wc18.domain.models.User.Role;
+
 public class UserDto extends AbstractDto {
 
 	/**
@@ -17,6 +19,16 @@ public class UserDto extends AbstractDto {
 	 * The user login.
 	 */
 	private String login;
+
+	/**
+	 * The user role.
+	 */
+	private Role role;
+
+	/**
+	 * The user leagues.
+	 */
+	private Iterable<LeagueDto> leagues;
 
 	/**
 	 * Get {@link #id}
@@ -51,5 +63,41 @@ public class UserDto extends AbstractDto {
 	 */
 	public void setLogin(String login) {
 		this.login = login;
+	}
+
+	/**
+	 * Get {@link #role}
+	 *
+	 * @return {@link #role}
+	 */
+	public Role getRole() {
+		return role;
+	}
+
+	/**
+	 * Set {@link #role}
+	 *
+	 * @param role New {@link #role}
+	 */
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	/**
+	 * Get {@link #leagues}
+	 *
+	 * @return {@link #leagues}
+	 */
+	public Iterable<LeagueDto> getLeagues() {
+		return leagues;
+	}
+
+	/**
+	 * Set {@link #leagues}
+	 *
+	 * @param leagues New {@link #leagues}
+	 */
+	public void setLeagues(Iterable<LeagueDto> leagues) {
+		this.leagues = leagues;
 	}
 }

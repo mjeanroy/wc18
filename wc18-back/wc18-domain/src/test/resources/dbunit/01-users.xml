@@ -5,17 +5,19 @@
 -->
 
 <dataset>
+  <!-- azerty123 -->
   <users id="e31195bd-1d4e-4915-a3dc-ce901f57903f"
          version="0"
          creation_date="2018-04-05 10:00:00"
          login="mickael"
-         password="azerty123"
+         password="$2a$10$c2lfm3XOBLQHAjJ373JyReIgphfHW2MelkQNawXJloF0rhj.JTt0."
          role="ADMIN"/>
 
+  <!-- qwerty123 -->
   <users id="10cd4d9f-099c-4491-bfdb-a635b2ffc757"
          version="0"
          creation_date="2018-04-05 11:00:00"
          login="john"
-         password="qwerty123"
+         password="$2a$10$Z/aWt.Y9ACt0I5qrVacMbOaE3tCdMkd1.6q3G1dNkKhAg47bPr7ja"
          role="USER"/>
 </dataset>

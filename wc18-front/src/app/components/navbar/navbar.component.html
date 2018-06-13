@@ -3,7 +3,7 @@
     <mat-icon svgIcon="wc2018"></mat-icon>
     <span>Coupe du monde 2018</span>
   </a>
-  <button type="button" class="navbar-toggler" (click)="collapse()">
+  <button type="button" class="navbar-toggler" *ngIf="isLogged()" (click)="collapse()">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbar" class="navbar-collapse" [class.collapse]="collapsed">
@@ -36,6 +36,10 @@
             <a class="dropdown-item">
               <mat-icon>lock</mat-icon>
               <span>Changer de mot de passe</span>
+            </a>
+            <a class="dropdown-item" *ngIf="isAdmin()" routerLink="/admin">
+              <mat-icon>security</mat-icon>
+              <span>Admin</span>
             </a>
           </div>
         </li>

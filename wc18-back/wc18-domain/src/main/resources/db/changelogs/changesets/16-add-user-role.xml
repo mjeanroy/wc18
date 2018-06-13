@@ -21,7 +21,7 @@
   <changeSet id="update-mjeanroy-role-to-admin" author="mjeanroy" context="data">
     <update tableName="users">
       <column name="role" value="ADMIN" />
-      <where>login = 'mickael"</where>
+      <where>login = 'mickael'</where>
     </update>
   </changeSet>
 </databaseChangeLog>

@@ -3,8 +3,12 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited.
  * Proprietary and confidential.
  */
+import {Component} from "@angular/core";
 
-export const LOGIN = 'login';
-export const HOME = 'home';
-export const BETS = 'bets';
-export const ADMIN = 'admin';
+@Component({
+  selector: 'admin',
+  templateUrl: './admin.component.html',
+})
+export class AdminComponent {
+
+}

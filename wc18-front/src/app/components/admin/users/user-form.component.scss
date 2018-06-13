@@ -4,7 +4,11 @@
  * Proprietary and confidential.
  */
 
-export const LOGIN = 'login';
-export const HOME = 'home';
-export const BETS = 'bets';
-export const ADMIN = 'admin';
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}

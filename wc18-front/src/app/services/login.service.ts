@@ -24,12 +24,14 @@ export class LoginService {
   private readonly _authService: AuthService;
 
   private _principal: Observable<User>;
+  private _admin: boolean;
 
   constructor(logger: Logger, loginApiService: LoginApiService, authService: AuthService, usersApiService: UsersApiService) {
     this._logger = logger;
     this._loginApiService = loginApiService;
     this._authService = authService;
     this._usersApiService = usersApiService;
+    this._admin = false;
   }
 
   /**
@@ -68,6 +70,15 @@ export class LoginService {
   }
 
   /**
+   * Check if current authenticated user is an administrator.
+   *
+   * @returns {boolean} `true` if current authenticated user is an administrator, `false` otherwise.
+   */
+  isAdmin() {
+    return this.isLogged() && this._admin;
+  }
+
+  /**
    * Get the current logged user.
    *
    * @returns {Observable<User>} Logged user.
@@ -75,15 +86,23 @@ export class LoginService {
   me() {
     if (this.isLogged() && !this._principal) {
       this._logger.debug('Trying to get authenticated user but it is not available yet, querying from API');
-      this._principal = this._usersApiService.me().pipe(shareReplay());
+      this._principal = this._usersApiService.me().pipe(
+        shareReplay(),
+        tap((principal) => this._setPrincipal(principal))
+      );
     }
 
     return this._principal;
   }
 
   private _onLogged(principal: Principal) {
-    this._principal = of(principal.user);
+    this._setPrincipal(principal.user);
     this._authService.login(principal.token);
+  }
+
+  private _setPrincipal(user: User) {
+    this._principal = of(user);
+    this._admin = user.role === 'ADMIN';
   }
 
   private _logout() {

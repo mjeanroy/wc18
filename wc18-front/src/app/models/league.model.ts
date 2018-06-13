@@ -4,7 +4,7 @@
  * Proprietary and confidential.
  */
 
-export const LOGIN = 'login';
-export const HOME = 'home';
-export const BETS = 'bets';
-export const ADMIN = 'admin';
+export interface League {
+  id: string;
+  name: string;
+}

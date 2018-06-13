@@ -14,8 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { ApiModule, TeamsApiService } from './api';
-import { forEach } from './common';
+import { ApiModule } from './api';
 
 import { LoginModule } from './components/login';
 import { NavbarModule } from './components/navbar/navbar.module';
@@ -24,6 +23,8 @@ import { DashboardModule } from './components/dashboard';
 
 import { routes } from './routing/routes';
 import { AppComponent } from './app.component';
+import { AdminModule } from './components/admin/admin.module';
+import {UserFormComponent} from "./components/admin/users/user-form.component";
 
 registerLocaleData(localeFr, 'fr');
 
@@ -49,6 +50,7 @@ registerLocaleData(localeFr, 'fr');
     NavbarModule,
     BetsModule,
     DashboardModule,
+    AdminModule,
   ],
 
   providers: [

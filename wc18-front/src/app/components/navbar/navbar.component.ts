@@ -49,6 +49,15 @@ export class NavBarComponent implements OnInit {
   }
 
   /**
+   * Check if the authenticated user is an administrator.
+   *
+   * @returns {boolean} `true` if an authenticated user exists and is administrator, `false` otherwise.
+   */
+  isAdmin() {
+    return this._loginService.isAdmin();
+  }
+
+  /**
    * Trigger logout.
    *
    * @returns {void}

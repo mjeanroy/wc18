@@ -44,6 +44,17 @@ public class UserBuilder {
 	private Role role;
 
 	/**
+	 * Set {@link #id}
+	 *
+	 * @param id New {@link #id}
+	 * @return The builder.
+	 */
+	public UserBuilder withId(String id) {
+		this.id = id;
+		return this;
+	}
+
+	/**
 	 * Set {@link #id} with a random value.
 	 *
 	 * @return The current builder.

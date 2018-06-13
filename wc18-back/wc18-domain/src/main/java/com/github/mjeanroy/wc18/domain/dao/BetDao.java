@@ -33,6 +33,7 @@ public class BetDao extends AbstractCrudDao<Bet> {
 					"FROM Bet x " +
 					"INNER JOIN FETCH x.match m " +
 					"INNER JOIN FETCH x.user u " +
+					"LEFT OUTER JOIN FETCH u.leagues " +
 					"WHERE u = :user " +
 					"ORDER BY m.date";
 
@@ -54,6 +55,7 @@ public class BetDao extends AbstractCrudDao<Bet> {
 						"FROM Bet x " +
 						"INNER JOIN FETCH x.match m " +
 						"INNER JOIN FETCH x.user u " +
+						"LEFT OUTER JOIN FETCH u.leagues " +
 						"WHERE u = :user " +
 						"AND m.date < :date " +
 						"ORDER BY m.date ASC";
@@ -77,6 +79,7 @@ public class BetDao extends AbstractCrudDao<Bet> {
 						"FROM Bet x " +
 						"INNER JOIN FETCH x.match m " +
 						"INNER JOIN FETCH x.user u " +
+						"LEFT OUTER JOIN FETCH u.leagues " +
 						"WHERE u = :user " +
 						"AND m.date >= :date " +
 						"ORDER BY m.date ASC";

@@ -6,6 +6,7 @@
 
 package com.github.mjeanroy.wc18.api.services;
 
+import com.github.mjeanroy.wc18.api.dto.LoginDto;
 import com.github.mjeanroy.wc18.api.dto.PasswordDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.exceptions.PrincipalNotFoundException;
@@ -31,6 +32,36 @@ public class UserApiService {
 	}
 
 	/**
+	 * Get all users.
+	 *
+	 * @return Users.
+	 */
+	public Iterable<UserDto> findAll() {
+		Iterable<User> users = userService.findAll();
+		return userDtoMapper.from(users);
+	}
+
+	/**
+	 * Create new account with login/password.
+	 *
+	 * @param loginDto The account.
+	 * @return The new created user.
+	 */
+	public UserDto create(LoginDto loginDto) {
+		User user = userService.create(loginDto.getLogin(), loginDto.getPassword());
+		return userDtoMapper.from(user);
+	}
+
+	/**
+	 * Delete user account.
+	 *
+	 * @param id The user identifier.
+	 */
+	public void remove(String id) {
+		userService.remove(id);
+	}
+
+	/**
 	 * Find the principal user.
 	 *
 	 * @param principal The principal.
@@ -48,7 +79,7 @@ public class UserApiService {
 	 * @param login The user login.
 	 * @return The user.
 	 */
-	public Optional<UserDto> findOne(String login) {
+	private Optional<UserDto> findOne(String login) {
 		return userService.findByLogin(login).map(userDtoMapper::from);
 	}
 

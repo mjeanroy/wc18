@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -54,6 +55,21 @@ public class User extends AbstractEntity {
 
 	// Default constructor, mandatory for Hibernate.
 	private User() {
+		super();
+		this.leagues = new HashSet<>();
+	}
+
+	/**
+	 * Create new user.
+	 *
+	 * @param login User login.
+	 * @param password User password.
+	 */
+	public User(String login, String password) {
+		this();
+		this.login = login;
+		this.password = password;
+		this.role = Role.USER;
 	}
 
 	/**
@@ -90,5 +106,14 @@ public class User extends AbstractEntity {
 	 */
 	public Role getRole() {
 		return role;
+	}
+
+	/**
+	 * Get {@link #leagues}
+	 *
+	 * @return {@link #leagues}
+	 */
+	public Set<League> getLeagues() {
+		return leagues;
 	}
 }

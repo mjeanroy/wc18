@@ -9,7 +9,8 @@ import { LoginComponent } from '../components/login';
 import { DashboardComponent } from '../components/dashboard';
 import { BetsCardComponent } from '../components/bets';
 import { IsLoggedGuard, IsNotLoggedGuard } from '../guards';
-import { BETS, HOME, LOGIN } from './paths';
+import {ADMIN, BETS, HOME, LOGIN} from './paths';
+import {AdminComponent} from "../components/admin/admin.component";
 
 export const routes: Routes = [
   {
@@ -31,6 +32,14 @@ export const routes: Routes = [
   {
     path: BETS,
     component: BetsCardComponent,
+    canActivate: [
+      IsLoggedGuard,
+    ],
+  },
+
+  {
+    path: ADMIN,
+    component: AdminComponent,
     canActivate: [
       IsLoggedGuard,
     ],

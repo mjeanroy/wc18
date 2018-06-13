@@ -16,6 +16,13 @@ public class PasswordService {
 		return BCrypt.hashpw(plainText, BCrypt.gensalt());
 	}
 
+	/**
+	 * Check if plain text password match hashed password.
+	 *
+	 * @param plainText The plain text password.
+	 * @param hash The hashed value.
+	 * @return {@code true} if values matched, {@code false} otheriwse.
+	 */
 	public boolean match(String plainText, String hash) {
 		return BCrypt.checkpw(plainText, hash);
 	}

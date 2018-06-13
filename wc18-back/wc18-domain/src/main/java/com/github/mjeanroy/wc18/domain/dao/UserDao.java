@@ -17,6 +17,17 @@ import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 @Repository
 public class UserDao extends AbstractCrudDao<User> {
 
+	@Override
+	public Iterable<User> findAll() {
+		String query =
+				"SELECT u " +
+						"FROM User u " +
+						"LEFT OUTER JOIN FETCH u.leagues " +
+						"ORDER BY u.login";
+
+		return findAll(query);
+	}
+
 	/**
 	 * Find user by its login.
 	 *
@@ -26,8 +37,9 @@ public class UserDao extends AbstractCrudDao<User> {
 	public Optional<User> findByLogin(String login) {
 		String query =
 			"SELECT x " +
-				"FROM User x " +
-				"WHERE x.login = :login";
+					"FROM User x " +
+					"LEFT OUTER JOIN FETCH x.leagues " +
+					"WHERE x.login = :login";
 
 		return findOne(query, newHashMap(
 				tuple("login", login)

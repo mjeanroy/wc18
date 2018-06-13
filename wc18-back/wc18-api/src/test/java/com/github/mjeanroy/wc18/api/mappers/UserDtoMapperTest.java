@@ -17,7 +17,8 @@ public class UserDtoMapperTest extends AbstractDtoMapper<User, UserDto, UserDtoM
 
 	@Override
 	UserDtoMapper create(Mapper mapper) {
-		return new UserDtoMapper(mapper);
+		LeagueDtoMapper leagueDtoMapper = new LeagueDtoMapper(mapper);
+		return new UserDtoMapper(mapper, leagueDtoMapper);
 	}
 
 	@Override

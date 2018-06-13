@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Nouvel Utilisateur</h1>
+<div mat-dialog-actions>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Login" required [(ngModel)]="user.login">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" required [(ngModel)]="user.password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="addUser()">Ajouter</button>
+  </form>
+</div>

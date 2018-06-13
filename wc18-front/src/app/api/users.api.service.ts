@@ -28,4 +28,8 @@ export class UsersApiService {
   me(): Observable<User> {
     return this._http.get<User>('/api/me');
   }
+
+  findAll(): Observable<User[]> {
+    return this._http.get<User[]>("/api/users");
+  }
 }

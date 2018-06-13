@@ -24,6 +24,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import static org.mockito.Mockito.mock;
 
 @DbUnitDataSet("/dbunit")
@@ -35,6 +38,20 @@ import static org.mockito.Mockito.mock;
 		TransactionalDbUnitTestExecutionListener.class
 })
 public abstract class AbstractApiServiceTest {
+
+	@PersistenceContext
+	private EntityManager entityManager;
+
+	/**
+	 * Find one, or fail if it does not exist.
+	 *
+	 * @param entityClass The entity class to look for.
+	 * @param id The ID.
+	 * @return The single result.
+	 */
+	<X> X findOne(Class<X> entityClass, String id) {
+		return entityManager.find(entityClass, id);
+	}
 
 	@Configuration
 	@EnableMapper

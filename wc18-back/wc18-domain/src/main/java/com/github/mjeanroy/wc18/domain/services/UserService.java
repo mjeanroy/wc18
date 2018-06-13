@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.UserDao;
+import com.github.mjeanroy.wc18.domain.exceptions.UserNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +25,16 @@ public class UserService {
 	public UserService(PasswordService passwordService, UserDao userDao) {
 		this.userDao = userDao;
 		this.passwordService = passwordService;
+	}
+
+	/**
+	 * Find all users.
+	 *
+	 * @return Users.
+	 */
+	@Transactional(readOnly = true)
+	public Iterable<User> findAll() {
+		return userDao.findAll();
 	}
 
 	/**
@@ -70,5 +81,34 @@ public class UserService {
 		String hashPassword = passwordService.encode(newPassword);
 		user.updatePassword(hashPassword);
 		userDao.save(user);
+	}
+
+	/**
+	 * Create new user account with given login/password.
+	 *
+	 * @param login The account login.
+	 * @param password The account password.
+	 * @return The created user.
+	 */
+	@Transactional
+	public User create(String login, String password) {
+		String hashPassword = passwordService.encode(password);
+		User user = new User(login, hashPassword);
+		return userDao.save(user);
+	}
+
+	/**
+	 * Remove user account.
+	 *
+	 * @param id The user identifier.
+	 * @throws UserNotFoundException If user does not exist.
+	 */
+	@Transactional
+	public void remove(String id) {
+		User user = userDao.findOne(id).orElseThrow(() ->
+			new UserNotFoundException(id)
+		);
+
+		userDao.delete(user);
 	}
 }
