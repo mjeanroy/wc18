@@ -22,6 +22,8 @@ import { LeaguesComponent } from './leagues/leagues.component';
 import { LeagueFormComponent } from './leagues/league-form.component';
 import { LeagueUserFormComponent } from './leagues/league-user-form.component';
 import { PipesModule } from '../../pipes/pipes.module';
+import { MatchesComponent } from './matches/matches.component';
+import { MatchEditFormComponent } from './matches/match-edit-form.component';
 // import { LeagueUserFormComponent } from './leagues/league-user-form.component';
 
 @NgModule({
@@ -48,12 +50,16 @@ import { PipesModule } from '../../pipes/pipes.module';
     LeaguesComponent,
     LeagueFormComponent,
     LeagueUserFormComponent,
+
+    MatchesComponent,
+    MatchEditFormComponent,
   ],
 
   entryComponents: [
     UserFormComponent,
     LeagueFormComponent,
     LeagueUserFormComponent,
+    MatchEditFormComponent,
   ],
 
   exports: [

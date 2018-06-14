@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="card-title">
+      <span>Matches</span>
+    </h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <td>Equipes</td>
+          <td>Scores</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody *ngIf="matches">
+        <tr *ngFor="let match of matches">
+          <td>{{ match.team1.name }} - {{ match.team2.name }}</td>
+          <td><span *ngIf="match.score">{{ match.score.score1 }} - {{ match.score.score2 }}</span></td>
+          <td class="column-action">
+            <button mat-raised-button type="button" color="primary" (click)="editMatch(match)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

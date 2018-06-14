@@ -5,7 +5,7 @@
  */
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Match } from '../models';
 
@@ -26,10 +26,17 @@ export class MatchesApiService {
    * @returns {Observable<Match[]>} The asynchronous response.
    */
   findAll(locked: boolean): Observable<Match[]> {
+    const params = new HttpParams();
+    if (locked !== null) {
+      params.set('locked', locked.toString());
+    }
+
     return this._http.get<Match[]>('/api/matches', {
-      params: {
-        locked: locked.toString(),
-      },
+      params,
     });
+  }
+
+  update(match: Match): Observable<Match> {
+    return this._http.put<Match>(`/api/matches/${match.id}`, match);
   }
 }
