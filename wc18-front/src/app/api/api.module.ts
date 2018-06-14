@@ -12,6 +12,7 @@ import { LoginApiService } from './login.api.service';
 import { MatchesApiService } from './matches.api.service';
 import { TeamsApiService } from './teams.api.service';
 import { UsersApiService } from './users.api.service';
+import { LeaguesApiService } from './leagues.api.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { UsersApiService } from './users.api.service';
   ],
 
   providers: [
+    LeaguesApiService,
     TeamsApiService,
     MatchesApiService,
     BetsApiService,

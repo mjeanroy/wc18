@@ -37,6 +37,13 @@ public class UserService {
 		return userDao.findAll();
 	}
 
+	@Transactional(readOnly = true)
+	public User findOneOrFail(String id) {
+		return userDao.findOne(id).orElseThrow(() ->
+			new UserNotFoundException(id)
+		);
+	}
+
 	/**
 	 * Find user from login.
 	 *

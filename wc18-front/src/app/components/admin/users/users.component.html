@@ -10,21 +10,19 @@
         <tr>
           <td>Login</td>
           <td>Role</td>
-          <td>Leagues</td>
         </tr>
       </thead>
       <tbody *ngIf="users">
         <tr *ngFor="let user of users">
           <td>{{ user.login }}</td>
           <td>{{ user.role }}</td>
-          <td>{{ user.leagues }}</td>
         </tr>
       </tbody>
     </table>
 
     <div>
-      <button mat-mini-fab type="submit" (click)="openNewUserDialog()">
-        <mat-icon>person_add</mat-icon>
+      <button mat-raised-button color="primary" type="button" (click)="openNewUserDialog()">
+        <mat-icon>add</mat-icon>
       </button>
     </div>
   </div>

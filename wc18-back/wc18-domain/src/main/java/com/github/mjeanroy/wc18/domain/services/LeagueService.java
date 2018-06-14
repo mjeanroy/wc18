@@ -7,8 +7,10 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.LeagueDao;
+import com.github.mjeanroy.wc18.domain.dao.UserDao;
 import com.github.mjeanroy.wc18.domain.exceptions.LeagueNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +20,12 @@ import javax.inject.Inject;
 public class LeagueService {
 
 	private final LeagueDao leagueDao;
+	private final UserDao userDao;
 
 	@Inject
-	public LeagueService(LeagueDao leagueDao) {
+	public LeagueService(LeagueDao leagueDao, UserDao userDao) {
 		this.leagueDao = leagueDao;
+		this.userDao = userDao;
 	}
 
 	/**
@@ -57,9 +61,28 @@ public class LeagueService {
 		leagueDao.delete(league);
 	}
 
-	private League findOneOrFail(String id) {
+	/**
+	 * Find league, or fail if it does not exist.
+	 *
+	 * @param id League identifier.
+	 * @return The league.
+	 */
+	@Transactional(readOnly = true)
+	public League findOneOrFail(String id) {
 		return leagueDao.findOne(id).orElseThrow(() ->
 			new LeagueNotFoundException(id)
 		);
+	}
+
+	/**
+	 * Find all users in given league.
+	 *
+	 * @param league The league.
+	 * @return The Found users.
+	 */
+	@Transactional(readOnly = false)
+	public void addUser(League league, User user) {
+		league.addUser(user);
+		leagueDao.save(league);
 	}
 }

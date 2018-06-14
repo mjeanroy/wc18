@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h5 class="card-title">
+      <span>Leagues</span>
+    </h5>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <td>Name</td>
+        <td>Utilisateurs</td>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody *ngIf="leagues">
+        <tr *ngFor="let league of leagues">
+          <td>{{ league.name }}</td>
+          <td>{{ league.users | map:'login' | join:', ' }}</td>
+          <td class="column-action">
+            <button mat-raised-button type="button" color="primary" (click)="openAddUserDialog(league)">
+              <mat-icon>person_add</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button mat-raised-button type="button" color="primary" (click)="openNewLeagueDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

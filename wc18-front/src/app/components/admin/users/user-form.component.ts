@@ -5,9 +5,6 @@ import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: [
-    './user-form.component.scss',
-  ],
 })
 export class UserFormComponent {
   private _dialogRef: MatDialogRef<UserFormComponent>;

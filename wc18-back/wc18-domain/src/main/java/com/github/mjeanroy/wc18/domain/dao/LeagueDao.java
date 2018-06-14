@@ -11,4 +11,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class LeagueDao extends AbstractCrudDao<League> {
+
+	@Override
+	public Iterable<League> findAll() {
+		String query =
+				"SELECT DISTINCT league " +
+						"FROM League league " +
+						"LEFT OUTER JOIN FETCH league.users " +
+						"ORDER BY league.name ";
+
+		return findAll(query);
+	}
 }

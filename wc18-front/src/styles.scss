@@ -37,6 +37,25 @@ body {
   background-color: #3f51b5 !important;
 }
 
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  display: block;
+  width: 100%;
+}
+
+.form-actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.column-action {
+  width: 1px;
+  white-space: nowrap;
+}
+
 .card {
   .card-header {
     $height: 65px;

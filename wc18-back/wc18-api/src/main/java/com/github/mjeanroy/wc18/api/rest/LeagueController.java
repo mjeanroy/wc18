@@ -6,7 +6,9 @@
 
 package com.github.mjeanroy.wc18.api.rest;
 
+import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.dto.LeagueDto;
+import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.services.LeagueApiService;
 import com.github.mjeanroy.wc18.security.Security;
 import org.springframework.http.HttpStatus;
@@ -40,6 +42,27 @@ public class LeagueController {
 	@GetMapping
 	public Iterable<LeagueDto> findAll() {
 		return leagueApiService.findAll();
+	}
+
+	@GetMapping("/{id}")
+	public LeagueDto findOne(@PathVariable("id") String id) {
+		return leagueApiService.findOne(id);
+	}
+
+	@GetMapping("/{id}/users")
+	public Iterable<UserDto> findUsers(@PathVariable("id") String id) {
+		return leagueApiService.findUsers(id);
+	}
+
+	@GetMapping("/{id}/matches/{matchId}/bets")
+	public Iterable<BetDto> findMatchBets(@PathVariable("id") String id, @PathVariable("matchId") String matchId) {
+		return leagueApiService.findBets(id, matchId);
+	}
+
+	@PostMapping("/{id}/users/{userId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void addUser(@PathVariable("id") String id, @PathVariable("userId") String userId) {
+		leagueApiService.addUser(id, userId);
 	}
 
 	@PostMapping

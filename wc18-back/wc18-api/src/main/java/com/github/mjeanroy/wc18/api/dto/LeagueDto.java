@@ -12,16 +12,21 @@ import javax.validation.constraints.Size;
 public class LeagueDto extends AbstractDto {
 
 	/**
-	 * The user identifier.
+	 * The league identifier.
 	 */
 	private String id;
 
 	/**
-	 * The user login.
+	 * The league login.
 	 */
 	@NotBlank
 	@Size(min = 3, max = 50)
 	private String name;
+
+	/**
+	 * User in the league.
+	 */
+	private Iterable<UserDto> users;
 
 	/**
 	 * Get {@link #id}
@@ -56,5 +61,23 @@ public class LeagueDto extends AbstractDto {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Get {@link #users}
+	 *
+	 * @return {@link #users}
+	 */
+	public Iterable<UserDto> getUsers() {
+		return users;
+	}
+
+	/**
+	 * Set {@link #users}
+	 *
+	 * @param users New {@link #users}
+	 */
+	public void setUsers(Iterable<UserDto> users) {
+		this.users = users;
 	}
 }

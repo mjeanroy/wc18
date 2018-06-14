@@ -20,9 +20,12 @@ import javax.inject.Inject;
 @Component
 public class LeagueDtoMapper extends AbstractLazyObjectMapper<League, LeagueDto> {
 
+	private final UserDtoMapper userDtoMapper;
+
 	@Inject
-	public LeagueDtoMapper(Mapper mapper) {
+	public LeagueDtoMapper(Mapper mapper, UserDtoMapper userDtoMapper) {
 		super(mapper);
+		this.userDtoMapper = userDtoMapper;
 	}
 
 	@Override
@@ -30,6 +33,7 @@ public class LeagueDtoMapper extends AbstractLazyObjectMapper<League, LeagueDto>
 		LeagueDto dto = new LeagueDto();
 		dto.setId(source.getId());
 		dto.setName(source.getName());
+		dto.setUsers(userDtoMapper.from(source.getUsers()));
 		return dto;
 	}
 }

@@ -26,11 +26,6 @@ public class UserDto extends AbstractDto {
 	private Role role;
 
 	/**
-	 * The user leagues.
-	 */
-	private Iterable<LeagueDto> leagues;
-
-	/**
 	 * Get {@link #id}
 	 *
 	 * @return {@link #id}
@@ -81,23 +76,5 @@ public class UserDto extends AbstractDto {
 	 */
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	/**
-	 * Get {@link #leagues}
-	 *
-	 * @return {@link #leagues}
-	 */
-	public Iterable<LeagueDto> getLeagues() {
-		return leagues;
-	}
-
-	/**
-	 * Set {@link #leagues}
-	 *
-	 * @param leagues New {@link #leagues}
-	 */
-	public void setLeagues(Iterable<LeagueDto> leagues) {
-		this.leagues = leagues;
 	}
 }

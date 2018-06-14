@@ -44,19 +44,9 @@ public class User extends AbstractEntity {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	/**
-	 * User leagues.
-	 */
-	@ManyToMany
-	@JoinTable(name = "user_leagues",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "league_id"))
-	private Set<League> leagues;
-
 	// Default constructor, mandatory for Hibernate.
 	private User() {
 		super();
-		this.leagues = new HashSet<>();
 	}
 
 	/**
@@ -106,14 +96,5 @@ public class User extends AbstractEntity {
 	 */
 	public Role getRole() {
 		return role;
-	}
-
-	/**
-	 * Get {@link #leagues}
-	 *
-	 * @return {@link #leagues}
-	 */
-	public Set<League> getLeagues() {
-		return leagues;
 	}
 }

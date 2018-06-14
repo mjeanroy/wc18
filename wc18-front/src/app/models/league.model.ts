@@ -4,7 +4,10 @@
  * Proprietary and confidential.
  */
 
+import { User } from './user.model';
+
 export interface League {
   id: string;
   name: string;
+  users: User[];
 }

@@ -9,4 +9,5 @@ export { MatchesApiService } from './matches.api.service';
 export { BetsApiService } from './bets.api.service';
 export { UsersApiService } from './users.api.service';
 export { LoginApiService } from './login.api.service';
+export { LeaguesApiService } from './leagues.api.service';
 export { ApiModule } from './api.module';

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Nouvel Utilisateur</h1>
+<div mat-dialog-actions>
+  <form #leagueForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Nom" required minlength="3" maxlength="50" [(ngModel)]="league.name" name="name">
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="validate()" [disabled]="leagueForm.form.invalid">Ajouter</button>
+      <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+    </div>
+  </form>
+</div>

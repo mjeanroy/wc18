@@ -36,9 +36,11 @@ export class UsersComponent implements OnInit {
       width: '600px',
     });
 
-    dialogRef.afterClosed().subscribe((user: Login) => (
-      this._createUser(user)
-    ));
+    dialogRef.afterClosed().subscribe((user: Login) => {
+      if (user) {
+        this._createUser(user);
+      }
+    });
   }
 
   private _createUser(account: Login) {

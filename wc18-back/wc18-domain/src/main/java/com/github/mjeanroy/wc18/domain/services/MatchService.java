@@ -28,9 +28,29 @@ public class MatchService {
 		this.matchDao = matchDao;
 	}
 
+	/**
+	 * Find match or return empty result.
+	 *
+	 * @param id Match identifier.
+	 * @return The match.
+	 */
 	@Transactional(readOnly = true)
 	public Optional<Match> findOne(String id) {
 		return matchDao.findOne(id);
+	}
+
+	/**
+	 * Find match or fail with appropriate exception.
+	 *
+	 * @param id Match identifier.
+	 * @return The match.
+	 * @throws MatchNotFoundException If match does not exist.
+	 */
+	@Transactional(readOnly = true)
+	public Match findOneOrFail(String id) {
+		return findOne(id).orElseThrow(() ->
+			new MatchNotFoundException(id)
+		);
 	}
 
 	/**
@@ -92,19 +112,6 @@ public class MatchService {
 	public void remove(String id) {
 		Match match = findOneOrFail(id);
 		matchDao.delete(match);
-	}
-
-	/**
-	 * Find match or fail with appropriate exception.
-	 *
-	 * @param id Match identifier.
-	 * @return The match.
-	 * @throws MatchNotFoundException If match does not exist.
-	 */
-	private Match findOneOrFail(String id) {
-		return matchDao.findOne(id).orElseThrow(() ->
-				new MatchNotFoundException(id)
-		);
 	}
 
 	/**

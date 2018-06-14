@@ -22,7 +22,6 @@ public class UserDao extends AbstractCrudDao<User> {
 		String query =
 				"SELECT u " +
 						"FROM User u " +
-						"LEFT OUTER JOIN FETCH u.leagues " +
 						"ORDER BY u.login";
 
 		return findAll(query);
@@ -38,7 +37,6 @@ public class UserDao extends AbstractCrudDao<User> {
 		String query =
 			"SELECT x " +
 					"FROM User x " +
-					"LEFT OUTER JOIN FETCH x.leagues " +
 					"WHERE x.login = :login";
 
 		return findOne(query, newHashMap(

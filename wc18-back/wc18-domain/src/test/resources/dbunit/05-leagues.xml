@@ -1,0 +1,17 @@
+<!--
+ Copyright (C) Mickael Jeanroy - All Rights Reserved.
+ Unauthorized copying of this file, via any medium is strictly prohibited.
+ Proprietary and confidential.
+-->
+
+<dataset>
+  <leagues id="cc591102-dedf-432f-b0ea-58459997514c"
+         version="0"
+         creation_date="2018-04-05 10:00:00"
+         name="League 1"/>
+
+  <leagues id="f28d71b3-7509-4e54-a517-b237263bfb02"
+           version="0"
+           creation_date="2018-04-05 10:00:00"
+           name="League 2"/>
+</dataset>
