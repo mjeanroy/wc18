@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Comparator.reverseOrder;
+
 @Service
 public class RankService {
 
@@ -79,7 +81,7 @@ public class RankService {
 			ranks.add(new Rank(user, score, percentGood, percentPerfect));
 		}
 
-		ranks.sort(Comparator.comparing(Rank::getScore));
+		ranks.sort(Comparator.comparing(Rank::getScore, reverseOrder()));
 
 		return ranks;
 	}
