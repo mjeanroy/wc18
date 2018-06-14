@@ -17,12 +17,19 @@ import com.github.mjeanroy.wc18.domain.services.BetService;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.security.models.Principal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 
 @Service
 public class BetApiService {
+
+	/**
+	 * Class Logger.
+	 */
+	private static final Logger log = LoggerFactory.getLogger(BetApiService.class);
 
 	private final UserService userService;
 	private final MatchService matchService;
@@ -57,6 +64,8 @@ public class BetApiService {
 	 * @return The result.
 	 */
 	public BetDto save(Principal principal, BetDto bet) {
+		log.info("Saving bet for principal: {}", principal);
+
 		User user = getUserOrFail(principal);
 
 		String id = bet.getMatch().getId();
@@ -66,7 +75,11 @@ public class BetApiService {
 
 		int score1 = bet.getScore().getScore1();
 		int score2 = bet.getScore().getScore2();
+
+		log.info("Saving bet for match #{}: {} - {}", match, score1, score2);
 		Bet savedBet = betService.save(user, match, score1, score2);
+
+		log.info("Bet saved, return DTO");
 		return betDtoMapper.from(savedBet);
 	}
 
