@@ -36,7 +36,7 @@ export class BetsService {
     const locked = false;
 
     const observables = [
-      this._matchesApiService.findAll(locked),
+      this._matchesApiService.findNonLocked(),
       this._betsApiService.findAll(locked),
       this._loginService.me(),
     ];

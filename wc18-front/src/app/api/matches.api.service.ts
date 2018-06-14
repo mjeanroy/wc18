@@ -25,14 +25,20 @@ export class MatchesApiService {
    *
    * @returns {Observable<Match[]>} The asynchronous response.
    */
-  findAll(locked: boolean): Observable<Match[]> {
-    const params = new HttpParams();
-    if (locked !== null) {
-      params.set('locked', locked.toString());
-    }
+  findAll(): Observable<Match[]> {
+    return this._http.get<Match[]>('/api/matches');
+  }
 
+  /**
+   * Find all non locked matches.
+   *
+   * @returns {Observable<Match[]>} The asynchronous response.
+   */
+  findNonLocked(): Observable<Match[]> {
     return this._http.get<Match[]>('/api/matches', {
-      params,
+      params: {
+        locked: 'false',
+      }
     });
   }
 

@@ -26,7 +26,7 @@ export class MatchesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._matchesApiService.findAll(null).subscribe((matches) =>
+    this._matchesApiService.findAll().subscribe((matches) =>
       this.matches = matches
     );
   }
