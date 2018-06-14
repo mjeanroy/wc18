@@ -26,6 +26,7 @@ import { AppComponent } from './app.component';
 import { AdminModule } from './components/admin/admin.module';
 import {UserFormComponent} from "./components/admin/users/user-form.component";
 import { PasswordFormModule } from './components/password/password-form.module';
+import { RanksModule } from './components/ranks/ranks.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -52,6 +53,7 @@ registerLocaleData(localeFr, 'fr');
     NavbarModule,
     BetsModule,
     DashboardModule,
+    RanksModule,
     AdminModule,
   ],
 

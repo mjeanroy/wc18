@@ -104,6 +104,22 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	}
 
 	/**
+	 * Count values in database.
+	 *
+	 * @param jpql The JPQL query.
+	 * @param parameters Query parameters.
+	 * @return The result value.
+	 */
+	long count(String jpql, Map<String, Object> parameters) {
+		Query query = getEntityManager().createQuery(jpql);
+		for (Map.Entry<String, Object> entry : parameters.entrySet()) {
+			query.setParameter(entry.getKey(), entry.getValue());
+		}
+
+		return (long) query.getSingleResult();
+	}
+
+	/**
 	 * Get the current entity manager.
 	 *
 	 * @return The entity manager.

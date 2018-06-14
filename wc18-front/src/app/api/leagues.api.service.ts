@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { League } from '../models/league.model';
-import { User } from '../models';
+import { Rank, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,16 @@ export class LeaguesApiService {
    */
   findAll(): Observable<League[]> {
     return this._http.get<League[]>('/api/leagues');
+  }
+
+  /**
+   * Get all ranks of given league.
+   *
+   * @param {League} league The league.
+   * @returns {Observable<Rank[]>} The response.
+   */
+  getRanks(league: League): Observable<Rank[]> {
+    return this._http.get<Rank[]>(`/api/leagues/${league.id}/ranks`);
   }
 
   /**

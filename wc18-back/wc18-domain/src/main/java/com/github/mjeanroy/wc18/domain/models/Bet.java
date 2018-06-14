@@ -51,6 +51,15 @@ public class Bet extends AbstractEntity {
 		Result(int point) {
 			this.point = point;
 		}
+
+		/**
+		 * Get {@link #point}
+		 *
+		 * @return {@link #point}
+		 */
+		public int getPoint() {
+			return point;
+		}
 	}
 
 	/**
@@ -103,7 +112,7 @@ public class Bet extends AbstractEntity {
 	 *
 	 * @return Bet result.
 	 */
-	private Result getResult() {
+	public Result getResult() {
 		if (!match.isPlayed()) {
 			return Result.UNAVAILABLE;
 		}

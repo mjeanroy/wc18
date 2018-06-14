@@ -7,7 +7,11 @@
 package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.User;
 import org.springframework.stereotype.Repository;
+
+import static com.github.mjeanroy.wc18.commons.MoreCollections.newHashMap;
+import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 
 @Repository
 public class LeagueDao extends AbstractCrudDao<League> {
@@ -21,5 +25,18 @@ public class LeagueDao extends AbstractCrudDao<League> {
 						"ORDER BY league.name ";
 
 		return findAll(query);
+	}
+
+	public Iterable<League> findByUser(User user) {
+		String query =
+				"SELECT DISTINCT league " +
+						"FROM League league " +
+						"LEFT OUTER JOIN FETCH league.users users " +
+						"WHERE users = :user " +
+						"ORDER BY league.name ";
+
+		return findAll(query, newHashMap(
+				tuple("user", user)
+		));
 	}
 }

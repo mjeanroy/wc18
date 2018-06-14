@@ -7,5 +7,6 @@
 export const LOGIN = 'login';
 export const HOME = 'home';
 export const BETS = 'bets';
+export const RANKS = 'ranks';
 export const PASSWORD = 'passwords';
 export const ADMIN = 'admin';

@@ -8,9 +8,12 @@ package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.dto.LeagueDto;
+import com.github.mjeanroy.wc18.api.dto.RankDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.mappers.LeagueDtoMapper;
+import com.github.mjeanroy.wc18.api.mappers.RankDtoMapper;
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.Rank;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.services.LeagueService;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
@@ -34,13 +37,21 @@ public class LeagueApiService {
 	private final UserService userService;
 	private final MatchService matchService;
 	private final LeagueDtoMapper leagueDtoMapper;
+	private final RankDtoMapper rankDtoMapper;
 
 	@Inject
-	public LeagueApiService(LeagueService leagueService, LeagueDtoMapper leagueDtoMapper, UserService userService, MatchService matchService) {
+	public LeagueApiService(
+			LeagueService leagueService,
+			LeagueDtoMapper leagueDtoMapper,
+			UserService userService,
+			MatchService matchService,
+			RankDtoMapper rankDtoMapper) {
+
 		this.leagueService = leagueService;
 		this.leagueDtoMapper = leagueDtoMapper;
 		this.userService = userService;
 		this.matchService = matchService;
+		this.rankDtoMapper = rankDtoMapper;
 	}
 
 	/**
@@ -89,6 +100,19 @@ public class LeagueApiService {
 	@Transactional(readOnly = true)
 	public Iterable<BetDto> findBets(String id, String matchId) {
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * Find all ranks in given league.
+	 *
+	 * @param id League identifier.
+	 * @return All users.
+	 */
+	@Transactional(readOnly = true)
+	public Iterable<RankDto> findRanks(String id) {
+		League league = leagueService.findOneOrFail(id);
+		Iterable<Rank> ranks = leagueService.findRanks(league);
+		return rankDtoMapper.from(ranks);
 	}
 
 	/**

@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-header bg-primary text-white d-flex justify-content-between">
+    <h5 class="card-title">
+      <mat-icon>view_list</mat-icon>
+      <span>Classement {{ league?.name }}</span>
+    </h5>
+
+    <div class="days-navigation" *ngIf="leagues && leagues.length > 1">
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasPrevious()" (click)="previous()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasNext()" (click)="next()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div *ngIf="!ranks">
+      <mat-spinner [diameter]="25" style="margin: auto"></mat-spinner>
+    </div>
+    <div *ngIf="ranks">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th style="width: 50%">Login</th>
+            <th>Score</th>
+            <th>Bon pronostic</th>
+            <th>Perfect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rank of ranks">
+            <td>{{ rank.user.login }}</td>
+            <td>{{ rank.score }}</td>
+            <td>{{ rank.percentGood }} %</td>
+            <td>{{ rank.percentPerfect }} %</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

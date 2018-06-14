@@ -6,7 +6,7 @@
 
 import { Component } from '@angular/core';
 import { Passwords } from '../../models';
-import { UsersApiService } from '../../api';
+import { MeApiService, UsersApiService } from '../../api';
 
 @Component({
   selector: 'password-form',
@@ -17,13 +17,13 @@ import { UsersApiService } from '../../api';
 })
 export class PasswordFormComponent {
 
-  private _userApiService: UsersApiService;
+  private _meApiService: MeApiService;
 
   saving: boolean;
   form: Passwords;
 
-  constructor(userApiService: UsersApiService) {
-    this._userApiService = userApiService;
+  constructor(meApiService: MeApiService) {
+    this._meApiService = meApiService;
     this.saving = false;
     this.form = {
       oldPassword: '',
@@ -34,7 +34,7 @@ export class PasswordFormComponent {
   validate() {
     this.saving = true;
 
-    this._userApiService.updatePassword(this.form).subscribe(() => {
+    this._meApiService.updatePassword(this.form).subscribe(() => {
       this.saving = false;
     });
   }

@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.api.rest;
 
 import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.dto.LeagueDto;
+import com.github.mjeanroy.wc18.api.dto.RankDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.services.LeagueApiService;
 import com.github.mjeanroy.wc18.security.Security;
@@ -57,6 +58,11 @@ public class LeagueController {
 	@GetMapping("/{id}/matches/{matchId}/bets")
 	public Iterable<BetDto> findMatchBets(@PathVariable("id") String id, @PathVariable("matchId") String matchId) {
 		return leagueApiService.findBets(id, matchId);
+	}
+
+	@GetMapping("/{id}/ranks")
+	public Iterable<RankDto> findRanks(@PathVariable("id") String id) {
+		return leagueApiService.findRanks(id);
 	}
 
 	@PostMapping("/{id}/users/{userId}")

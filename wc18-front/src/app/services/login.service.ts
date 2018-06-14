@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { shareReplay, tap } from 'rxjs/operators';
-import { LoginApiService, UsersApiService } from '../api';
+import { LoginApiService, MeApiService, UsersApiService } from '../api';
 import { AuthService } from '../auth';
 import { Logger } from '../log';
 import { User, Principal } from '../models';
@@ -20,17 +20,17 @@ export class LoginService {
 
   private readonly _logger: Logger;
   private readonly _loginApiService: LoginApiService;
-  private readonly _usersApiService: UsersApiService;
+  private readonly _meApiService: MeApiService;
   private readonly _authService: AuthService;
 
   private _principal: Observable<User>;
   private _admin: boolean;
 
-  constructor(logger: Logger, loginApiService: LoginApiService, authService: AuthService, usersApiService: UsersApiService) {
+  constructor(logger: Logger, loginApiService: LoginApiService, authService: AuthService, meApiService: MeApiService) {
     this._logger = logger;
     this._loginApiService = loginApiService;
     this._authService = authService;
-    this._usersApiService = usersApiService;
+    this._meApiService = meApiService;
     this._admin = false;
   }
 
@@ -86,7 +86,7 @@ export class LoginService {
   me() {
     if (this.isLogged() && !this._principal) {
       this._logger.debug('Trying to get authenticated user but it is not available yet, querying from API');
-      this._principal = this._usersApiService.me().pipe(
+      this._principal = this._meApiService.me().pipe(
         shareReplay(),
         tap((principal) => this._setPrincipal(principal))
       );

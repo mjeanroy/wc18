@@ -7,25 +7,26 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.LeagueDao;
-import com.github.mjeanroy.wc18.domain.dao.UserDao;
 import com.github.mjeanroy.wc18.domain.exceptions.LeagueNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.Rank;
 import com.github.mjeanroy.wc18.domain.models.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.Set;
 
 @Service
 public class LeagueService {
 
 	private final LeagueDao leagueDao;
-	private final UserDao userDao;
+	private final RankService rankService;
 
 	@Inject
-	public LeagueService(LeagueDao leagueDao, UserDao userDao) {
+	public LeagueService(LeagueDao leagueDao, RankService rankService) {
 		this.leagueDao = leagueDao;
-		this.userDao = userDao;
+		this.rankService = rankService;
 	}
 
 	/**
@@ -36,6 +37,28 @@ public class LeagueService {
 	@Transactional(readOnly = true)
 	public Iterable<League> findAll() {
 		return leagueDao.findAll();
+	}
+
+	/**
+	 * Get ranks for given league.
+	 *
+	 * @return Ranks.
+	 */
+	@Transactional(readOnly = true)
+	public Iterable<Rank> findRanks(League league) {
+		Set<User> users = league.getUsers();
+		return rankService.getRanks(users);
+	}
+
+	/**
+	 * Get all existing leagues of given user.
+	 *
+	 * @param user The user.
+	 * @return Existing leagues.
+	 */
+	@Transactional(readOnly = true)
+	public Iterable<League> findByUser(User user) {
+		return leagueDao.findByUser(user);
 	}
 
 	/**

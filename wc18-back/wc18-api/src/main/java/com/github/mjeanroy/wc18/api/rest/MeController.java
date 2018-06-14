@@ -6,6 +6,7 @@
 
 package com.github.mjeanroy.wc18.api.rest;
 
+import com.github.mjeanroy.wc18.api.dto.LeagueDto;
 import com.github.mjeanroy.wc18.api.dto.PasswordDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.services.UserApiService;
@@ -37,6 +38,12 @@ public class MeController {
 	@Security
 	public UserDto me(Principal principal) {
 		return userApiService.findOne(principal);
+	}
+
+	@GetMapping("/leagues")
+	@Security
+	public Iterable<LeagueDto> findLeagues(Principal principal) {
+		return userApiService.findLeagues(principal);
 	}
 
 	@PostMapping("/password")

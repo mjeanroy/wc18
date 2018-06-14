@@ -55,4 +55,15 @@ public class MatchDao extends AbstractCrudDao<Match> {
 				tuple("date", date)
 		));
 	}
+
+	public long countByDateLessThanOrderByDate(Date date) {
+		String jpql =
+				"SELECT COUNT(m) " +
+						"FROM Match m " +
+						"WHERE m.date < :date ";
+
+		return count(jpql, newHashMap(
+				tuple("date", date)
+		));
+	}
 }
