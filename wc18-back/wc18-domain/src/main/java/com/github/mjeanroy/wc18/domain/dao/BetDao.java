@@ -101,8 +101,11 @@ public class BetDao extends AbstractCrudDao<Bet> {
 		String query =
 			"SELECT x " +
 					"FROM Bet x " +
-					"WHERE x.user = :user " +
-					"AND x.match = :match";
+					"INNER JOIN FETCH x.match m " +
+					"INNER JOIN FETCH x.user u " +
+					"LEFT OUTER JOIN FETCH u.leagues " +
+					"WHERE u = :user " +
+					"AND m = :match";
 
 		return findOne(query, newHashMap(
 				tuple("user", user),
