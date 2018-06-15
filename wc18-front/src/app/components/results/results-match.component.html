@@ -20,7 +20,7 @@
     <div>
       <div *ngIf="leagues && leagues.length > 1" style="margin-bottom: 15px;">
         <mat-form-field>
-          <mat-select placeholder="League" [(ngModel)]="league" (ngModelChange)="fetchBets()">
+          <mat-select placeholder="League" [(ngModel)]="league" (ngModelChange)="fetchBets()" name="league">
             <mat-option *ngFor="let league of leagues" [value]="league">
               {{ league.name }}
             </mat-option>

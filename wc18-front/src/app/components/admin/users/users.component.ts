@@ -5,10 +5,11 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { Login, User } from '../../../models';
-import { UsersApiService } from '../../../api';
+import { Bet, Login, Match, Score, User } from '../../../models';
+import { BetsApiService, UsersApiService } from '../../../api';
 import {MatDialog} from "@angular/material";
 import {UserFormComponent} from "./user-form.component";
+import { UserBetComponent } from './user-bet.component';
 
 @Component({
   selector: 'users',
@@ -17,17 +18,31 @@ import {UserFormComponent} from "./user-form.component";
 export class UsersComponent implements OnInit {
   private _dialog: MatDialog;
   private _usersApiService: UsersApiService;
+  private _betsApiService: BetsApiService;
 
   users: User[];
 
-  constructor(dialog: MatDialog, usersApiService: UsersApiService) {
+  constructor(dialog: MatDialog, usersApiService: UsersApiService, betsApiService: BetsApiService) {
     this._dialog = dialog;
     this._usersApiService = usersApiService;
+    this._betsApiService = betsApiService;
   }
 
   ngOnInit() {
     this._usersApiService.findAll().subscribe((users) => {
       this.users = users;
+    });
+  }
+
+  openNewBetDialog(user) {
+    const dialogReg = this._dialog.open(UserBetComponent, {
+      width: '600px',
+    });
+
+    dialogReg.afterClosed().subscribe((result) => {
+      if (result) {
+        this._saveBet(user, result.match, result.score);
+      }
     });
   }
 
@@ -41,6 +56,21 @@ export class UsersComponent implements OnInit {
         this._createUser(user);
       }
     });
+  }
+
+  private _saveBet(user: User, match: Match, score: Score) {
+    const bet: Bet = {
+      id: null,
+      date: new Date(),
+      result: 'UNAVAILABLE',
+      point: 0,
+
+      user,
+      match,
+      score,
+    };
+
+    this._betsApiService.save(user, bet).subscribe();
   }
 
   private _createUser(account: Login) {

@@ -10,12 +10,18 @@
         <tr>
           <td>Login</td>
           <td>Role</td>
+          <td></td>
         </tr>
       </thead>
       <tbody *ngIf="users">
         <tr *ngFor="let user of users">
           <td>{{ user.login }}</td>
           <td>{{ user.role }}</td>
+          <td class="column-action">
+            <button mat-raised-button color="primary" type="button" (click)="openNewBetDialog(user)">
+              <mat-icon>games</mat-icon>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

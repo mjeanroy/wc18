@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { Bet } from '../models';
+import { Bet, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,9 @@ export class BetsApiService {
    */
   saveOrUpdate(bet: Bet): Observable<Bet> {
     return this._http.post<Bet>('/api/me/bets', bet);
+  }
+
+  save(user: User, bet: Bet): Observable<Bet> {
+    return this._http.post<Bet>(`/api/users/${user.id}/bets`, bet);
   }
 }

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Pronostic</h1>
+<div mat-dialog-actions>
+  <form #userBetForm="ngForm">
+    <mat-form-field>
+      <mat-select placeholder="Matches" [(ngModel)]="match" name="match">
+        <mat-option *ngFor="let match of matches" [value]="match">
+          {{ match.team1.name }} - {{ match.team2.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" matInput placeholder="Score 1" min="0" max="15" required [(ngModel)]="score.score1" name="score1">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" matInput placeholder="Score 2" min="0" max="15" required [(ngModel)]="score.score2" name="score2">
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="validate()" [disabled]="userBetForm.form.invalid">Enregistrer</button>
+      <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+    </div>
+  </form>
+</div>

@@ -24,6 +24,7 @@ import { LeagueUserFormComponent } from './leagues/league-user-form.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchEditFormComponent } from './matches/match-edit-form.component';
+import { UserBetComponent } from './users/user-bet.component';
 // import { LeagueUserFormComponent } from './leagues/league-user-form.component';
 
 @NgModule({
@@ -46,6 +47,7 @@ import { MatchEditFormComponent } from './matches/match-edit-form.component';
 
     UsersComponent,
     UserFormComponent,
+    UserBetComponent,
 
     LeaguesComponent,
     LeagueFormComponent,
@@ -60,6 +62,7 @@ import { MatchEditFormComponent } from './matches/match-edit-form.component';
     LeagueFormComponent,
     LeagueUserFormComponent,
     MatchEditFormComponent,
+    UserBetComponent,
   ],
 
   exports: [

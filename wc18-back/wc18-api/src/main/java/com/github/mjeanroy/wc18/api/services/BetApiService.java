@@ -65,19 +65,34 @@ public class BetApiService {
 	 */
 	public BetDto save(Principal principal, BetDto bet) {
 		log.info("Saving bet for principal: {}", principal);
-
 		User user = getUserOrFail(principal);
+		return save(user, bet, true);
+	}
 
-		String id = bet.getMatch().getId();
-		Match match = matchService.findOne(id).orElseThrow(() ->
-			new MatchNotFoundException(id)
+	/**
+	 * Save new bet for given user.
+	 *
+	 * @param userId The user identifier.
+	 * @param bet The bet.
+	 * @return The result.
+	 */
+	public BetDto save(String userId, BetDto bet) {
+		log.info("Saving bet for user: {}", userId);
+		User user = userService.findOneOrFail(userId);
+		return save(user, bet, false);
+	}
+
+	private BetDto save(User user, BetDto bet, boolean checkLocked) {
+		String matchId = bet.getMatch().getId();
+		Match match = matchService.findOne(matchId).orElseThrow(() ->
+				new MatchNotFoundException(matchId)
 		);
 
 		int score1 = bet.getScore().getScore1();
 		int score2 = bet.getScore().getScore2();
 
 		log.info("Saving bet for match #{}: {} - {}", match, score1, score2);
-		Bet savedBet = betService.save(user, match, score1, score2);
+		Bet savedBet = betService.save(user, match, score1, score2, false);
 
 		log.info("Bet saved, return DTO");
 		return betDtoMapper.from(savedBet);

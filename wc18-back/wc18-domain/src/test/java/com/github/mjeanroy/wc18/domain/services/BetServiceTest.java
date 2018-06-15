@@ -118,7 +118,7 @@ public class BetServiceTest extends AbstractServiceTest {
 		int score1 = 2;
 		int score2 = 0;
 
-		Bet result = betService.save(user, match, score1, score2);
+		Bet result = betService.save(user, match, score1, score2, true);
 
 		assertThat(result).isNotNull();
 		assertThat(result.getMatch()).isEqualTo(match);
@@ -143,7 +143,7 @@ public class BetServiceTest extends AbstractServiceTest {
 		int newScore1 = 2;
 		int newScore2 = 0;
 
-		Bet result = betService.save(user, match, newScore1, newScore2);
+		Bet result = betService.save(user, match, newScore1, newScore2, true);
 
 		assertThat(result).isNotNull().isSameAs(bet);
 		assertThat(result.getMatch()).isEqualTo(match);
@@ -166,7 +166,7 @@ public class BetServiceTest extends AbstractServiceTest {
 		int newScore1 = 2;
 		int newScore2 = 0;
 
-		assertThatThrownBy(() -> betService.save(user, match, newScore1, newScore2))
+		assertThatThrownBy(() -> betService.save(user, match, newScore1, newScore2, true))
 			.isExactlyInstanceOf(MatchLockedException.class)
 			.hasMessage("Match '" + match.getId() + "' is locked for bet");
 

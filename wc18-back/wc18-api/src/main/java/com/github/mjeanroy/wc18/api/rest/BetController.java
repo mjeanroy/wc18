@@ -12,10 +12,10 @@ import com.github.mjeanroy.wc18.api.services.BetApiService;
 import com.github.mjeanroy.wc18.security.Security;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +26,6 @@ import javax.validation.Valid;
  * The {@link MatchDto} Rest Controller.
  */
 @RestController
-@RequestMapping("/api/me/bets")
 public class BetController {
 
 	private final BetApiService betApiService;
@@ -36,7 +35,7 @@ public class BetController {
 		this.betApiService = betApiService;
 	}
 
-	@GetMapping
+	@GetMapping("/api/me/bets")
 	@Security
 	public Iterable<BetDto> findAll(
 			@RequestParam(name = "locked", required = false) Boolean locked,
@@ -45,15 +44,21 @@ public class BetController {
 		return betApiService.findAll(principal, locked);
 	}
 
-	@PostMapping
+	@PostMapping("/api/me/bets")
 	@Security
 	public BetDto create(Principal principal, @RequestBody @Valid BetDto bet) {
 		return betApiService.save(principal, bet);
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/api/me/bets/{id}")
 	@Security
 	public BetDto update(Principal principal, @RequestBody @Valid BetDto bet) {
 		return betApiService.save(principal, bet);
+	}
+
+	@PostMapping("/api/users/{userId}/bets")
+	@Security(role = "ADMIN")
+	public BetDto update(@PathVariable("userId") String userId, @RequestBody @Valid BetDto bet) {
+		return betApiService.save(userId, bet);
 	}
 }

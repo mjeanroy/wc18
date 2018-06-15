@@ -79,13 +79,14 @@ public class BetService {
 	 * @param match The match.
 	 * @param score1 First score.
 	 * @param score2 Second score.
+	 * @param checkLocked Check if match is locked, and fail if it is.
 	 * @return The bet.
 	 */
 	@Transactional
-	public Bet save(User user, Match match, int score1, int score2) {
+	public Bet save(User user, Match match, int score1, int score2, boolean checkLocked) {
 		log.info("Saving bet for match #{} and user #{}", match, user);
 
-		if (match.isLocked()) {
+		if (checkLocked && match.isLocked()) {
 			log.error("Match #{} is locked, #{} cannot save bet", match, user);
 			throw new MatchLockedException(match.getId());
 		}
