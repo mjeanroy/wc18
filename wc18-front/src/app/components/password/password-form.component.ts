@@ -36,6 +36,8 @@ export class PasswordFormComponent {
 
     this._meApiService.updatePassword(this.form).subscribe(() => {
       this.saving = false;
+      this.form.oldPassword = '';
+      this.form.newPassword = '';
     });
   }
 }
