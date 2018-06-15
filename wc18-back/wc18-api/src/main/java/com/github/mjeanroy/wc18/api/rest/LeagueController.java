@@ -30,7 +30,6 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/api/leagues")
-@Security(role = "ADMIN")
 public class LeagueController {
 
 	private final LeagueApiService leagueApiService;
@@ -46,39 +45,46 @@ public class LeagueController {
 	}
 
 	@GetMapping("/{id}")
+	@Security
 	public LeagueDto findOne(@PathVariable("id") String id) {
 		return leagueApiService.findOne(id);
 	}
 
 	@GetMapping("/{id}/users")
+	@Security
 	public Iterable<UserDto> findUsers(@PathVariable("id") String id) {
 		return leagueApiService.findUsers(id);
 	}
 
 	@GetMapping("/{id}/matches/{matchId}/bets")
+	@Security
 	public Iterable<BetDto> findMatchBets(@PathVariable("id") String id, @PathVariable("matchId") String matchId) {
 		return leagueApiService.findBets(id, matchId);
 	}
 
 	@GetMapping("/{id}/ranks")
+	@Security
 	public Iterable<RankDto> findRanks(@PathVariable("id") String id) {
 		return leagueApiService.findRanks(id);
 	}
 
 	@PostMapping("/{id}/users/{userId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Security(role = "ADMIN")
 	public void addUser(@PathVariable("id") String id, @PathVariable("userId") String userId) {
 		leagueApiService.addUser(id, userId);
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@Security(role = "ADMIN")
 	public LeagueDto create(@RequestBody @Valid LeagueDto leagueDto) {
 		return leagueApiService.create(leagueDto);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@Security(role = "ADMIN")
 	public void create(@PathVariable("id") String id) {
 		leagueApiService.remove(id);
 	}
