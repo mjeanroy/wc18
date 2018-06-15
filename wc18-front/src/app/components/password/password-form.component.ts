@@ -7,6 +7,7 @@
 import { Component } from '@angular/core';
 import { Passwords } from '../../models';
 import { MeApiService, UsersApiService } from '../../api';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'password-form',
@@ -31,11 +32,13 @@ export class PasswordFormComponent {
     };
   }
 
-  validate() {
+  validate(form: FormControl) {
     this.saving = true;
 
     this._meApiService.updatePassword(this.form).subscribe(() => {
       this.saving = false;
+
+      form.reset();
       this.form.oldPassword = '';
       this.form.newPassword = '';
     });
