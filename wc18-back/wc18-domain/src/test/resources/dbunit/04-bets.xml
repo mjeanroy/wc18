@@ -6,14 +6,14 @@
 
 <dataset>
   <bets
-    id="fa066c70-a6ac-418e-927e-add60c1fc272"
-    version="0"
-    creation_date="2015-05-15 00:00:00"
-    date="2015-05-16 00:00:00"
-    match_id="4ff9c731-7eba-47bb-91fa-a0c04b2e394e"
-    user_id="e31195bd-1d4e-4915-a3dc-ce901f57903f"
-    score1="2"
-    score2="0"
+      id="fa066c70-a6ac-418e-927e-add60c1fc272"
+      version="0"
+      creation_date="2015-05-15 00:00:00"
+      date="2015-05-16 00:00:00"
+      match_id="4ff9c731-7eba-47bb-91fa-a0c04b2e394e"
+      user_id="e31195bd-1d4e-4915-a3dc-ce901f57903f"
+      score1="2"
+      score2="0"
   />
 
   <bets

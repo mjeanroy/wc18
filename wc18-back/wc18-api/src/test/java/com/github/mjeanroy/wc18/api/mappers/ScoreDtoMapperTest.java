@@ -6,18 +6,22 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
-import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.ScoreDto;
 import com.github.mjeanroy.wc18.domain.models.Score;
 import com.github.mjeanroy.wc18.domain.tests.builders.ScoreBuilder;
 
+import javax.inject.Inject;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ScoreDtoMapperTest extends AbstractDtoMapper<Score, ScoreDto, ScoreDtoMapper> {
+public class ScoreDtoMapperTest extends AbstractDtoMapperTest<Score, ScoreDto, ScoreDtoMapper> {
+
+	@Inject
+	private ScoreDtoMapper scoreDtoMapper;
 
 	@Override
-	ScoreDtoMapper create(Mapper mapper) {
-		return new ScoreDtoMapper(mapper);
+	ScoreDtoMapper getMapper() {
+		return scoreDtoMapper;
 	}
 
 	@Override

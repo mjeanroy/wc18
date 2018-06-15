@@ -7,6 +7,7 @@
 package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.MatchDao;
+import com.github.mjeanroy.wc18.domain.exceptions.MatchNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 import com.github.mjeanroy.wc18.domain.models.Team;
@@ -27,6 +28,7 @@ import java.util.stream.IntStream;
 
 import static com.github.mjeanroy.wc18.domain.tests.commons.ReflectionTestUtils.writeField;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -60,6 +62,24 @@ public class MatchServiceTest extends AbstractServiceTest {
 
 		assertThat(results).isSameAs(matches);
 		verify(matchDao).findAllOrderByDate();
+	}
+
+	@Test
+	public void it_should_find_match_by_id() {
+		Match match = createRandomMatch();
+		String id = match.getId();
+		Match result = matchService.findOneOrFail(id);
+
+		assertThat(result).isSameAs(match);
+		verify(matchDao).findOne(id);
+	}
+
+	@Test
+	public void it_should_fail_to_find_match_if_it_does_not_exist() {
+		String id = UUID.randomUUID().toString();
+		assertThatThrownBy(() -> matchService.findOneOrFail(id))
+				.isExactlyInstanceOf(MatchNotFoundException.class)
+				.hasMessage("Cannot find match '" + id + "'");
 	}
 
 	@Test

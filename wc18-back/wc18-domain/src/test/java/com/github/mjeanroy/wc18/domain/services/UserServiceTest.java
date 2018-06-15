@@ -140,6 +140,44 @@ public class UserServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
+	public void it_should_find_user() {
+		User user = createUser("johndoe", "azerty123");
+		String id = user.getId();
+
+		User result = userService.findOneOrFail(id);
+
+		assertThat(result).isSameAs(user);
+		verify(userDao).findOne(id);
+	}
+
+	@Test
+	public void it_should_find_user_and_fail_if_user_does_not_exist() {
+		String id = UUID.randomUUID().toString();
+		assertThatThrownBy(() -> userService.findOneOrFail(id))
+				.isExactlyInstanceOf(UserNotFoundException.class)
+				.hasMessage("Cannot find user '" + id + "'");
+	}
+
+	@Test
+	public void it_should_find_user_by_login() {
+		String login = "johndoe";
+		User user = createUser(login, "azerty123");
+
+		Optional<User> result = userService.findByLogin(login);
+
+		assertThat(result).isPresent().hasValue(user);
+		verify(userDao).findByLogin(login);
+	}
+
+	@Test
+	public void it_should_find_user_by_login_and_returns_empty_without_any_result() {
+		String login = "johndoe";
+		Optional<User> result = userService.findByLogin(login);
+		assertThat(result).isNotPresent();
+		verify(userDao).findByLogin(login);
+	}
+
+	@Test
 	public void it_should_create_user() {
 		String login = "johndoe";
 		String password = "azerty123";

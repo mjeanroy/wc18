@@ -6,24 +6,25 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
-import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 
+import javax.inject.Inject;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchDtoMapperTest extends AbstractDtoMapper<Match, MatchDto, MatchDtoMapper> {
+public class MatchDtoMapperTest extends AbstractDtoMapperTest<Match, MatchDto, MatchDtoMapper> {
+
+	@Inject
+	private MatchDtoMapper matchDtoMapper;
 
 	@Override
-	MatchDtoMapper create(Mapper mapper) {
-		ScoreDtoMapper scoreDtoMapper = new ScoreDtoMapper(mapper);
-		TeamDtoMapper teamDtoMapper = new TeamDtoMapper(mapper);
-		return new MatchDtoMapper(mapper, teamDtoMapper, scoreDtoMapper);
+	MatchDtoMapper getMapper() {
+		return matchDtoMapper;
 	}
 
 	@Override

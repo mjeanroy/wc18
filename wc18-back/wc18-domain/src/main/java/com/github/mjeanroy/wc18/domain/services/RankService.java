@@ -15,12 +15,13 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Math.toIntExact;
+import static java.util.Comparator.comparing;
 import static java.util.Comparator.reverseOrder;
 
 @Service
@@ -40,7 +41,7 @@ public class RankService {
 	 *
 	 * @return Ranks.
 	 */
-	public Iterable<Rank> getRanks(Iterable<User> users) {
+	Iterable<Rank> getRanks(Iterable<User> users) {
 		Map<User, RankStatistic> scores = new HashMap<>();
 
 		// Add everybody with a score of zero.
@@ -52,8 +53,8 @@ public class RankService {
 
 		// Now, get the result of each bet.
 		// In case of performance problem, just store the score in database.
-		long nbMatches = matchDao.countByDateLessThanOrderByDate(now);
-		Iterable<Bet> bets = betDao.findByUserInAndMatchDateLessThan(users, now);
+		final long nbMatches = matchDao.countByDateLessThanOrderByDate(now);
+		final Iterable<Bet> bets = betDao.findByUserInAndMatchDateLessThan(users, now);
 
 		for (Bet bet : bets) {
 			User user = bet.getUser();
@@ -72,16 +73,17 @@ public class RankService {
 
 		// Now, just return ranks.
 		List<Rank> ranks = new ArrayList<>(scores.size());
+
 		for (Map.Entry<User, RankStatistic> entry : scores.entrySet()) {
 			User user = entry.getKey();
 			RankStatistic statistic = entry.getValue();
 			int score = statistic.score;
-			int percentGood = Math.toIntExact(statistic.nbGood * 100 / nbMatches);
-			int percentPerfect = Math.toIntExact(statistic.nbPerfect * 100 / nbMatches);
+			int percentGood = toIntExact(statistic.nbGood * 100 / nbMatches);
+			int percentPerfect = toIntExact(statistic.nbPerfect * 100 / nbMatches);
 			ranks.add(new Rank(user, score, percentGood, percentPerfect));
 		}
 
-		ranks.sort(Comparator.comparing(Rank::getScore, reverseOrder()));
+		ranks.sort(comparing(Rank::getScore, reverseOrder()));
 
 		return ranks;
 	}

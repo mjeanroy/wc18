@@ -7,11 +7,15 @@
 package com.github.mjeanroy.wc18.domain.tests.builders;
 
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.User;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import static com.github.mjeanroy.wc18.domain.tests.builders.BuilderUtils.newInstance;
 import static com.github.mjeanroy.wc18.domain.tests.builders.BuilderUtils.writeField;
+import static java.util.Collections.addAll;
 
 /**
  * Builder for {@link League} instances.
@@ -29,6 +33,18 @@ public class LeagueBuilder {
 	 * @see League#name
 	 */
 	private String name;
+
+	/**
+	 * The league users.
+	 */
+	private final Set<User> users;
+
+	/**
+	 * Create the builder.
+	 */
+	public LeagueBuilder() {
+		this.users = new LinkedHashSet<>();
+	}
 
 	/**
 	 * Set {@link #id} with a random value.
@@ -52,14 +68,26 @@ public class LeagueBuilder {
 	}
 
 	/**
+	 * Add new users to the league.
+	 *
+	 * @param users The users list.
+	 * @return The current builder.
+	 */
+	public LeagueBuilder withUsers(User... users) {
+		addAll(this.users, users);
+		return this;
+	}
+
+	/**
 	 * Build the final {@link League} instance.
 	 *
 	 * @return The instance.
 	 */
 	public League build() {
-		League user = newInstance(League.class);
-		writeField(user, "id", id);
-		writeField(user, "name", name);
-		return user;
+		League league = newInstance(League.class);
+		writeField(league, "id", id);
+		writeField(league, "name", name);
+		writeField(league, "users", new LinkedHashSet<>(this.users));
+		return league;
 	}
 }

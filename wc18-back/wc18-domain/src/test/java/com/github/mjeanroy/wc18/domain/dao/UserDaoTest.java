@@ -32,6 +32,18 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	}
 
 	@Override
+	String getOneId() {
+		return "e31195bd-1d4e-4915-a3dc-ce901f57903f";
+	}
+
+	@Override
+	void checkOne(User one) {
+		assertThat(one.getLogin()).isEqualTo("mickael");
+		assertThat(one.getRole()).isEqualTo(Role.ADMIN);
+		assertThat(one.getPassword()).isNotNull().isNotEmpty();
+	}
+
+	@Override
 	User createOne() {
 		return new UserBuilder()
 				.withLogin("johndoe")
@@ -45,7 +57,7 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 		Optional<User> optUser = userDao.findByLogin("mickael");
 		assertThat(optUser).isPresent();
 
-		User user = optUser.get();
+		User user = optUser.orElseThrow(AssertionError::new);
 		assertThat(user.getId()).isEqualTo("e31195bd-1d4e-4915-a3dc-ce901f57903f");
 	}
 

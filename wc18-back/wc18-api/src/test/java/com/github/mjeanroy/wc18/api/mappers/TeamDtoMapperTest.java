@@ -6,18 +6,22 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
-import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.TeamDto;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 
+import javax.inject.Inject;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TeamDtoMapperTest extends AbstractDtoMapper<Team, TeamDto, TeamDtoMapper> {
+public class TeamDtoMapperTest extends AbstractDtoMapperTest<Team, TeamDto, TeamDtoMapper> {
+
+	@Inject
+	private TeamDtoMapper teamDtoMapper;
 
 	@Override
-	TeamDtoMapper create(Mapper mapper) {
-		return new TeamDtoMapper(mapper);
+	TeamDtoMapper getMapper() {
+		return teamDtoMapper;
 	}
 
 	@Override

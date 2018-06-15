@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
@@ -37,6 +38,21 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	@Override
 	BetDao getDao() {
 		return betDao;
+	}
+
+	@Override
+	String getOneId() {
+		return "8edec0c9-2f71-4ae9-beb5-ae16024bc3d1";
+	}
+
+	@Override
+	void checkOne(Bet one) {
+		assertThat(one.getMatch()).isNotNull();
+		assertThat(one.getUser()).isNotNull();
+		assertThat(one.getDate()).hasYear(2015).hasMonth(5).hasDayOfMonth(16).hasHourOfDay(0).hasMinute(0).hasSecond(0).hasMillisecond(0);
+		assertThat(one.getScore()).isNotNull();
+		assertThat(one.getScore().getScore1()).isEqualTo(2);
+		assertThat(one.getScore().getScore2()).isEqualTo(0);
 	}
 
 	@Override
@@ -108,7 +124,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 		Optional<Bet> optBet = betDao.findOne(user, match);
 		assertThat(optBet).isPresent();
 
-		Bet bet = optBet.get();
+		Bet bet = optBet.orElseThrow(AssertionError::new);
 		assertThat(bet.getId()).isEqualTo("fa066c70-a6ac-418e-927e-add60c1fc272");
 		assertThat(bet.getMatch()).isEqualTo(match);
 		assertThat(bet.getUser()).isEqualTo(user);
@@ -122,5 +138,23 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		Optional<Bet> optBet = betDao.findOne(user, match);
 		assertThat(optBet).isEmpty();
+	}
+
+	@Test
+	public void it_should_get_bets_by_match_and_user_in() {
+		User u1 = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
+		User u2 = findOne(User.class, "10cd4d9f-099c-4491-bfdb-a635b2ffc757");
+		List<User> users = asList(u1, u2);
+		Date date = Date.from(LocalDateTime.parse("2018-06-16T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
+
+		List<Bet> bets = toList(betDao.findByUserInAndMatchDateLessThan(users, date));
+
+		assertThat(bets)
+				.isNotEmpty()
+				.extracting(Bet::getId)
+				.contains(
+						"ec1eb37b-bdb0-44f4-980f-1ae8a062e196",
+						"fa066c70-a6ac-418e-927e-add60c1fc272"
+				);
 	}
 }

@@ -6,18 +6,22 @@
 
 package com.github.mjeanroy.wc18.api.mappers;
 
-import com.github.mjeanroy.spring.mappers.Mapper;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 
+import javax.inject.Inject;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserDtoMapperTest extends AbstractDtoMapper<User, UserDto, UserDtoMapper> {
+public class UserDtoMapperTest extends AbstractDtoMapperTest<User, UserDto, UserDtoMapper> {
+
+	@Inject
+	private UserDtoMapper userDtoMapper;
 
 	@Override
-	UserDtoMapper create(Mapper mapper) {
-		return new UserDtoMapper(mapper);
+	UserDtoMapper getMapper() {
+		return userDtoMapper;
 	}
 
 	@Override

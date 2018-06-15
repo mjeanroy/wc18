@@ -27,6 +27,16 @@ abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractC
 		assertThat(result.getId()).isNotNull().isNotEmpty();
 	}
 
+	@Test
+	public void it_should_remove_entity() {
+		String id = getOneId();
+		T entity = findOne(getEntityClass(), id);
+		assertThat(entity).isNotNull();
+
+		getDao().delete(entity);
+
+		assertThat(findOne(getEntityClass(), id)).isNull();
+	}
 	/**
 	 * Create new entity that will be persisted in {@link #create_entry()} unit test.
 	 *

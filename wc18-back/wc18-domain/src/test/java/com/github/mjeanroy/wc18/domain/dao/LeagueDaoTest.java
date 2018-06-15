@@ -33,6 +33,17 @@ public class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
 	}
 
 	@Override
+	String getOneId() {
+		return "cc591102-dedf-432f-b0ea-58459997514c";
+	}
+
+	@Override
+	void checkOne(League one) {
+		assertThat(one.getName()).isEqualTo("League 1");
+		assertThat(one.getUsers()).isNotEmpty();
+	}
+
+	@Override
 	League createOne() {
 		return new LeagueBuilder()
 			.withName("The Justice League")

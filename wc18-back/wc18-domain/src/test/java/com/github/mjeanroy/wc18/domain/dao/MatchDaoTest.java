@@ -39,6 +39,20 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Override
+	String getOneId() {
+		return "251643b1-5a15-4cac-8f84-6cf0153a2480";
+	}
+
+	@Override
+	void checkOne(Match one) {
+		assertThat(one.getStage()).isEqualTo(Stage.GROUP);
+		assertThat(one.getDate()).hasYear(2018).hasMonth(6).hasDayOfMonth(21).hasHourOfDay(15).hasMinute(0).hasSecond(0).hasMillisecond(0);
+		assertThat(one.getTeam1()).isNotNull();
+		assertThat(one.getTeam2()).isNotNull();
+		assertThat(one.getScore()).isNull();
+	}
+
+	@Override
 	Match createOne() {
 		Team team1 = findOne(Team.class, "5820fadd-ae19-48d5-b4e5-811b08f58b87");
 		Team team2 = findOne(Team.class, "e9c4e714-5b4b-4e2d-a896-9f043c295869");
@@ -91,5 +105,12 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 						return value.getDate().getTime() >= date.getTime();
 					}
 				});
+	}
+
+	@Test
+	public void it_should_count_by_match_date_less_than() {
+		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
+		long count = matchDao.countByDateLessThanOrderByDate(date);
+		assertThat(count).isEqualTo(17L);
 	}
 }
