@@ -14,4 +14,6 @@ export interface Bet {
   match: Match;
   score: Score;
   user: User;
+  result: string;
+  point: number;
 }

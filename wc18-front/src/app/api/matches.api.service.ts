@@ -42,6 +42,19 @@ export class MatchesApiService {
     });
   }
 
+  /**
+   * Find all locked matches.
+   *
+   * @returns {Observable<Match[]>} The asynchronous response.
+   */
+  findLocked(): Observable<Match[]> {
+    return this._http.get<Match[]>('/api/matches', {
+      params: {
+        locked: 'true',
+      }
+    });
+  }
+
   update(match: Match): Observable<Match> {
     return this._http.put<Match>(`/api/matches/${match.id}`, match);
   }

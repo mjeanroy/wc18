@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { League } from '../models/league.model';
-import { Rank, User } from '../models';
+import { Bet, Match, Rank, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,10 @@ export class LeaguesApiService {
    */
   getRanks(league: League): Observable<Rank[]> {
     return this._http.get<Rank[]>(`/api/leagues/${league.id}/ranks`);
+  }
+
+  getBets(league: League, match: Match) {
+    return this._http.get<Bet[]>(`/api/leagues/${league.id}/matches/${match.id}/bets`);
   }
 
   /**

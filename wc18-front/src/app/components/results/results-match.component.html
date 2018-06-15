@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header bg-primary text-white d-flex justify-content-between">
+    <h6 class="card-title">
+      <mat-icon>casino</mat-icon>
+      <span>{{ match?.team1.name }} VS {{ match?.team2.name }}</span>
+      <span *ngIf="match?.score"> -- {{ match?.score.score1 }} - {{ match?.score.score2 }}</span>
+    </h6>
+
+    <div class="days-navigation">
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasPrevious()" (click)="previous()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasNext()" (click)="next()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div>
+      <div *ngIf="leagues && leagues.length > 1" style="margin-bottom: 15px;">
+        <mat-form-field>
+          <mat-select placeholder="League" [(ngModel)]="league" (ngModelChange)="fetchBets()">
+            <mat-option *ngFor="let league of leagues" [value]="league">
+              {{ league.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Login</th>
+            <th>Pronostic</th>
+            <th>Résultat</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="loading">
+          <tr>
+            <td colspan="4">
+              <mat-spinner [diameter]="25" style="margin: auto"></mat-spinner>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!loading">
+          <tr *ngFor="let bet of bets">
+            <td>{{ bet.user.login }}</td>
+            <td>{{ bet.score.score1 }} - {{ bet.score.score2 }}</td>
+            <td>
+              <div [ngSwitch]="bet.result">
+                <span *ngSwitchCase="'UNAVAILABLE'">-</span>
+                <span *ngSwitchCase="'LOOSE'">Raté :/</span>
+                <span *ngSwitchCase="'WIN'">Gagné :)</span>
+                <span *ngSwitchCase="'PERFECT'">Parfait !</span>
+              </div>
+            </td>
+            <td>{{ bet.point }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

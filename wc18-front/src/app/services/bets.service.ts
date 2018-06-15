@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { map } from 'rxjs/operators';
-import { BetsApiService, MatchesApiService, UsersApiService } from '../api';
+import { BetsApiService, MatchesApiService } from '../api';
 import { Bet, Match, User } from '../models';
 import { LoginService } from './login.service';
 
@@ -70,6 +70,8 @@ function createBet(match: Match, bets: Map<string, Bet>, me: User) {
     id: null,
     date: new Date(),
     user: me,
+    result: 'UNAVAILABLE',
+    point: 0,
     score: {
       score1: 0,
       score2: 0,

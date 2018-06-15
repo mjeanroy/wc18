@@ -8,6 +8,7 @@ package com.github.mjeanroy.wc18.domain.services;
 
 import com.github.mjeanroy.wc18.domain.dao.BetDao;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
+import com.github.mjeanroy.wc18.domain.exceptions.MatchUnlockedException;
 import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Score;
@@ -53,6 +54,22 @@ public class BetService {
 			log.info("Find bets (for non locked matches) for user #{}", user);
 			return betDao.findByUserAndMatchDateGreaterThanOrEqual(user, new Date());
 		}
+	}
+
+	/**
+	 * Get all bets of given users for a given match.
+	 *
+	 * @param users The users.
+	 * @param match The match.
+	 * @return List of bets.
+	 */
+	@Transactional(readOnly = true)
+	public Iterable<Bet> findByUsersAndMatch(Iterable<User> users, Match match) {
+		if (!match.isLocked()) {
+			throw new MatchUnlockedException(match.getId());
+		}
+
+		return betDao.findByUserInAndMatch(users, match);
 	}
 
 	/**

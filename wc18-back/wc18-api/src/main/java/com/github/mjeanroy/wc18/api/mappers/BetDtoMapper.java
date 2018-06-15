@@ -39,6 +39,8 @@ public class BetDtoMapper extends AbstractLazyObjectMapper<Bet, BetDto> {
 		BetDto dto = new BetDto();
 		dto.setId(source.getId());
 		dto.setDate(source.getDate());
+		dto.setResult(source.getResult());
+		dto.setPoint(source.getPoint());
 		dto.setUser(userDtoMapper.from(source.getUser()));
 		dto.setMatch(matchDtoMapper.from(source.getMatch()));
 		dto.setScore(scoreDtoMapper.from(source.getScore()));

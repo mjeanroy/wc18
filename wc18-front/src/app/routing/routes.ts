@@ -9,10 +9,11 @@ import { LoginComponent } from '../components/login';
 import { DashboardComponent } from '../components/dashboard';
 import { BetsCardComponent } from '../components/bets';
 import { IsLoggedGuard, IsNotLoggedGuard } from '../guards';
-import { ADMIN, BETS, HOME, LOGIN, PASSWORD, RANKS } from './paths';
+import { ADMIN, BETS, HOME, LOGIN, PASSWORD, RANKS, RESULTS } from './paths';
 import { AdminComponent } from "../components/admin/admin.component";
 import { PasswordFormComponent } from '../components/password/password-form.component';
 import { RanksComponent } from '../components/ranks/ranks.component';
+import { ResultsMatchComponent } from '../components/results/results-match.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,14 @@ export const routes: Routes = [
   {
     path: BETS,
     component: BetsCardComponent,
+    canActivate: [
+      IsLoggedGuard,
+    ],
+  },
+
+  {
+    path: RESULTS,
+    component: ResultsMatchComponent,
     canActivate: [
       IsLoggedGuard,
     ],

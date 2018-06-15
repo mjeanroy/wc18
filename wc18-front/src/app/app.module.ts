@@ -24,9 +24,9 @@ import { DashboardModule } from './components/dashboard';
 import { routes } from './routing/routes';
 import { AppComponent } from './app.component';
 import { AdminModule } from './components/admin/admin.module';
-import {UserFormComponent} from "./components/admin/users/user-form.component";
 import { PasswordFormModule } from './components/password/password-form.module';
 import { RanksModule } from './components/ranks/ranks.module';
+import { ResultsModule } from './components/results/results.module';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -54,6 +54,7 @@ registerLocaleData(localeFr, 'fr');
     BetsModule,
     DashboardModule,
     RanksModule,
+    ResultsModule,
     AdminModule,
   ],
 

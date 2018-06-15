@@ -10,11 +10,15 @@ import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.dto.LeagueDto;
 import com.github.mjeanroy.wc18.api.dto.RankDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
+import com.github.mjeanroy.wc18.api.mappers.BetDtoMapper;
 import com.github.mjeanroy.wc18.api.mappers.LeagueDtoMapper;
 import com.github.mjeanroy.wc18.api.mappers.RankDtoMapper;
+import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.League;
+import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Rank;
 import com.github.mjeanroy.wc18.domain.models.User;
+import com.github.mjeanroy.wc18.domain.services.BetService;
 import com.github.mjeanroy.wc18.domain.services.LeagueService;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
 import com.github.mjeanroy.wc18.domain.services.UserService;
@@ -36,8 +40,10 @@ public class LeagueApiService {
 	private final LeagueService leagueService;
 	private final UserService userService;
 	private final MatchService matchService;
+	private final BetService betService;
 	private final LeagueDtoMapper leagueDtoMapper;
 	private final RankDtoMapper rankDtoMapper;
+	private final BetDtoMapper betDtoMapper;
 
 	@Inject
 	public LeagueApiService(
@@ -45,13 +51,17 @@ public class LeagueApiService {
 			LeagueDtoMapper leagueDtoMapper,
 			UserService userService,
 			MatchService matchService,
-			RankDtoMapper rankDtoMapper) {
+			BetService betService,
+			RankDtoMapper rankDtoMapper,
+			BetDtoMapper betDtoMapper) {
 
 		this.leagueService = leagueService;
 		this.leagueDtoMapper = leagueDtoMapper;
 		this.userService = userService;
 		this.matchService = matchService;
+		this.betService = betService;
 		this.rankDtoMapper = rankDtoMapper;
+		this.betDtoMapper = betDtoMapper;
 	}
 
 	/**
@@ -99,7 +109,10 @@ public class LeagueApiService {
 	 */
 	@Transactional(readOnly = true)
 	public Iterable<BetDto> findBets(String id, String matchId) {
-		throw new UnsupportedOperationException();
+		League league = leagueService.findOneOrFail(id);
+		Match match = matchService.findOneOrFail(matchId);
+		Iterable<Bet> bets = betService.findByUsersAndMatch(league.getUsers(), match);
+		return betDtoMapper.from(bets);
 	}
 
 	/**

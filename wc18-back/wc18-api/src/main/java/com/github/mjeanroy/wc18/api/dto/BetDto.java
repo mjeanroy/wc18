@@ -6,6 +6,8 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
+import com.github.mjeanroy.wc18.domain.models.Bet;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -39,6 +41,16 @@ public class BetDto extends AbstractDto {
 	 * The user.
 	 */
 	private UserDto user;
+
+	/**
+	 * The bet result.
+	 */
+	private Bet.Result result;
+
+	/**
+	 * The bet point.
+	 */
+	private int point;
 
 	/**
 	 * Get {@link #id}
@@ -128,5 +140,41 @@ public class BetDto extends AbstractDto {
 	 */
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	/**
+	 * Get {@link #result}
+	 *
+	 * @return {@link #result}
+	 */
+	public Bet.Result getResult() {
+		return result;
+	}
+
+	/**
+	 * Set {@link #result}
+	 *
+	 * @param result New {@link #result}
+	 */
+	public void setResult(Bet.Result result) {
+		this.result = result;
+	}
+
+	/**
+	 * Get {@link #point}
+	 *
+	 * @return {@link #point}
+	 */
+	public int getPoint() {
+		return point;
+	}
+
+	/**
+	 * Set {@link #point}
+	 *
+	 * @param point New {@link #point}
+	 */
+	public void setPoint(int point) {
+		this.point = point;
 	}
 }

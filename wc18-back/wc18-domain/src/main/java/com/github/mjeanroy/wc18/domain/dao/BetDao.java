@@ -131,4 +131,27 @@ public class BetDao extends AbstractCrudDao<Bet> {
 			put("date", date);
 		}});
 	}
+
+	/**
+	 * Find all bet of given users and given match.
+	 *
+	 * @param users The users.
+	 * @param match The match.
+	 * @return All bets.
+	 */
+	public Iterable<Bet> findByUserInAndMatch(Iterable<User> users, Match match) {
+		String query =
+				"SELECT x " +
+						"FROM Bet x " +
+						"INNER JOIN FETCH x.match m " +
+						"INNER JOIN FETCH x.user u " +
+						"WHERE u IN (:users) " +
+						"AND m = :match " +
+						"ORDER BY u.login";
+
+		return findAll(query, new HashMap<String, Object>() {{
+			put("users", users);
+			put("match", match);
+		}});
+	}
 }
