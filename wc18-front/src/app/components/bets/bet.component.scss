@@ -25,6 +25,7 @@ mat-spinner {
   @include media-breakpoint-down(sm) {
     width: 80%;
     max-width: 80%;
+    white-space: nowrap;
   }
 }
 
@@ -53,6 +54,10 @@ mat-spinner {
 
 .bet-separator {
   padding-right: 10px;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+  }
 }
 
 .bet-score {

@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-header bg-primary text-white d-flex justify-content-between">
-    <h5 class="card-title">
+    <h6 class="card-title">
       <mat-icon>view_list</mat-icon>
       <span>Classement {{ league?.name }}</span>
-    </h5>
+    </h6>
 
     <div class="days-navigation" *ngIf="leagues && leagues.length > 1">
       <button class="btn-day btn-day-previous" mat-icon-button [disabled]="!hasPrevious()" (click)="previous()">

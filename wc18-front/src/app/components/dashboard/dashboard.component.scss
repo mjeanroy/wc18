@@ -24,11 +24,13 @@ app-dashboard {
 }
 
 .row {
-  margin-bottom: 20px;
-
   $card-height: 430px;
 
   height: $card-height;
   min-height: $card-height;
   max-height: $card-height;
+}
+
+.col {
+  margin-bottom: 20px;
 }
