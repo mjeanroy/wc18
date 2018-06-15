@@ -13,7 +13,7 @@ import { SnackbarService } from '../../services';
   selector: 'app-bet',
   templateUrl: './bet.component.html',
   styleUrls: [
-    './bet.component.css',
+    './bet.component.scss',
   ],
 })
 export class BetComponent implements OnInit, DoCheck {

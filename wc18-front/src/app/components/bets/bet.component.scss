@@ -4,6 +4,10 @@
  * Proprietary and confidential.
  */
 
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
 mat-spinner {
   display: inline;
 }
@@ -13,9 +17,28 @@ mat-spinner {
   color: #fff;
 }
 
+.bet-team1, .bet-team2, .bet-form, .bet-action {
+  display: inline-block;
+}
+
+.bet-form {
+  @include media-breakpoint-down(sm) {
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
+.bet-action {
+  margin-left: 10px;
+}
+
 .bet-team-name {
   display: inline-block;
   width: 150px;
+
+  @include media-breakpoint-down(sm) {
+    width: auto;
+  }
 }
 
 .bet-team-name1 {
