@@ -52,10 +52,10 @@ public class UserApiService {
 
 	@Inject
 	public UserApiService(
-			UserService userService,
-			UserDtoMapper userDtoMapper,
-			LeagueService leagueService,
-			LeagueDtoMapper leagueDtoMapper) {
+		UserService userService,
+		UserDtoMapper userDtoMapper,
+		LeagueService leagueService,
+		LeagueDtoMapper leagueDtoMapper) {
 
 		this.userService = userService;
 		this.userDtoMapper = userDtoMapper;

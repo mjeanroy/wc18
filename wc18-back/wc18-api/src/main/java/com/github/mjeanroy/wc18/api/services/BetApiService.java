@@ -26,8 +26,8 @@ package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.BetDto;
 import com.github.mjeanroy.wc18.api.exceptions.LoginNotFoundException;
-import com.github.mjeanroy.wc18.domain.exceptions.MatchNotFoundException;
 import com.github.mjeanroy.wc18.api.mappers.BetDtoMapper;
+import com.github.mjeanroy.wc18.domain.exceptions.MatchNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.User;
@@ -103,7 +103,7 @@ public class BetApiService {
 	private BetDto save(User user, BetDto bet, boolean checkLocked) {
 		String matchId = bet.getMatch().getId();
 		Match match = matchService.findOne(matchId).orElseThrow(() ->
-				new MatchNotFoundException(matchId)
+			new MatchNotFoundException(matchId)
 		);
 
 		int score1 = bet.getScore().getScore1();

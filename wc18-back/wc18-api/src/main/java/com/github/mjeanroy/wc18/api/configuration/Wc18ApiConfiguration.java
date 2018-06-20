@@ -37,8 +37,8 @@ import org.springframework.context.annotation.Import;
 @EnableWc18Domain
 @EnableWc18Security
 @Import({
-		BeanValidationConfiguration.class,
-		JacksonConfiguration.class
+	BeanValidationConfiguration.class,
+	JacksonConfiguration.class
 })
 public class Wc18ApiConfiguration {
 }

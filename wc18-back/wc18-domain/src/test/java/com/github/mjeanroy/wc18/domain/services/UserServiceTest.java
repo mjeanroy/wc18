@@ -172,8 +172,8 @@ public class UserServiceTest extends AbstractServiceTest {
 	public void it_should_find_user_and_fail_if_user_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 		assertThatThrownBy(() -> userService.findOneOrFail(id))
-				.isExactlyInstanceOf(UserNotFoundException.class)
-				.hasMessage("Cannot find user '" + id + "'");
+			.isExactlyInstanceOf(UserNotFoundException.class)
+			.hasMessage("Cannot find user '" + id + "'");
 	}
 
 	@Test
@@ -222,15 +222,15 @@ public class UserServiceTest extends AbstractServiceTest {
 		String id = "16e4f8e0-308e-4ebc-a85b-df223733e2f3";
 		User user = new UserBuilder().withId(id).build();
 		assertThatThrownBy(() -> userService.remove(user.getId()))
-				.isExactlyInstanceOf(UserNotFoundException.class)
-				.hasMessage("Cannot find user '" + id + "'");
+			.isExactlyInstanceOf(UserNotFoundException.class)
+			.hasMessage("Cannot find user '" + id + "'");
 	}
 
 	private List<User> createRandomUsers() {
 		List<User> users = IntStream.iterate(0, i -> i++)
-				.mapToObj(i -> createUser("login_" + i, "azerty123"))
-				.limit(10)
-				.collect(Collectors.toList());
+			.mapToObj(i -> createUser("login_" + i, "azerty123"))
+			.limit(10)
+			.collect(Collectors.toList());
 
 		when(userDao.findAll()).thenReturn(users);
 

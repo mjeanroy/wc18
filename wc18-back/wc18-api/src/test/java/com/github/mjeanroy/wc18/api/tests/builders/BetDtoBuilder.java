@@ -36,18 +36,21 @@ public class BetDtoBuilder {
 
 	/**
 	 * Set bet user.
+	 *
 	 * @see BetDto#user
 	 */
 	private UserDto user;
 
 	/**
 	 * Set bet match.
+	 *
 	 * @see BetDto#match
 	 */
 	private MatchDto match;
 
 	/**
 	 * Set bet score.
+	 *
 	 * @see BetDto#score
 	 */
 	private ScoreDto score;

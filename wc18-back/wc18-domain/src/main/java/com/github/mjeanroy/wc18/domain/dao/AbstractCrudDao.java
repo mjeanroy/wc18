@@ -64,6 +64,7 @@ public abstract class AbstractCrudDao<T extends AbstractEntity> extends Abstract
 
 	/**
 	 * Remove entity.
+	 *
 	 * @param entity Entity to remove.
 	 */
 	public void delete(T entity) {

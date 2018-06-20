@@ -36,7 +36,6 @@ import org.springframework.web.method.HandlerMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.lang.reflect.Method;
 import java.util.Optional;
 
@@ -193,9 +192,9 @@ public class SecurityInterceptorTest {
 
 	private Principal createPrincipal(String login, String role) {
 		return new PrincipalBuilder()
-				.withLogin(login)
-				.withRole(role)
-				.build();
+			.withLogin(login)
+			.withRole(role)
+			.build();
 	}
 
 	private HandlerMethod getHandlerMethod(String methodName) {

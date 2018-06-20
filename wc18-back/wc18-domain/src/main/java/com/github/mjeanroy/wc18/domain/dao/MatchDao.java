@@ -37,11 +37,11 @@ public class MatchDao extends AbstractCrudDao<Match> {
 
 	public Iterable<Match> findAllOrderByDate() {
 		String jpql =
-				"SELECT m " +
-						"FROM Match m " +
-						"INNER JOIN FETCH m.team1 " +
-						"INNER JOIN FETCH m.team2 " +
-						"ORDER BY m.date ASC, m.team1.name ASC";
+			"SELECT m " +
+				"FROM Match m " +
+				"INNER JOIN FETCH m.team1 " +
+				"INNER JOIN FETCH m.team2 " +
+				"ORDER BY m.date ASC, m.team1.name ASC";
 
 		return findAll(jpql);
 	}
@@ -56,32 +56,32 @@ public class MatchDao extends AbstractCrudDao<Match> {
 				"ORDER BY m.date ASC, m.team1.name ASC";
 
 		return findAll(jpql, newHashMap(
-				tuple("date", date)
+			tuple("date", date)
 		));
 	}
 
 	public Iterable<Match> findByDateGreaterThanOrEqualOrderByDate(Date date) {
 		String jpql =
-				"SELECT m " +
-						"FROM Match m " +
-						"INNER JOIN FETCH m.team1 " +
-						"INNER JOIN FETCH m.team2 " +
-						"WHERE m.date >= :date " +
-						"ORDER BY m.date ASC, m.team1.name ASC";
+			"SELECT m " +
+				"FROM Match m " +
+				"INNER JOIN FETCH m.team1 " +
+				"INNER JOIN FETCH m.team2 " +
+				"WHERE m.date >= :date " +
+				"ORDER BY m.date ASC, m.team1.name ASC";
 
 		return findAll(jpql, newHashMap(
-				tuple("date", date)
+			tuple("date", date)
 		));
 	}
 
 	public long countByDateLessThanOrderByDate(Date date) {
 		String jpql =
-				"SELECT COUNT(m) " +
-						"FROM Match m " +
-						"WHERE m.date < :date ";
+			"SELECT COUNT(m) " +
+				"FROM Match m " +
+				"WHERE m.date < :date ";
 
 		return count(jpql, newHashMap(
-				tuple("date", date)
+			tuple("date", date)
 		));
 	}
 }

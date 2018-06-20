@@ -55,9 +55,9 @@ abstract class AbstractRepositoryTest {
 	@Configuration
 	@ComponentScan("com.github.mjeanroy.wc18.domain.dao")
 	@Import({
-			JpaConfiguration.class,
-			LiquibaseConfiguration.class,
-			EmbeddedDaoConfiguration.class
+		JpaConfiguration.class,
+		LiquibaseConfiguration.class,
+		EmbeddedDaoConfiguration.class
 	})
 	static class RepositoryTestConfiguration {
 	}

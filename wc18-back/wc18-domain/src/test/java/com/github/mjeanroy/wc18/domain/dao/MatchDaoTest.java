@@ -75,11 +75,11 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 		Team team1 = findOne(Team.class, "5820fadd-ae19-48d5-b4e5-811b08f58b87");
 		Team team2 = findOne(Team.class, "e9c4e714-5b4b-4e2d-a896-9f043c295869");
 		return new MatchBuilder()
-				.withDate(new Date())
-				.withStage(Stage.FINAL)
-				.withTeam1(team1)
-				.withTeam2(team2)
-				.build();
+			.withDate(new Date())
+			.withStage(Stage.FINAL)
+			.withTeam1(team1)
+			.withTeam2(team2)
+			.build();
 	}
 
 	@Test
@@ -87,8 +87,8 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 		List<Match> matches = toList(matchDao.findAllOrderByDate());
 
 		assertThat(matches)
-				.isNotEmpty()
-				.isSortedAccordingTo(Comparator.comparing(Match::getDate));
+			.isNotEmpty()
+			.isSortedAccordingTo(Comparator.comparing(Match::getDate));
 	}
 
 	@Test
@@ -98,14 +98,14 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 		List<Match> matches = toList(matchDao.findByDateLessThanOrderByDate(date));
 
 		assertThat(matches)
-				.isNotEmpty()
-				.isSortedAccordingTo(Comparator.comparing(Match::getDate))
-				.are(new Condition<Match>() {
-						@Override
-						public boolean matches(Match value) {
-							return value.getDate().getTime() < date.getTime();
-						}
-				});
+			.isNotEmpty()
+			.isSortedAccordingTo(Comparator.comparing(Match::getDate))
+			.are(new Condition<Match>() {
+				@Override
+				public boolean matches(Match value) {
+					return value.getDate().getTime() < date.getTime();
+				}
+			});
 	}
 
 	@Test
@@ -115,14 +115,14 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 		List<Match> matches = toList(matchDao.findByDateGreaterThanOrEqualOrderByDate(date));
 
 		assertThat(matches)
-				.isNotEmpty()
-				.isSortedAccordingTo(Comparator.comparing(Match::getDate))
-				.are(new Condition<Match>() {
-					@Override
-					public boolean matches(Match value) {
-						return value.getDate().getTime() >= date.getTime();
-					}
-				});
+			.isNotEmpty()
+			.isSortedAccordingTo(Comparator.comparing(Match::getDate))
+			.are(new Condition<Match>() {
+				@Override
+				public boolean matches(Match value) {
+					return value.getDate().getTime() >= date.getTime();
+				}
+			});
 	}
 
 	@Test

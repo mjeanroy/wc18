@@ -42,10 +42,10 @@ public class DatabasePropertiesConfiguration {
 
 	@Bean
 	public DatabaseProperties databaseProperties(
-			@Value("${database.driverClassName}") String driver,
-			@Value("${database.url}") String url,
-			@Value("${database.user}") String user,
-			@Value("${database.password}") String password) {
+		@Value("${database.driverClassName}") String driver,
+		@Value("${database.url}") String url,
+		@Value("${database.user}") String user,
+		@Value("${database.password}") String password) {
 
 		log.info("Creating database properties instance");
 		String dbUrl = getEnvOrDefault("DATABASE_URL", url);

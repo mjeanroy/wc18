@@ -73,7 +73,7 @@ public class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
 		User user = findOne(User.class, "10cd4d9f-099c-4491-bfdb-a635b2ffc757");
 		List<League> leagues = toList(leagueDao.findByUser(user));
 		assertThat(leagues).hasSize(1)
-				.extracting(League::getId)
-				.contains("cc591102-dedf-432f-b0ea-58459997514c");
+			.extracting(League::getId)
+			.contains("cc591102-dedf-432f-b0ea-58459997514c");
 	}
 }

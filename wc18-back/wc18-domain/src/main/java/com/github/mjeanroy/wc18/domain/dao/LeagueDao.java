@@ -37,24 +37,24 @@ public class LeagueDao extends AbstractCrudDao<League> {
 	@Override
 	public Iterable<League> findAll() {
 		String query =
-				"SELECT DISTINCT league " +
-						"FROM League league " +
-						"LEFT OUTER JOIN FETCH league.users " +
-						"ORDER BY league.name ";
+			"SELECT DISTINCT league " +
+				"FROM League league " +
+				"LEFT OUTER JOIN FETCH league.users " +
+				"ORDER BY league.name ";
 
 		return findAll(query);
 	}
 
 	public Iterable<League> findByUser(User user) {
 		String query =
-				"SELECT DISTINCT league " +
-						"FROM League league " +
-						"LEFT OUTER JOIN FETCH league.users users " +
-						"WHERE users = :user " +
-						"ORDER BY league.name ";
+			"SELECT DISTINCT league " +
+				"FROM League league " +
+				"LEFT OUTER JOIN FETCH league.users users " +
+				"WHERE users = :user " +
+				"ORDER BY league.name ";
 
 		return findAll(query, newHashMap(
-				tuple("user", user)
+			tuple("user", user)
 		));
 	}
 }

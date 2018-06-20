@@ -45,11 +45,11 @@ public class DatabasePropertiesTest {
 		String driverClassName = "com.mysql.jdbc.Driver";
 		DatabaseProperties databaseProperties = new DatabaseProperties(url, user, password, driverClassName);
 		assertThat(databaseProperties.toString()).isEqualTo(
-				"DatabaseProperties{" +
-						"url=jdbc:mysql://localhost:3306/test, " +
-						"user=root, " +
-						"password=******, " +
-						"driverClassName=com.mysql.jdbc.Driver" +
+			"DatabaseProperties{" +
+				"url=jdbc:mysql://localhost:3306/test, " +
+				"user=root, " +
+				"password=******, " +
+				"driverClassName=com.mysql.jdbc.Driver" +
 				"}"
 		);
 	}

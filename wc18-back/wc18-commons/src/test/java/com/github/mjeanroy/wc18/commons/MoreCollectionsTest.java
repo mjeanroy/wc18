@@ -42,11 +42,11 @@ public class MoreCollectionsTest {
 		Map<String, String> map = newHashMap(tuple(key, value));
 
 		assertThat(map)
-				.isNotNull()
-				.hasSize(1)
-				.containsOnly(
-						entry(key, value)
-				);
+			.isNotNull()
+			.hasSize(1)
+			.containsOnly(
+				entry(key, value)
+			);
 	}
 
 	@Test
@@ -58,16 +58,16 @@ public class MoreCollectionsTest {
 		String value2 = "bar2";
 
 		Map<String, String> map = newHashMap(
-				tuple(key1, value1),
-				tuple(key2, value2)
+			tuple(key1, value1),
+			tuple(key2, value2)
 		);
 
 		assertThat(map)
-				.isNotNull()
-				.hasSize(2)
-				.containsOnly(
-						entry(key1, value1),
-						entry(key2, value2)
-				);
+			.isNotNull()
+			.hasSize(2)
+			.containsOnly(
+				entry(key1, value1),
+				entry(key2, value2)
+			);
 	}
 }

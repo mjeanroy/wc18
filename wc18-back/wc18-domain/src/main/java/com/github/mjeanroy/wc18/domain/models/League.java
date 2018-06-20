@@ -48,8 +48,8 @@ public class League extends AbstractEntity {
 	 */
 	@ManyToMany
 	@JoinTable(name = "user_leagues",
-			joinColumns = @JoinColumn(name = "league_id"),
-			inverseJoinColumns = @JoinColumn(name = "user_id"))
+		joinColumns = @JoinColumn(name = "league_id"),
+		inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<User> users;
 
 	// Required for Hibernate.

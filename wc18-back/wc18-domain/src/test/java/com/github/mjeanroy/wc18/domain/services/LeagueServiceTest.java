@@ -114,8 +114,8 @@ public class LeagueServiceTest extends AbstractServiceTest {
 		String id = UUID.randomUUID().toString();
 
 		assertThatThrownBy(() -> leagueService.findOneOrFail(id))
-				.isExactlyInstanceOf(LeagueNotFoundException.class)
-				.hasMessage("Cannot find league '" + id + "'");
+			.isExactlyInstanceOf(LeagueNotFoundException.class)
+			.hasMessage("Cannot find league '" + id + "'");
 	}
 
 	@Test
@@ -170,9 +170,9 @@ public class LeagueServiceTest extends AbstractServiceTest {
 
 	private List<League> createRandomLeagues() {
 		List<League> leagues = IntStream.iterate(0, i -> i++)
-				.mapToObj(i -> createLeague())
-				.limit(10)
-				.collect(Collectors.toList());
+			.mapToObj(i -> createLeague())
+			.limit(10)
+			.collect(Collectors.toList());
 
 		when(leagueDao.findAll()).thenReturn(leagues);
 		when(leagueDao.findByUser(any(User.class))).thenReturn(leagues);
@@ -182,10 +182,10 @@ public class LeagueServiceTest extends AbstractServiceTest {
 
 	private League createLeague(User... users) {
 		League league = new LeagueBuilder()
-				.withRandomId()
-				.withName("League -- " + UUID.randomUUID().toString())
-				.withUsers(users)
-				.build();
+			.withRandomId()
+			.withName("League -- " + UUID.randomUUID().toString())
+			.withUsers(users)
+			.build();
 
 		when(leagueDao.findOne(league.getId())).thenReturn(Optional.of(league));
 
@@ -198,8 +198,8 @@ public class LeagueServiceTest extends AbstractServiceTest {
 
 	private List<Rank> createRanks(User... users) {
 		List<Rank> ranks = Arrays.stream(users)
-				.map(user -> new RankBuilder().withUser(user).build())
-				.collect(Collectors.toList());
+			.map(user -> new RankBuilder().withUser(user).build())
+			.collect(Collectors.toList());
 
 		when(rankService.getRanks(anyIterable())).thenReturn(ranks);
 

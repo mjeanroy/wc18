@@ -39,24 +39,28 @@ public class UserBuilder {
 
 	/**
 	 * The user id.
+	 *
 	 * @see User#id
 	 */
 	private String id;
 
 	/**
 	 * The user login.
+	 *
 	 * @see User#login
 	 */
 	private String login;
 
 	/**
 	 * The user password.
+	 *
 	 * @see User#password
 	 */
 	private String password;
 
 	/**
 	 * The user role.
+	 *
 	 * @see User#role
 	 */
 	private Role role;

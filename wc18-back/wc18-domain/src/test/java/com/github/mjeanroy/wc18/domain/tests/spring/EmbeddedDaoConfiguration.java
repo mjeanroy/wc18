@@ -39,8 +39,8 @@ import javax.sql.DataSource;
 
 @Configuration
 @Import({
-		JpaConfiguration.class,
-		LiquibaseConfiguration.class
+	JpaConfiguration.class,
+	LiquibaseConfiguration.class
 })
 public class EmbeddedDaoConfiguration {
 	@Bean

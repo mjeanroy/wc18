@@ -42,30 +42,35 @@ public class BetBuilder {
 
 	/**
 	 * The bet id.
+	 *
 	 * @see Bet#id
 	 */
 	private String id;
 
 	/**
 	 * The bet date.
+	 *
 	 * @see Bet#date
 	 */
 	private Date date;
 
 	/**
 	 * The bet user.
+	 *
 	 * @see Bet#user
 	 */
 	private User user;
 
 	/**
 	 * The bet match.
+	 *
 	 * @see Bet#match
 	 */
 	private Match match;
 
 	/**
 	 * The bet score.
+	 *
 	 * @see Bet#score
 	 */
 	private Score score;

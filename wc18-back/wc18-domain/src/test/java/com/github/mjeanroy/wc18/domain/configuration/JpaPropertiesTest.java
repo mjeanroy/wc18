@@ -42,8 +42,8 @@ public class JpaPropertiesTest {
 		String hbm2ddl = "validate";
 		JpaProperties jpaProperties = new JpaProperties(hbm2ddl);
 		assertThat(jpaProperties.toString()).isEqualTo(
-				"JpaProperties{" +
-						"hbm2ddl=validate" +
+			"JpaProperties{" +
+				"hbm2ddl=validate" +
 				"}"
 		);
 	}

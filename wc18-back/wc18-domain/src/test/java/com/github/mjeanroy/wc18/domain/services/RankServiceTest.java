@@ -76,14 +76,14 @@ public class RankServiceTest extends AbstractServiceTest {
 		Match match3 = new MatchBuilder().withRandomId().withScore(0, 2).build();
 
 		List<Bet> bets = asList(
-				// User1
-				new BetBuilder().withRandomId().withMatch(match1).withUser(user1).withScore(1, 0).build(),
-				new BetBuilder().withRandomId().withMatch(match2).withUser(user1).withScore(1, 1).build(),
-				new BetBuilder().withRandomId().withMatch(match3).withUser(user1).withScore(3, 0).build(),
+			// User1
+			new BetBuilder().withRandomId().withMatch(match1).withUser(user1).withScore(1, 0).build(),
+			new BetBuilder().withRandomId().withMatch(match2).withUser(user1).withScore(1, 1).build(),
+			new BetBuilder().withRandomId().withMatch(match3).withUser(user1).withScore(3, 0).build(),
 
-				// User2
-				new BetBuilder().withRandomId().withMatch(match1).withUser(user2).withScore(2, 0).build(),
-				new BetBuilder().withRandomId().withMatch(match2).withUser(user2).withScore(0, 3).build()
+			// User2
+			new BetBuilder().withRandomId().withMatch(match1).withUser(user2).withScore(2, 0).build(),
+			new BetBuilder().withRandomId().withMatch(match2).withUser(user2).withScore(0, 3).build()
 		);
 
 		when(matchDao.countByDateLessThanOrderByDate(any(Date.class))).thenReturn(3L);
@@ -92,14 +92,14 @@ public class RankServiceTest extends AbstractServiceTest {
 		List<Rank> ranks = toList(rankService.getRanks(users));
 
 		assertThat(ranks)
-				.hasSameSizeAs(users)
-				.isSortedAccordingTo(comparing(Rank::getScore, reverseOrder()))
-				.extracting(Rank::getUser, Rank::getScore, Rank::getPercentGood, Rank::getPercentPerfect)
-				.contains(
-						tuple(user1, 25, 66, 33),
-						tuple(user2, 10, 33, 0),
-						tuple(user3, 0, 0, 0)
-				);
+			.hasSameSizeAs(users)
+			.isSortedAccordingTo(comparing(Rank::getScore, reverseOrder()))
+			.extracting(Rank::getUser, Rank::getScore, Rank::getPercentGood, Rank::getPercentPerfect)
+			.contains(
+				tuple(user1, 25, 66, 33),
+				tuple(user2, 10, 33, 0),
+				tuple(user3, 0, 0, 0)
+			);
 
 		ArgumentCaptor<Date> argDate1 = ArgumentCaptor.forClass(Date.class);
 		ArgumentCaptor<Date> argDate2 = ArgumentCaptor.forClass(Date.class);

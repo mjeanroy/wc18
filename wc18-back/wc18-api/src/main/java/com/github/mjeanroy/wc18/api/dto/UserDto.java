@@ -72,6 +72,7 @@ public class UserDto extends AbstractDto {
 
 	/**
 	 * Set {@link #login}
+	 *
 	 * @param login New {@link #login}
 	 */
 	public void setLogin(String login) {

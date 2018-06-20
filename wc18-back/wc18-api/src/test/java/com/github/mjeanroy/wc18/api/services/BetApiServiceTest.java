@@ -33,7 +33,6 @@ import com.github.mjeanroy.wc18.security.models.Principal;
 import org.junit.Test;
 
 import javax.inject.Inject;
-
 import java.util.List;
 
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
@@ -47,8 +46,8 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 	@Test
 	public void it_should_find_all_bets_of_user() {
 		Principal principal = new PrincipalBuilder()
-				.withLogin("mickael")
-				.build();
+			.withLogin("mickael")
+			.build();
 
 		List<BetDto> bets = toList(betApiService.findAll(principal, null));
 
@@ -58,14 +57,14 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 	@Test
 	public void it_should_save_new_bet() {
 		Principal principal = new PrincipalBuilder()
-				.withLogin("john")
-				.build();
+			.withLogin("john")
+			.build();
 
 		BetDto bet = new BetDtoBuilder()
-				.withMatch(new MatchDtoBuilder().withId("7c2ae500-e5ae-4574-ad5e-1b4ef770c8d8").build())
-				.withUser(new UserDtoBuilder().withId("10cd4d9f-099c-4491-bfdb-a635b2ffc757").build())
-				.withScore(1, 0)
-				.build();
+			.withMatch(new MatchDtoBuilder().withId("7c2ae500-e5ae-4574-ad5e-1b4ef770c8d8").build())
+			.withUser(new UserDtoBuilder().withId("10cd4d9f-099c-4491-bfdb-a635b2ffc757").build())
+			.withScore(1, 0)
+			.build();
 
 		BetDto result = betApiService.save(principal, bet);
 

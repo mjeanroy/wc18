@@ -46,17 +46,17 @@ public class EnvironmentsTest {
 		}};
 
 		Set<Map.Entry<String, String>> entries = System.getenv().entrySet().stream()
-				.filter(e -> someKeys.contains(e.getKey()))
-				.collect(Collectors.toSet());
+			.filter(e -> someKeys.contains(e.getKey()))
+			.collect(Collectors.toSet());
 
 		assertThat(entries)
-				.isNotEmpty()
-				.are(new Condition<Map.Entry<String, String>>() {
-					@Override
-					public boolean matches(Map.Entry<String, String> entry) {
-						return Environments.getEnvOrDefault(entry.getKey(), "foobar").equals(entry.getValue());
-					}
-				});
+			.isNotEmpty()
+			.are(new Condition<Map.Entry<String, String>>() {
+				@Override
+				public boolean matches(Map.Entry<String, String> entry) {
+					return Environments.getEnvOrDefault(entry.getKey(), "foobar").equals(entry.getValue());
+				}
+			});
 	}
 
 	@Test

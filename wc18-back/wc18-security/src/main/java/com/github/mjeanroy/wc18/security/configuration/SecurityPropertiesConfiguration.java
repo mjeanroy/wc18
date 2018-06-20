@@ -42,8 +42,8 @@ public class SecurityPropertiesConfiguration {
 
 	@Bean
 	public SecurityProperties securityProperties(
-			@Value("${security.headerName:X-Auth-Token}") String headerName,
-			@Value("${security.secret}") String secret) {
+		@Value("${security.headerName:X-Auth-Token}") String headerName,
+		@Value("${security.secret}") String secret) {
 
 		log.info("Creating securityProperties instance");
 		String securityHeaderName = getEnvOrDefault("SECURITY_HEADER_NAME", headerName);

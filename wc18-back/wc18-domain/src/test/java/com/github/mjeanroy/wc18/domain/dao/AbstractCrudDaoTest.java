@@ -55,6 +55,7 @@ abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractC
 
 		assertThat(findOne(getEntityClass(), id)).isNull();
 	}
+
 	/**
 	 * Create new entity that will be persisted in {@link #create_entry()} unit test.
 	 *

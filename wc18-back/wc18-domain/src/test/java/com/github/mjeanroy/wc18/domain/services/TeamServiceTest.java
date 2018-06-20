@@ -99,8 +99,8 @@ public class TeamServiceTest extends AbstractServiceTest {
 	public void it_should_find_team_and_fail_if_team_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 		assertThatThrownBy(() -> teamService.findOneOrFail(id))
-				.isExactlyInstanceOf(TeamNotFoundException.class)
-				.hasMessage("Cannot find team '" + id + "'");
+			.isExactlyInstanceOf(TeamNotFoundException.class)
+			.hasMessage("Cannot find team '" + id + "'");
 	}
 
 	private void initMatchDao(Collection<Team> teams) {

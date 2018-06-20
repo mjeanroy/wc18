@@ -52,8 +52,8 @@ import static org.mockito.Mockito.mock;
 @ContextConfiguration(classes = AbstractApiServiceTest.ApiServiceTestConfiguration.class)
 @Transactional
 @TestExecutionListeners({
-		DependencyInjectionTestExecutionListener.class,
-		TransactionalDbUnitTestExecutionListener.class
+	DependencyInjectionTestExecutionListener.class,
+	TransactionalDbUnitTestExecutionListener.class
 })
 public abstract class AbstractApiServiceTest {
 
@@ -74,15 +74,15 @@ public abstract class AbstractApiServiceTest {
 	@Configuration
 	@EnableMapper
 	@ComponentScan({
-			"com.github.mjeanroy.wc18.api.mappers",
-			"com.github.mjeanroy.wc18.api.services",
-			"com.github.mjeanroy.wc18.domain.services",
-			"com.github.mjeanroy.wc18.domain.dao"
+		"com.github.mjeanroy.wc18.api.mappers",
+		"com.github.mjeanroy.wc18.api.services",
+		"com.github.mjeanroy.wc18.domain.services",
+		"com.github.mjeanroy.wc18.domain.dao"
 	})
 	@Import({
-			JpaConfiguration.class,
-			LiquibaseConfiguration.class,
-			EmbeddedDaoConfiguration.class
+		JpaConfiguration.class,
+		LiquibaseConfiguration.class,
+		EmbeddedDaoConfiguration.class
 	})
 	static class ApiServiceTestConfiguration {
 

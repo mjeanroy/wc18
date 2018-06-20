@@ -33,12 +33,14 @@ public class LoginDtoBuilder {
 
 	/**
 	 * The form login.
+	 *
 	 * @see LoginDto#login
 	 */
 	private String login;
 
 	/**
 	 * The form password.
+	 *
 	 * @see LoginDto#password
 	 */
 	private String password;

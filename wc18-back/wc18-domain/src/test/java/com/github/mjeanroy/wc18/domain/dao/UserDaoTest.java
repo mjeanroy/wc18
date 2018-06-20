@@ -64,10 +64,10 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	@Override
 	User createOne() {
 		return new UserBuilder()
-				.withLogin("johndoe")
-				.withPassword("foobar")
-				.withRole(Role.USER)
-				.build();
+			.withLogin("johndoe")
+			.withPassword("foobar")
+			.withRole(Role.USER)
+			.build();
 	}
 
 	@Test

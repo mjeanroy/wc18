@@ -52,7 +52,7 @@ public class DefaultPrincipalTest {
 			"DefaultPrincipal{" +
 				"login=johndoe, " +
 				"role=ADMIN" +
-			"}"
+				"}"
 		);
 	}
 }

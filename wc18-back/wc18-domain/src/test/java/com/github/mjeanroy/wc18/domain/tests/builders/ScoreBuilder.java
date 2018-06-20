@@ -37,12 +37,14 @@ public class ScoreBuilder {
 
 	/**
 	 * The first score.
+	 *
 	 * @see Score#score1
 	 */
 	private Integer score1;
 
 	/**
 	 * The second score.
+	 *
 	 * @see Score#score2
 	 */
 	private Integer score2;

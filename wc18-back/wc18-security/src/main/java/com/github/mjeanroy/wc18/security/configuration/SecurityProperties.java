@@ -75,7 +75,7 @@ public final class SecurityProperties {
 		if (o instanceof SecurityProperties) {
 			SecurityProperties p = (SecurityProperties) o;
 			return Objects.equals(headerName, p.headerName)
-					&& Objects.equals(secret, p.secret);
+				&& Objects.equals(secret, p.secret);
 		}
 
 		return false;
@@ -89,8 +89,8 @@ public final class SecurityProperties {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(getClass())
-				.add("headerName", headerName)
-				.add("secret", "*****")
-				.toString();
+			.add("headerName", headerName)
+			.add("secret", "*****")
+			.toString();
 	}
 }

@@ -33,10 +33,10 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @PropertySource({
-		"classpath:database.properties",
-		"classpath:liquibase.properties",
-		"classpath:hibernate.properties",
-		"classpath:security.properties"
+	"classpath:database.properties",
+	"classpath:liquibase.properties",
+	"classpath:hibernate.properties",
+	"classpath:security.properties"
 })
 public class LocalPropertiesConfiguration {
 

@@ -72,7 +72,7 @@ public abstract class AbstractReadOnlyDao<T extends AbstractEntity> {
 	public Optional<T> findOne(String id) {
 		try {
 			return Optional.ofNullable(entityManager.find(entityClass, id));
-		} catch(NoResultException ex) {
+		} catch (NoResultException ex) {
 			return Optional.empty();
 		}
 	}

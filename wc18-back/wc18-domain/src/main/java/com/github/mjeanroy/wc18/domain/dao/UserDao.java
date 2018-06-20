@@ -38,9 +38,9 @@ public class UserDao extends AbstractCrudDao<User> {
 	@Override
 	public Iterable<User> findAll() {
 		String query =
-				"SELECT u " +
-						"FROM User u " +
-						"ORDER BY u.login";
+			"SELECT u " +
+				"FROM User u " +
+				"ORDER BY u.login";
 
 		return findAll(query);
 	}
@@ -54,11 +54,11 @@ public class UserDao extends AbstractCrudDao<User> {
 	public Optional<User> findByLogin(String login) {
 		String query =
 			"SELECT x " +
-					"FROM User x " +
-					"WHERE x.login = :login";
+				"FROM User x " +
+				"WHERE x.login = :login";
 
 		return findOne(query, newHashMap(
-				tuple("login", login)
+			tuple("login", login)
 		));
 	}
 }

@@ -65,13 +65,13 @@ public class LeagueApiService {
 
 	@Inject
 	public LeagueApiService(
-			LeagueService leagueService,
-			LeagueDtoMapper leagueDtoMapper,
-			UserService userService,
-			MatchService matchService,
-			BetService betService,
-			RankDtoMapper rankDtoMapper,
-			BetDtoMapper betDtoMapper) {
+		LeagueService leagueService,
+		LeagueDtoMapper leagueDtoMapper,
+		UserService userService,
+		MatchService matchService,
+		BetService betService,
+		RankDtoMapper rankDtoMapper,
+		BetDtoMapper betDtoMapper) {
 
 		this.leagueService = leagueService;
 		this.leagueDtoMapper = leagueDtoMapper;

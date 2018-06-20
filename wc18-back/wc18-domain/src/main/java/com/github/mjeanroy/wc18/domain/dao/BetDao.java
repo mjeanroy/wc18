@@ -48,14 +48,14 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	public Iterable<Bet> findByUser(User user) {
 		String query =
 			"SELECT x " +
-					"FROM Bet x " +
-					"INNER JOIN FETCH x.match m " +
-					"INNER JOIN FETCH x.user u " +
-					"WHERE u = :user " +
-					"ORDER BY m.date";
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u = :user " +
+				"ORDER BY m.date";
 
 		return findAll(query, newHashMap(
-				tuple("user", user)
+			tuple("user", user)
 		));
 	}
 
@@ -68,17 +68,17 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	 */
 	public Iterable<Bet> findByUserAndMatchDateLessThan(User user, Date date) {
 		String query =
-				"SELECT x " +
-						"FROM Bet x " +
-						"INNER JOIN FETCH x.match m " +
-						"INNER JOIN FETCH x.user u " +
-						"WHERE u = :user " +
-						"AND m.date < :date " +
-						"ORDER BY m.date ASC";
+			"SELECT x " +
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u = :user " +
+				"AND m.date < :date " +
+				"ORDER BY m.date ASC";
 
 		return findAll(query, new HashMap<String, Object>() {{
-				put("user", user);
-				put("date", date);
+			put("user", user);
+			put("date", date);
 		}});
 	}
 
@@ -91,13 +91,13 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	 */
 	public Iterable<Bet> findByUserAndMatchDateGreaterThanOrEqual(User user, Date date) {
 		String query =
-				"SELECT x " +
-						"FROM Bet x " +
-						"INNER JOIN FETCH x.match m " +
-						"INNER JOIN FETCH x.user u " +
-						"WHERE u = :user " +
-						"AND m.date >= :date " +
-						"ORDER BY m.date ASC";
+			"SELECT x " +
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u = :user " +
+				"AND m.date >= :date " +
+				"ORDER BY m.date ASC";
 
 		return findAll(query, newHashMap(
 			tuple("user", user),
@@ -115,15 +115,15 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	public Optional<Bet> findOne(User user, Match match) {
 		String query =
 			"SELECT x " +
-					"FROM Bet x " +
-					"INNER JOIN FETCH x.match m " +
-					"INNER JOIN FETCH x.user u " +
-					"WHERE u = :user " +
-					"AND m = :match";
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u = :user " +
+				"AND m = :match";
 
 		return findOne(query, newHashMap(
-				tuple("user", user),
-				tuple("match", match)
+			tuple("user", user),
+			tuple("match", match)
 		));
 	}
 
@@ -136,13 +136,13 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	 */
 	public Iterable<Bet> findByUserInAndMatchDateLessThan(Iterable<User> users, Date date) {
 		String query =
-				"SELECT x " +
-						"FROM Bet x " +
-						"INNER JOIN FETCH x.match m " +
-						"INNER JOIN FETCH x.user u " +
-						"WHERE u IN (:users) " +
-						"AND m.date < :date " +
-						"ORDER BY m.date ASC";
+			"SELECT x " +
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u IN (:users) " +
+				"AND m.date < :date " +
+				"ORDER BY m.date ASC";
 
 		return findAll(query, new HashMap<String, Object>() {{
 			put("users", users);
@@ -159,13 +159,13 @@ public class BetDao extends AbstractCrudDao<Bet> {
 	 */
 	public Iterable<Bet> findByUserInAndMatch(Iterable<User> users, Match match) {
 		String query =
-				"SELECT x " +
-						"FROM Bet x " +
-						"INNER JOIN FETCH x.match m " +
-						"INNER JOIN FETCH x.user u " +
-						"WHERE u IN (:users) " +
-						"AND m = :match " +
-						"ORDER BY u.login";
+			"SELECT x " +
+				"FROM Bet x " +
+				"INNER JOIN FETCH x.match m " +
+				"INNER JOIN FETCH x.user u " +
+				"WHERE u IN (:users) " +
+				"AND m = :match " +
+				"ORDER BY u.login";
 
 		return findAll(query, new HashMap<String, Object>() {{
 			put("users", users);

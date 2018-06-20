@@ -49,11 +49,11 @@ public class MatchDtoMapperTest extends AbstractDtoMapperTest<Match, MatchDto, M
 	Match createInput() {
 		return new MatchBuilder()
 			.withRandomId()
-				.withDate(new Date())
-				.withStage(Stage.GROUP)
-				.withTeam1(new TeamBuilder().withRandomId().build())
-				.withTeam2(new TeamBuilder().withRandomId().build())
-				.build();
+			.withDate(new Date())
+			.withStage(Stage.GROUP)
+			.withTeam1(new TeamBuilder().withRandomId().build())
+			.withTeam2(new TeamBuilder().withRandomId().build())
+			.build();
 	}
 
 	@Override

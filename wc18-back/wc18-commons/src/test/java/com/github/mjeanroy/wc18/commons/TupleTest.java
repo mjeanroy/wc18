@@ -51,9 +51,9 @@ public class TupleTest {
 	public void it_should_implement_to_string() {
 		Tuple<String, Integer> tuple = tuple("id", 1);
 		assertThat(tuple.toString()).isEqualTo(
-				"Tuple{" +
-						"left=id, " +
-						"right=1" +
+			"Tuple{" +
+				"left=id, " +
+				"right=1" +
 				"}"
 		);
 	}

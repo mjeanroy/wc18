@@ -110,8 +110,8 @@ public final class Tuple<T, U> {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(getClass())
-				.add("left", left)
-				.add("right", right)
-				.toString();
+			.add("left", left)
+			.add("right", right)
+			.toString();
 	}
 }

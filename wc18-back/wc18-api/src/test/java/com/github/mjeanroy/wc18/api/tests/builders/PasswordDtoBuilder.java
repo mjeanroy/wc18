@@ -33,12 +33,14 @@ public class PasswordDtoBuilder {
 
 	/**
 	 * The form oldPassword.
+	 *
 	 * @see PasswordDto#oldPassword
 	 */
 	private String oldPassword;
 
 	/**
 	 * The form newPassword.
+	 *
 	 * @see PasswordDto#newPassword
 	 */
 	private String newPassword;

@@ -35,24 +35,28 @@ public final class LiquibaseProperties {
 
 	/**
 	 * The liquibase {@code "changeLog"} property.
+	 *
 	 * @see liquibase.integration.spring.SpringLiquibase#changeLog
 	 */
 	private final String changeLog;
 
 	/**
 	 * The liquibase {@code "shouldRun"} property.
+	 *
 	 * @see liquibase.integration.spring.SpringLiquibase#shouldRun
 	 */
 	private final boolean shouldRun;
 
 	/**
 	 * The liquibase {@code "dropFirst"} property.
+	 *
 	 * @see liquibase.integration.spring.SpringLiquibase#dropFirst
 	 */
 	private final boolean dropFirst;
 
 	/**
 	 * The liquibase {@code "contexts"} property.
+	 *
 	 * @see liquibase.integration.spring.SpringLiquibase#contexts
 	 */
 	private final String contexts;
@@ -117,9 +121,9 @@ public final class LiquibaseProperties {
 		if (o instanceof LiquibaseProperties) {
 			LiquibaseProperties p = (LiquibaseProperties) o;
 			return Objects.equals(changeLog, p.changeLog)
-					&& Objects.equals(shouldRun, p.shouldRun)
-					&& Objects.equals(dropFirst, p.dropFirst)
-					&& Objects.equals(contexts, p.contexts);
+				&& Objects.equals(shouldRun, p.shouldRun)
+				&& Objects.equals(dropFirst, p.dropFirst)
+				&& Objects.equals(contexts, p.contexts);
 		}
 
 		return false;
@@ -133,10 +137,10 @@ public final class LiquibaseProperties {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(getClass())
-				.add("changeLog", changeLog)
-				.add("shouldRun", shouldRun)
-				.add("dropFirst", dropFirst)
-				.add("contexts", contexts)
-				.toString();
+			.add("changeLog", changeLog)
+			.add("shouldRun", shouldRun)
+			.add("dropFirst", dropFirst)
+			.add("contexts", contexts)
+			.toString();
 	}
 }

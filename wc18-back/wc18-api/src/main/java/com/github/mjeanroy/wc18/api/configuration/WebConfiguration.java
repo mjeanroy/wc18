@@ -52,10 +52,10 @@ public class WebConfiguration implements WebApplicationInitializer {
 	private static final String SPRING_SERVLET_NAME = "spring";
 
 	private static final EnumSet<DispatcherType> DISPS = EnumSet.of(
-			DispatcherType.REQUEST,
-			DispatcherType.FORWARD,
-			DispatcherType.ASYNC,
-			DispatcherType.INCLUDE
+		DispatcherType.REQUEST,
+		DispatcherType.FORWARD,
+		DispatcherType.ASYNC,
+		DispatcherType.INCLUDE
 	);
 
 	@Override

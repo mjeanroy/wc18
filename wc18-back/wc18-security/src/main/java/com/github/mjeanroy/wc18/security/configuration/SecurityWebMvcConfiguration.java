@@ -49,8 +49,8 @@ public class SecurityWebMvcConfiguration implements WebMvcConfigurer {
 
 	@Inject
 	public SecurityWebMvcConfiguration(
-			SecurityInterceptor securityInterceptor,
-			PrincipalArgumentResolver principalArgumentResolver) {
+		SecurityInterceptor securityInterceptor,
+		PrincipalArgumentResolver principalArgumentResolver) {
 
 		this.securityInterceptor = securityInterceptor;
 		this.principalArgumentResolver = principalArgumentResolver;

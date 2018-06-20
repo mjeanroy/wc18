@@ -24,13 +24,13 @@
 
 package com.github.mjeanroy.wc18.api.services;
 
+import com.github.mjeanroy.wc18.api.dto.LoginDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.exceptions.CredentialsNotFoundException;
-import com.github.mjeanroy.wc18.api.dto.LoginDto;
 import com.github.mjeanroy.wc18.api.mappers.UserDtoMapper;
-import com.github.mjeanroy.wc18.security.models.DefaultPrincipal;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.services.UserService;
+import com.github.mjeanroy.wc18.security.models.DefaultPrincipal;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
 import org.springframework.stereotype.Service;
 

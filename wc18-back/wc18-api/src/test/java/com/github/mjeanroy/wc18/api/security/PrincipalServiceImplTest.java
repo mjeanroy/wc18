@@ -72,10 +72,10 @@ public class PrincipalServiceImplTest {
 
 	private void createUser(String login, Role role) {
 		User user = new UserBuilder()
-				.withRandomId()
-				.withLogin(login)
-				.withRole(role)
-				.build();
+			.withRandomId()
+			.withLogin(login)
+			.withRole(role)
+			.build();
 
 		when(userService.findByLogin(login)).thenReturn(Optional.of(user));
 	}

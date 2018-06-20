@@ -34,24 +34,28 @@ public class RankBuilder {
 
 	/**
 	 * The ranked user.
+	 *
 	 * @see Rank#user
 	 */
 	private User user;
 
 	/**
 	 * The ranked score.
+	 *
 	 * @see Rank#score
 	 */
 	private int score;
 
 	/**
 	 * The ranked percent of good pronostics.
+	 *
 	 * @see Rank#percentGood
 	 */
 	private int percentGood;
 
 	/**
 	 * The ranked percent of perfect pronostics.
+	 *
 	 * @see Rank#percentPerfect
 	 */
 	private int percentPerfect;

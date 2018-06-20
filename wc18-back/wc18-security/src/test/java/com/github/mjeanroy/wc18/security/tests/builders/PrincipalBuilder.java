@@ -36,12 +36,14 @@ public class PrincipalBuilder {
 
 	/**
 	 * The principal login.
+	 *
 	 * @see Principal#getLogin()
 	 */
 	private String login;
 
 	/**
 	 * The principal role.
+	 *
 	 * @see Principal#getRole()
 	 */
 	private String role;

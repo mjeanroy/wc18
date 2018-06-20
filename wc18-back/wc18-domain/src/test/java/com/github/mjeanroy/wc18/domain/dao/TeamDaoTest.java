@@ -28,7 +28,6 @@ import com.github.mjeanroy.wc18.domain.models.Team;
 import org.junit.Test;
 
 import javax.inject.Inject;
-
 import java.util.Comparator;
 
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;

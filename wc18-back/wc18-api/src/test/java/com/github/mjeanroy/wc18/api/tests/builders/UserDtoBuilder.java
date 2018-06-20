@@ -33,12 +33,14 @@ public class UserDtoBuilder {
 
 	/**
 	 * The user id.
+	 *
 	 * @see UserDto#id
 	 */
 	private String id;
 
 	/**
 	 * The user login.
+	 *
 	 * @see UserDto#login
 	 */
 	private String login;

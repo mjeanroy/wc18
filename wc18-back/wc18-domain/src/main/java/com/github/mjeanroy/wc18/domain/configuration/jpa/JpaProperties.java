@@ -78,7 +78,7 @@ public final class JpaProperties {
 	@Override
 	public String toString() {
 		return toStringHelper(getClass())
-				.add("hbm2ddl", hbm2ddl)
-				.toString();
+			.add("hbm2ddl", hbm2ddl)
+			.toString();
 	}
 }

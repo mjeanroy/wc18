@@ -33,12 +33,14 @@ public class ScoreDtoBuilder {
 
 	/**
 	 * The team id.
+	 *
 	 * @see ScoreDto#score1
 	 */
 	private int score1;
 
 	/**
 	 * The team iso code.
+	 *
 	 * @see ScoreDto#score2
 	 */
 	private int score2;

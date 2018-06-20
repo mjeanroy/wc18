@@ -56,8 +56,8 @@ public class BetController {
 	@GetMapping("/api/me/bets")
 	@Security
 	public Iterable<BetDto> findAll(
-			@RequestParam(name = "locked", required = false) Boolean locked,
-			Principal principal) {
+		@RequestParam(name = "locked", required = false) Boolean locked,
+		Principal principal) {
 
 		return betApiService.findAll(principal, locked);
 	}

@@ -64,9 +64,9 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		List<UserDto> users = toList(leagueApiService.findUsers(id));
 		assertThat(users)
-				.hasSize(1)
-				.extracting(UserDto::getId)
-				.contains("e31195bd-1d4e-4915-a3dc-ce901f57903f");
+			.hasSize(1)
+			.extracting(UserDto::getId)
+			.contains("e31195bd-1d4e-4915-a3dc-ce901f57903f");
 	}
 
 	@Test
@@ -74,19 +74,19 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		List<RankDto> users = toList(leagueApiService.findRanks(id));
 		assertThat(users)
-				.hasSize(1)
-				.extracting(RankDto::getId, RankDto::getScore, RankDto::getPercentGood, RankDto::getPercentPerfect)
-				.contains(
-						tuple("e31195bd-1d4e-4915-a3dc-ce901f57903f", 0, 0, 0)
-				);
+			.hasSize(1)
+			.extracting(RankDto::getId, RankDto::getScore, RankDto::getPercentGood, RankDto::getPercentPerfect)
+			.contains(
+				tuple("e31195bd-1d4e-4915-a3dc-ce901f57903f", 0, 0, 0)
+			);
 	}
 
 	@Test
 	public void it_should_create_league() {
 		String name = UUID.randomUUID().toString();
 		LeagueDto league = new LeagueDtoBuilder()
-				.withName(name)
-				.build();
+			.withName(name)
+			.build();
 
 		LeagueDto result = leagueApiService.create(league);
 

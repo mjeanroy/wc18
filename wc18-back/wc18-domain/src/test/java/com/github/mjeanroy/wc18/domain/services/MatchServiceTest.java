@@ -96,8 +96,8 @@ public class MatchServiceTest extends AbstractServiceTest {
 	public void it_should_fail_to_find_match_if_it_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 		assertThatThrownBy(() -> matchService.findOneOrFail(id))
-				.isExactlyInstanceOf(MatchNotFoundException.class)
-				.hasMessage("Cannot find match '" + id + "'");
+			.isExactlyInstanceOf(MatchNotFoundException.class)
+			.hasMessage("Cannot find match '" + id + "'");
 	}
 
 	@Test
@@ -198,9 +198,9 @@ public class MatchServiceTest extends AbstractServiceTest {
 
 	private List<Match> createFixtures() {
 		return IntStream.iterate(0, i -> i++)
-				.mapToObj(i -> createRandomMatch())
-				.limit(10)
-				.collect(Collectors.toList());
+			.mapToObj(i -> createRandomMatch())
+			.limit(10)
+			.collect(Collectors.toList());
 	}
 
 	private Match createRandomMatch() {

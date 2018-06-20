@@ -86,8 +86,8 @@ public final class DefaultPrincipal implements Principal {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(getClass())
-				.add("login", login)
-				.add("role", role)
-				.toString();
+			.add("login", login)
+			.add("role", role)
+			.toString();
 	}
 }

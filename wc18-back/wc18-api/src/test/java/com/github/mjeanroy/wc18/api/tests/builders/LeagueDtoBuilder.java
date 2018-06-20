@@ -33,12 +33,14 @@ public class LeagueDtoBuilder {
 
 	/**
 	 * The league id.
+	 *
 	 * @see LeagueDto#id
 	 */
 	private String id;
 
 	/**
 	 * The league name.
+	 *
 	 * @see LeagueDto#name
 	 */
 	private String name;

@@ -41,36 +41,42 @@ public class MatchBuilder {
 
 	/**
 	 * The match id.
+	 *
 	 * @see Match#id
 	 */
 	private String id;
 
 	/**
 	 * The match stage.
+	 *
 	 * @see Match#stage
 	 */
 	private Match.Stage stage;
 
 	/**
 	 * The match date.
+	 *
 	 * @see Match#date
 	 */
 	private Date date;
 
 	/**
 	 * The match first team.
+	 *
 	 * @see Match#team1
 	 */
 	private Team team1;
 
 	/**
 	 * The match second team.
+	 *
 	 * @see Match#team2
 	 */
 	private Team team2;
 
 	/**
 	 * The match score.
+	 *
 	 * @see Match#score
 	 */
 	private Score score;

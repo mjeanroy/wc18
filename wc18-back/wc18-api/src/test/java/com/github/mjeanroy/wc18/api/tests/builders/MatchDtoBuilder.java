@@ -39,36 +39,42 @@ public class MatchDtoBuilder {
 
 	/**
 	 * The match id.
+	 *
 	 * @see MatchDto#id
 	 */
 	private String id;
 
 	/**
 	 * The match date.
+	 *
 	 * @see MatchDto#date
 	 */
 	private Date date;
 
 	/**
 	 * The match stage.
+	 *
 	 * @see MatchDto#stage
 	 */
 	private Stage stage;
 
 	/**
 	 * The match first team.
+	 *
 	 * @see MatchDto#team1
 	 */
 	private TeamDto team1;
 
 	/**
 	 * The match second team.
+	 *
 	 * @see MatchDto#team2
 	 */
 	private TeamDto team2;
 
 	/**
 	 * The match score.
+	 *
 	 * @see MatchDto#score
 	 */
 	private ScoreDto score;

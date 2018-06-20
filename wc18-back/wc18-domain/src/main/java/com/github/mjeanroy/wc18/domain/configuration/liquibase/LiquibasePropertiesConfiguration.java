@@ -42,10 +42,10 @@ public class LiquibasePropertiesConfiguration {
 
 	@Bean
 	public LiquibaseProperties liquibaseProperties(
-			@Value("${liquibase.dropFirst:false}") boolean dropFirst,
-			@Value("${liquibase.shouldRun:true}") boolean shouldRun,
-			@Value("${liquibase.contexts:}") String contexts,
-			@Value("${liquibase.changeLog:classpath:/db/changelogs/db-changelogs.xml}") String changeLog) {
+		@Value("${liquibase.dropFirst:false}") boolean dropFirst,
+		@Value("${liquibase.shouldRun:true}") boolean shouldRun,
+		@Value("${liquibase.contexts:}") String contexts,
+		@Value("${liquibase.changeLog:classpath:/db/changelogs/db-changelogs.xml}") String changeLog) {
 
 		log.info("Creating liquibaseProperties instance");
 		String liquibaseChangelog = getEnvOrDefault("LIQUIBASE_CHANGELOG", changeLog);

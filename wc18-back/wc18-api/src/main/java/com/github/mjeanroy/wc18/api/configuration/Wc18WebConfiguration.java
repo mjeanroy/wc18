@@ -34,9 +34,9 @@ import java.util.TimeZone;
 
 @Configuration
 @Import({
-		LocalPropertiesConfiguration.class,
-		Wc18ApiConfiguration.class,
-		SpringMvcConfiguration.class
+	LocalPropertiesConfiguration.class,
+	Wc18ApiConfiguration.class,
+	SpringMvcConfiguration.class
 })
 public class Wc18WebConfiguration {
 

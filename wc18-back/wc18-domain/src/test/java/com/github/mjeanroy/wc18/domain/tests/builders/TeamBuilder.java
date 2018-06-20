@@ -38,18 +38,21 @@ public class TeamBuilder {
 
 	/**
 	 * The team id.
+	 *
 	 * @see Team#id
 	 */
 	private String id;
 
 	/**
 	 * The team ISO code.
+	 *
 	 * @see Team#isoCode
 	 */
 	private String isoCode;
 
 	/**
 	 * The team name.
+	 *
 	 * @see Team#name
 	 */
 	private String name;

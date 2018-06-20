@@ -100,13 +100,13 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 		List<Bet> bets = toList(betDao.findByUserAndMatchDateLessThan(user, date));
 
 		assertThat(bets)
-				.isNotEmpty()
-				.are(new Condition<Bet>() {
-					@Override
-					public boolean matches(Bet value) {
-						return value.getMatch().getDate().getTime() < date.getTime();
-					}
-				});
+			.isNotEmpty()
+			.are(new Condition<Bet>() {
+				@Override
+				public boolean matches(Bet value) {
+					return value.getMatch().getDate().getTime() < date.getTime();
+				}
+			});
 
 		assertBetsOfGivenUser(bets, user);
 	}
@@ -119,13 +119,13 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 		List<Bet> bets = toList(betDao.findByUserAndMatchDateGreaterThanOrEqual(user, date));
 
 		assertThat(bets)
-				.isNotEmpty()
-				.are(new Condition<Bet>() {
-					@Override
-					public boolean matches(Bet value) {
-						return value.getMatch().getDate().getTime() >= date.getTime();
-					}
-				});
+			.isNotEmpty()
+			.are(new Condition<Bet>() {
+				@Override
+				public boolean matches(Bet value) {
+					return value.getMatch().getDate().getTime() >= date.getTime();
+				}
+			});
 
 		assertBetsOfGivenUser(bets, user);
 	}
@@ -168,11 +168,11 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 		List<Bet> bets = toList(betDao.findByUserInAndMatchDateLessThan(users, date));
 
 		assertThat(bets)
-				.isNotEmpty()
-				.extracting(Bet::getId)
-				.contains(
-						"ec1eb37b-bdb0-44f4-980f-1ae8a062e196",
-						"fa066c70-a6ac-418e-927e-add60c1fc272"
-				);
+			.isNotEmpty()
+			.extracting(Bet::getId)
+			.contains(
+				"ec1eb37b-bdb0-44f4-980f-1ae8a062e196",
+				"fa066c70-a6ac-418e-927e-add60c1fc272"
+			);
 	}
 }

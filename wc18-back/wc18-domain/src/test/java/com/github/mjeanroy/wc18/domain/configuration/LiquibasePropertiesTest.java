@@ -46,11 +46,11 @@ public class LiquibasePropertiesTest {
 		LiquibaseProperties liquibaseProperties = new LiquibaseProperties(changeLog, shouldRun, dropFirst, contexts);
 
 		assertThat(liquibaseProperties.toString()).isEqualTo(
-				"LiquibaseProperties{" +
-						"changeLog=classpath:liquibase.xml, " +
-						"shouldRun=true, " +
-						"dropFirst=true, " +
-						"contexts=test" +
+			"LiquibaseProperties{" +
+				"changeLog=classpath:liquibase.xml, " +
+				"shouldRun=true, " +
+				"dropFirst=true, " +
+				"contexts=test" +
 				"}"
 		);
 	}

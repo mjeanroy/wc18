@@ -75,6 +75,7 @@ public class LeagueDto extends AbstractDto {
 
 	/**
 	 * Set {@link #name}
+	 *
 	 * @param name New {@link #name}
 	 */
 	public void setName(String name) {

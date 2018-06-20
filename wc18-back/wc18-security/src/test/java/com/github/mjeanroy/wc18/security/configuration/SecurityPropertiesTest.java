@@ -43,9 +43,9 @@ public class SecurityPropertiesTest {
 		SecurityProperties securityProperties = new SecurityProperties(headerName, secret);
 
 		assertThat(securityProperties.toString()).isEqualTo(
-				"SecurityProperties{" +
-						"headerName=X-Auth-Token, " +
-						"secret=*****" +
+			"SecurityProperties{" +
+				"headerName=X-Auth-Token, " +
+				"secret=*****" +
 				"}"
 		);
 	}

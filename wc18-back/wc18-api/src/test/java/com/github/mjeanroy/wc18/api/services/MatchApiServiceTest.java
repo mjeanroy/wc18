@@ -45,30 +45,30 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	public void it_should_find_all_matches() {
 		Iterable<MatchDto> matches = matchApiService.findAll(null);
 		assertThat(matches)
-				.isNotNull()
-				.isNotEmpty()
-				.extracting(MatchDto::getId)
-				.doesNotContainNull();
+			.isNotNull()
+			.isNotEmpty()
+			.extracting(MatchDto::getId)
+			.doesNotContainNull();
 	}
 
 	@Test
 	public void it_should_create_match() {
 		TeamDto team1 = new TeamDtoBuilder()
-				.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
-				.withName("France")
-				.build();
+			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
+			.withName("France")
+			.build();
 
 		TeamDto team2 = new TeamDtoBuilder()
-				.withId("e9c4e714-5b4b-4e2d-a896-9f043c295869")
-				.withName("Brésil")
-				.build();
+			.withId("e9c4e714-5b4b-4e2d-a896-9f043c295869")
+			.withName("Brésil")
+			.build();
 
 		MatchDto dto = new MatchDtoBuilder()
-				.withDate(new Date())
-				.withStage(Stage.FINAL)
-				.withTeam1(team1)
-				.withTeam2(team2)
-				.build();
+			.withDate(new Date())
+			.withStage(Stage.FINAL)
+			.withTeam1(team1)
+			.withTeam2(team2)
+			.build();
 
 		MatchDto result = matchApiService.create(dto);
 
@@ -83,26 +83,26 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	@Test
 	public void it_should_update_match() {
 		TeamDto team1 = new TeamDtoBuilder()
-				.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
-				.withName("France")
-				.build();
+			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
+			.withName("France")
+			.build();
 
 		TeamDto team2 = new TeamDtoBuilder()
-				.withId("e2b8bae1-06ab-44d2-8595-7af3e2441718")
-				.withName("Australie")
-				.build();
+			.withId("e2b8bae1-06ab-44d2-8595-7af3e2441718")
+			.withName("Australie")
+			.build();
 
 		int score1 = 3;
 		int score2 = 0;
 
 		MatchDto dto = new MatchDtoBuilder()
-				.withId("4ff9c731-7eba-47bb-91fa-a0c04b2e394e")
-				.withDate(new Date())
-				.withStage(Stage.FINAL)
-				.withTeam1(team1)
-				.withTeam2(team2)
-				.withScore(score1, score2)
-				.build();
+			.withId("4ff9c731-7eba-47bb-91fa-a0c04b2e394e")
+			.withDate(new Date())
+			.withStage(Stage.FINAL)
+			.withTeam1(team1)
+			.withTeam2(team2)
+			.withScore(score1, score2)
+			.build();
 
 		MatchDto result = matchApiService.update(dto.getId(), dto);
 

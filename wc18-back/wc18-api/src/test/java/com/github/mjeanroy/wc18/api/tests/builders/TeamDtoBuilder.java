@@ -35,18 +35,21 @@ public class TeamDtoBuilder {
 
 	/**
 	 * The team id.
+	 *
 	 * @see TeamDto#id
 	 */
 	private String id;
 
 	/**
 	 * The team iso code.
+	 *
 	 * @see TeamDto#isoCode
 	 */
 	private String isoCode;
 
 	/**
 	 * The team name.
+	 *
 	 * @see TeamDto#name
 	 */
 	private String name;

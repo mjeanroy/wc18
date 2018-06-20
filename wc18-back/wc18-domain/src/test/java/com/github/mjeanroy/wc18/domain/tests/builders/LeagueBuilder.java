@@ -42,12 +42,14 @@ public class LeagueBuilder {
 
 	/**
 	 * The league id.
+	 *
 	 * @see League#id
 	 */
 	private String id;
 
 	/**
 	 * The league name.
+	 *
 	 * @see League#name
 	 */
 	private String name;

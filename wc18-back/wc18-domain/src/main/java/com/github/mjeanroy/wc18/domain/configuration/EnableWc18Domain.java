@@ -39,16 +39,16 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Import({
-		DatabasePropertiesConfiguration.class,
-		DatabaseConfiguration.class,
+	DatabasePropertiesConfiguration.class,
+	DatabaseConfiguration.class,
 
-		LiquibasePropertiesConfiguration.class,
-		LiquibaseConfiguration.class,
+	LiquibasePropertiesConfiguration.class,
+	LiquibaseConfiguration.class,
 
-		JpaPropertiesConfiguration.class,
-		JpaConfiguration.class,
+	JpaPropertiesConfiguration.class,
+	JpaConfiguration.class,
 
-		Wc18DomainConfiguration.class
+	Wc18DomainConfiguration.class
 })
 public @interface EnableWc18Domain {
 }

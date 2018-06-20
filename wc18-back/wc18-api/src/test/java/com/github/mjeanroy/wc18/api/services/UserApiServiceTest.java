@@ -49,8 +49,8 @@ public class UserApiServiceTest extends AbstractApiServiceTest {
 	public void it_should_find_principal() {
 		String login = "mickael";
 		Principal principal = new PrincipalBuilder()
-				.withLogin(login)
-				.build();
+			.withLogin(login)
+			.build();
 
 		UserDto user = userApiService.findOne(principal);
 
@@ -68,8 +68,8 @@ public class UserApiServiceTest extends AbstractApiServiceTest {
 	public void it_should_not_find_non_existing_login() {
 		String login = "fake_account";
 		Principal principal = new PrincipalBuilder()
-				.withLogin(login)
-				.build();
+			.withLogin(login)
+			.build();
 
 		assertThatThrownBy(() -> userApiService.findOne(principal))
 			.isExactlyInstanceOf(PrincipalNotFoundException.class)
@@ -84,9 +84,9 @@ public class UserApiServiceTest extends AbstractApiServiceTest {
 		Principal principal = new PrincipalBuilder().withLogin(login).build();
 
 		PasswordDto passwords = new PasswordDtoBuilder()
-				.withOldPassword(oldPassword)
-				.withNewPassword(newPassword)
-				.build();
+			.withOldPassword(oldPassword)
+			.withNewPassword(newPassword)
+			.build();
 
 		String id = "e31195bd-1d4e-4915-a3dc-ce901f57903f";
 		String previousPassword = findOne(User.class, id).getPassword();
@@ -106,21 +106,21 @@ public class UserApiServiceTest extends AbstractApiServiceTest {
 		Principal principal = new PrincipalBuilder().withLogin(login).build();
 
 		PasswordDto passwords = new PasswordDtoBuilder()
-				.withOldPassword(oldPassword)
-				.withNewPassword(newPassword)
-				.build();
+			.withOldPassword(oldPassword)
+			.withNewPassword(newPassword)
+			.build();
 
 		assertThatThrownBy(() -> userApiService.updatePassword(principal, passwords))
-				.isExactlyInstanceOf(PrincipalNotFoundException.class)
-				.hasMessage("Cannot find principal user for login '" + login + "'");
+			.isExactlyInstanceOf(PrincipalNotFoundException.class)
+			.hasMessage("Cannot find principal user for login '" + login + "'");
 	}
 
 	@Test
 	public void it_should_create_user() {
 		LoginDto loginDto = new LoginDtoBuilder()
-				.withLogin("awesome_user")
-				.withPassword("qwerty123")
-				.build();
+			.withLogin("awesome_user")
+			.withPassword("qwerty123")
+			.build();
 
 		UserDto user = userApiService.create(loginDto);
 

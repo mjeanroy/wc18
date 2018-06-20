@@ -113,9 +113,9 @@ public final class DatabaseProperties {
 		if (o instanceof DatabaseProperties) {
 			DatabaseProperties p = (DatabaseProperties) o;
 			return Objects.equals(url, p.url)
-					&& Objects.equals(user, p.user)
-					&& Objects.equals(password, p.password)
-					&& Objects.equals(driverClassName, p.driverClassName);
+				&& Objects.equals(user, p.user)
+				&& Objects.equals(password, p.password)
+				&& Objects.equals(driverClassName, p.driverClassName);
 		}
 
 		return false;
@@ -129,10 +129,10 @@ public final class DatabaseProperties {
 	@Override
 	public String toString() {
 		return MoreObjects.toStringHelper(getClass())
-				.add("url", url)
-				.add("user", user)
-				.add("password", "******")
-				.add("driverClassName", driverClassName)
-				.toString();
+			.add("url", url)
+			.add("user", user)
+			.add("password", "******")
+			.add("driverClassName", driverClassName)
+			.toString();
 	}
 }
