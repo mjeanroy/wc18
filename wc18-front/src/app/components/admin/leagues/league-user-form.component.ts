@@ -28,7 +28,7 @@ import { MatDialogRef } from '@angular/material';
 import { UsersApiService } from '../../../api';
 
 @Component({
-  selector: 'league-user-form',
+  selector: 'app-league-user-form',
   templateUrl: './league-user-form.component.html',
 })
 export class LeagueUserFormComponent implements OnInit {

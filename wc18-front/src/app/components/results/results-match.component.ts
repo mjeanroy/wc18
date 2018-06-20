@@ -29,7 +29,7 @@ import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { League } from '../../models/league.model';
 
 @Component({
-  selector: 'results-match',
+  selector: 'app-results-match',
   templateUrl: './results-match.component.html',
 })
 export class ResultsMatchComponent implements OnInit {

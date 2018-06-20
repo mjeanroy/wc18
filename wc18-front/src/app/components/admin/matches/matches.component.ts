@@ -29,7 +29,7 @@ import { MatchEditFormComponent } from './match-edit-form.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'matches',
+  selector: 'app-matches',
   templateUrl: './matches.component.html',
 })
 export class MatchesComponent implements OnInit {

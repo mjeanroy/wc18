@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatTabsModule  } from '@angular/material';
 import { AdminComponent } from './admin.component';
-import { UsersComponent } from "./users/users.component";
+import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './users/user-form.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { LeagueFormComponent } from './leagues/league-form.component';

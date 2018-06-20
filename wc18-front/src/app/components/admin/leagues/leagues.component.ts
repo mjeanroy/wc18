@@ -31,10 +31,10 @@ import { LeagueFormComponent } from './league-form.component';
 import { LeagueUserFormComponent } from './league-user-form.component';
 
 @Component({
-  selector: 'leagues',
+  selector: 'app-leagues',
   templateUrl: './leagues.component.html',
 })
-export class LeaguesComponent implements OnInit{
+export class LeaguesComponent implements OnInit {
   private _dialog: MatDialog;
   private _leaguesApiService: LeaguesApiService;
 
@@ -58,7 +58,7 @@ export class LeaguesComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe((league: League) => {
       if (league) {
-        this._createLeague(league)
+        this._createLeague(league);
       }
     });
   }
@@ -70,7 +70,7 @@ export class LeaguesComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe((user: User) => {
       if (user) {
-        this._addUser(league, user)
+        this._addUser(league, user);
       }
     });
   }
@@ -82,8 +82,8 @@ export class LeaguesComponent implements OnInit{
   }
 
   private _addUser(league: League, user: User) {
-    this._leaguesApiService.addUser(league, user).subscribe(() => {
+    this._leaguesApiService.addUser(league, user).subscribe(() => (
       league.users.push(user)
-    });
+    ));
   }
 }

@@ -35,7 +35,7 @@ import { SnackbarService } from '../../services';
   ],
 })
 export class BetComponent implements OnInit, DoCheck {
-  @Input("bet") bet: Bet;
+  @Input('bet') bet: Bet;
 
   private _snackbarService: SnackbarService;
   private _betsApiService: BetsApiService;

@@ -22,10 +22,10 @@
  * THE SOFTWARE.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'admin',
+  selector: 'app-admin',
   templateUrl: './admin.component.html',
 })
 export class AdminComponent {

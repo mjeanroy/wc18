@@ -23,14 +23,14 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { Bet, Login, Match, Score, User } from '../../../models';
 import { BetsApiService, UsersApiService } from '../../../api';
-import {MatDialog} from "@angular/material";
-import {UserFormComponent} from "./user-form.component";
+import { UserFormComponent } from './user-form.component';
 import { UserBetComponent } from './user-bet.component';
 
 @Component({
-  selector: 'users',
+  selector: 'app-users',
   templateUrl: './users.component.html',
 })
 export class UsersComponent implements OnInit {

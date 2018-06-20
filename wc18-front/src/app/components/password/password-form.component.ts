@@ -24,11 +24,11 @@
 
 import { Component } from '@angular/core';
 import { Passwords } from '../../models';
-import { MeApiService, UsersApiService } from '../../api';
+import { MeApiService } from '../../api';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'password-form',
+  selector: 'app-password-form',
   templateUrl: './password-form.component.html',
   styleUrls: [
     './password-form.component.scss',

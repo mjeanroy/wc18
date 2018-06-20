@@ -22,12 +22,12 @@
  * THE SOFTWARE.
  */
 
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { League } from '../../../models/league.model';
 
 @Component({
-  selector: 'league-form',
+  selector: 'app-league-form',
   templateUrl: './league-form.component.html',
 })
 export class LeagueFormComponent {

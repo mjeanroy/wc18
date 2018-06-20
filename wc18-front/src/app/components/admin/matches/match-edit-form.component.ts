@@ -27,7 +27,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Score } from '../../../models';
 
 @Component({
-  selector: 'match-edit-form',
+  selector: 'app-match-edit-form',
   templateUrl: './match-edit-form.component.html',
 })
 export class MatchEditFormComponent {

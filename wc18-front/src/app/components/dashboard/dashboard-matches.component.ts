@@ -27,7 +27,7 @@ import { dateToDay, groupBy, keys, reduce } from '../../common';
 import { Bet } from '../../models';
 
 @Component({
-  selector: 'dashboard-matches',
+  selector: 'app-dashboard-matches',
   templateUrl: './dashboard-matches.component.html',
   styleUrls: [
     './dashboard-card.scss',

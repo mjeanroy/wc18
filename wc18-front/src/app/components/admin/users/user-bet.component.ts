@@ -28,10 +28,10 @@ import { MatDialogRef } from '@angular/material';
 import { MatchesApiService } from '../../../api';
 
 @Component({
-  selector: 'user-bet',
+  selector: 'app-user-bet',
   templateUrl: './user-bet.component.html',
 })
-export class UserBetComponent implements OnInit{
+export class UserBetComponent implements OnInit {
   private _dialogRef: MatDialogRef<UserBetComponent>;
   private _matchesApiService: MatchesApiService;
 

@@ -28,7 +28,7 @@ import { League } from '../../models/league.model';
 import { LeaguesApiService, MeApiService } from '../../api';
 
 @Component({
-  selector: 'ranks',
+  selector: 'app-ranks',
   templateUrl: './ranks.component.html',
 })
 export class RanksComponent implements OnInit {

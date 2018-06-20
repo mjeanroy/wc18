@@ -37,7 +37,7 @@ export class BetsComponent {
 
   private readonly _betsService: BetsService;
 
-  @Input("bets") bets: Bet[];
+  @Input('bets') bets: Bet[];
 
   constructor(betsService: BetsService) {
     this._betsService = betsService;

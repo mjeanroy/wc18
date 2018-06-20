@@ -27,7 +27,7 @@ import { Login } from '../../../models';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'user-form',
+  selector: 'app-user-form',
   templateUrl: './user-form.component.html',
 })
 export class UserFormComponent {

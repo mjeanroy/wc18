@@ -35,7 +35,7 @@ export class Logger {
    * @returns {void}
    */
   info(msg: string) {
-    console.info(`[INFO] ${msg}`);
+    console.info(`[INFO] ${msg}`); // tslint:disable-line
   }
 
   /**
@@ -45,6 +45,6 @@ export class Logger {
    * @returns {void}
    */
   debug(msg: string) {
-    console.debug(`[DEBUG] ${msg}`);
+    console.debug(`[DEBUG] ${msg}`); // tslint:disable-line
   }
 }

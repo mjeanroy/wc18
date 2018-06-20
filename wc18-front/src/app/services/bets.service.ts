@@ -67,12 +67,12 @@ export class BetsService {
 
 function createBets(matches: Match[], bets: Bet[], me: User) {
   // Index bets by match id.
-  const map = new Map<string, Bet>(bets.map((bet: Bet): [string, Bet] =>
+  const mapOfBets = new Map<string, Bet>(bets.map((bet: Bet): [string, Bet] =>
     [bet.match.id, bet]
   ));
 
   return matches.map((match: Match): Bet => (
-    createBet(match, map, me)
+    createBet(match, mapOfBets, me)
   ));
 }
 
@@ -94,5 +94,5 @@ function createBet(match: Match, bets: Map<string, Bet>, me: User) {
       score1: 0,
       score2: 0,
     },
-  }
+  };
 }

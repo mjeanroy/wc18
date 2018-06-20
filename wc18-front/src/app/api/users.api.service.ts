@@ -44,7 +44,7 @@ export class UsersApiService {
    * @returns {Observable<User[]>} The users response.
    */
   findAll(): Observable<User[]> {
-    return this._http.get<User[]>("/api/users");
+    return this._http.get<User[]>('/api/users');
   }
 
   /**
@@ -53,6 +53,6 @@ export class UsersApiService {
    * @returns {Observable<User>} The new user response.
    */
   create(account: Login): Observable<User> {
-    return this._http.post<User>("/api/users", account);
+    return this._http.post<User>('/api/users', account);
   }
 }

@@ -26,7 +26,7 @@ import { Component, Input } from '@angular/core';
 import { Bet } from '../../models';
 
 @Component({
-  selector: 'dashboard-bets',
+  selector: 'app-dashboard-bets',
   templateUrl: './dashboard-bets.component.html',
   styleUrls: [
     './dashboard-card.scss',
@@ -34,5 +34,5 @@ import { Bet } from '../../models';
   ],
 })
 export class DashboardBetsComponent {
-  @Input("bets") bets: Bet[];
+  @Input('bets') bets: Bet[];
 }
