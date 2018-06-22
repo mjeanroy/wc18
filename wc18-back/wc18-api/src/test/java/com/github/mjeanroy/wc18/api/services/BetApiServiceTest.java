@@ -29,6 +29,7 @@ import com.github.mjeanroy.wc18.api.tests.builders.BetDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.MatchDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.PrincipalBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.UserDtoBuilder;
+import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import org.junit.Test;
 
@@ -37,6 +38,7 @@ import java.util.List;
 
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class BetApiServiceTest extends AbstractApiServiceTest {
 
@@ -74,5 +76,22 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 		assertThat(result.getMatch()).isNotNull();
 		assertThat(result.getScore().getScore1()).isEqualTo(1);
 		assertThat(result.getScore().getScore2()).isEqualTo(0);
+	}
+
+	@Test
+	public void it_should_not_save_bet_for_locked_match() {
+		Principal principal = new PrincipalBuilder()
+			.withLogin("john")
+			.build();
+
+		BetDto bet = new BetDtoBuilder()
+			.withMatch(new MatchDtoBuilder().withId("def3918f-d885-45d5-93ae-f8782c17d7a7").build())
+			.withUser(new UserDtoBuilder().withId("10cd4d9f-099c-4491-bfdb-a635b2ffc757").build())
+			.withScore(1, 0)
+			.build();
+
+		assertThatThrownBy(() -> betApiService.save(principal, bet))
+			.isExactlyInstanceOf(MatchLockedException.class)
+			.hasMessage("Match 'def3918f-d885-45d5-93ae-f8782c17d7a7' is locked for bet");
 	}
 }

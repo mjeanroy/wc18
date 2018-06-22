@@ -110,7 +110,7 @@ public class BetApiService {
 		int score2 = bet.getScore().getScore2();
 
 		log.info("Saving bet for match #{}: {} - {}", match, score1, score2);
-		Bet savedBet = betService.save(user, match, score1, score2, false);
+		Bet savedBet = betService.save(user, match, score1, score2, checkLocked);
 
 		log.info("Bet saved, return DTO");
 		return betDtoMapper.from(savedBet);
