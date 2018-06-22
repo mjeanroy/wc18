@@ -27,7 +27,9 @@ services:
   backend:
     container_name: wc18-backend
     restart: always
-    build: ../../../wc18-back
+    build:
+      context: ../../..
+      dockerfile: ./wc18-back/Dockerfile
     image: wc18/backend
     depends_on:
       - db
@@ -45,7 +47,9 @@ services:
   frontend:
     container_name: wc18-frontend
     restart: always
-    build: ../../../wc18-front
+    build:
+      context: ../../..
+      dockerfile: ./wc18-front/Dockerfile
     image: wc18/frontend
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf

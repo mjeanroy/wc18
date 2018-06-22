@@ -25,13 +25,26 @@
 # The docker ignore list
 # These files will not be copied into docker image
 
-node_modules
-npm-debug.log
+# IDE
+.idea
+.vscode
+.project
+.classpath
+*.iml
+
+# Project Directories
+wc18-back/**/target
+wc18-front/**/node_modules
+wc18-tools
+
+# Debug & Compiled
+*.log
+
+# Docker files
 Dockerfile*
 docker-compose*
 .dockerignore
-.git
-.gitignore
+
+# Documentation
 README.md
 LICENSE
-.vscode

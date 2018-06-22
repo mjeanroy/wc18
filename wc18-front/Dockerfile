@@ -30,11 +30,12 @@
 
 FROM node:8.9-alpine as wc18-front-built
 WORKDIR /app/wc18
-COPY package.json package.json
-COPY package-lock.json package-lock.json
+COPY ./wc18-front/package.json ./package.json
+COPY ./wc18-front/package-lock.json ./package-lock.json
+COPY ./.git ./.git
 RUN npm install
-COPY . .
-RUN npm run dist
+COPY ./wc18-front .
+RUN ls -la && npm run dist
 
 # --------------------------------------------- #
 # Second stage: create the production image.    #
