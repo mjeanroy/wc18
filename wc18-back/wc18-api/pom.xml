@@ -188,6 +188,30 @@
           </httpConnector>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>com.github.danielflower.mavenplugins</groupId>
+        <artifactId>gitlog-maven-plugin</artifactId>
+        <version>${gitlog-maven-plugin.version}</version>
+        <configuration>
+          <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+          <jsonChangeLogFilename>changelog.json</jsonChangeLogFilename>
+          <generateJSONChangeLog>true</generateJSONChangeLog>
+          <generateSimpleHTMLChangeLog>false</generateSimpleHTMLChangeLog>
+          <generatePlainTextChangeLog>false</generatePlainTextChangeLog>
+          <generateMarkdownChangeLog>false</generateMarkdownChangeLog>
+          <generateAsciidocChangeLog>false</generateAsciidocChangeLog>
+          <generateHTMLTableOnlyChangeLog>false</generateHTMLTableOnlyChangeLog>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

@@ -22,28 +22,76 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.exceptions;
+package com.github.mjeanroy.wc18.api.dto;
 
-/**
- * Application Exception.
- */
-public abstract class AbstractException extends RuntimeException {
+public class CommitDto {
 
 	/**
-	 * Create the exception with a custom error message.
-	 *
-	 * @param message The error message.
+	 * Commit SHA1.
 	 */
-	protected AbstractException(String message) {
-		super(message);
+	private String id;
+
+	/**
+	 * Commit Author.
+	 */
+	private String authorName;
+
+	/**
+	 * Commit Message.
+	 */
+	private String message;
+
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
 	}
 
 	/**
-	 * Create the exception with the given cause.
+	 * Set {@link #id}
 	 *
-	 * @param cause The original cause.
+	 * @param id New {@link #id}
 	 */
-	protected AbstractException(Throwable cause) {
-		super(cause);
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * Get {@link #authorName}
+	 *
+	 * @return {@link #authorName}
+	 */
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	/**
+	 * Set {@link #authorName}
+	 *
+	 * @param authorName New {@link #authorName}
+	 */
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	/**
+	 * Get {@link #message}
+	 *
+	 * @return {@link #message}
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * Set {@link #message}
+	 *
+	 * @param message New {@link #message}
+	 */
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }

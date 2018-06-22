@@ -22,28 +22,33 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.exceptions;
+package com.github.mjeanroy.wc18.api.rest;
+
+import com.github.mjeanroy.wc18.api.dto.CommitDto;
+import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.api.services.AdminApiService;
+import com.github.mjeanroy.wc18.security.Security;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.inject.Inject;
 
 /**
- * Application Exception.
+ * The {@link MatchDto} Rest Controller.
  */
-public abstract class AbstractException extends RuntimeException {
+@RestController
+@Security(role = "ADMIN")
+public class AdminController {
 
-	/**
-	 * Create the exception with a custom error message.
-	 *
-	 * @param message The error message.
-	 */
-	protected AbstractException(String message) {
-		super(message);
+	private final AdminApiService adminApiService;
+
+	@Inject
+	public AdminController(AdminApiService adminApiService) {
+		this.adminApiService = adminApiService;
 	}
 
-	/**
-	 * Create the exception with the given cause.
-	 *
-	 * @param cause The original cause.
-	 */
-	protected AbstractException(Throwable cause) {
-		super(cause);
+	@GetMapping("/api/changelog")
+	public Iterable<CommitDto> readChangeLog() {
+		return adminApiService.readChangeLog();
 	}
 }

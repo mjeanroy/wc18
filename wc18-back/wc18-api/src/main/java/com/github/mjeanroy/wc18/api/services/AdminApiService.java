@@ -22,28 +22,47 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.exceptions;
+package com.github.mjeanroy.wc18.api.services;
 
-/**
- * Application Exception.
- */
-public abstract class AbstractException extends RuntimeException {
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.mjeanroy.wc18.api.dto.CommitDto;
+import com.github.mjeanroy.wc18.api.exceptions.InvalidChangeLogException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import javax.inject.Inject;
+import java.net.URL;
+
+import static java.util.Arrays.asList;
+
+@Service
+public class AdminApiService {
 
 	/**
-	 * Create the exception with a custom error message.
-	 *
-	 * @param message The error message.
+	 * Class Logger.
 	 */
-	protected AbstractException(String message) {
-		super(message);
+	private static final Logger log = LoggerFactory.getLogger(AdminApiService.class);
+
+	private final ObjectMapper objectMapper;
+
+	@Inject
+	public AdminApiService(ObjectMapper objectMapper) {
+		this.objectMapper = objectMapper;
 	}
 
 	/**
-	 * Create the exception with the given cause.
+	 * Read application changelog.
 	 *
-	 * @param cause The original cause.
+	 * @return List of commits in application changelog.
 	 */
-	protected AbstractException(Throwable cause) {
-		super(cause);
+	public Iterable<CommitDto> readChangeLog() {
+		try {
+			URL resource = getClass().getClassLoader().getResource("changelog.json");
+			return asList(objectMapper.readValue(resource, CommitDto[].class));
+		} catch (Exception ex) {
+			log.error(ex.getMessage(), ex);
+			throw new InvalidChangeLogException(ex);
+		}
 	}
 }

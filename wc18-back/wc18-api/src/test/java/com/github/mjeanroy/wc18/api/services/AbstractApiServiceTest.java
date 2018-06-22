@@ -27,6 +27,7 @@ package com.github.mjeanroy.wc18.api.services;
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
 import com.github.mjeanroy.dbunit.integration.spring.TransactionalDbUnitTestExecutionListener;
 import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
+import com.github.mjeanroy.wc18.api.configuration.JacksonConfiguration;
 import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaConfiguration;
 import com.github.mjeanroy.wc18.domain.configuration.liquibase.LiquibaseConfiguration;
 import com.github.mjeanroy.wc18.domain.tests.spring.EmbeddedDaoConfiguration;
@@ -82,6 +83,7 @@ public abstract class AbstractApiServiceTest {
 	@Import({
 		JpaConfiguration.class,
 		LiquibaseConfiguration.class,
+		JacksonConfiguration.class,
 		EmbeddedDaoConfiguration.class
 	})
 	static class ApiServiceTestConfiguration {

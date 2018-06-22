@@ -22,28 +22,21 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.exceptions;
+package com.github.mjeanroy.wc18.api.exceptions;
+
+import com.github.mjeanroy.wc18.domain.exceptions.AbstractException;
 
 /**
- * Application Exception.
+ * Error thrown when application changelog cannot be read.
  */
-public abstract class AbstractException extends RuntimeException {
+public class InvalidChangeLogException extends AbstractException {
 
 	/**
-	 * Create the exception with a custom error message.
-	 *
-	 * @param message The error message.
-	 */
-	protected AbstractException(String message) {
-		super(message);
-	}
-
-	/**
-	 * Create the exception with the given cause.
+	 * Create the error.
 	 *
 	 * @param cause The original cause.
 	 */
-	protected AbstractException(Throwable cause) {
+	public InvalidChangeLogException(Throwable cause) {
 		super(cause);
 	}
 }
