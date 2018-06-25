@@ -45,7 +45,7 @@ import javax.sql.DataSource;
 public class EmbeddedDaoConfiguration {
 	@Bean
 	public DataSource datasource() {
-		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).build();
+		return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
 	}
 
 	@Bean

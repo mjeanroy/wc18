@@ -50,7 +50,7 @@
         <mockito.version>2.17.0</mockito.version>
         <dbunit.version>2.5.4</dbunit.version>
         <dbunit-plus.version>0.2.0</dbunit-plus.version>
-        <hsqldb.version>2.4.0</hsqldb.version>
+        <h2.version>1.4.197</h2.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <equalsverifier.version>2.4.6</equalsverifier.version>
     </properties>
