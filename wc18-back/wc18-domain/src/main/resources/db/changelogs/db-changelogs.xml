@@ -43,5 +43,6 @@
   <include file="changesets/14-insert-users.xml" relativeToChangelogFile="true"/>
   <include file="changesets/15-leagues.xml" relativeToChangelogFile="true"/>
   <include file="changesets/16-add-user-role.xml" relativeToChangelogFile="true"/>
+  <include file="changesets/17-fix-match-hours-group-c.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
