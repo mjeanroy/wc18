@@ -1,0 +1,162 @@
+[
+  {
+    "id": "15e1c238-888f-4199-8390-a8d520a70ce7",
+    "isoCode": "DE",
+    "name": "Allemagne"
+  },
+  {
+    "id": "66740b5b-4714-41eb-921f-0e998b2e6753",
+    "isoCode": "UK",
+    "name": "Angleterre"
+  },
+  {
+    "id": "91764f86-313f-4b2b-83c5-5aa425bf5fa6",
+    "isoCode": "SA",
+    "name": "Arabie Saoudite"
+  },
+  {
+    "id": "a0b348fd-46d8-4c4c-a327-6595c4f468dd",
+    "isoCode": "AR",
+    "name": "Argentine"
+  },
+  {
+    "id": "e2b8bae1-06ab-44d2-8595-7af3e2441718",
+    "isoCode": "AU",
+    "name": "Australie"
+  },
+  {
+    "id": "3bd9e2f3-a4e8-4b7b-94d3-2e9c7d26d685",
+    "isoCode": "BE",
+    "name": "Belgique"
+  },
+  {
+    "id": "e9c4e714-5b4b-4e2d-a896-9f043c295869",
+    "isoCode": "BR",
+    "name": "Brésil"
+  },
+  {
+    "id": "7cb7480c-7076-4ac6-bd04-af10335108ef",
+    "isoCode": "CO",
+    "name": "Colombie"
+  },
+  {
+    "id": "f6e3252e-652b-4f91-985c-90f7b048c314",
+    "isoCode": "KR",
+    "name": "Corée du Sud"
+  },
+  {
+    "id": "bddfce69-a33a-49a9-9d61-c1df11cf67a8",
+    "isoCode": "CR",
+    "name": "Costa Rica"
+  },
+  {
+    "id": "d816d66f-0ae9-4c93-a89f-652d4ec36ddd",
+    "isoCode": "HR",
+    "name": "Croatie"
+  },
+  {
+    "id": "d42c4e1f-582f-4f5c-92ce-96efbe90508f",
+    "isoCode": "DK",
+    "name": "Danemark"
+  },
+  {
+    "id": "a2f04f41-008c-4948-a8ef-a560bd961e02",
+    "isoCode": "EG",
+    "name": "Egypte"
+  },
+  {
+    "id": "a49bed83-afc8-46ee-8d63-768a6b8e52d8",
+    "isoCode": "ES",
+    "name": "Espagne"
+  },
+  {
+    "id": "5820fadd-ae19-48d5-b4e5-811b08f58b87",
+    "isoCode": "FR",
+    "name": "France"
+  },
+  {
+    "id": "7cd7f5da-49e0-4373-ad65-1734e126ec5f",
+    "isoCode": "IR",
+    "name": "Iran"
+  },
+  {
+    "id": "13d9a3f3-d7f3-4ee1-ba6d-3a7681c0015c",
+    "isoCode": "IS",
+    "name": "Islande"
+  },
+  {
+    "id": "d1eacb9c-a0f4-43bf-827b-72d8a858cd75",
+    "isoCode": "JP",
+    "name": "Japon"
+  },
+  {
+    "id": "b33cfd07-d616-4146-b4d0-93bedb29d318",
+    "isoCode": "MA",
+    "name": "Maroc"
+  },
+  {
+    "id": "da4c2425-f8fc-439c-83ea-c707f2f4874a",
+    "isoCode": "MX",
+    "name": "Mexique"
+  },
+  {
+    "id": "42dcee66-7b12-4a08-a298-06bbe8327655",
+    "isoCode": "NG",
+    "name": "Nigeria"
+  },
+  {
+    "id": "b83e08df-2070-453b-856c-59ada3e7c23f",
+    "isoCode": "PA",
+    "name": "Panama"
+  },
+  {
+    "id": "47a0b90b-c658-4795-ac16-7d1d37750a24",
+    "isoCode": "PL",
+    "name": "Pologne"
+  },
+  {
+    "id": "f129acf1-bc4a-4055-bf0e-8f79d935ab49",
+    "isoCode": "PT",
+    "name": "Portugal"
+  },
+  {
+    "id": "024c6838-d48d-4a26-98fa-e08c35b33647",
+    "isoCode": "PE",
+    "name": "Pérou"
+  },
+  {
+    "id": "5a48bda3-d485-4045-ae18-5daed5237de2",
+    "isoCode": "RU",
+    "name": "Russie"
+  },
+  {
+    "id": "78f8cca7-4cc3-4132-9764-a67f0dc7916c",
+    "isoCode": "RS",
+    "name": "Serbie"
+  },
+  {
+    "id": "c4b57832-9c6c-48f6-9e49-cf0a8d1e0993",
+    "isoCode": "CH",
+    "name": "Suisse"
+  },
+  {
+    "id": "82041393-3310-4ad1-8069-c39ff6b9502c",
+    "isoCode": "SE",
+    "name": "Suède"
+  },
+  {
+    "id": "f6808b60-8524-47df-b381-d1fb21d1c87b",
+    "isoCode": "SN",
+    "name": "Sénégal"
+  },
+  {
+    "id": "93b3d3ca-c10d-44f9-b26f-45582549caf9",
+    "isoCode": "TN",
+    "name": "Tunisie"
+  },
+  {
+    "id": "d21eecd1-32db-4a00-92df-5c66a2b5c1f7",
+    "isoCode": "UY",
+    "name": "Uruguay"
+  }
+]

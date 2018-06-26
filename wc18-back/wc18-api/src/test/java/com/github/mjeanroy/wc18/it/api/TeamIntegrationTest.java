@@ -31,12 +31,12 @@ import org.junit.Test;
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThat;
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThatJson;
 
-public class MatchIntegrationTest extends AbstractIntegrationTest {
+public class TeamIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
-	public void it_should_get_non_locked_matches() {
-		HttpResponse response = getClient().prepareGet("/api/matches").execute();
-		assertThat(response).isOk().isUtf8();
-		assertThatJson(response).isEqualTo(getJsonFile("GET_api_matches.json"));
+	public void it_should_get_teams() {
+		HttpResponse response = getClient().prepareGet("/api/teams").execute();
+		assertThat(response).isOk().isUtf8().isJson();
+		assertThatJson(response).isEqualTo(getJsonFile("GET_api_teams.json"));
 	}
 }
