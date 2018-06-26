@@ -29,6 +29,7 @@ import com.github.mjeanroy.dbunit.core.annotations.DbUnitSetup;
 import com.github.mjeanroy.dbunit.core.operation.DbUnitOperation;
 import com.github.mjeanroy.dbunit.integration.junit.DbUnitRule;
 import com.github.mjeanroy.junit.servers.client.HttpClient;
+import com.github.mjeanroy.junit.servers.client.HttpResponse;
 import com.github.mjeanroy.junit.servers.jetty.EmbeddedJettyConfiguration;
 import com.github.mjeanroy.junit.servers.rules.JettyServerRule;
 import com.github.mjeanroy.junit.servers.rules.ServerRule;
@@ -36,6 +37,8 @@ import org.junit.ClassRule;
 import org.junit.Rule;
 
 import java.net.URL;
+
+import static com.github.mjeanroy.wc18.it.json.JsonBuilders.jsonObject;
 
 @DbUnitDataSet("/dbunit")
 @DbUnitSetup(DbUnitOperation.CLEAN_INSERT)
@@ -70,5 +73,21 @@ public abstract class AbstractIntegrationTest {
 	 */
 	protected HttpClient getClient() {
 		return server.getClient();
+	}
+
+	/**
+	 * Get token of admin user.
+	 *
+	 * @return The token value.
+	 */
+	protected String getAdminToken() {
+		HttpResponse response = getClient().preparePost("/api/login")
+			.setBody(jsonObject()
+				.add("login", "mickael")
+				.add("password", "azerty123")
+				.serialize())
+			.executeJson();
+
+		return response.getHeader("X-Auth-Token").getFirstValue();
 	}
 }

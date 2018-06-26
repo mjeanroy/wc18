@@ -30,13 +30,37 @@ import org.junit.Test;
 
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThat;
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThatJson;
+import static com.github.mjeanroy.wc18.it.json.JsonBuilders.jsonObject;
+import static java.util.Collections.singleton;
 
 public class MatchIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
-	public void it_should_get_non_locked_matches() {
+	public void it_should_get_all_matches() {
 		HttpResponse response = getClient().prepareGet("/api/matches").execute();
 		assertThat(response).isOk().isUtf8();
 		assertThatJson(response).isEqualTo(getJsonFile("GET_api_matches.json"));
+	}
+
+	@Test
+	public void it_should_create_match() {
+		HttpResponse response = getClient().preparePost("/api/matches")
+			.addHeader("Content-Type", "application/json")
+			.addHeader("X-Auth-Token", getAdminToken())
+			.setBody(jsonObject()
+				.add("team1", jsonObject()
+					.add("id", "5820fadd-ae19-48d5-b4e5-811b08f58b87")
+					.add("name", "France"))
+				.add("team2", jsonObject()
+					.add("id", "e9c4e714-5b4b-4e2d-a896-9f043c295869")
+					.add("name", "Brésil"))
+				.add("date", "2018-07-15T18:00:00.000Z")
+				.add("stage", "FINAL")
+				.build()
+				.serialize())
+			.executeJson();
+
+		assertThat(response).isCreated().isUtf8().isJson();
+		assertThatJson(response).isEqualToIgnoring(getJsonFile("POST_api_matches.json"), singleton("id"));
 	}
 }
