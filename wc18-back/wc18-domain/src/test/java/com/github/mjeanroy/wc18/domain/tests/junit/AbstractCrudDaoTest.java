@@ -22,39 +22,45 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.mappers;
+package com.github.mjeanroy.wc18.domain.tests.junit;
 
-import com.github.mjeanroy.wc18.api.dto.UserDto;
-import com.github.mjeanroy.wc18.api.tests.junit.AbstractDtoMapperTest;
-import com.github.mjeanroy.wc18.domain.models.User;
-import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
-
-import javax.inject.Inject;
+import com.github.mjeanroy.wc18.domain.dao.AbstractCrudDao;
+import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
+import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserDtoMapperTest extends AbstractDtoMapperTest<User, UserDto, UserDtoMapper> {
+/**
+ * Basic structure to test read-only repositories (repositories without save, update or delete operations).
+ *
+ * @param <T> Entity Type.
+ * @param <U> DAO Type.
+ */
+public abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractCrudDao<T>> extends AbstractReadOnlyDaoTest<T, U> {
 
-	@Inject
-	private UserDtoMapper userDtoMapper;
-
-	@Override
-	protected UserDtoMapper getMapper() {
-		return userDtoMapper;
+	@Test
+	public void create_entry() {
+		T newOne = createOne();
+		T result = getDao().save(newOne);
+		assertThat(result).isNotNull();
+		assertThat(result.getId()).isNotNull().isNotEmpty();
 	}
 
-	@Override
-	protected User createInput() {
-		return new UserBuilder()
-			.withRandomId()
-			.withLogin("John")
-			.withPassword("azerty123")
-			.build();
+	@Test
+	public void it_should_remove_entity() {
+		String id = getOneId();
+		T entity = findOne(getEntityClass(), id);
+		assertThat(entity).isNotNull();
+
+		getDao().delete(entity);
+
+		assertThat(findOne(getEntityClass(), id)).isNull();
 	}
 
-	@Override
-	protected void verifyOutput(User input, UserDto output) {
-		assertThat(output.getId()).isEqualTo(input.getId());
-		assertThat(output.getLogin()).isEqualTo(input.getLogin());
-	}
+	/**
+	 * Create new entity that will be persisted in {@link #create_entry()} unit test.
+	 *
+	 * @return The new entity.
+	 */
+	protected abstract T createOne();
 }

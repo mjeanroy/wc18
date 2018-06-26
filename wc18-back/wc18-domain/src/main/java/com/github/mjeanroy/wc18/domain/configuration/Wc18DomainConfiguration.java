@@ -29,7 +29,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan("com.github.mjeanroy.wc18.domain")
 @EnableTransactionManagement(proxyTargetClass = true)
+@ComponentScan({
+	"com.github.mjeanroy.wc18.domain.dao",
+	"com.github.mjeanroy.wc18.domain.services"
+})
 public class Wc18DomainConfiguration {
 }

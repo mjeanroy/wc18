@@ -27,6 +27,7 @@ package com.github.mjeanroy.wc18.domain.dao;
 import com.github.mjeanroy.wc18.domain.models.League;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.LeagueBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -41,31 +42,29 @@ public class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
 	private LeagueDao leagueDao;
 
 	@Override
-	Class<League> getEntityClass() {
+	protected Class<League> getEntityClass() {
 		return League.class;
 	}
 
 	@Override
-	LeagueDao getDao() {
+	protected LeagueDao getDao() {
 		return leagueDao;
 	}
 
 	@Override
-	String getOneId() {
+	protected String getOneId() {
 		return "cc591102-dedf-432f-b0ea-58459997514c";
 	}
 
 	@Override
-	void checkOne(League one) {
+	protected void checkOne(League one) {
 		assertThat(one.getName()).isEqualTo("League 1");
 		assertThat(one.getUsers()).isNotEmpty();
 	}
 
 	@Override
-	League createOne() {
-		return new LeagueBuilder()
-			.withName("The Justice League")
-			.build();
+	protected League createOne() {
+		return new LeagueBuilder().withName("The Justice League").build();
 	}
 
 	@Test

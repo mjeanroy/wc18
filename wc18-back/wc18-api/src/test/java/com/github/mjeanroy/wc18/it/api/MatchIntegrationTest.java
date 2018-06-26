@@ -22,28 +22,22 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.configuration;
+package com.github.mjeanroy.wc18.it.api;
 
-import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
-import com.github.mjeanroy.wc18.domain.configuration.EnableWc18Domain;
-import com.github.mjeanroy.wc18.security.configuration.EnableWc18Security;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import com.github.mjeanroy.junit.servers.client.HttpResponse;
+import com.github.mjeanroy.wc18.it.junit.AbstractIntegrationTest;
+import org.junit.Test;
 
-@Configuration
-@EnableMapper
-@EnableWc18Domain
-@EnableWc18Security
-@ComponentScan({
-	"com.github.mjeanroy.wc18.api.mappers",
-	"com.github.mjeanroy.wc18.api.security",
-	"com.github.mjeanroy.wc18.api.services",
-	"com.github.mjeanroy.wc18.api.rest"
-})
-@Import({
-	BeanValidationConfiguration.class,
-	JacksonConfiguration.class
-})
-public class Wc18ApiConfiguration {
+import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThat;
+import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThatJson;
+
+public class MatchIntegrationTest extends AbstractIntegrationTest {
+
+	@Test
+	public void it_should_get_non_locked_matches() {
+		HttpResponse response = getClient().prepareGet("/api/matches").execute();
+
+		assertThat(response).isOk().isUtf8();
+		assertThatJson(response).isEqualTo(getJsonFile("GET_api_matches.json"));
+	}
 }

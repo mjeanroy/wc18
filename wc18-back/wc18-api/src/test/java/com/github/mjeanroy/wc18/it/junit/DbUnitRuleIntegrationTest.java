@@ -22,44 +22,13 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.dao;
+package com.github.mjeanroy.wc18.it.junit;
 
-import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
-import org.junit.Test;
+import com.github.mjeanroy.dbunit.integration.junit.DbUnitRule;
 
-import static org.assertj.core.api.Assertions.assertThat;
+public class DbUnitRuleIntegrationTest extends DbUnitRule {
 
-/**
- * Basic structure to test read-only repositories (repositories without save, update or delete operations).
- *
- * @param <T> Entity Type.
- * @param <U> DAO Type.
- */
-abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractCrudDao<T>> extends AbstractReadOnlyDaoTest<T, U> {
-
-	@Test
-	public void create_entry() {
-		T newOne = createOne();
-		T result = getDao().save(newOne);
-		assertThat(result).isNotNull();
-		assertThat(result.getId()).isNotNull().isNotEmpty();
+	public DbUnitRuleIntegrationTest(SpringContextHook spring) {
+		super(new SpringDataSourceJdbcConnectionFactory(spring));
 	}
-
-	@Test
-	public void it_should_remove_entity() {
-		String id = getOneId();
-		T entity = findOne(getEntityClass(), id);
-		assertThat(entity).isNotNull();
-
-		getDao().delete(entity);
-
-		assertThat(findOne(getEntityClass(), id)).isNull();
-	}
-
-	/**
-	 * Create new entity that will be persisted in {@link #create_entry()} unit test.
-	 *
-	 * @return The new entity.
-	 */
-	abstract T createOne();
 }

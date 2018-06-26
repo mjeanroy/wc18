@@ -47,9 +47,9 @@ public class WebConfiguration implements WebApplicationInitializer {
 	private static final Logger log = LoggerFactory.getLogger(WebConfiguration.class);
 
 	/**
-	 * The spring dispatcher servlet name.
+	 * The junit dispatcher servlet name.
 	 */
-	private static final String SPRING_SERVLET_NAME = "spring";
+	private static final String SPRING_SERVLET_NAME = "junit";
 
 	private static final EnumSet<DispatcherType> DISPS = EnumSet.of(
 		DispatcherType.REQUEST,
@@ -66,7 +66,7 @@ public class WebConfiguration implements WebApplicationInitializer {
 	}
 
 	/**
-	 * Initialize spring context and spring mvc dispatcher servlet.
+	 * Initialize junit context and junit mvc dispatcher servlet.
 	 *
 	 * @param servletContext Servlet context.
 	 */
@@ -76,7 +76,7 @@ public class WebConfiguration implements WebApplicationInitializer {
 	}
 
 	/**
-	 * Initialize spring context.
+	 * Initialize junit context.
 	 *
 	 * @param servletContext Servlet context.
 	 * @return Spring context.
@@ -97,7 +97,7 @@ public class WebConfiguration implements WebApplicationInitializer {
 	}
 
 	/**
-	 * Initialize spring MVC dispatcher servlet.
+	 * Initialize junit MVC dispatcher servlet.
 	 *
 	 * @param servletContext Servlet context.
 	 * @param context Spring context.
@@ -116,7 +116,7 @@ public class WebConfiguration implements WebApplicationInitializer {
 
 	/**
 	 * Initialize character encoding filter to force UTF-8 encoding in http responses (through
-	 * spring MVC servlet).
+	 * junit MVC servlet).
 	 *
 	 * @param servletContext Servlet context.
 	 */
@@ -132,7 +132,7 @@ public class WebConfiguration implements WebApplicationInitializer {
 
 	/**
 	 * Initialize ETag Filter to add ETag header in http responses (through
-	 * spring MVC servlet).
+	 * junit MVC servlet).
 	 *
 	 * @param servletContext Servlet context.
 	 */

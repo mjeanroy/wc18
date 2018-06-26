@@ -25,6 +25,7 @@
 package com.github.mjeanroy.wc18.api.mappers;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractDtoMapperTest;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
@@ -41,12 +42,12 @@ public class MatchDtoMapperTest extends AbstractDtoMapperTest<Match, MatchDto, M
 	private MatchDtoMapper matchDtoMapper;
 
 	@Override
-	MatchDtoMapper getMapper() {
+	protected MatchDtoMapper getMapper() {
 		return matchDtoMapper;
 	}
 
 	@Override
-	Match createInput() {
+	protected Match createInput() {
 		return new MatchBuilder()
 			.withRandomId()
 			.withDate(new Date())
@@ -57,7 +58,7 @@ public class MatchDtoMapperTest extends AbstractDtoMapperTest<Match, MatchDto, M
 	}
 
 	@Override
-	void verifyOutput(Match input, MatchDto output) {
+	protected void verifyOutput(Match input, MatchDto output) {
 		assertThat(output.getId()).isEqualTo(input.getId());
 		assertThat(output.getDate()).isEqualTo(input.getDate());
 		assertThat(output.getStage()).isEqualTo(input.getStage());

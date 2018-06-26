@@ -22,8 +22,9 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.dao;
+package com.github.mjeanroy.wc18.domain.tests.junit;
 
+import com.github.mjeanroy.wc18.domain.dao.AbstractReadOnlyDao;
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
 import org.junit.Test;
 
@@ -39,7 +40,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @param <T> Entity Type.
  */
-abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extends AbstractReadOnlyDao<T>> extends AbstractRepositoryTest {
+public abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extends AbstractReadOnlyDao<T>> extends AbstractRepositoryTest {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -75,28 +76,28 @@ abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extends Abstr
 	 *
 	 * @return The repository object.
 	 */
-	abstract Class<T> getEntityClass();
+	protected abstract Class<T> getEntityClass();
 
 	/**
 	 * Get the tested repository object.
 	 *
 	 * @return The repository object.
 	 */
-	abstract U getDao();
+	protected abstract U getDao();
 
 	/**
 	 * Get an id to retrieve in {@link #it_should_find_one()} test.
 	 *
 	 * @return A valid identifier.
 	 */
-	abstract String getOneId();
+	protected abstract String getOneId();
 
 	/**
 	 * Ensure given entity is valid.
 	 *
 	 * @param one The entity.
 	 */
-	abstract void checkOne(T one);
+	protected abstract void checkOne(T one);
 
 	/**
 	 * Count total number of rows in database.
@@ -116,7 +117,7 @@ abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extends Abstr
 	 * @param id The ID.
 	 * @return The single result.
 	 */
-	<X> X findOne(Class<X> entityClass, String id) {
+	protected <X> X findOne(Class<X> entityClass, String id) {
 		return entityManager.find(entityClass, id);
 	}
 }

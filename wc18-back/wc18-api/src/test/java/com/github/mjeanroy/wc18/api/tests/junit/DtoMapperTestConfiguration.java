@@ -22,28 +22,14 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.configuration;
+package com.github.mjeanroy.wc18.api.tests.junit;
 
 import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
-import com.github.mjeanroy.wc18.domain.configuration.EnableWc18Domain;
-import com.github.mjeanroy.wc18.security.configuration.EnableWc18Security;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
 @EnableMapper
-@EnableWc18Domain
-@EnableWc18Security
-@ComponentScan({
-	"com.github.mjeanroy.wc18.api.mappers",
-	"com.github.mjeanroy.wc18.api.security",
-	"com.github.mjeanroy.wc18.api.services",
-	"com.github.mjeanroy.wc18.api.rest"
-})
-@Import({
-	BeanValidationConfiguration.class,
-	JacksonConfiguration.class
-})
-public class Wc18ApiConfiguration {
+@ComponentScan("com.github.mjeanroy.wc18.api.mappers")
+class DtoMapperTestConfiguration {
 }

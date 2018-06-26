@@ -25,6 +25,7 @@
 package com.github.mjeanroy.wc18.api.mappers;
 
 import com.github.mjeanroy.wc18.api.dto.TeamDto;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractDtoMapperTest;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 
@@ -38,12 +39,12 @@ public class TeamDtoMapperTest extends AbstractDtoMapperTest<Team, TeamDto, Team
 	private TeamDtoMapper teamDtoMapper;
 
 	@Override
-	TeamDtoMapper getMapper() {
+	protected TeamDtoMapper getMapper() {
 		return teamDtoMapper;
 	}
 
 	@Override
-	Team createInput() {
+	protected Team createInput() {
 		return new TeamBuilder()
 			.withRandomId()
 			.withIsoCode("FR")
@@ -52,7 +53,7 @@ public class TeamDtoMapperTest extends AbstractDtoMapperTest<Team, TeamDto, Team
 	}
 
 	@Override
-	void verifyOutput(Team input, TeamDto output) {
+	protected void verifyOutput(Team input, TeamDto output) {
 		assertThat(output.getId()).isEqualTo(input.getId());
 		assertThat(output.getIsoCode()).isEqualTo(input.getIsoCode());
 		assertThat(output.getName()).isEqualTo(input.getName());

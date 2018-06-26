@@ -31,6 +31,7 @@ import com.github.mjeanroy.wc18.api.exceptions.PrincipalNotFoundException;
 import com.github.mjeanroy.wc18.api.tests.builders.LoginDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.PasswordDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.PrincipalBuilder;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import org.junit.Test;

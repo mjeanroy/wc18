@@ -195,6 +195,15 @@
             <goals>
               <goal>test-jar</goal>
             </goals>
+            <configuration>
+              <excludes>
+                <exclude>logback-test.xml</exclude>
+              </excludes>
+              <includes>
+                <include>/dbunit/**/*</include>
+                <include>/com/github/mjeanroy/wc18/domain/tests/**/*</include>
+              </includes>
+            </configuration>
           </execution>
         </executions>
       </plugin>

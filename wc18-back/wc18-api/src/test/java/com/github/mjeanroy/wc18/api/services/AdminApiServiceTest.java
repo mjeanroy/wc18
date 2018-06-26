@@ -25,6 +25,7 @@
 package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.CommitDto;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 

@@ -22,21 +22,11 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.services;
+package com.github.mjeanroy.wc18.api.tests.junit;
 
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
 import com.github.mjeanroy.dbunit.integration.spring.TransactionalDbUnitTestExecutionListener;
-import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
-import com.github.mjeanroy.wc18.api.configuration.JacksonConfiguration;
-import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaConfiguration;
-import com.github.mjeanroy.wc18.domain.configuration.liquibase.LiquibaseConfiguration;
-import com.github.mjeanroy.wc18.domain.tests.spring.EmbeddedDaoConfiguration;
-import com.github.mjeanroy.wc18.security.service.SecurityService;
 import org.junit.runner.RunWith;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -46,11 +36,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import static org.mockito.Mockito.mock;
-
 @DbUnitDataSet("/dbunit")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AbstractApiServiceTest.ApiServiceTestConfiguration.class)
+@ContextConfiguration(classes = ApiServiceTestConfiguration.class)
 @Transactional
 @TestExecutionListeners({
 	DependencyInjectionTestExecutionListener.class,
@@ -68,29 +56,8 @@ public abstract class AbstractApiServiceTest {
 	 * @param id The ID.
 	 * @return The single result.
 	 */
-	<X> X findOne(Class<X> entityClass, String id) {
+	protected <X> X findOne(Class<X> entityClass, String id) {
 		return entityManager.find(entityClass, id);
 	}
 
-	@Configuration
-	@EnableMapper
-	@ComponentScan({
-		"com.github.mjeanroy.wc18.api.mappers",
-		"com.github.mjeanroy.wc18.api.services",
-		"com.github.mjeanroy.wc18.domain.services",
-		"com.github.mjeanroy.wc18.domain.dao"
-	})
-	@Import({
-		JpaConfiguration.class,
-		LiquibaseConfiguration.class,
-		JacksonConfiguration.class,
-		EmbeddedDaoConfiguration.class
-	})
-	static class ApiServiceTestConfiguration {
-
-		@Bean
-		public SecurityService securityService() {
-			return mock(SecurityService.class);
-		}
-	}
 }

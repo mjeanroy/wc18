@@ -28,6 +28,7 @@ import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.api.dto.TeamDto;
 import com.github.mjeanroy.wc18.api.tests.builders.MatchDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.TeamDtoBuilder;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 import org.junit.Test;
 

@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.tests.spring;
+package com.github.mjeanroy.wc18.domain.tests.junit;
 
 import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaConfiguration;
 import com.github.mjeanroy.wc18.domain.configuration.jpa.JpaProperties;

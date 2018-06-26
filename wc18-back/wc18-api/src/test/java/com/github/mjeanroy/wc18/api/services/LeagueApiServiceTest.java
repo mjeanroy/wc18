@@ -28,6 +28,7 @@ import com.github.mjeanroy.wc18.api.dto.LeagueDto;
 import com.github.mjeanroy.wc18.api.dto.RankDto;
 import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.tests.builders.LeagueDtoBuilder;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.League;
 import org.junit.Test;
 

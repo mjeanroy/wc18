@@ -22,28 +22,22 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.configuration;
+package com.github.mjeanroy.wc18.it.junit;
 
-import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
-import com.github.mjeanroy.wc18.domain.configuration.EnableWc18Domain;
-import com.github.mjeanroy.wc18.security.configuration.EnableWc18Security;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import com.github.mjeanroy.dbunit.core.jdbc.AbstractJdbcConnectionFactory;
 
-@Configuration
-@EnableMapper
-@EnableWc18Domain
-@EnableWc18Security
-@ComponentScan({
-	"com.github.mjeanroy.wc18.api.mappers",
-	"com.github.mjeanroy.wc18.api.security",
-	"com.github.mjeanroy.wc18.api.services",
-	"com.github.mjeanroy.wc18.api.rest"
-})
-@Import({
-	BeanValidationConfiguration.class,
-	JacksonConfiguration.class
-})
-public class Wc18ApiConfiguration {
+import java.sql.Connection;
+
+class SpringDataSourceJdbcConnectionFactory extends AbstractJdbcConnectionFactory {
+
+	private final SpringContextHook spring;
+
+	SpringDataSourceJdbcConnectionFactory(SpringContextHook spring) {
+		this.spring = spring;
+	}
+
+	@Override
+	protected Connection createConnection() throws Exception {
+		return spring.getDataSource().getConnection();
+	}
 }

@@ -28,6 +28,7 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Match.Stage;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -47,22 +48,22 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	private MatchDao matchDao;
 
 	@Override
-	Class<Match> getEntityClass() {
+	protected Class<Match> getEntityClass() {
 		return Match.class;
 	}
 
 	@Override
-	MatchDao getDao() {
+	protected MatchDao getDao() {
 		return matchDao;
 	}
 
 	@Override
-	String getOneId() {
+	protected String getOneId() {
 		return "251643b1-5a15-4cac-8f84-6cf0153a2480";
 	}
 
 	@Override
-	void checkOne(Match one) {
+	protected void checkOne(Match one) {
 		assertThat(one.getStage()).isEqualTo(Stage.GROUP);
 		assertThat(one.getDate()).hasYear(2018).hasMonth(6).hasDayOfMonth(21).hasHourOfDay(15).hasMinute(0).hasSecond(0).hasMillisecond(0);
 		assertThat(one.getTeam1()).isNotNull();
@@ -71,7 +72,7 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Override
-	Match createOne() {
+	protected Match createOne() {
 		Team team1 = findOne(Team.class, "5820fadd-ae19-48d5-b4e5-811b08f58b87");
 		Team team2 = findOne(Team.class, "e9c4e714-5b4b-4e2d-a896-9f043c295869");
 		return new MatchBuilder()

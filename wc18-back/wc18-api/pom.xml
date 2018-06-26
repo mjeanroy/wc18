@@ -150,6 +150,24 @@
       <version>${commons-lang3.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.github.mjeanroy</groupId>
+      <artifactId>junit-servers-jetty</artifactId>
+      <version>${junit-servers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>${okhttp.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.mjeanroy</groupId>
+      <artifactId>rest-assert-assertj</artifactId>
+      <version>${rest-assert.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

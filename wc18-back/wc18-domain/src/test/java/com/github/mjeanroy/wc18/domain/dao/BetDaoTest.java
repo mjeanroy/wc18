@@ -29,6 +29,7 @@ import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.ScoreBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -49,22 +50,22 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	private BetDao betDao;
 
 	@Override
-	Class<Bet> getEntityClass() {
+	protected Class<Bet> getEntityClass() {
 		return Bet.class;
 	}
 
 	@Override
-	BetDao getDao() {
+	protected BetDao getDao() {
 		return betDao;
 	}
 
 	@Override
-	String getOneId() {
+	protected String getOneId() {
 		return "8edec0c9-2f71-4ae9-beb5-ae16024bc3d1";
 	}
 
 	@Override
-	void checkOne(Bet one) {
+	protected void checkOne(Bet one) {
 		assertThat(one.getMatch()).isNotNull();
 		assertThat(one.getUser()).isNotNull();
 		assertThat(one.getDate()).hasYear(2015).hasMonth(5).hasDayOfMonth(16).hasHourOfDay(0).hasMinute(0).hasSecond(0).hasMillisecond(0);
@@ -74,7 +75,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Override
-	Bet createOne() {
+	protected Bet createOne() {
 		Match match = findOne(Match.class, "251643b1-5a15-4cac-8f84-6cf0153a2480");
 		User user = findOne(User.class, "10cd4d9f-099c-4491-bfdb-a635b2ffc757");
 		return new BetBuilder()

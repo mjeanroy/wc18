@@ -27,6 +27,7 @@ package com.github.mjeanroy.wc18.domain.dao;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -40,29 +41,29 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	private UserDao userDao;
 
 	@Override
-	Class<User> getEntityClass() {
+	protected Class<User> getEntityClass() {
 		return User.class;
 	}
 
 	@Override
-	UserDao getDao() {
+	protected UserDao getDao() {
 		return userDao;
 	}
 
 	@Override
-	String getOneId() {
+	protected String getOneId() {
 		return "e31195bd-1d4e-4915-a3dc-ce901f57903f";
 	}
 
 	@Override
-	void checkOne(User one) {
+	protected void checkOne(User one) {
 		assertThat(one.getLogin()).isEqualTo("mickael");
 		assertThat(one.getRole()).isEqualTo(Role.ADMIN);
 		assertThat(one.getPassword()).isNotNull().isNotEmpty();
 	}
 
 	@Override
-	User createOne() {
+	protected User createOne() {
 		return new UserBuilder()
 			.withLogin("johndoe")
 			.withPassword("foobar")

@@ -29,6 +29,7 @@ import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.exceptions.CredentialsNotFoundException;
 import com.github.mjeanroy.wc18.api.tests.builders.HttpServletResponseBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.LoginDtoBuilder;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
 import org.junit.Test;

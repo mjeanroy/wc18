@@ -22,19 +22,16 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.api.mappers;
+package com.github.mjeanroy.wc18.api.tests.junit;
 
-import com.github.mjeanroy.spring.mappers.configuration.EnableMapper;
 import com.github.mjeanroy.spring.mappers.objects.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AbstractDtoMapperTest.DtoMapperTestConfiguration.class)
+@ContextConfiguration(classes = DtoMapperTestConfiguration.class)
 public abstract class AbstractDtoMapperTest<T, U, MAPPER extends ObjectMapper<T, U>> {
 
 	@Test
@@ -49,14 +46,14 @@ public abstract class AbstractDtoMapperTest<T, U, MAPPER extends ObjectMapper<T,
 	 *
 	 * @return The mapper.
 	 */
-	abstract MAPPER getMapper();
+	protected abstract MAPPER getMapper();
 
 	/**
 	 * Create input value.
 	 *
 	 * @return Input value.
 	 */
-	abstract T createInput();
+	protected abstract T createInput();
 
 	/**
 	 * Verify output value.
@@ -64,11 +61,6 @@ public abstract class AbstractDtoMapperTest<T, U, MAPPER extends ObjectMapper<T,
 	 * @param input The mapped input.
 	 * @param output The final output.
 	 */
-	abstract void verifyOutput(T input, U output);
+	protected abstract void verifyOutput(T input, U output);
 
-	@Configuration
-	@EnableMapper
-	@ComponentScan("com.github.mjeanroy.wc18.api.mappers")
-	static class DtoMapperTestConfiguration {
-	}
 }

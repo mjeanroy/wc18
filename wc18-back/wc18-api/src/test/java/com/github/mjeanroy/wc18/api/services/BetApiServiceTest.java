@@ -29,6 +29,7 @@ import com.github.mjeanroy.wc18.api.tests.builders.BetDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.MatchDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.PrincipalBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.UserDtoBuilder;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import org.junit.Test;
