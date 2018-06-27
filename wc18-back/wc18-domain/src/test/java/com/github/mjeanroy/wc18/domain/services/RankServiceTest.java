@@ -29,6 +29,7 @@ import com.github.mjeanroy.wc18.domain.dao.MatchDao;
 import com.github.mjeanroy.wc18.domain.models.Bet;
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Rank;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
@@ -72,9 +73,23 @@ public class RankServiceTest extends AbstractServiceTest {
 		User user3 = new UserBuilder().withRandomId().build();
 		List<User> users = asList(user1, user2, user3);
 
-		Match match1 = new MatchBuilder().withRandomId().withScore(1, 0).build();
-		Match match2 = new MatchBuilder().withRandomId().withScore(0, 0).build();
-		Match match3 = new MatchBuilder().withRandomId().withScore(0, 2).build();
+		Match match1 = new MatchBuilder()
+			.withRandomId()
+			.withStage(Stage.GROUP)
+			.withScore(1, 0)
+			.build();
+
+		Match match2 = new MatchBuilder()
+			.withRandomId()
+			.withStage(Stage.FINAL)
+			.withScore(0, 0)
+			.build();
+
+		Match match3 = new MatchBuilder()
+			.withRandomId()
+			.withStage(Stage.GROUP)
+			.withScore(0, 2)
+			.build();
 
 		List<Bet> bets = asList(
 			// User1
@@ -97,7 +112,7 @@ public class RankServiceTest extends AbstractServiceTest {
 			.isSortedAccordingTo(comparing(Rank::getScore, reverseOrder()))
 			.extracting(Rank::getUser, Rank::getScore, Rank::getPercentGood, Rank::getPercentPerfect)
 			.contains(
-				tuple(user1, 25, 66, 33),
+				tuple(user1, 115, 66, 33),
 				tuple(user2, 10, 33, 0),
 				tuple(user3, 0, 0, 0)
 			);

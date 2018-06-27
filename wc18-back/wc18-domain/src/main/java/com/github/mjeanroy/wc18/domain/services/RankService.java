@@ -78,9 +78,9 @@ public class RankService {
 			User user = bet.getUser();
 			RankStatistic statistic = scores.get(user);
 
-			Bet.Result result = bet.getResult();
-			statistic.score += result.getPoint();
+			statistic.score += bet.getPoint();
 
+			Bet.Result result = bet.getResult();
 			if (result == Bet.Result.PERFECT) {
 				statistic.nbGood++;
 				statistic.nbPerfect++;

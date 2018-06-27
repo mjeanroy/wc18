@@ -130,6 +130,15 @@ public class Match extends AbstractEntity {
 	}
 
 	/**
+	 * The coefficient to apply per bet.
+	 *
+	 * @return The coefficient.
+	 */
+	public int getCoeff() {
+		return stage.getCoeff();
+	}
+
+	/**
 	 * Check if match has been played and score is available.
 	 *
 	 * @return {@code true} if match has been played, {@code false} otherwise.

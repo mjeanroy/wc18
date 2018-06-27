@@ -154,7 +154,7 @@ public class Bet extends AbstractEntity {
 	 * @return Points.
 	 */
 	public int getPoint() {
-		return getResult().point;
+		return getResult().point * match.getCoeff();
 	}
 
 	/**
@@ -165,6 +165,15 @@ public class Bet extends AbstractEntity {
 	public void updateScore(Score score) {
 		this.date = new Date();
 		this.score = score;
+	}
+
+	/**
+	 * Get coefficient to apply.
+	 *
+	 * @return The coefficient.
+	 */
+	public int getCoeff() {
+		return match.getCoeff();
 	}
 
 	/**

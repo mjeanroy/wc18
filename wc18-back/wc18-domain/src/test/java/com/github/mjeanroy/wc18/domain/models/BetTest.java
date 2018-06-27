@@ -48,7 +48,7 @@ public class BetTest {
 	public void it_should_return_zero_point_if_bet_is_loosed() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
-			.withMatch(givenPlayedMatch(2, 0))
+			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
 			.withScore(0, 2)
 			.build();
 
@@ -59,7 +59,7 @@ public class BetTest {
 	public void it_should_return_win_point_if_bet_is_won() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
-			.withMatch(givenPlayedMatch(2, 0))
+			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
 			.withScore(1, 0)
 			.build();
 
@@ -70,7 +70,7 @@ public class BetTest {
 	public void it_should_return_win_point_if_bet_is_won_with_match_equality() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
-			.withMatch(givenPlayedMatch(2, 2))
+			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 2))
 			.withScore(1, 1)
 			.build();
 
@@ -81,7 +81,7 @@ public class BetTest {
 	public void it_should_return_perfect_point_if_bet_is_perfect() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
-			.withMatch(givenPlayedMatch(2, 0))
+			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
 			.withScore(2, 0)
 			.build();
 
@@ -92,17 +92,29 @@ public class BetTest {
 	public void it_should_return_perfect_point_if_bet_is_perfect_with_match_equality() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
-			.withMatch(givenPlayedMatch(1, 1))
+			.withMatch(givenPlayedMatch(Stage.GROUP, 1, 1))
 			.withScore(1, 1)
 			.build();
 
 		assertThat(bet.getPoint()).isEqualTo(15);
 	}
 
-	private Match givenPlayedMatch(int score1, int score2) {
+	@Test
+	public void it_should_apply_coefficient_per_stage() {
+		Bet bet = new BetBuilder()
+			.withRandomId()
+			.withMatch(givenPlayedMatch(Stage.FINAL, 1, 1))
+			.withScore(1, 1)
+			.build();
+
+		assertThat(bet.getPoint()).isEqualTo(150);
+	}
+
+	private Match givenPlayedMatch(Stage stage, int score1, int score2) {
 		return new MatchBuilder()
 			.withRandomId()
 			.withDate(new Date())
+			.withStage(stage)
 			.withScore(score1, score2)
 			.build();
 	}
@@ -111,6 +123,7 @@ public class BetTest {
 		return new MatchBuilder()
 			.withRandomId()
 			.withDate(new Date())
+			.withStage(Stage.GROUP)
 			.build();
 	}
 }

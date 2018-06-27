@@ -24,31 +24,31 @@
 
 package com.github.mjeanroy.wc18.domain.models;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import static java.util.function.Function.identity;
-
 /**
  * The match type.
  */
 public enum Stage {
 
-	GROUP("Groupe"),
-	ROUND_16("Huitième de finale"),
-	QUARTER_FINAL("Quarts de finale"),
-	SEMI_FINAL("Demi finale"),
-	THIRD_PLACE_FINAL("Match troisième place"),
-	FINAL("Finale");
+	GROUP("Groupe", 1),
+	ROUND_16("Huitième de finale", 2),
+	QUARTER_FINAL("Quarts de finale", 3),
+	SEMI_FINAL("Demi finale", 5),
+	THIRD_PLACE_FINAL("Match troisième place", 8),
+	FINAL("Finale", 10);
 
 	/**
 	 * The stage label.
 	 */
 	private final String label;
 
-	Stage(String label) {
+	/**
+	 * The coefficient to compute point per bet.
+	 */
+	private final int coeff;
+
+	Stage(String label, int coeff) {
 		this.label = label;
+		this.coeff = coeff;
 	}
 
 	/**
@@ -61,11 +61,11 @@ public enum Stage {
 	}
 
 	/**
-	 * The map of stages by its id.
+	 * Get {@link #coeff}
+	 *
+	 * @return {@link #coeff}
 	 */
-	private static final Map<String, Stage> map = Arrays.stream(Stage.values()).collect(Collectors.toMap(Stage::name, identity()));
-
-	public static Stage get(String id) {
-		return map.getOrDefault(id, null);
+	public int getCoeff() {
+		return coeff;
 	}
 }
