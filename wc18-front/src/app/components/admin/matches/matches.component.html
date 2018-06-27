@@ -23,6 +23,10 @@
           <td><span *ngIf="match.score">{{ match.score.score1 }} - {{ match.score.score2 }}</span></td>
           <td class="column-action">
             <button mat-raised-button type="button" color="primary" (click)="editMatchScore(match)">
+              <mat-icon>games</mat-icon>
+            </button>
+            &nbsp;
+            <button mat-raised-button type="button" color="primary" (click)="editMatch(match)">
               <mat-icon>edit</mat-icon>
             </button>
           </td>

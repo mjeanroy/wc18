@@ -24,35 +24,46 @@
 
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Match, Score, Stage, Team } from '../../../models';
+import { Match, Stage, Team } from '../../../models';
 import { StagesApiService } from '../../../api/stages.api.service';
 import { TeamsApiService } from '../../../api';
+import { isNil } from '../../../common/is-nil';
+import { dateIsoToUs } from '../../../common/date-iso-to-us';
+import { dateUsToIso } from '../../../common/date-us-to-iso';
 
 @Component({
-  selector: 'app-match-new-form',
-  templateUrl: './match-new-form.component.html',
+  selector: 'app-match-edit-form',
+  templateUrl: './match-edit-form.component.html',
 })
-export class MatchNewFormComponent implements OnInit {
-  private _dialogRef: MatDialogRef<MatchNewFormComponent>;
+export class MatchEditFormComponent implements OnInit {
+  private _dialogRef: MatDialogRef<MatchEditFormComponent>;
   private _stagesApiService: StagesApiService;
   private _teamsApiService: TeamsApiService;
 
   teams: Team[];
   stages: Stage[];
   match: Match;
+  selectedDate: string;
 
-  constructor(teamsApiService: TeamsApiService, stagesApiService: StagesApiService, dialogRef: MatDialogRef<MatchNewFormComponent>) {
+  constructor(
+      teamsApiService: TeamsApiService,
+      stagesApiService: StagesApiService,
+      dialogRef: MatDialogRef<MatchEditFormComponent>,
+      @Optional() @Inject(MAT_DIALOG_DATA) match: Match) {
+
     this._teamsApiService = teamsApiService;
     this._stagesApiService = stagesApiService;
     this._dialogRef = dialogRef;
-    this.match = {
+
+    this.selectedDate = match ? dateIsoToUs(match.date) : null;
+    this.match = Object.assign({}, match || {
       id: null,
       date: null,
       stage: null,
       team1: null,
       team2: null,
       score: null,
-    };
+    });
   }
 
   ngOnInit() {
@@ -65,11 +76,25 @@ export class MatchNewFormComponent implements OnInit {
     );
   }
 
+  compareIds(x: any, y: any) {
+    if (x === y) {
+      return true;
+    }
+
+    if (isNil(x) || isNil(y)) {
+      return false;
+    }
+
+    return x.id === y.id;
+  }
+
   cancel() {
     this._dialogRef.close();
   }
 
   validate() {
-    this._dialogRef.close(this.match);
+    this._dialogRef.close(Object.assign(this.match, {
+      date: dateUsToIso(this.selectedDate),
+    }));
   }
 }

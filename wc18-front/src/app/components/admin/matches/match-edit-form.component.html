@@ -2,10 +2,10 @@
 <div mat-dialog-actions>
   <form #scoreForm="ngForm">
     <mat-form-field>
-      <input matInput type="datetime-local" name="date" [(ngModel)]="match.date" />
+      <input matInput type="datetime-local" name="date" [(ngModel)]="selectedDate" />
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Team 1" [(ngModel)]="match.team1" name="team1">
+      <mat-select placeholder="Team 1" [(ngModel)]="match.team1" name="team1" [compareWith]="compareIds">
         <mat-option *ngFor="let team of teams" [value]="team">
           {{ team.name }}
         </mat-option>
@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Team 2" [(ngModel)]="match.team2" name="team2">
+      <mat-select placeholder="Team 2" [(ngModel)]="match.team2" name="team2" [compareWith]="compareIds">
         <mat-option *ngFor="let team of teams" [value]="team">
           {{ team.name }}
         </mat-option>
@@ -21,7 +21,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Stage" [(ngModel)]="match.stage" name="stage">
+      <mat-select placeholder="Stage" [(ngModel)]="match.stage" name="stage" [compareWith]="compareIds">
         <mat-option *ngFor="let stage of stages" [value]="stage">
           {{ stage.label }}
         </mat-option>
