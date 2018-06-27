@@ -25,6 +25,7 @@
 package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.api.dto.ScoreDto;
 import com.github.mjeanroy.wc18.api.mappers.MatchDtoMapper;
 import com.github.mjeanroy.wc18.api.mappers.StageDtoMapper;
 import com.github.mjeanroy.wc18.domain.models.Match;
@@ -95,6 +96,18 @@ public class MatchApiService {
 		Integer score2 = matchDto.getScore().getScore2();
 		Stage stage = stageService.findOneOrFail(matchDto.getStage().getId());
 		Match result = matchService.update(id, date, stage, score1, score2);
+		return matchDtoMapper.from(result);
+	}
+
+	/**
+	 * Update match score.
+	 *
+	 * @param id Match identifier.
+	 * @param scoreDto The match score.
+	 * @return The result.
+	 */
+	public MatchDto updateScore(String id, ScoreDto scoreDto) {
+		Match result = matchService.updateScore(id, scoreDto.getScore1(), scoreDto.getScore2());
 		return matchDtoMapper.from(result);
 	}
 

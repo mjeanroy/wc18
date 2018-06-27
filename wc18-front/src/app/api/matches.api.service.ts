@@ -25,7 +25,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Match } from '../models';
+import { Match, Score } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -79,5 +79,9 @@ export class MatchesApiService {
 
   update(match: Match): Observable<Match> {
     return this._http.put<Match>(`/api/matches/${match.id}`, match);
+  }
+
+  updateScore(match: Match, score: Score): Observable<Match> {
+    return this._http.put<Match>(`/api/matches/${match.id}/score`, score);
   }
 }

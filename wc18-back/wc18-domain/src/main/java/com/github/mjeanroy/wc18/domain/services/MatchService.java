@@ -122,6 +122,21 @@ public class MatchService {
 	}
 
 	/**
+	 * Update match score with given values.
+	 *
+	 * @param id The match identifier.
+	 * @param score1 First score.
+	 * @param score2 Second score.
+	 * @return The result.
+	 */
+	@Transactional
+	public Match updateScore(String id, Integer score1, Integer score2) {
+		Match match = findOneOrFail(id);
+		match.updateScore(score1, score2);
+		return save(match);
+	}
+
+	/**
 	 * Remove match.
 	 *
 	 * @param id The match identifier.

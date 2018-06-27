@@ -25,6 +25,7 @@
 package com.github.mjeanroy.wc18.api.rest;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.api.dto.ScoreDto;
 import com.github.mjeanroy.wc18.api.services.MatchApiService;
 import com.github.mjeanroy.wc18.security.Security;
 import org.springframework.http.HttpStatus;
@@ -72,6 +73,12 @@ public class MatchController {
 	@Security(role = "ADMIN")
 	public MatchDto update(@PathVariable("id") String id, @RequestBody @Valid MatchDto match) {
 		return matchApiService.update(id, match);
+	}
+
+	@PutMapping("/{id}/score")
+	@Security(role = "ADMIN")
+	public MatchDto updateScore(@PathVariable("id") String id, @RequestBody @Valid ScoreDto score) {
+		return matchApiService.updateScore(id, score);
 	}
 
 	@DeleteMapping("/{id}")

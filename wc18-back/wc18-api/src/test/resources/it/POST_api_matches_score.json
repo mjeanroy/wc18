@@ -1,0 +1,22 @@
+{
+  "id": "4ff9c731-7eba-47bb-91fa-a0c04b2e394e",
+  "date": "2018-06-16T12:00:00.000+0000",
+  "stage": {
+    "id": "GROUP",
+    "label": "Groupe"
+  },
+  "team1": {
+    "id": "5820fadd-ae19-48d5-b4e5-811b08f58b87",
+    "isoCode": "FR",
+    "name": "France"
+  },
+  "team2": {
+    "id": "e2b8bae1-06ab-44d2-8595-7af3e2441718",
+    "isoCode": "AU",
+    "name": "Australie"
+  },
+  "score": {
+    "score1": 2,
+    "score2": 1
+  }
+}

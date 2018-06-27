@@ -27,15 +27,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Score } from '../../../models';
 
 @Component({
-  selector: 'app-match-edit-form',
-  templateUrl: './match-edit-form.component.html',
+  selector: 'app-match-edit-score-form',
+  templateUrl: './match-edit-score-form.component.html',
 })
-export class MatchEditFormComponent {
-  private _dialogRef: MatDialogRef<MatchEditFormComponent>;
+export class MatchEditScoreFormComponent {
+  private _dialogRef: MatDialogRef<MatchEditScoreFormComponent >;
 
   score: Score;
 
-  constructor(dialogRef: MatDialogRef<MatchEditFormComponent>, @Optional() @Inject(MAT_DIALOG_DATA) score: Score) {
+  constructor(dialogRef: MatDialogRef<MatchEditScoreFormComponent >, @Optional() @Inject(MAT_DIALOG_DATA) score: Score) {
     this._dialogRef = dialogRef;
     this.score = score || {
       score1: 0,

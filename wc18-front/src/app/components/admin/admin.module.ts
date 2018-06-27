@@ -44,7 +44,7 @@ import { LeagueFormComponent } from './leagues/league-form.component';
 import { LeagueUserFormComponent } from './leagues/league-user-form.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { MatchesComponent } from './matches/matches.component';
-import { MatchEditFormComponent } from './matches/match-edit-form.component';
+import { MatchEditScoreFormComponent } from './matches/match-edit-score-form.component';
 import { UserBetComponent } from './users/user-bet.component';
 import { MatchNewFormComponent } from './matches/match-new-form.component';
 
@@ -78,14 +78,14 @@ import { MatchNewFormComponent } from './matches/match-new-form.component';
 
     MatchesComponent,
     MatchNewFormComponent,
-    MatchEditFormComponent,
+    MatchEditScoreFormComponent,
   ],
 
   entryComponents: [
     UserFormComponent,
     LeagueFormComponent,
     LeagueUserFormComponent,
-    MatchEditFormComponent,
+    MatchEditScoreFormComponent,
     MatchNewFormComponent,
     UserBetComponent,
   ],

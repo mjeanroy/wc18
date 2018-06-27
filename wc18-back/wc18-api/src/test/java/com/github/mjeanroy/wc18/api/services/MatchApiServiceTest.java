@@ -25,8 +25,10 @@
 package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
+import com.github.mjeanroy.wc18.api.dto.ScoreDto;
 import com.github.mjeanroy.wc18.api.dto.TeamDto;
 import com.github.mjeanroy.wc18.api.tests.builders.MatchDtoBuilder;
+import com.github.mjeanroy.wc18.api.tests.builders.ScoreDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.TeamDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.Stage;
@@ -115,6 +117,41 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 		assertThat(result.getStage()).isNotNull();
 		assertThat(result.getStage().getId()).isEqualTo(Stage.FINAL.name());
 		assertThat(result.getStage().getLabel()).isEqualTo(Stage.FINAL.getLabel());
+		assertThat(result.getScore().getScore1()).isEqualTo(score1);
+		assertThat(result.getScore().getScore2()).isEqualTo(score2);
+	}
+
+	@Test
+	public void it_should_update_match_score() {
+		TeamDto team1 = new TeamDtoBuilder()
+			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
+			.withName("France")
+			.build();
+
+		TeamDto team2 = new TeamDtoBuilder()
+			.withId("e2b8bae1-06ab-44d2-8595-7af3e2441718")
+			.withName("Australie")
+			.build();
+
+		int score1 = 3;
+		int score2 = 0;
+		ScoreDto scoreDto = new ScoreDtoBuilder()
+			.withScore1(score1)
+			.withScore2(score2)
+			.build();
+
+		MatchDto dto = new MatchDtoBuilder()
+			.withId("4ff9c731-7eba-47bb-91fa-a0c04b2e394e")
+			.withDate(new Date())
+			.withStage(Stage.FINAL)
+			.withTeam1(team1)
+			.withTeam2(team2)
+			.build();
+
+		MatchDto result = matchApiService.updateScore(dto.getId(), scoreDto);
+
+		assertThat(result).isNotNull();
+		assertThat(result.getId()).isNotNull();
 		assertThat(result.getScore().getScore1()).isEqualTo(score1);
 		assertThat(result.getScore().getScore2()).isEqualTo(score2);
 	}

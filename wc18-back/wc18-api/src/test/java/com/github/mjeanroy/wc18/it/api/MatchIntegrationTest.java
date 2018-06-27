@@ -65,4 +65,20 @@ public class MatchIntegrationTest extends AbstractIntegrationTest {
 		assertThat(response).isCreated().isUtf8().isJson();
 		assertThatJson(response).isEqualToIgnoring(getJsonFile("POST_api_matches.json"), singleton("id"));
 	}
+
+	@Test
+	public void it_should_update_match_score() {
+		String matchId = "4ff9c731-7eba-47bb-91fa-a0c04b2e394e";
+		HttpResponse response = getClient().preparePut("/api/matches/" + matchId + "/score")
+			.addHeader("Content-Type", "application/json")
+			.addHeader("X-Auth-Token", getAdminToken())
+			.setBody(jsonObject()
+				.add("score1", 2)
+				.add("score2", 1)
+				.serialize())
+			.executeJson();
+
+		assertThat(response).isOk().isUtf8().isJson();
+		assertThatJson(response).isEqualToIgnoring(getJsonFile("POST_api_matches_score.json"), singleton("id"));
+	}
 }

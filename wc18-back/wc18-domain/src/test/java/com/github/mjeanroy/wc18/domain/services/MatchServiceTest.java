@@ -188,6 +188,22 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
+	public void it_should_update_match_score() {
+		Match match = createRandomMatch();
+		String id = match.getId();
+		int score1 = 3;
+		int score2 = 0;
+
+		Match result = matchService.updateScore(id, score1, score2);
+
+		assertThat(result).isNotNull();
+		assertThat(result.getId()).isNotNull();
+		assertThat(result.getScore()).isNotNull();
+		assertThat(result.getScore().getScore1()).isEqualTo(score1);
+		assertThat(result.getScore().getScore2()).isEqualTo(score2);
+	}
+
+	@Test
 	public void it_should_remove_match() {
 		Match match = createRandomMatch();
 		String id = match.getId();

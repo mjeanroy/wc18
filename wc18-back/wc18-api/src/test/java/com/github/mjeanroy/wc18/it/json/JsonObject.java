@@ -116,6 +116,18 @@ public class JsonObject implements JsonValue {
 		 * Add new entry.
 		 *
 		 * @param key Entry key.
+		 * @param value Entry value.
+		 * @return The builder.
+		 */
+		public Builder add(String key, int value) {
+			this.entries.add(entry(key, value));
+			return this;
+		}
+
+		/**
+		 * Add new entry.
+		 *
+		 * @param key Entry key.
 		 * @param object Entry value.
 		 * @return The builder.
 		 */
