@@ -47,6 +47,7 @@ public abstract class AbstractIntegrationTest {
 	private static final SpringContextHook SPRING = SpringContextHook.getInstance();
 
 	private static final EmbeddedJettyConfiguration SERVER_CONFIGURATION = EmbeddedJettyConfiguration.builder()
+		.withHook(TimeZoneContextHook.get())
 		.withHook(SPRING)
 		.build();
 
