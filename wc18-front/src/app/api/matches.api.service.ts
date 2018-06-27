@@ -73,6 +73,10 @@ export class MatchesApiService {
     });
   }
 
+  create(match: Match): Observable<Match> {
+    return this._http.post<Match>('/api/matches', match);
+  }
+
   update(match: Match): Observable<Match> {
     return this._http.put<Match>(`/api/matches/${match.id}`, match);
   }

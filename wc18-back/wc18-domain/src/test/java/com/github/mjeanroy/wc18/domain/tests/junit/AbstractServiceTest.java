@@ -22,30 +22,14 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.domain.tests.junit;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class PasswordServiceTest extends AbstractServiceTest {
-
-	@InjectMocks
-	private PasswordService passwordService;
-
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
-	}
-
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
-	}
+/**
+ * Abstract template for service test suite.
+ */
+@RunWith(MockitoJUnitRunner.Silent.class)
+public abstract class AbstractServiceTest {
 }

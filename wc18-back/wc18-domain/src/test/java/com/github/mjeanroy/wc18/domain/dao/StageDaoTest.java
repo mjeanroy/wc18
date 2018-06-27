@@ -22,30 +22,37 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.domain.dao;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractRepositoryTest;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Optional;
+
+import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+public class StageDaoTest extends AbstractRepositoryTest {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	@Inject
+	private StageDao stageDao;
 
 	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	public void it_should_find_all() {
+		List<Stage> stages = toList(stageDao.findAll());
+		assertThat(stages)
+			.hasSameSizeAs(Stage.values())
+			.containsExactly(Stage.values());
 	}
 
 	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	public void it_should_find_one() {
+		for (Stage stage : Stage.values()) {
+			Optional<Stage> result = stageDao.findOne(stage.name());
+			assertThat(result).isPresent().hasValue(stage);
+		}
 	}
 }

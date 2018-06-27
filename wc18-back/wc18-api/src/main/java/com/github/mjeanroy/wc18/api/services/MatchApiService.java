@@ -26,10 +26,12 @@ package com.github.mjeanroy.wc18.api.services;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.api.mappers.MatchDtoMapper;
+import com.github.mjeanroy.wc18.api.mappers.StageDtoMapper;
 import com.github.mjeanroy.wc18.domain.models.Match;
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.services.MatchService;
+import com.github.mjeanroy.wc18.domain.services.StageService;
 import com.github.mjeanroy.wc18.domain.services.TeamService;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +42,17 @@ import java.util.Date;
 public class MatchApiService {
 
 	private final MatchService matchService;
+	private final StageService stageService;
 	private final MatchDtoMapper matchDtoMapper;
+	private final StageDtoMapper stageDtoMapper;
 	private final TeamService teamService;
 
 	@Inject
-	public MatchApiService(MatchService matchService, MatchDtoMapper matchDtoMapper, TeamService teamService) {
+	public MatchApiService(MatchService matchService, StageService stageService, MatchDtoMapper matchDtoMapper, StageDtoMapper stageDtoMapper, TeamService teamService) {
 		this.matchService = matchService;
+		this.stageService = stageService;
 		this.matchDtoMapper = matchDtoMapper;
+		this.stageDtoMapper = stageDtoMapper;
 		this.teamService = teamService;
 	}
 
@@ -68,10 +74,11 @@ public class MatchApiService {
 	 * @return The result.
 	 */
 	public MatchDto create(MatchDto matchDto) {
-		Stage stage = matchDto.getStage();
 		Date date = matchDto.getDate();
+		Stage stage = stageService.findOneOrFail(matchDto.getStage().getId());
 		Team team1 = teamService.findOneOrFail(matchDto.getTeam1().getId());
 		Team team2 = teamService.findOneOrFail(matchDto.getTeam2().getId());
+
 		Match result = matchService.create(date, stage, team1, team2);
 		return matchDtoMapper.from(result);
 	}
@@ -83,10 +90,10 @@ public class MatchApiService {
 	 * @return The result.
 	 */
 	public MatchDto update(String id, MatchDto matchDto) {
-		Stage stage = matchDto.getStage();
 		Date date = matchDto.getDate();
 		Integer score1 = matchDto.getScore().getScore1();
 		Integer score2 = matchDto.getScore().getScore2();
+		Stage stage = stageService.findOneOrFail(matchDto.getStage().getId());
 		Match result = matchService.update(id, date, stage, score1, score2);
 		return matchDtoMapper.from(result);
 	}

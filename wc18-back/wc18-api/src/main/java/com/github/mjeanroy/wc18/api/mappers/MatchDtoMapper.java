@@ -40,12 +40,14 @@ public class MatchDtoMapper extends AbstractLazyObjectMapper<Match, MatchDto> {
 
 	private final TeamDtoMapper teamDtoMapper;
 	private final ScoreDtoMapper scoreDtoMapper;
+	private final StageDtoMapper stageDtoMapper;
 
 	@Inject
-	public MatchDtoMapper(Mapper mapper, TeamDtoMapper teamDtoMapper, ScoreDtoMapper scoreDtoMapper) {
+	public MatchDtoMapper(Mapper mapper, TeamDtoMapper teamDtoMapper, ScoreDtoMapper scoreDtoMapper, StageDtoMapper stageDtoMapper) {
 		super(mapper);
 		this.teamDtoMapper = teamDtoMapper;
 		this.scoreDtoMapper = scoreDtoMapper;
+		this.stageDtoMapper = stageDtoMapper;
 	}
 
 	@Override
@@ -53,7 +55,7 @@ public class MatchDtoMapper extends AbstractLazyObjectMapper<Match, MatchDto> {
 		MatchDto dto = new MatchDto();
 		dto.setId(source.getId());
 		dto.setDate(source.getDate());
-		dto.setStage(source.getStage());
+		dto.setStage(stageDtoMapper.from(source.getStage()));
 		dto.setTeam1(teamDtoMapper.from(source.getTeam1()));
 		dto.setTeam2(teamDtoMapper.from(source.getTeam2()));
 		dto.setScore(scoreDtoMapper.from(source.getScore()));

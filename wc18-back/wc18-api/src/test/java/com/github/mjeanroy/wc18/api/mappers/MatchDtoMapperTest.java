@@ -27,7 +27,7 @@ package com.github.mjeanroy.wc18.api.mappers;
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractDtoMapperTest;
 import com.github.mjeanroy.wc18.domain.models.Match;
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 
@@ -61,7 +61,9 @@ public class MatchDtoMapperTest extends AbstractDtoMapperTest<Match, MatchDto, M
 	protected void verifyOutput(Match input, MatchDto output) {
 		assertThat(output.getId()).isEqualTo(input.getId());
 		assertThat(output.getDate()).isEqualTo(input.getDate());
-		assertThat(output.getStage()).isEqualTo(input.getStage());
+		assertThat(output.getStage()).isNotNull();
+		assertThat(output.getStage().getId()).isEqualTo(input.getStage().name());
+		assertThat(output.getStage().getLabel()).isEqualTo(input.getStage().getLabel());
 		assertThat(output.getTeam1().getId()).isEqualTo(input.getTeam1().getId());
 		assertThat(output.getTeam2().getId()).isEqualTo(input.getTeam2().getId());
 		assertThat(output.getScore()).isNull();

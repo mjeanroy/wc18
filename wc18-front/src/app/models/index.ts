@@ -31,3 +31,4 @@ export { Principal } from './principal.model';
 export { Login } from './login.model';
 export { Passwords } from './passwords.model';
 export { Rank } from './rank.model';
+export { Stage } from './stage.model';

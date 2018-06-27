@@ -40,18 +40,6 @@ import java.util.Objects;
 public class Match extends AbstractEntity {
 
 	/**
-	 * The match type.
-	 */
-	public enum Stage {
-		GROUP,
-		ROUND_16,
-		QUARTER_FINAL,
-		SEMI_FINAL,
-		THIRD_PLACE_FINAL,
-		FINAL
-	}
-
-	/**
 	 * The match date, in UTC.
 	 */
 	@Column(name = "date", nullable = false)

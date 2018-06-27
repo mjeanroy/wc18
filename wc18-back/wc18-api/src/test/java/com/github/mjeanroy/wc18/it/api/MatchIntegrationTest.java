@@ -55,7 +55,9 @@ public class MatchIntegrationTest extends AbstractIntegrationTest {
 					.add("id", "e9c4e714-5b4b-4e2d-a896-9f043c295869")
 					.add("name", "Brésil"))
 				.add("date", "2018-07-15T18:00:00.000Z")
-				.add("stage", "FINAL")
+				.add("stage", jsonObject()
+						.add("id", "FINAL")
+						.add("label", "Finale"))
 				.build()
 				.serialize())
 			.executeJson();

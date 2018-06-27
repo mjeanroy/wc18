@@ -28,6 +28,7 @@ import com.github.mjeanroy.wc18.domain.dao.TeamDao;
 import com.github.mjeanroy.wc18.domain.exceptions.TeamNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

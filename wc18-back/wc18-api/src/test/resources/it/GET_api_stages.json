@@ -1,0 +1,26 @@
+[
+  {
+    "id": "GROUP",
+    "label": "Groupe"
+  },
+  {
+    "id": "ROUND_16",
+    "label": "Huitième de finale"
+  },
+  {
+    "id": "QUARTER_FINAL",
+    "label": "Quarts de finale"
+  },
+  {
+    "id": "SEMI_FINAL",
+    "label": "Demi finale"
+  },
+  {
+    "id": "THIRD_PLACE_FINAL",
+    "label": "Match troisième place"
+  },
+  {
+    "id": "FINAL",
+    "label": "Finale"
+  }
+]

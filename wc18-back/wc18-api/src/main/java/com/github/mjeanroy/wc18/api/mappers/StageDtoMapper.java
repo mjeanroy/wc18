@@ -22,14 +22,32 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.mappers;
 
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import com.github.mjeanroy.spring.mappers.Mapper;
+import com.github.mjeanroy.spring.mappers.objects.AbstractLazyObjectMapper;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 /**
- * Abstract template for service test suite.
+ * Mapper translating {@link Stage} to {@link StageDto}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
-public abstract class AbstractServiceTest {
+@Component
+public class StageDtoMapper extends AbstractLazyObjectMapper<Stage, StageDto> {
+
+	@Inject
+	public StageDtoMapper(Mapper mapper) {
+		super(mapper);
+	}
+
+	@Override
+	public StageDto convert(Stage source) {
+		StageDto dto = new StageDto();
+		dto.setId(source.name());
+		dto.setLabel(source.getLabel());
+		return dto;
+	}
 }

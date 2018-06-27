@@ -1,7 +1,10 @@
 {
   "id": "eedbf306-6d48-4304-aede-9719c5bb9e77",
   "date": "2018-07-15T18:00:00.000+0000",
-  "stage": "FINAL",
+  "stage": {
+    "id": "FINAL",
+    "label": "Finale"
+  },
   "team1": {
     "id": "5820fadd-ae19-48d5-b4e5-811b08f58b87",
     "isoCode": "FR",

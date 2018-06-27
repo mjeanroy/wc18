@@ -24,28 +24,47 @@
 
 package com.github.mjeanroy.wc18.domain.services;
 
+import com.github.mjeanroy.wc18.domain.dao.StageDao;
+import com.github.mjeanroy.wc18.domain.exceptions.StageNotFoundException;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
+import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 
+import java.util.List;
+
+import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+public class StageServiceTest extends AbstractServiceTest {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	private StageService stageService;
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	@Before
+	public void initStageDao() {
+		StageDao stageDao = new StageDao();
+		stageService = new StageService(stageDao);
 	}
 
 	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	public void it_should_find_all() {
+		List<Stage> stages = toList(stageService.findAll());
+		assertThat(stages).containsExactly(Stage.values());
+	}
+
+	@Test
+	public void it_should_find_one() {
+		for (Stage stage : Stage.values()) {
+			Stage result = stageService.findOneOrFail(stage.name());
+			assertThat(result).isEqualTo(stage);
+		}
+	}
+
+	@Test
+	public void it_should_fail_to_find_one_with_unknown_id() {
+		assertThatThrownBy(() -> stageService.findOneOrFail("FAKE_STAGE"))
+			.isExactlyInstanceOf(StageNotFoundException.class)
+			.hasMessage("Cannot find stage 'FAKE_STAGE'");
 	}
 }

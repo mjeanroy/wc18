@@ -27,6 +27,7 @@ import { MatchesApiService } from '../../../api';
 import { Match, Score } from '../../../models';
 import { MatchEditFormComponent } from './match-edit-form.component';
 import { MatDialog } from '@angular/material';
+import { MatchNewFormComponent } from './match-new-form.component';
 
 @Component({
   selector: 'app-matches',
@@ -48,6 +49,18 @@ export class MatchesComponent implements OnInit {
     this._matchesApiService.findAll().subscribe((matches) =>
       this.matches = matches
     );
+  }
+
+  openNewMatchDialog() {
+    const dialogRef = this._dialog.open(MatchNewFormComponent, {
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe((match) => {
+      this._matchesApiService.create(match).subscribe((result: Match) =>
+        this.matches.push(result)
+      );
+    });
   }
 
   editMatch(match: Match) {

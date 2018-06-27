@@ -22,30 +22,47 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.domain.dao;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+import org.springframework.stereotype.Component;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+import static java.util.Arrays.asList;
+import static java.util.function.Function.identity;
 
-	@InjectMocks
-	private PasswordService passwordService;
+@Component
+public class StageDao {
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	/**
+	 * The list of stages.
+	 */
+	private final Map<String, Stage> stages;
+
+	public StageDao() {
+		this.stages = Arrays.stream(Stage.values()).collect(Collectors.toMap(Stage::name, identity()));
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Get all stages.
+	 *
+	 * @return Stages.
+	 */
+	public Iterable<Stage> findAll() {
+		return asList(Stage.values());
+	}
+
+	/**
+	 * Find stage by its identifier.
+	 *
+	 * @param id Stage identifier.
+	 * @return The stage.
+	 */
+	public Optional<Stage> findOne(String id) {
+		return Optional.ofNullable(stages.getOrDefault(id, null));
 	}
 }

@@ -22,30 +22,21 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.it.api;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
+import com.github.mjeanroy.junit.servers.client.HttpResponse;
+import com.github.mjeanroy.wc18.it.junit.AbstractIntegrationTest;
 import org.junit.Test;
-import org.mockito.InjectMocks;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThat;
+import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThatJson;
 
-public class PasswordServiceTest extends AbstractServiceTest {
-
-	@InjectMocks
-	private PasswordService passwordService;
+public class StagesIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
-	}
-
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	public void it_should_get_stages() {
+		HttpResponse response = getClient().prepareGet("/api/stages").execute();
+		assertThat(response).isOk().isUtf8().isJson();
+		assertThatJson(response).isEqualTo(getJsonFile("GET_api_stages.json"));
 	}
 }

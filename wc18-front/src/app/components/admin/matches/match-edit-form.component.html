@@ -2,11 +2,11 @@
 <div mat-dialog-actions>
   <form #scoreForm="ngForm">
     <mat-form-field>
-      <input matInput placeholder="Score Team 1" required min="0" max="15" [(ngModel)]="score.score1" name="score1">
+      <input type="number" matInput placeholder="Score Team 1" required min="0" max="15" [(ngModel)]="score.score1" name="score1">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Score Team 2" required min="0" max="15" [(ngModel)]="score.score2" name="score2">
+      <input type="number" matInput placeholder="Score Team 2" required min="0" max="15" [(ngModel)]="score.score2" name="score2">
     </mat-form-field>
 
     <div class="form-actions">

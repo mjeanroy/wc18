@@ -24,10 +24,12 @@
 
 import { Team } from './team.model';
 import { Score } from './score.model';
+import { Stage } from './stage.model';
 
 export interface Match {
   id: string;
   date: string;
+  stage: Stage;
   team1: Team;
   team2: Team;
   score: Score;

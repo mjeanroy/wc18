@@ -9,6 +9,8 @@
       <thead class="thead-dark">
         <tr>
           <td>Equipes</td>
+          <td>Stage</td>
+          <td>Date</td>
           <td>Scores</td>
           <td></td>
         </tr>
@@ -16,6 +18,8 @@
       <tbody *ngIf="matches">
         <tr *ngFor="let match of matches">
           <td>{{ match.team1.name }} - {{ match.team2.name }}</td>
+          <td>{{ match.stage.label }}</td>
+          <td>{{ match.date }}</td>
           <td><span *ngIf="match.score">{{ match.score.score1 }} - {{ match.score.score2 }}</span></td>
           <td class="column-action">
             <button mat-raised-button type="button" color="primary" (click)="editMatch(match)">
@@ -25,5 +29,11 @@
         </tr>
       </tbody>
     </table>
+
+    <div>
+      <button mat-raised-button color="primary" type="button" (click)="openNewMatchDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

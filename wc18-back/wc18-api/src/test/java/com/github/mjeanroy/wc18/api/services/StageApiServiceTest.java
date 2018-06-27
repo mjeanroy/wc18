@@ -22,30 +22,36 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.services;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import org.junit.Test;
-import org.mockito.InjectMocks;
+
+import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+public class StageApiServiceTest extends AbstractApiServiceTest {
 
-	@InjectMocks
-	private PasswordService passwordService;
-
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
-	}
+	@Inject
+	private StageApiService stageApiService;
 
 	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	public void it_should_get_all_stages() {
+		Iterable<StageDto> stages = stageApiService.findAll();
+		assertThat(stages)
+			.hasSameSizeAs(Stage.values())
+			.extracting(StageDto::getId, StageDto::getLabel)
+			.contains(
+				tuple(Stage.GROUP.name(), Stage.GROUP.getLabel()),
+				tuple(Stage.ROUND_16.name(), Stage.ROUND_16.getLabel()),
+				tuple(Stage.QUARTER_FINAL.name(), Stage.QUARTER_FINAL.getLabel()),
+				tuple(Stage.SEMI_FINAL.name(), Stage.SEMI_FINAL.getLabel()),
+				tuple(Stage.THIRD_PLACE_FINAL.name(), Stage.THIRD_PLACE_FINAL.getLabel()),
+				tuple(Stage.FINAL.name(), Stage.FINAL.getLabel())
+			);
 	}
 }

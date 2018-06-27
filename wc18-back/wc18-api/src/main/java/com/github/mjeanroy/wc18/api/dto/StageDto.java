@@ -22,30 +22,53 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.dto;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+public class StageDto extends AbstractDto {
 
-import static org.assertj.core.api.Assertions.assertThat;
+	/**
+	 * The stage id.
+	 */
+	private String id;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+	/**
+	 * The stage label.
+	 */
+	private String label;
 
-	@InjectMocks
-	private PasswordService passwordService;
-
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Set {@link #id}
+	 *
+	 * @param id New {@link #id}
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * Get {@link #label}
+	 *
+	 * @return {@link #label}
+	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * Set {@link #label}
+	 *
+	 * @param label New {@link #label}
+	 */
+	public void setLabel(String label) {
+		this.label = label;
 	}
 }

@@ -24,8 +24,6 @@
 
 package com.github.mjeanroy.wc18.api.dto;
 
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -47,7 +45,7 @@ public class MatchDto extends AbstractDto {
 	 * The match stage.
 	 */
 	@NotNull
-	private Stage stage;
+	private StageDto stage;
 
 	/**
 	 * The first team.
@@ -164,7 +162,7 @@ public class MatchDto extends AbstractDto {
 	 *
 	 * @return {@link #stage}
 	 */
-	public Stage getStage() {
+	public StageDto getStage() {
 		return stage;
 	}
 
@@ -173,7 +171,7 @@ public class MatchDto extends AbstractDto {
 	 *
 	 * @param stage New {@link #stage}
 	 */
-	public void setStage(Stage stage) {
+	public void setStage(StageDto stage) {
 		this.stage = stage;
 	}
 }

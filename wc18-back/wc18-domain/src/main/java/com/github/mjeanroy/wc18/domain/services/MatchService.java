@@ -27,7 +27,7 @@ package com.github.mjeanroy.wc18.domain.services;
 import com.github.mjeanroy.wc18.domain.dao.MatchDao;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Match;
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

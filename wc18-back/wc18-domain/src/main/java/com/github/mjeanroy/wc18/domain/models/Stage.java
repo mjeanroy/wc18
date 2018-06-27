@@ -22,30 +22,50 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.domain.models;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static java.util.function.Function.identity;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+/**
+ * The match type.
+ */
+public enum Stage {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	GROUP("Groupe"),
+	ROUND_16("Huitième de finale"),
+	QUARTER_FINAL("Quarts de finale"),
+	SEMI_FINAL("Demi finale"),
+	THIRD_PLACE_FINAL("Match troisième place"),
+	FINAL("Finale");
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	/**
+	 * The stage label.
+	 */
+	private final String label;
+
+	Stage(String label) {
+		this.label = label;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Get {@link #label}
+	 *
+	 * @return {@link #label}
+	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * The map of stages by its id.
+	 */
+	private static final Map<String, Stage> map = Arrays.stream(Stage.values()).collect(Collectors.toMap(Stage::name, identity()));
+
+	public static Stage get(String id) {
+		return map.getOrDefault(id, null);
 	}
 }

@@ -26,8 +26,9 @@ package com.github.mjeanroy.wc18.api.tests.builders;
 
 import com.github.mjeanroy.wc18.api.dto.MatchDto;
 import com.github.mjeanroy.wc18.api.dto.ScoreDto;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
 import com.github.mjeanroy.wc18.api.dto.TeamDto;
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 
 import java.util.Date;
 import java.util.UUID;
@@ -56,7 +57,7 @@ public class MatchDtoBuilder {
 	 *
 	 * @see MatchDto#stage
 	 */
-	private Stage stage;
+	private StageDto stage;
 
 	/**
 	 * The match first team.
@@ -117,7 +118,7 @@ public class MatchDtoBuilder {
 	 * @return The builder.
 	 */
 	public MatchDtoBuilder withStage(Stage stage) {
-		this.stage = stage;
+		this.stage = new StageDtoBuilder().with(stage).build();
 		return this;
 	}
 

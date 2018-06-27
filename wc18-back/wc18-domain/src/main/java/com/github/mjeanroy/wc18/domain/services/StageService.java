@@ -24,28 +24,42 @@
 
 package com.github.mjeanroy.wc18.domain.services;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import com.github.mjeanroy.wc18.domain.dao.StageDao;
+import com.github.mjeanroy.wc18.domain.exceptions.StageNotFoundException;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+import org.springframework.stereotype.Service;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.inject.Inject;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+@Service
+public class StageService {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	private final StageDao stageDao;
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	@Inject
+	public StageService(StageDao stageDao) {
+		this.stageDao = stageDao;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Find all stages.
+	 *
+	 * @return Stages.
+	 */
+	public Iterable<Stage> findAll() {
+		return stageDao.findAll();
+	}
+
+	/**
+	 * Find stage by its id, or fail with {@link StageNotFoundException}.
+	 *
+	 * @param id Stage identifier.
+	 * @return The stage.
+	 * @throws StageNotFoundException If {@code id} is not found.
+	 */
+	public Stage findOneOrFail(String id) {
+		return stageDao.findOne(id).orElseThrow(() ->
+			new StageNotFoundException(id)
+		);
 	}
 }

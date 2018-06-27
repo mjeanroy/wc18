@@ -26,6 +26,7 @@ package com.github.mjeanroy.wc18.domain.tests.builders;
 
 import com.github.mjeanroy.wc18.domain.models.Match;
 import com.github.mjeanroy.wc18.domain.models.Score;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.models.Team;
 
 import java.util.Date;
@@ -51,7 +52,7 @@ public class MatchBuilder {
 	 *
 	 * @see Match#stage
 	 */
-	private Match.Stage stage;
+	private Stage stage;
 
 	/**
 	 * The match date.
@@ -108,7 +109,7 @@ public class MatchBuilder {
 	 * @param stage New {@link #stage}
 	 * @return The current builder.
 	 */
-	public MatchBuilder withStage(Match.Stage stage) {
+	public MatchBuilder withStage(Stage stage) {
 		this.stage = stage;
 		return this;
 	}

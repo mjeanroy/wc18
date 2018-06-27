@@ -32,6 +32,7 @@ import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
+import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

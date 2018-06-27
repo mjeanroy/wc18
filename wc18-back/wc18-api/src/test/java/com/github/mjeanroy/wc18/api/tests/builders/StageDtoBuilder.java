@@ -22,30 +22,51 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.tests.builders;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 
-import static org.assertj.core.api.Assertions.assertThat;
+/**
+ * Builder for {@link StageDto} instances.
+ */
+public class StageDtoBuilder {
 
-public class PasswordServiceTest extends AbstractServiceTest {
+	/**
+	 * The stage id.
+	 *
+	 * @see StageDto#id
+	 */
+	private String id;
 
-	@InjectMocks
-	private PasswordService passwordService;
+	/**
+	 * The stage label.
+	 *
+	 * @see StageDto#label
+	 */
+	private String label;
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	/**
+	 * Set {@link #id} and {@link #label}
+	 *
+	 * @param stage New stage.
+	 * @return The builder.
+	 */
+	public StageDtoBuilder with(Stage stage) {
+		this.id = stage.name();
+		this.label = stage.getLabel();
+		return this;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Build final {@link StageDto} instance.
+	 *
+	 * @return The final instance.
+	 */
+	public StageDto build() {
+		StageDto dto = new StageDto();
+		dto.setId(id);
+		dto.setLabel(label);
+		return dto;
 	}
 }

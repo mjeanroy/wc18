@@ -22,30 +22,35 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.services;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
+import com.github.mjeanroy.wc18.api.mappers.StageDtoMapper;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+import com.github.mjeanroy.wc18.domain.services.StageService;
+import org.springframework.stereotype.Service;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.inject.Inject;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+@Service
+public class StageApiService {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	private final StageService stageService;
+	private final StageDtoMapper stageDtoMapper;
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	@Inject
+	public StageApiService(StageService stageService, StageDtoMapper stageDtoMapper) {
+		this.stageService = stageService;
+		this.stageDtoMapper = stageDtoMapper;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Find all stages.
+	 *
+	 * @return The list of stages.
+	 */
+	public Iterable<StageDto> findAll() {
+		Iterable<Stage> stages = stageService.findAll();
+		return stageDtoMapper.from(stages);
 	}
 }

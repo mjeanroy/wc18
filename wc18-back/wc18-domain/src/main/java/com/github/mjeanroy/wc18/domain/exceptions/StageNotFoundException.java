@@ -22,30 +22,31 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.domain.exceptions;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+public class StageNotFoundException extends AbstractException {
 
-import static org.assertj.core.api.Assertions.assertThat;
+	/**
+	 * The stage identifier.
+	 */
+	private final String id;
 
-public class PasswordServiceTest extends AbstractServiceTest {
-
-	@InjectMocks
-	private PasswordService passwordService;
-
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	/**
+	 * Create the exception with given not found identifier.
+	 *
+	 * @param id The missing identifier.
+	 */
+	public StageNotFoundException(String id) {
+		super(String.format("Cannot find stage '%s'", id));
+		this.id = id;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	/**
+	 * Get {@link #id}
+	 *
+	 * @return {@link #id}
+	 */
+	public String getId() {
+		return id;
 	}
 }

@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Saisie du score</h1>
+<div mat-dialog-actions>
+  <form #scoreForm="ngForm">
+    <mat-form-field>
+      <input matInput type="datetime-local" name="date" [(ngModel)]="match.date" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Team 1" [(ngModel)]="match.team1" name="team1">
+        <mat-option *ngFor="let team of teams" [value]="team">
+          {{ team.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Team 2" [(ngModel)]="match.team2" name="team2">
+        <mat-option *ngFor="let team of teams" [value]="team">
+          {{ team.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Stage" [(ngModel)]="match.stage" name="stage">
+        <mat-option *ngFor="let stage of stages" [value]="stage">
+          {{ stage.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="validate()" [disabled]="scoreForm.form.invalid">Valider</button>
+      <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+    </div>
+  </form>
+</div>

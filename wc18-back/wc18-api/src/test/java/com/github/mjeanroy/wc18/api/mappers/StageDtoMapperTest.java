@@ -22,30 +22,34 @@
  * THE SOFTWARE.
  */
 
-package com.github.mjeanroy.wc18.domain.services;
+package com.github.mjeanroy.wc18.api.mappers;
 
-import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
+import com.github.mjeanroy.wc18.api.dto.StageDto;
+import com.github.mjeanroy.wc18.api.tests.junit.AbstractDtoMapperTest;
+import com.github.mjeanroy.wc18.domain.models.Stage;
+
+import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PasswordServiceTest extends AbstractServiceTest {
+public class StageDtoMapperTest extends AbstractDtoMapperTest<Stage, StageDto, StageDtoMapper> {
 
-	@InjectMocks
-	private PasswordService passwordService;
+	@Inject
+	private StageDtoMapper stageDtoMapper;
 
-	@Test
-	public void it_should_encode_password() {
-		String plainText = "azerty123";
-		String hash = passwordService.encode(plainText);
-		assertThat(hash).isNotNull().isNotEmpty();
+	@Override
+	protected StageDtoMapper getMapper() {
+		return stageDtoMapper;
 	}
 
-	@Test
-	public void it_should_check_if_two_passwords_match() {
-		String plainText = "azerty123";
-		String hash = "$2a$10$fS8jhRrtBR.9W9CqEr.Mk.6igXsC6iuPTaW.bXe.L0VANTyOwvL3e";
-		assertThat(passwordService.match(plainText, hash)).isTrue();
+	@Override
+	protected Stage createInput() {
+		return Stage.THIRD_PLACE_FINAL;
+	}
+
+	@Override
+	protected void verifyOutput(Stage input, StageDto output) {
+		assertThat(output.getId()).isEqualTo(input.name());
+		assertThat(output.getLabel()).isEqualTo(input.getLabel());
 	}
 }

@@ -29,7 +29,7 @@ import com.github.mjeanroy.wc18.api.dto.TeamDto;
 import com.github.mjeanroy.wc18.api.tests.builders.MatchDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.TeamDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
-import com.github.mjeanroy.wc18.domain.models.Match.Stage;
+import com.github.mjeanroy.wc18.domain.models.Stage;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -76,7 +76,9 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 		assertThat(result).isNotNull();
 		assertThat(result.getId()).isNotNull();
 		assertThat(result.getDate()).isEqualTo(dto.getDate());
-		assertThat(result.getStage()).isEqualTo(dto.getStage());
+		assertThat(result.getStage()).isNotNull();
+		assertThat(result.getStage().getId()).isEqualTo(Stage.FINAL.name());
+		assertThat(result.getStage().getLabel()).isEqualTo(Stage.FINAL.getLabel());
 		assertThat(result.getTeam1().getId()).isEqualTo(team1.getId());
 		assertThat(result.getTeam2().getId()).isEqualTo(team2.getId());
 	}
@@ -110,7 +112,9 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 		assertThat(result).isNotNull();
 		assertThat(result.getId()).isNotNull();
 		assertThat(result.getDate()).isEqualTo(dto.getDate());
-		assertThat(result.getStage()).isEqualTo(dto.getStage());
+		assertThat(result.getStage()).isNotNull();
+		assertThat(result.getStage().getId()).isEqualTo(Stage.FINAL.name());
+		assertThat(result.getStage().getLabel()).isEqualTo(Stage.FINAL.getLabel());
 		assertThat(result.getScore().getScore1()).isEqualTo(score1);
 		assertThat(result.getScore().getScore2()).isEqualTo(score2);
 	}

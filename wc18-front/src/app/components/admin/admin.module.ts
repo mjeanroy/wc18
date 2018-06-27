@@ -25,7 +25,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatTabsModule  } from '@angular/material';
+import {
+  MatButtonModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MatTabsModule
+} from '@angular/material';
 import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './users/user-form.component';
@@ -36,11 +46,14 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { MatchesComponent } from './matches/matches.component';
 import { MatchEditFormComponent } from './matches/match-edit-form.component';
 import { UserBetComponent } from './users/user-bet.component';
+import { MatchNewFormComponent } from './matches/match-new-form.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
@@ -64,6 +77,7 @@ import { UserBetComponent } from './users/user-bet.component';
     LeagueUserFormComponent,
 
     MatchesComponent,
+    MatchNewFormComponent,
     MatchEditFormComponent,
   ],
 
@@ -72,6 +86,7 @@ import { UserBetComponent } from './users/user-bet.component';
     LeagueFormComponent,
     LeagueUserFormComponent,
     MatchEditFormComponent,
+    MatchNewFormComponent,
     UserBetComponent,
   ],
 
