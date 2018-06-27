@@ -117,8 +117,6 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 		assertThat(result.getStage()).isNotNull();
 		assertThat(result.getStage().getId()).isEqualTo(Stage.FINAL.name());
 		assertThat(result.getStage().getLabel()).isEqualTo(Stage.FINAL.getLabel());
-		assertThat(result.getScore().getScore1()).isEqualTo(score1);
-		assertThat(result.getScore().getScore2()).isEqualTo(score2);
 	}
 
 	@Test

@@ -108,16 +108,13 @@ public class MatchService {
 	 * @param id The match identifier.
 	 * @param date The new match date.
 	 * @param stage The new match stage.
-	 * @param score1 First score.
-	 * @param score2 Second score.
 	 * @return The result.
 	 */
 	@Transactional
-	public Match update(String id, Date date, Stage stage, Integer score1, Integer score2) {
+	public Match update(String id, Date date, Stage stage) {
 		Match match = findOneOrFail(id);
 		match.updateDate(date);
 		match.updateStage(stage);
-		match.updateScore(score1, score2);
 		return save(match);
 	}
 

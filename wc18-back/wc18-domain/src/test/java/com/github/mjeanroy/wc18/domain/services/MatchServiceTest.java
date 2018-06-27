@@ -154,18 +154,13 @@ public class MatchServiceTest extends AbstractServiceTest {
 		String id = match.getId();
 		Date date = new Date();
 		Stage stage = Stage.FINAL;
-		int score1 = 3;
-		int score2 = 0;
 
-		Match result = matchService.update(id, date, stage, score1, score2);
+		Match result = matchService.update(id, date, stage);
 
 		assertThat(result).isNotNull();
 		assertThat(result.getId()).isNotNull();
 		assertThat(result.getDate()).isEqualTo(date);
 		assertThat(result.getStage()).isEqualTo(stage);
-		assertThat(result.getScore()).isNotNull();
-		assertThat(result.getScore().getScore1()).isEqualTo(score1);
-		assertThat(result.getScore().getScore2()).isEqualTo(score2);
 	}
 
 	@Test
@@ -175,10 +170,8 @@ public class MatchServiceTest extends AbstractServiceTest {
 		String id = match.getId();
 		Date date = new Date();
 		Stage stage = Stage.FINAL;
-		Integer score1 = null;
-		Integer score2 = null;
 
-		Match result = matchService.update(id, date, stage, score1, score2);
+		Match result = matchService.update(id, date, stage);
 
 		assertThat(result).isNotNull();
 		assertThat(result.getId()).isNotNull();
