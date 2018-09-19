@@ -28,8 +28,8 @@ import com.github.mjeanroy.wc18.security.models.Principal;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
 import com.github.mjeanroy.wc18.security.tests.builders.HttpServletRequestBuilder;
 import com.github.mjeanroy.wc18.security.tests.builders.PrincipalBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.bind.support.DefaultDataBinderFactory;
@@ -47,31 +47,31 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class PrincipalArgumentResolverTest {
+class PrincipalArgumentResolverTest {
 
 	private SecurityService securityService;
 	private PrincipalArgumentResolver resolver;
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		securityService = mock(SecurityService.class);
 		resolver = new PrincipalArgumentResolver(securityService);
 	}
 
 	@Test
-	public void it_should_supports_parameter_with_class_inheriting_from_principal() {
+	void it_should_supports_parameter_with_class_inheriting_from_principal() {
 		MethodParameter parameter = new MethodParameter(getMethod1(), 0);
 		assertThat(resolver.supportsParameter(parameter)).isTrue();
 	}
 
 	@Test
-	public void it_should_not_supports_parameter_with_class_not_assignable() {
+	void it_should_not_supports_parameter_with_class_not_assignable() {
 		MethodParameter parameter = new MethodParameter(getMethod2(), 0);
 		assertThat(resolver.supportsParameter(parameter)).isFalse();
 	}
 
 	@Test
-	public void it_should_get_principal() throws Exception {
+	void it_should_get_principal() throws Exception {
 		HttpServletRequest rq = new HttpServletRequestBuilder().build();
 
 		MethodParameter methodParameter = new MethodParameter(getMethod1(), 0);
@@ -88,7 +88,7 @@ public class PrincipalArgumentResolverTest {
 	}
 
 	@Test
-	public void it_should_return_null_without_principal_authenticated() throws Exception {
+	void it_should_return_null_without_principal_authenticated() throws Exception {
 		HttpServletRequest rq = new HttpServletRequestBuilder().build();
 
 		MethodParameter methodParameter = new MethodParameter(getMethod1(), 0);

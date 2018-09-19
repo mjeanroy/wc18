@@ -33,12 +33,10 @@ import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -52,40 +50,44 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-public class BetServiceTest extends AbstractServiceTest {
+class BetServiceTest extends AbstractServiceTest {
 
-	@Mock
 	private BetDao betDao;
-
-	@InjectMocks
 	private BetService betService;
 
 	private TimeZone defaultTz;
 
-	@Before
-	public void initUtcTimeZone() {
+	@Override
+	protected void createService() {
+		betDao = mock(BetDao.class);
+		betService = new BetService(betDao);
+	}
+
+	@BeforeEach
+	void initUtcTimeZone() {
 		defaultTz = TimeZone.getDefault();
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 	}
 
-	@After
-	public void restoreDefaultTimeZone() {
+	@AfterEach
+	void restoreDefaultTimeZone() {
 		TimeZone.setDefault(defaultTz);
 	}
 
-	@Before
-	public void initBetDao() {
+	@BeforeEach
+	void initBetDao() {
 		when(betDao.save(any(Bet.class))).thenAnswer(invocationOnMock ->
 			invocationOnMock.getArgument(0)
 		);
 	}
 
 	@Test
-	public void it_should_get_all_bets_of_given_user() {
+	void it_should_get_all_bets_of_given_user() {
 		User user = new UserBuilder().withRandomId().build();
 		List<Bet> bets = createFixtures(user);
 		when(betDao.findByUser(user)).thenReturn(bets);
@@ -97,7 +99,7 @@ public class BetServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_get_all_non_locked_bets_of_given_user() {
+	void it_should_get_all_non_locked_bets_of_given_user() {
 		User user = new UserBuilder().withRandomId().build();
 		List<Bet> bets = createFixtures(user);
 		when(betDao.findByUserAndMatchDateGreaterThanOrEqual(eq(user), any(Date.class))).thenReturn(bets);
@@ -112,7 +114,7 @@ public class BetServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_get_all_locked_bets_of_given_user() {
+	void it_should_get_all_locked_bets_of_given_user() {
 		User user = new UserBuilder().withRandomId().build();
 		List<Bet> bets = createFixtures(user);
 		when(betDao.findByUserAndMatchDateLessThan(eq(user), any(Date.class))).thenReturn(bets);
@@ -127,7 +129,7 @@ public class BetServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_save_bet() {
+	void it_should_save_bet() {
 		User user = new UserBuilder().withRandomId().build();
 		Match match = new MatchBuilder()
 			.withRandomId()
@@ -150,7 +152,7 @@ public class BetServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_update_bet() {
+	void it_should_update_bet() {
 		User user = new UserBuilder().withRandomId().build();
 		Match match = new MatchBuilder()
 			.withRandomId()
@@ -175,7 +177,7 @@ public class BetServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_fail_if_match_is_locked() {
+	void it_should_fail_if_match_is_locked() {
 		User user = new UserBuilder().withRandomId().build();
 		Match match = new MatchBuilder()
 			.withRandomId()

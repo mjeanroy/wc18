@@ -24,14 +24,14 @@
 
 package com.github.mjeanroy.wc18.commons;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MoreStringsTest {
+class MoreStringsTest {
 
 	@Test
-	public void it_should_check_if_string_is_empty() {
+	void it_should_check_if_string_is_empty() {
 		assertThat(MoreStrings.isEmpty(null)).isTrue();
 		assertThat(MoreStrings.isEmpty("")).isTrue();
 		assertThat(MoreStrings.isEmpty("  ")).isFalse();

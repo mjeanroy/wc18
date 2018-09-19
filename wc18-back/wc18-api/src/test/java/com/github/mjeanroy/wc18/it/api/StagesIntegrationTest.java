@@ -24,18 +24,19 @@
 
 package com.github.mjeanroy.wc18.it.api;
 
+import com.github.mjeanroy.junit.servers.client.HttpClient;
 import com.github.mjeanroy.junit.servers.client.HttpResponse;
 import com.github.mjeanroy.wc18.it.junit.AbstractIntegrationTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThat;
 import static com.github.mjeanroy.restassert.assertj.api.JunitServersHttpAssertions.assertThatJson;
 
-public class StagesIntegrationTest extends AbstractIntegrationTest {
+class StagesIntegrationTest extends AbstractIntegrationTest {
 
 	@Test
-	public void it_should_get_stages() {
-		HttpResponse response = getClient().prepareGet("/api/stages").execute();
+	void it_should_get_stages(HttpClient client) {
+		HttpResponse response = client.prepareGet("/api/stages").execute();
 		assertThat(response).isOk().isUtf8().isJson();
 		assertThatJson(response).isEqualTo(getJsonFile("GET_api_stages.json"));
 	}

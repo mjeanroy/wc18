@@ -25,19 +25,19 @@
 package com.github.mjeanroy.wc18.security.configuration;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SecurityPropertiesTest {
+class SecurityPropertiesTest {
 
 	@Test
-	public void it_should_implement_equals_hash_code() {
+	void it_should_implement_equals_hash_code() {
 		EqualsVerifier.forClass(SecurityProperties.class).verify();
 	}
 
 	@Test
-	public void it_should_implement_to_string() {
+	void it_should_implement_to_string() {
 		String headerName = "X-Auth-Token";
 		String secret = "foobar";
 		SecurityProperties securityProperties = new SecurityProperties(headerName, secret);

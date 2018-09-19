@@ -29,29 +29,29 @@ import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.services.UserService;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.security.models.Principal;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class PrincipalServiceImplTest {
+class PrincipalServiceImplTest {
 
-	@Mock
 	private UserService userService;
-
-	@InjectMocks
 	private PrincipalServiceImpl principalServiceImpl;
 
+	@BeforeEach
+	void setUp() {
+		userService = mock(UserService.class);
+		principalServiceImpl = new PrincipalServiceImpl(userService);
+	}
+
 	@Test
-	public void it_should_find_principal() {
+	void it_should_find_principal() {
 		String login = "johndoe";
 		Role role = Role.USER;
 		createUser(login, role);
@@ -64,7 +64,7 @@ public class PrincipalServiceImplTest {
 	}
 
 	@Test
-	public void it_should_not_find_principal_if_user_does_not_exist() {
+	void it_should_not_find_principal_if_user_does_not_exist() {
 		String login = "johndoe";
 		Optional<Principal> principal = principalServiceImpl.findByLogin(login);
 		assertThat(principal).isNotPresent();

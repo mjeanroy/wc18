@@ -30,7 +30,7 @@ import com.github.mjeanroy.wc18.api.dto.UserDto;
 import com.github.mjeanroy.wc18.api.tests.builders.LeagueDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.League;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -40,19 +40,19 @@ import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.to
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
-public class LeagueApiServiceTest extends AbstractApiServiceTest {
+class LeagueApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private LeagueApiService leagueApiService;
 
 	@Test
-	public void it_should_find_all_league() {
+	void it_should_find_all_league() {
 		List<LeagueDto> results = toList(leagueApiService.findAll());
 		assertThat(results).hasSize(2);
 	}
 
 	@Test
-	public void it_should_find_league() {
+	void it_should_find_league() {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		LeagueDto result = leagueApiService.findOne(id);
 		assertThat(result).isNotNull();
@@ -61,7 +61,7 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_find_users_of_league() {
+	void it_should_find_users_of_league() {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		List<UserDto> users = toList(leagueApiService.findUsers(id));
 		assertThat(users)
@@ -71,7 +71,7 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_find_league_ranks() {
+	void it_should_find_league_ranks() {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		List<RankDto> users = toList(leagueApiService.findRanks(id));
 		assertThat(users)
@@ -83,7 +83,7 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_create_league() {
+	void it_should_create_league() {
 		String name = UUID.randomUUID().toString();
 		LeagueDto league = new LeagueDtoBuilder()
 			.withName(name)
@@ -98,7 +98,7 @@ public class LeagueApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_add_user_to_league() {
+	void it_should_add_user_to_league() {
 		String id = "f28d71b3-7509-4e54-a517-b237263bfb02";
 		String userId = "10cd4d9f-099c-4491-bfdb-a635b2ffc757";
 

@@ -26,11 +26,11 @@ package com.github.mjeanroy.wc18.domain.configuration;
 
 import com.github.mjeanroy.wc18.domain.configuration.db.DatabaseProperties;
 import nl.jqno.equalsverifier.EqualsVerifier;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DatabasePropertiesTest {
+class DatabasePropertiesTest {
 
 	@Test
 	public void it_should_implement_equals_hash_code() {

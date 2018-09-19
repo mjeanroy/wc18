@@ -24,12 +24,22 @@
 
 package com.github.mjeanroy.wc18.domain.tests.junit;
 
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
 
 /**
  * Abstract template for service test suite.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class AbstractServiceTest {
+
+	@BeforeEach
+	void setup() {
+		createService();
+	}
+
+	/**
+	 * Create the service to be tested.
+	 */
+	protected abstract void createService();
 }

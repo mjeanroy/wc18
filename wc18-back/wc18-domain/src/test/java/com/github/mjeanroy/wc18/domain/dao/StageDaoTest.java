@@ -26,7 +26,7 @@ package com.github.mjeanroy.wc18.domain.dao;
 
 import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractRepositoryTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,13 +35,13 @@ import java.util.Optional;
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StageDaoTest extends AbstractRepositoryTest {
+class StageDaoTest extends AbstractRepositoryTest {
 
 	@Inject
 	private StageDao stageDao;
 
 	@Test
-	public void it_should_find_all() {
+	void it_should_find_all() {
 		List<Stage> stages = toList(stageDao.findAll());
 		assertThat(stages)
 			.hasSameSizeAs(Stage.values())
@@ -49,7 +49,7 @@ public class StageDaoTest extends AbstractRepositoryTest {
 	}
 
 	@Test
-	public void it_should_find_one() {
+	void it_should_find_one() {
 		for (Stage stage : Stage.values()) {
 			Optional<Stage> result = stageDao.findOne(stage.name());
 			assertThat(result).isPresent().hasValue(stage);

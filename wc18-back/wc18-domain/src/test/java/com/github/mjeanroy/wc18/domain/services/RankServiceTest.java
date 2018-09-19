@@ -35,10 +35,8 @@ import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.util.Date;
 import java.util.List;
@@ -52,22 +50,25 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyIterable;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class RankServiceTest extends AbstractServiceTest {
+class RankServiceTest extends AbstractServiceTest {
 
-	@Mock
 	private MatchDao matchDao;
-
-	@Mock
 	private BetDao betDao;
-
-	@InjectMocks
 	private RankService rankService;
 
+	@Override
+	protected void createService() {
+		matchDao = mock(MatchDao.class);
+		betDao = mock(BetDao.class);
+		rankService = new RankService(matchDao, betDao);
+	}
+
 	@Test
-	public void it_should_compute_ranks() {
+	void it_should_compute_ranks() {
 		User user1 = new UserBuilder().withRandomId().build();
 		User user2 = new UserBuilder().withRandomId().build();
 		User user3 = new UserBuilder().withRandomId().build();

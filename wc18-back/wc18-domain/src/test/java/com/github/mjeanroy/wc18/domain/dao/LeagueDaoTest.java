@@ -28,7 +28,7 @@ import com.github.mjeanroy.wc18.domain.models.League;
 import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.tests.builders.LeagueBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
+class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
 
 	@Inject
 	private LeagueDao leagueDao;
@@ -68,7 +68,7 @@ public class LeagueDaoTest extends AbstractCrudDaoTest<League, LeagueDao> {
 	}
 
 	@Test
-	public void it_should_get_leagues_of_users() {
+	void it_should_get_leagues_of_users() {
 		User user = findOne(User.class, "10cd4d9f-099c-4491-bfdb-a635b2ffc757");
 		List<League> leagues = toList(leagueDao.findByUser(user));
 		assertThat(leagues).hasSize(1)

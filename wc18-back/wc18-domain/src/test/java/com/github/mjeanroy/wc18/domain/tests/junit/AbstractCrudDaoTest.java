@@ -26,7 +26,7 @@ package com.github.mjeanroy.wc18.domain.tests.junit;
 
 import com.github.mjeanroy.wc18.domain.dao.AbstractCrudDao;
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,7 +39,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends AbstractCrudDao<T>> extends AbstractReadOnlyDaoTest<T, U> {
 
 	@Test
-	public void create_entry() {
+	void create_entry() {
 		T newOne = createOne();
 		T result = getDao().save(newOne);
 		assertThat(result).isNotNull();
@@ -47,7 +47,7 @@ public abstract class AbstractCrudDaoTest<T extends AbstractEntity, U extends Ab
 	}
 
 	@Test
-	public void it_should_remove_entity() {
+	void it_should_remove_entity() {
 		String id = getOneId();
 		T entity = findOne(getEntityClass(), id);
 		assertThat(entity).isNotNull();

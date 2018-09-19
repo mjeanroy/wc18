@@ -31,7 +31,7 @@ import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.ScoreBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.assertj.core.api.Condition;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
@@ -44,7 +44,7 @@ import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.to
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
+class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 
 	@Inject
 	private BetDao betDao;
@@ -87,14 +87,14 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Test
-	public void it_should_find_bet_of_given_user() {
+	void it_should_find_bet_of_given_user() {
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		List<Bet> bets = toList(betDao.findByUser(user));
 		assertBetsOfGivenUser(bets, user);
 	}
 
 	@Test
-	public void it_should_find_bet_of_given_user_with_match_date_less_than() {
+	void it_should_find_bet_of_given_user_with_match_date_less_than() {
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
 
@@ -113,7 +113,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Test
-	public void it_should_find_bet_of_given_user_with_match_date_greater_than() {
+	void it_should_find_bet_of_given_user_with_match_date_greater_than() {
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
 
@@ -136,7 +136,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Test
-	public void it_should_find_a_bet_by_user_and_match() {
+	void it_should_find_a_bet_by_user_and_match() {
 		Match match = findOne(Match.class, "4ff9c731-7eba-47bb-91fa-a0c04b2e394e");
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 
@@ -152,7 +152,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Test
-	public void it_should_not_find_non_existing_bet_by_user_and_match() {
+	void it_should_not_find_non_existing_bet_by_user_and_match() {
 		Match match = findOne(Match.class, "ac5d9365-814b-4a61-97bc-2ba59bd1d9a0");
 		User user = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		Optional<Bet> optBet = betDao.findOne(user, match);
@@ -160,7 +160,7 @@ public class BetDaoTest extends AbstractCrudDaoTest<Bet, BetDao> {
 	}
 
 	@Test
-	public void it_should_get_bets_by_match_and_user_in() {
+	void it_should_get_bets_by_match_and_user_in() {
 		User u1 = findOne(User.class, "e31195bd-1d4e-4915-a3dc-ce901f57903f");
 		User u2 = findOne(User.class, "10cd4d9f-099c-4491-bfdb-a635b2ffc757");
 		List<User> users = asList(u1, u2);

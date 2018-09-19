@@ -27,13 +27,11 @@ package com.github.mjeanroy.wc18.it.junit;
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitSetup;
 import com.github.mjeanroy.dbunit.core.operation.DbUnitOperation;
-import com.github.mjeanroy.dbunit.integration.junit4.DbUnitRule;
 import com.github.mjeanroy.junit.servers.client.HttpClient;
 import com.github.mjeanroy.junit.servers.client.HttpResponse;
 import com.github.mjeanroy.junit.servers.jetty.EmbeddedJettyConfiguration;
-import com.github.mjeanroy.junit.servers.jetty.junit4.JettyServerJunit4Rule;
-import org.junit.ClassRule;
-import org.junit.Rule;
+import com.github.mjeanroy.junit.servers.jetty.jupiter.JettyServerExtension;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.net.URL;
 
@@ -50,11 +48,11 @@ public abstract class AbstractIntegrationTest {
 		.withHook(SPRING)
 		.build();
 
-	@ClassRule
-	public static JettyServerJunit4Rule server = new JettyServerJunit4Rule(SERVER_CONFIGURATION);
+	@RegisterExtension
+	static JettyServerExtension server = new JettyServerExtension(SERVER_CONFIGURATION);
 
-	@Rule
-	public DbUnitRule rule = new DbUnitRuleIntegrationTest(SPRING);
+	@RegisterExtension
+	static DbUnitSpringExtension dbUnit = new DbUnitSpringExtension(SPRING);
 
 	/**
 	 * Get JSON file from classpath.
@@ -67,21 +65,12 @@ public abstract class AbstractIntegrationTest {
 	}
 
 	/**
-	 * Get HTTP client to request started server.
-	 *
-	 * @return The HTTP client.
-	 */
-	protected HttpClient getClient() {
-		return server.getClient();
-	}
-
-	/**
 	 * Get token of admin user.
 	 *
 	 * @return The token value.
 	 */
-	protected String getAdminToken() {
-		HttpResponse response = getClient().preparePost("/api/login")
+	protected String getAdminToken(HttpClient client) {
+		HttpResponse response = client.preparePost("/api/login")
 			.setBody(jsonObject()
 				.add("login", "mickael")
 				.add("password", "azerty123")

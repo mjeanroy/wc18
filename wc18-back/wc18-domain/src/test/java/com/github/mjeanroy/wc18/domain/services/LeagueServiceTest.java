@@ -33,10 +33,7 @@ import com.github.mjeanroy.wc18.domain.tests.builders.LeagueBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.RankBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -50,23 +47,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyIterable;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
-public class LeagueServiceTest extends AbstractServiceTest {
+class LeagueServiceTest extends AbstractServiceTest {
 
-	@Mock
 	private LeagueDao leagueDao;
-
-	@Mock
 	private RankService rankService;
-
-	@InjectMocks
 	private LeagueService leagueService;
 
-	@Before
-	public void initLeagueDao() {
+	@Override
+	protected void createService() {
+		leagueDao = mock(LeagueDao.class);
+		rankService = mock(RankService.class);
+		leagueService = new LeagueService(leagueDao, rankService);
+
+		initLeagueDao();
+	}
+
+	private void initLeagueDao() {
 		when(leagueDao.save(any(League.class))).thenAnswer(invocation -> {
 			League input = invocation.getArgument(0);
 			if (input.getId() == null) {
@@ -78,7 +79,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_all_leagues() {
+	void it_should_find_all_leagues() {
 		List<League> leagues = createRandomLeagues();
 		Iterable<League> results = leagueService.findAll();
 
@@ -88,7 +89,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_leagues_by_user() {
+	void it_should_find_leagues_by_user() {
 		User user = new UserBuilder().withRandomId().build();
 		List<League> leagues = createRandomLeagues();
 
@@ -100,7 +101,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_league() {
+	void it_should_find_league() {
 		League league = createLeague();
 		String id = league.getId();
 
@@ -111,7 +112,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_fail_if_league_does_not_exist() {
+	void it_should_fail_if_league_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 
 		assertThatThrownBy(() -> leagueService.findOneOrFail(id))
@@ -120,7 +121,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_ranks() {
+	void it_should_find_ranks() {
 		User user1 = createUser();
 		User user2 = createUser();
 		League league = createLeague(user1, user2);
@@ -134,7 +135,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_create_league() {
+	void it_should_create_league() {
 		String name = UUID.randomUUID().toString();
 		League league = leagueService.create(name);
 
@@ -148,7 +149,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_remove_league() {
+	void it_should_remove_league() {
 		League league = createLeague();
 		leagueService.remove(league.getId());
 
@@ -158,7 +159,7 @@ public class LeagueServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_add_user_to_league() {
+	void it_should_add_user_to_league() {
 		User user = createUser();
 		League league = createLeague();
 

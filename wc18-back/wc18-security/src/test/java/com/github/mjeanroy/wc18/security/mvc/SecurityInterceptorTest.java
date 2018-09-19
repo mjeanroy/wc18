@@ -30,8 +30,8 @@ import com.github.mjeanroy.wc18.security.service.SecurityService;
 import com.github.mjeanroy.wc18.security.tests.builders.HttpServletRequestBuilder;
 import com.github.mjeanroy.wc18.security.tests.builders.HttpServletResponseBuilder;
 import com.github.mjeanroy.wc18.security.tests.builders.PrincipalBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.web.method.HandlerMethod;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,13 +44,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class SecurityInterceptorTest {
+class SecurityInterceptorTest {
 
 	private SecurityService securityService;
 	private SecurityInterceptor securityInterceptor;
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		securityService = mock(SecurityService.class);
 		securityInterceptor = new SecurityInterceptor(securityService);
 
@@ -62,52 +62,52 @@ public class SecurityInterceptorTest {
 	}
 
 	@Test
-	public void it_should_stop_authenticated_GET_request_without_authentication() {
+	void it_should_stop_authenticated_GET_request_without_authentication() {
 		doTestWithHttpMethod("GET");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_GET_request_with_required_role() {
+	void it_should_stop_authenticated_GET_request_with_required_role() {
 		doTestWithHttpMethodAndRequiredRole("GET");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_POST_request_without_authentication() {
+	void it_should_stop_authenticated_POST_request_without_authentication() {
 		doTestWithHttpMethod("POST");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_POST_request_with_required_role() {
+	void it_should_stop_authenticated_POST_request_with_required_role() {
 		doTestWithHttpMethodAndRequiredRole("POST");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_PUT_request_without_authentication() {
+	void it_should_stop_authenticated_PUT_request_without_authentication() {
 		doTestWithHttpMethod("PUT");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_PUT_request_with_required_role() {
+	void it_should_stop_authenticated_PUT_request_with_required_role() {
 		doTestWithHttpMethodAndRequiredRole("PUT");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_PATCH_request_without_authentication() {
+	void it_should_stop_authenticated_PATCH_request_without_authentication() {
 		doTestWithHttpMethod("PATCH");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_PATCH_request_with_required_role() {
+	void it_should_stop_authenticated_PATCH_request_with_required_role() {
 		doTestWithHttpMethodAndRequiredRole("PATCH");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_DELETE_request_without_authentication() {
+	void it_should_stop_authenticated_DELETE_request_without_authentication() {
 		doTestWithHttpMethod("DELETE");
 	}
 
 	@Test
-	public void it_should_stop_authenticated_DELETE_request_with_required_role() {
+	void it_should_stop_authenticated_DELETE_request_with_required_role() {
 		doTestWithHttpMethodAndRequiredRole("DELETE");
 	}
 
@@ -138,7 +138,7 @@ public class SecurityInterceptorTest {
 	}
 
 	@Test
-	public void it_should_not_stop_authenticated_request_with_authentication() {
+	void it_should_not_stop_authenticated_request_with_authentication() {
 		String login = "test";
 		String role = "USER";
 
@@ -155,7 +155,7 @@ public class SecurityInterceptorTest {
 	}
 
 	@Test
-	public void it_should_not_stop_authenticated_request_with_authentication_and_required_role() {
+	void it_should_not_stop_authenticated_request_with_authentication_and_required_role() {
 		String login = "test";
 		String role = "ADMIN";
 
@@ -173,7 +173,7 @@ public class SecurityInterceptorTest {
 	}
 
 	@Test
-	public void it_should_not_stop_non_authenticated_request_without_authentication() {
+	void it_should_not_stop_non_authenticated_request_without_authentication() {
 		String login = "test";
 		String role = "ADMIN";
 

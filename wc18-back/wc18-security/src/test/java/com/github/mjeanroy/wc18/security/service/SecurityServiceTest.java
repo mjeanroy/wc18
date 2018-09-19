@@ -29,8 +29,8 @@ import com.github.mjeanroy.wc18.security.parsers.TokenParser;
 import com.github.mjeanroy.wc18.security.tests.builders.HttpServletRequestBuilder;
 import com.github.mjeanroy.wc18.security.tests.builders.HttpServletResponseBuilder;
 import com.github.mjeanroy.wc18.security.tests.builders.PrincipalBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,14 +43,14 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
-public class SecurityServiceTest {
+class SecurityServiceTest {
 
 	private PrincipalService principalService;
 	private TokenParser parser;
 	private SecurityService securityService;
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		principalService = mock(PrincipalService.class);
 		parser = mock(TokenParser.class);
 		securityService = new SecurityService(parser, principalService);
@@ -63,7 +63,7 @@ public class SecurityServiceTest {
 	}
 
 	@Test
-	public void it_should_authenticate() {
+	void it_should_authenticate() {
 		HttpServletResponse rsp = new HttpServletResponseBuilder().build();
 		String value = "test";
 		Principal principal = createPrincipal(value);
@@ -72,14 +72,14 @@ public class SecurityServiceTest {
 	}
 
 	@Test
-	public void it_should_logout() {
+	void it_should_logout() {
 		HttpServletResponse rsp = new HttpServletResponseBuilder().build();
 		securityService.logout(rsp);
 		verify(parser).remove(rsp);
 	}
 
 	@Test
-	public void it_get_principal() {
+	void it_get_principal() {
 		HttpServletRequest rq = new HttpServletRequestBuilder().build();
 		String value = "test";
 		Principal principal = createPrincipal(value);
@@ -91,7 +91,7 @@ public class SecurityServiceTest {
 	}
 
 	@Test
-	public void it_return_empty_principal_without_token() {
+	void it_return_empty_principal_without_token() {
 		HttpServletRequest rq = new HttpServletRequestBuilder().build();
 		when(parser.parse(rq)).thenReturn(null);
 

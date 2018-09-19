@@ -30,7 +30,7 @@ import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
 import org.assertj.core.api.Condition;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.time.LocalDateTime;
@@ -42,7 +42,7 @@ import java.util.List;
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
+class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 
 	@Inject
 	private MatchDao matchDao;
@@ -84,7 +84,7 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Test
-	public void it_should_find_all_matches_ordered_by_date() {
+	void it_should_find_all_matches_ordered_by_date() {
 		List<Match> matches = toList(matchDao.findAllOrderByDate());
 
 		assertThat(matches)
@@ -93,7 +93,7 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Test
-	public void it_should_get_matches_with_date_less_than_ordered_by_date() {
+	void it_should_get_matches_with_date_less_than_ordered_by_date() {
 		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
 
 		List<Match> matches = toList(matchDao.findByDateLessThanOrderByDate(date));
@@ -110,7 +110,7 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Test
-	public void it_should_get_matches_with_date_greater_than_ordered_by_date() {
+	void it_should_get_matches_with_date_greater_than_ordered_by_date() {
 		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
 
 		List<Match> matches = toList(matchDao.findByDateGreaterThanOrEqualOrderByDate(date));
@@ -127,7 +127,7 @@ public class MatchDaoTest extends AbstractCrudDaoTest<Match, MatchDao> {
 	}
 
 	@Test
-	public void it_should_count_by_match_date_less_than() {
+	void it_should_count_by_match_date_less_than() {
 		Date date = Date.from(LocalDateTime.parse("2018-06-20T12:00:00.000").atZone(ZoneId.systemDefault()).toInstant());
 		long count = matchDao.countByDateLessThanOrderByDate(date);
 		assertThat(count).isEqualTo(17L);

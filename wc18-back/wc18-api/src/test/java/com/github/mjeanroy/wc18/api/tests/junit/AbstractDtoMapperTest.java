@@ -25,17 +25,17 @@
 package com.github.mjeanroy.wc18.api.tests.junit;
 
 import com.github.mjeanroy.spring.mappers.objects.ObjectMapper;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = DtoMapperTestConfiguration.class)
 public abstract class AbstractDtoMapperTest<T, U, MAPPER extends ObjectMapper<T, U>> {
 
 	@Test
-	public void it_should_map_input_to_output() {
+	void it_should_map_input_to_output() {
 		T input = createInput();
 		U output = getMapper().from(input);
 		verifyOutput(input, output);

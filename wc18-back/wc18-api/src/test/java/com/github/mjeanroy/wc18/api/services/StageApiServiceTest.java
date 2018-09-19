@@ -27,20 +27,20 @@ package com.github.mjeanroy.wc18.api.services;
 import com.github.mjeanroy.wc18.api.dto.StageDto;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.Stage;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
-public class StageApiServiceTest extends AbstractApiServiceTest {
+class StageApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private StageApiService stageApiService;
 
 	@Test
-	public void it_should_get_all_stages() {
+	void it_should_get_all_stages() {
 		Iterable<StageDto> stages = stageApiService.findAll();
 		assertThat(stages)
 			.hasSameSizeAs(Stage.values())

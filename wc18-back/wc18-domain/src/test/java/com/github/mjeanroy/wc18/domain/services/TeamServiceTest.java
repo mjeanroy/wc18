@@ -29,9 +29,7 @@ import com.github.mjeanroy.wc18.domain.exceptions.TeamNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.List;
@@ -42,19 +40,23 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class TeamServiceTest extends AbstractServiceTest {
+class TeamServiceTest extends AbstractServiceTest {
 
-	@Mock
 	private TeamDao teamDao;
-
-	@InjectMocks
 	private TeamService teamService;
 
+	@Override
+	protected void createService() {
+		teamDao = mock(TeamDao.class);
+		teamService = new TeamService(teamDao);
+	}
+
 	@Test
-	public void it_should_find_all_matches() {
+	void it_should_find_all_matches() {
 		List<Team> teams = IntStream.iterate(0, i -> i++)
 			.mapToObj(i -> createRandomTeam())
 			.limit(10)
@@ -68,7 +70,7 @@ public class TeamServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_team() {
+	void it_should_find_team() {
 		Team team = createRandomTeam();
 		String id = team.getId();
 
@@ -79,14 +81,14 @@ public class TeamServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_team_and_return_empty_result_if_team_does_not_exsit() {
+	void it_should_find_team_and_return_empty_result_if_team_does_not_exsit() {
 		String id = UUID.randomUUID().toString();
 		Optional<Team> result = teamService.findOne(id);
 		assertThat(result).isNotPresent();
 	}
 
 	@Test
-	public void it_should_find_team_by_id() {
+	void it_should_find_team_by_id() {
 		Team team = createRandomTeam();
 		String id = team.getId();
 
@@ -97,7 +99,7 @@ public class TeamServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_team_and_fail_if_team_does_not_exist() {
+	void it_should_find_team_and_fail_if_team_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 		assertThatThrownBy(() -> teamService.findOneOrFail(id))
 			.isExactlyInstanceOf(TeamNotFoundException.class)

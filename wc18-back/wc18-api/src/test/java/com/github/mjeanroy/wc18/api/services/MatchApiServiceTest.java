@@ -32,20 +32,20 @@ import com.github.mjeanroy.wc18.api.tests.builders.ScoreDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.builders.TeamDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.models.Stage;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchApiServiceTest extends AbstractApiServiceTest {
+class MatchApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private MatchApiService matchApiService;
 
 	@Test
-	public void it_should_find_all_matches() {
+	void it_should_find_all_matches() {
 		Iterable<MatchDto> matches = matchApiService.findAll(null);
 		assertThat(matches)
 			.isNotNull()
@@ -55,7 +55,7 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_create_match() {
+	void it_should_create_match() {
 		TeamDto team1 = new TeamDtoBuilder()
 			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
 			.withName("France")
@@ -86,7 +86,7 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_update_match() {
+	void it_should_update_match() {
 		TeamDto team1 = new TeamDtoBuilder()
 			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
 			.withName("France")
@@ -120,7 +120,7 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_update_match_score() {
+	void it_should_update_match_score() {
 		TeamDto team1 = new TeamDtoBuilder()
 			.withId("5820fadd-ae19-48d5-b4e5-811b08f58b87")
 			.withName("France")
@@ -155,7 +155,7 @@ public class MatchApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_remove_match() {
+	void it_should_remove_match() {
 		String id = "7c2ae500-e5ae-4574-ad5e-1b4ef770c8d8";
 		matchApiService.remove(id);
 	}

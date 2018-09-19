@@ -24,7 +24,7 @@
 
 package com.github.mjeanroy.wc18.commons;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
@@ -33,10 +33,10 @@ import static com.github.mjeanroy.wc18.commons.Tuple.tuple;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
-public class MoreCollectionsTest {
+class MoreCollectionsTest {
 
 	@Test
-	public void it_should_create_hash_map_with_single_entry() {
+	void it_should_create_hash_map_with_single_entry() {
 		String key = "foo";
 		String value = "bar";
 		Map<String, String> map = newHashMap(tuple(key, value));
@@ -50,7 +50,7 @@ public class MoreCollectionsTest {
 	}
 
 	@Test
-	public void it_should_create_hash_map_with_two_entries() {
+	void it_should_create_hash_map_with_two_entries() {
 		String key1 = "foo1";
 		String value1 = "bar1";
 

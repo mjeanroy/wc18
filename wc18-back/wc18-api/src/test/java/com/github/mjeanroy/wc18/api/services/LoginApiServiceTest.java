@@ -32,7 +32,7 @@ import com.github.mjeanroy.wc18.api.tests.builders.LoginDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.security.models.Principal;
 import com.github.mjeanroy.wc18.security.service.SecurityService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import javax.inject.Inject;
@@ -44,7 +44,7 @@ import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
-public class LoginApiServiceTest extends AbstractApiServiceTest {
+class LoginApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private SecurityService securityService;
@@ -53,7 +53,7 @@ public class LoginApiServiceTest extends AbstractApiServiceTest {
 	private LoginApiService loginApiService;
 
 	@Test
-	public void it_should_log_user() {
+	void it_should_log_user() {
 		String login = "mickael";
 		String password = "azerty123";
 		HttpServletResponse response = new HttpServletResponseBuilder().build();
@@ -73,7 +73,7 @@ public class LoginApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_fail_with_bad_credentials() {
+	void it_should_fail_with_bad_credentials() {
 		String login = "mickael";
 		String password = "qwerty123";
 		HttpServletResponse response = new HttpServletResponseBuilder().build();
@@ -87,7 +87,7 @@ public class LoginApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_logout() {
+	void it_should_logout() {
 		HttpServletResponse response = new HttpServletResponseBuilder().build();
 		loginApiService.logout(response);
 		verify(securityService).logout(response);

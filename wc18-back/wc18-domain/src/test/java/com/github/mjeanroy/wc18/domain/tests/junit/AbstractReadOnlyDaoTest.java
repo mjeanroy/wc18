@@ -26,7 +26,7 @@ package com.github.mjeanroy.wc18.domain.tests.junit;
 
 import com.github.mjeanroy.wc18.domain.dao.AbstractReadOnlyDao;
 import com.github.mjeanroy.wc18.domain.models.AbstractEntity;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,14 +46,14 @@ public abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extend
 	private EntityManager entityManager;
 
 	@Test
-	public void it_should_find_all() {
+	void it_should_find_all() {
 		int expectedCount = Math.toIntExact(countAll());
 		Iterable<T> results = getDao().findAll();
 		assertThat(results).hasSize(expectedCount).doesNotHaveDuplicates();
 	}
 
 	@Test
-	public void it_should_find_one() {
+	void it_should_find_one() {
 		String id = getOneId();
 		Optional<T> result = getDao().findOne(id);
 		assertThat(result).isPresent();
@@ -65,7 +65,7 @@ public abstract class AbstractReadOnlyDaoTest<T extends AbstractEntity, U extend
 	}
 
 	@Test
-	public void it_should_return_empty_with_unknown_id() {
+	void it_should_return_empty_with_unknown_id() {
 		String id = UUID.randomUUID().toString();
 		Optional<T> result = getDao().findOne(id);
 		assertThat(result).isEmpty();

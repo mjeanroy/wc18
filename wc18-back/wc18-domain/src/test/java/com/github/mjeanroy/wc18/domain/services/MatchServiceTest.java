@@ -32,11 +32,8 @@ import com.github.mjeanroy.wc18.domain.models.Team;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.TeamBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.util.Date;
 import java.util.List;
@@ -49,19 +46,23 @@ import static com.github.mjeanroy.wc18.domain.tests.commons.ReflectionTestUtils.
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class MatchServiceTest extends AbstractServiceTest {
+class MatchServiceTest extends AbstractServiceTest {
 
-	@Mock
 	private MatchDao matchDao;
-
-	@InjectMocks
 	private MatchService matchService;
 
-	@Before
-	public void initMatchDao() {
+	@Override
+	protected void createService() {
+		matchDao = mock(MatchDao.class);
+		matchService = new MatchService(matchDao);
+		initMatchDao();
+	}
+
+	private void initMatchDao() {
 		when(matchDao.save(any(Match.class))).thenAnswer(invocation -> {
 			Match m = invocation.getArgument(0);
 			if (m.getId() == null) {
@@ -73,7 +74,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_all_matches() {
+	void it_should_find_all_matches() {
 		List<Match> matches = createFixtures();
 		when(matchDao.findAllOrderByDate()).thenReturn(matches);
 
@@ -84,7 +85,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_match_by_id() {
+	void it_should_find_match_by_id() {
 		Match match = createRandomMatch();
 		String id = match.getId();
 		Match result = matchService.findOneOrFail(id);
@@ -94,7 +95,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_fail_to_find_match_if_it_does_not_exist() {
+	void it_should_fail_to_find_match_if_it_does_not_exist() {
 		String id = UUID.randomUUID().toString();
 		assertThatThrownBy(() -> matchService.findOneOrFail(id))
 			.isExactlyInstanceOf(MatchNotFoundException.class)
@@ -102,7 +103,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_locked_matches() {
+	void it_should_find_locked_matches() {
 		List<Match> matches = createFixtures();
 		when(matchDao.findByDateLessThanOrderByDate(any(Date.class))).thenReturn(matches);
 
@@ -116,7 +117,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_find_non_locked_matches() {
+	void it_should_find_non_locked_matches() {
 		List<Match> matches = createFixtures();
 		when(matchDao.findByDateGreaterThanOrEqualOrderByDate(any(Date.class))).thenReturn(matches);
 
@@ -130,7 +131,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_create_match() {
+	void it_should_create_match() {
 		Date date = new Date();
 		Stage stage = Stage.FINAL;
 		Team team1 = new TeamBuilder().withRandomId().build();
@@ -148,7 +149,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_update_match() {
+	void it_should_update_match() {
 		Match match = createRandomMatch();
 
 		String id = match.getId();
@@ -164,7 +165,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_update_match_without_score() {
+	void it_should_update_match_without_score() {
 		Match match = createRandomMatch();
 
 		String id = match.getId();
@@ -181,7 +182,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_update_match_score() {
+	void it_should_update_match_score() {
 		Match match = createRandomMatch();
 		String id = match.getId();
 		int score1 = 3;
@@ -197,7 +198,7 @@ public class MatchServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_remove_match() {
+	void it_should_remove_match() {
 		Match match = createRandomMatch();
 		String id = match.getId();
 

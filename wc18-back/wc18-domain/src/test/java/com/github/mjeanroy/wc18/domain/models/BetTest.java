@@ -26,16 +26,16 @@ package com.github.mjeanroy.wc18.domain.models;
 
 import com.github.mjeanroy.wc18.domain.tests.builders.BetBuilder;
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BetTest {
+class BetTest {
 
 	@Test
-	public void it_should_return_zero_point_if_match_is_not_played_yet() {
+	void it_should_return_zero_point_if_match_is_not_played_yet() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenNotPlayedMatch())
@@ -45,7 +45,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_return_zero_point_if_bet_is_loosed() {
+	void it_should_return_zero_point_if_bet_is_loosed() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
@@ -56,7 +56,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_return_win_point_if_bet_is_won() {
+	void it_should_return_win_point_if_bet_is_won() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
@@ -67,7 +67,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_return_win_point_if_bet_is_won_with_match_equality() {
+	void it_should_return_win_point_if_bet_is_won_with_match_equality() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 2))
@@ -78,7 +78,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_return_perfect_point_if_bet_is_perfect() {
+	void it_should_return_perfect_point_if_bet_is_perfect() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.GROUP, 2, 0))
@@ -89,7 +89,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_return_perfect_point_if_bet_is_perfect_with_match_equality() {
+	void it_should_return_perfect_point_if_bet_is_perfect_with_match_equality() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.GROUP, 1, 1))
@@ -100,7 +100,7 @@ public class BetTest {
 	}
 
 	@Test
-	public void it_should_apply_coefficient_per_stage() {
+	void it_should_apply_coefficient_per_stage() {
 		Bet bet = new BetBuilder()
 			.withRandomId()
 			.withMatch(givenPlayedMatch(Stage.FINAL, 1, 1))

@@ -25,7 +25,7 @@
 package com.github.mjeanroy.wc18.commons;
 
 import org.assertj.core.api.Condition;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -34,10 +34,10 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class EnvironmentsTest {
+class EnvironmentsTest {
 
 	@Test
-	public void it_should_get_environment_variables() {
+	void it_should_get_environment_variables() {
 		Set<String> someKeys = new HashSet<String>() {{
 			add("USERNAME");
 			add("LOGNAME");
@@ -60,7 +60,7 @@ public class EnvironmentsTest {
 	}
 
 	@Test
-	public void it_should_get_default_environment_variables() {
+	void it_should_get_default_environment_variables() {
 		String name = "__fake_environment_variable___";
 		String value = "foobar";
 		assertThat(Environments.getEnvOrDefault(name, value)).isEqualTo(value);

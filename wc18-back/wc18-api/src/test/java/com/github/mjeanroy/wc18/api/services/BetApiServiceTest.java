@@ -32,8 +32,8 @@ import com.github.mjeanroy.wc18.api.tests.builders.UserDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.security.models.Principal;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -42,13 +42,13 @@ import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.to
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class BetApiServiceTest extends AbstractApiServiceTest {
+class BetApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private BetApiService betApiService;
 
 	@Test
-	public void it_should_find_all_bets_of_user() {
+	void it_should_find_all_bets_of_user() {
 		Principal principal = new PrincipalBuilder()
 			.withLogin("mickael")
 			.build();
@@ -59,8 +59,8 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	@Ignore
-	public void it_should_save_new_bet() {
+	@Disabled
+	void it_should_save_new_bet() {
 		Principal principal = new PrincipalBuilder()
 			.withLogin("john")
 			.build();
@@ -82,7 +82,7 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
-	public void it_should_not_save_bet_for_locked_match() {
+	void it_should_not_save_bet_for_locked_match() {
 		Principal principal = new PrincipalBuilder()
 			.withLogin("john")
 			.build();

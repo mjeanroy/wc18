@@ -27,7 +27,7 @@ package com.github.mjeanroy.wc18.api.services;
 import com.github.mjeanroy.wc18.api.dto.CommitDto;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import org.assertj.core.api.Condition;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,13 +35,13 @@ import java.util.List;
 import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AdminApiServiceTest extends AbstractApiServiceTest {
+class AdminApiServiceTest extends AbstractApiServiceTest {
 
 	@Inject
 	private AdminApiService adminApiService;
 
 	@Test
-	public void it_should_read_changelog() {
+	void it_should_read_changelog() {
 		List<CommitDto> changelog = toList(adminApiService.readChangeLog());
 
 		assertThat(changelog)

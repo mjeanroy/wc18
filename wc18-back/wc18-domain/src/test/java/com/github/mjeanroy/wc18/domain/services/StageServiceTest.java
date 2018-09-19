@@ -28,8 +28,7 @@ import com.github.mjeanroy.wc18.domain.dao.StageDao;
 import com.github.mjeanroy.wc18.domain.exceptions.StageNotFoundException;
 import com.github.mjeanroy.wc18.domain.models.Stage;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractServiceTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -37,24 +36,24 @@ import static com.github.mjeanroy.wc18.domain.tests.commons.IterableTestUtils.to
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StageServiceTest extends AbstractServiceTest {
+class StageServiceTest extends AbstractServiceTest {
 
 	private StageService stageService;
 
-	@Before
-	public void initStageDao() {
+	@Override
+	protected void createService() {
 		StageDao stageDao = new StageDao();
 		stageService = new StageService(stageDao);
 	}
 
 	@Test
-	public void it_should_find_all() {
+	void it_should_find_all() {
 		List<Stage> stages = toList(stageService.findAll());
 		assertThat(stages).containsExactly(Stage.values());
 	}
 
 	@Test
-	public void it_should_find_one() {
+	void it_should_find_one() {
 		for (Stage stage : Stage.values()) {
 			Stage result = stageService.findOneOrFail(stage.name());
 			assertThat(result).isEqualTo(stage);
@@ -62,7 +61,7 @@ public class StageServiceTest extends AbstractServiceTest {
 	}
 
 	@Test
-	public void it_should_fail_to_find_one_with_unknown_id() {
+	void it_should_fail_to_find_one_with_unknown_id() {
 		assertThatThrownBy(() -> stageService.findOneOrFail("FAKE_STAGE"))
 			.isExactlyInstanceOf(StageNotFoundException.class)
 			.hasMessage("Cannot find stage 'FAKE_STAGE'");

@@ -25,7 +25,7 @@
 package com.github.mjeanroy.wc18.domain.models;
 
 import com.github.mjeanroy.wc18.domain.tests.builders.MatchBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -33,10 +33,10 @@ import java.time.ZoneOffset;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MatchTest {
+class MatchTest {
 
 	@Test
-	public void it_should_check_if_match_is_played() {
+	void it_should_check_if_match_is_played() {
 		Match match = new MatchBuilder()
 			.withRandomId()
 			.withScore(1, 0)
@@ -46,7 +46,7 @@ public class MatchTest {
 	}
 
 	@Test
-	public void it_should_check_if_match_is_not_played() {
+	void it_should_check_if_match_is_not_played() {
 		Match match = new MatchBuilder()
 			.withRandomId()
 			.build();
@@ -55,7 +55,7 @@ public class MatchTest {
 	}
 
 	@Test
-	public void it_should_check_if_match_is_locked() {
+	void it_should_check_if_match_is_locked() {
 		Match match = new MatchBuilder()
 			.withRandomId()
 			.withDate(Date.from(LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC)))
@@ -65,7 +65,7 @@ public class MatchTest {
 	}
 
 	@Test
-	public void it_should_check_if_match_is_not_locked() {
+	void it_should_check_if_match_is_not_locked() {
 		Match match = new MatchBuilder()
 			.withRandomId()
 			.withDate(Date.from(LocalDateTime.now().plusDays(1).toInstant(ZoneOffset.UTC)))

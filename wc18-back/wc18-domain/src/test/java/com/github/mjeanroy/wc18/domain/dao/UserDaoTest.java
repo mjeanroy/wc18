@@ -28,14 +28,14 @@ import com.github.mjeanroy.wc18.domain.models.User;
 import com.github.mjeanroy.wc18.domain.models.User.Role;
 import com.github.mjeanroy.wc18.domain.tests.builders.UserBuilder;
 import com.github.mjeanroy.wc18.domain.tests.junit.AbstractCrudDaoTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
+class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 
 	@Inject
 	private UserDao userDao;
@@ -72,7 +72,7 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	}
 
 	@Test
-	public void it_should_find_user_by_login() {
+	void it_should_find_user_by_login() {
 		Optional<User> optUser = userDao.findByLogin("mickael");
 		assertThat(optUser).isPresent();
 
@@ -81,7 +81,7 @@ public class UserDaoTest extends AbstractCrudDaoTest<User, UserDao> {
 	}
 
 	@Test
-	public void it_should_not_find_user_with_unknown_login() {
+	void it_should_not_find_user_with_unknown_login() {
 		Optional<User> optUser = userDao.findByLogin("fake-login");
 		assertThat(optUser).isNotPresent();
 	}

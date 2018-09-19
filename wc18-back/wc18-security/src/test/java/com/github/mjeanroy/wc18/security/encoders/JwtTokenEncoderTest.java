@@ -24,22 +24,22 @@
 
 package com.github.mjeanroy.wc18.security.encoders;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JwtTokenEncoderTest {
+class JwtTokenEncoderTest {
 
 	private JwtTokenEncoder encoder;
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		encoder = new JwtTokenEncoder("TUzK5gAe3BKT0i8z8W29");
 	}
 
 	@Test
-	public void it_should_encode_and_decode_token() {
+	void it_should_encode_and_decode_token() {
 		String plainText = "mickael";
 		String encoded = encoder.encode(plainText);
 		assertThat(encoded).isNotNull().isNotEmpty().isNotEqualTo(plainText);

@@ -26,19 +26,19 @@ package com.github.mjeanroy.wc18.domain.configuration;
 
 import com.github.mjeanroy.wc18.domain.configuration.liquibase.LiquibaseProperties;
 import nl.jqno.equalsverifier.EqualsVerifier;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LiquibasePropertiesTest {
+class LiquibasePropertiesTest {
 
 	@Test
-	public void it_should_implement_equals_hash_code() {
+	void it_should_implement_equals_hash_code() {
 		EqualsVerifier.forClass(LiquibaseProperties.class).verify();
 	}
 
 	@Test
-	public void it_should_implement_to_string() {
+	void it_should_implement_to_string() {
 		String changeLog = "classpath:liquibase.xml";
 		boolean shouldRun = true;
 		boolean dropFirst = true;
