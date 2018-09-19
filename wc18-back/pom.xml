@@ -38,7 +38,7 @@
         <guava.version>26.0-jre</guava.version>
         <spring-mappers.version>0.1.2</spring-mappers.version>
         <jackson.version>2.9.7</jackson.version>
-        <java-jwt.version>3.3.0</java-jwt.version>
+        <java-jwt.version>3.4.0</java-jwt.version>
         <jbcrypt.version>0.4</jbcrypt.version>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
 
