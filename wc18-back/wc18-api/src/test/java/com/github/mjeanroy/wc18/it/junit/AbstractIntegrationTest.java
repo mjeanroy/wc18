@@ -27,12 +27,11 @@ package com.github.mjeanroy.wc18.it.junit;
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitDataSet;
 import com.github.mjeanroy.dbunit.core.annotations.DbUnitSetup;
 import com.github.mjeanroy.dbunit.core.operation.DbUnitOperation;
-import com.github.mjeanroy.dbunit.integration.junit.DbUnitRule;
+import com.github.mjeanroy.dbunit.integration.junit4.DbUnitRule;
 import com.github.mjeanroy.junit.servers.client.HttpClient;
 import com.github.mjeanroy.junit.servers.client.HttpResponse;
 import com.github.mjeanroy.junit.servers.jetty.EmbeddedJettyConfiguration;
-import com.github.mjeanroy.junit.servers.rules.JettyServerRule;
-import com.github.mjeanroy.junit.servers.rules.ServerRule;
+import com.github.mjeanroy.junit.servers.jetty.junit4.JettyServerJunit4Rule;
 import org.junit.ClassRule;
 import org.junit.Rule;
 
@@ -52,7 +51,7 @@ public abstract class AbstractIntegrationTest {
 		.build();
 
 	@ClassRule
-	public static ServerRule server = new JettyServerRule(SERVER_CONFIGURATION);
+	public static JettyServerJunit4Rule server = new JettyServerJunit4Rule(SERVER_CONFIGURATION);
 
 	@Rule
 	public DbUnitRule rule = new DbUnitRuleIntegrationTest(SPRING);

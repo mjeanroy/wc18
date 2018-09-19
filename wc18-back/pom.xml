@@ -54,7 +54,7 @@
         <h2.version>1.4.197</h2.version>
         <commons-lang3.version>3.8</commons-lang3.version>
         <equalsverifier.version>2.5.2</equalsverifier.version>
-        <junit-servers.version>0.6.1</junit-servers.version>
+        <junit-servers.version>0.11.0</junit-servers.version>
         <okhttp.version>3.11.0</okhttp.version>
         <rest-assert.version>0.2.0</rest-assert.version>
     </properties>

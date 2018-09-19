@@ -24,11 +24,11 @@
 
 package com.github.mjeanroy.wc18.it.junit;
 
-import com.github.mjeanroy.dbunit.integration.junit.DbUnitRule;
+import com.github.mjeanroy.dbunit.integration.junit4.DbUnitRule;
 
-public class DbUnitRuleIntegrationTest extends DbUnitRule {
+class DbUnitRuleIntegrationTest extends DbUnitRule {
 
-	public DbUnitRuleIntegrationTest(SpringContextHook spring) {
+	DbUnitRuleIntegrationTest(SpringContextHook spring) {
 		super(new SpringDataSourceJdbcConnectionFactory(spring));
 	}
 }
