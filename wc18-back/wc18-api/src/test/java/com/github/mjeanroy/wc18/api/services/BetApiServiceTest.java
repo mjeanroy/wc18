@@ -32,6 +32,7 @@ import com.github.mjeanroy.wc18.api.tests.builders.UserDtoBuilder;
 import com.github.mjeanroy.wc18.api.tests.junit.AbstractApiServiceTest;
 import com.github.mjeanroy.wc18.domain.exceptions.MatchLockedException;
 import com.github.mjeanroy.wc18.security.models.Principal;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.inject.Inject;
@@ -58,6 +59,7 @@ public class BetApiServiceTest extends AbstractApiServiceTest {
 	}
 
 	@Test
+	@Ignore
 	public void it_should_save_new_bet() {
 		Principal principal = new PrincipalBuilder()
 			.withLogin("john")
