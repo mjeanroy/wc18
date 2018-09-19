@@ -34,7 +34,7 @@
         <hibernate.version>5.3.6.Final</hibernate.version>
         <liquibase.version>3.5.5</liquibase.version>
         <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
-        <hikaricp.version>2.7.8</hikaricp.version>
+        <hikaricp.version>3.2.0</hikaricp.version>
         <guava.version>26.0-jre</guava.version>
         <spring-mappers.version>0.1.2</spring-mappers.version>
         <jackson.version>2.9.7</jackson.version>
