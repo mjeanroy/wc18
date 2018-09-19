@@ -48,7 +48,7 @@
 
         <junit.version>4.12</junit.version>
         <assertj.version>3.9.1</assertj.version>
-        <mockito.version>2.17.0</mockito.version>
+        <mockito.version>2.22.0</mockito.version>
         <dbunit.version>2.5.4</dbunit.version>
         <dbunit-plus.version>0.2.0</dbunit-plus.version>
         <h2.version>1.4.197</h2.version>
