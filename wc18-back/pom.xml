@@ -52,7 +52,7 @@
         <dbunit.version>2.5.4</dbunit.version>
         <dbunit-plus.version>0.2.0</dbunit-plus.version>
         <h2.version>1.4.197</h2.version>
-        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-lang3.version>3.8</commons-lang3.version>
         <equalsverifier.version>2.4.6</equalsverifier.version>
         <junit-servers.version>0.6.1</junit-servers.version>
         <okhttp.version>3.10.0</okhttp.version>
